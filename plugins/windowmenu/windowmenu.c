@@ -912,11 +912,24 @@ window_menu_plugin_menu_window_item_activate (GtkWidget      *mi,
 
   if (event->button == 1)
     {
-      /* go to workspace and activate window */
-      workspace = wnck_window_get_workspace (window);
-      if (workspace != NULL)
-        wnck_workspace_activate (workspace, event->time - 1);
-      wnck_window_activate (window, event->time);
+      gulong xid;
+      gchar *command_line;
+      xid = wnck_window_get_xid(window);
+
+      command_line = g_strdup_printf ("i3run --winid %d", xid);
+
+      if (!xfce_spawn_command_line_on_screen (gtk_widget_get_screen (mi),
+                                         command_line,
+                                         FALSE, FALSE, NULL))
+        {
+          /* go to workspace and activate window */
+          workspace = wnck_window_get_workspace (window);
+          if (workspace != NULL)
+            wnck_workspace_activate (workspace, event->time - 1);
+          wnck_window_activate (window, event->time);
+        }
+
+      g_free(command_line);
     }
   else if (event->button == 2)
     {

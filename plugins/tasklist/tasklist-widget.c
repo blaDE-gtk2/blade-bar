@@ -29,6 +29,7 @@
 
 #include <gtk/gtk.h>
 #include <exo/exo.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <libwnck/libwnck.h>
 #include <libxfce4panel/libxfce4panel.h>
 #include <common/panel-private.h>
@@ -2882,6 +2883,18 @@ xfce_tasklist_button_activate (XfceTasklistChild *child,
   panel_return_if_fail (XFCE_IS_TASKLIST (child->tasklist));
   panel_return_if_fail (WNCK_IS_WINDOW (child->window));
   panel_return_if_fail (WNCK_IS_SCREEN (child->tasklist->screen));
+
+  xid = wnck_window_get_xid(child->window);
+  command_line = g_strdup_printf ("i3run --winid %lu", xid);
+
+  if (xfce_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET(child->tasklist)),
+                                         command_line, FALSE, FALSE, NULL))
+    {
+      g_free(command_line);
+      return;
+    }
+
+  g_free(command_line);
 
   if (wnck_window_is_active (child->window)
       || wnck_window_transient_is_most_recently_activated (child->window))
