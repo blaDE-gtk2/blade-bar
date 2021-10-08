@@ -513,7 +513,7 @@ General
 - All plugins are ported to GObject-based plugins and use Blconf for
   storing their information (apart from desktop-files of launcher).
 - Interfaces are all created by GtkBuilder.
-- Ported to new Libxfce4ui (4.7.1) and Pojk (0.1.1) libraries.
+- Ported to new Libbladeui (4.7.1) and Pojk (0.1.1) libraries.
   Other dependencies include Gtk+ 2.14, Glib 2.18, Blconf 4.7.2,
   Blxo 0.5.1, DBus-Glib 0.73 and Libwnck 2.22.
 - Documentation (will be) written in Mallard.
