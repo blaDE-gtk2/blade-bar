@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+_Name=Create Launcher on the bar
+_Comment=Add a new launcher to the bar based on the information of this desktop file
+Exec=blade-bar --add=launcher %u
+Icon=application-x-executable
+Terminal=false
+NoDisplay=true
+StartupNotify=false
+MimeType=application/x-desktop;
