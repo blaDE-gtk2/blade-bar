@@ -1,8 +1,8 @@
-[Xfce Panel]
-Type=X-XFCE-PanelPlugin
+[Blade Bar]
+Type=X-XFCE-BarPlugin
 _Name=Applications Menu
 _Comment=Show a menu containing categories of installed applications
-Icon=xfce4-panel-menu
+Icon=blade-bar-menu
 X-XFCE-Module=applicationsmenu
 X-XFCE-Internal=TRUE
-X-XFCE-API=@LIBXFCE4PANEL_VERSION_API@
+X-XFCE-API=@LIBBLADEBAR_VERSION_API@

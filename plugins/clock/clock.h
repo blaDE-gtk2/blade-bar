@@ -20,9 +20,9 @@
 #define __CLOCK_H__
 
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <common/panel-private.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladebar/libbladebar.h>
+#include <common/bar-private.h>
 
 G_BEGIN_DECLS
 
@@ -44,7 +44,7 @@ typedef struct _ClockPluginTimeout ClockPluginTimeout;
 
 GType               clock_plugin_get_type             (void) G_GNUC_CONST;
 
-void                clock_plugin_register_type        (XfcePanelTypeModule *type_module);
+void                clock_plugin_register_type        (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

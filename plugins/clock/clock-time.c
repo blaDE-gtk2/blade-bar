@@ -18,7 +18,7 @@
 
 
 #include <glib.h>
-#include <exo/exo.h>
+#include <blxo/blxo.h>
 
 #include "clock-time.h"
 #include "clock.h"
@@ -74,7 +74,7 @@ enum
 static guint clock_time_signals[LAST_SIGNAL] = { 0, };
 
 
-XFCE_PANEL_DEFINE_TYPE (ClockTime, clock_time, G_TYPE_OBJECT)
+BLADE_BAR_DEFINE_TYPE (ClockTime, clock_time, G_TYPE_OBJECT)
 
 
 
@@ -93,7 +93,7 @@ clock_time_class_init (ClockTimeClass *klass)
                                    g_param_spec_string ("timezone",
                                                         NULL, NULL,
                                                         DEFAULT_TIMEZONE,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   clock_time_signals[TIME_CHANGED] =
     g_signal_new (g_intern_static_string ("time-changed"),
@@ -196,7 +196,7 @@ clock_time_get_time (ClockTime *clock_time)
 {
   GDateTime *date_time;
 
-  panel_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
+  bar_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
 
   if (clock_time->timezone != NULL)
     date_time = g_date_time_new_now (clock_time->timezone);
@@ -215,7 +215,7 @@ clock_time_strdup_strftime (ClockTime       *clock_time,
   GDateTime *date_time;
   gchar     *str;
 
-  panel_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
+  bar_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
 
   date_time = clock_time_get_time (clock_time);
   str = g_date_time_format (date_time, format);
@@ -232,7 +232,7 @@ clock_time_interval_from_format (const gchar *format)
 {
   const gchar *p;
 
-  if (G_UNLIKELY (exo_str_is_empty (format)))
+  if (G_UNLIKELY (blxo_str_is_empty (format)))
       return CLOCK_INTERVAL_MINUTE;
 
   for (p = format; *p != '\0'; ++p)
@@ -318,9 +318,9 @@ clock_time_timeout_new (guint       interval,
 {
   ClockTimeTimeout *timeout;
 
-  panel_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
+  bar_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), NULL);
 
-  panel_return_val_if_fail (interval > 0, NULL);
+  bar_return_val_if_fail (interval > 0, NULL);
 
   timeout = g_slice_new0 (ClockTimeTimeout);
   timeout->interval = 0;
@@ -349,8 +349,8 @@ clock_time_timeout_set_interval (ClockTimeTimeout *timeout,
   guint      next_interval;
   gboolean   restart;
 
-  panel_return_if_fail (timeout != NULL);
-  panel_return_if_fail (interval > 0);
+  bar_return_if_fail (timeout != NULL);
+  bar_return_if_fail (interval > 0);
 
   restart = timeout->restart;
 
@@ -401,7 +401,7 @@ clock_time_timeout_set_interval (ClockTimeTimeout *timeout,
 void
 clock_time_timeout_free (ClockTimeTimeout *timeout)
 {
-  panel_return_if_fail (timeout != NULL);
+  bar_return_if_fail (timeout != NULL);
 
   timeout->restart = FALSE;
 

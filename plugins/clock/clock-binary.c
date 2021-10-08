@@ -82,7 +82,7 @@ struct _XfceClockBinary
 
 
 
-XFCE_PANEL_DEFINE_TYPE (XfceClockBinary, xfce_clock_binary, GTK_TYPE_IMAGE)
+BLADE_BAR_DEFINE_TYPE (XfceClockBinary, xfce_clock_binary, GTK_TYPE_IMAGE)
 
 
 
@@ -442,8 +442,8 @@ xfce_clock_binary_expose_event (GtkWidget      *widget,
   gint             pad_x, pad_y;
   gint             diff;
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_BINARY (binary), FALSE);
-  panel_return_val_if_fail (GDK_IS_WINDOW (widget->window), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_BINARY (binary), FALSE);
+  bar_return_val_if_fail (GDK_IS_WINDOW (widget->window), FALSE);
 
   cr = gdk_cairo_create (widget->window);
   if (G_LIKELY (cr != NULL))
@@ -524,7 +524,7 @@ xfce_clock_binary_update (XfceClockBinary     *binary,
 {
   GtkWidget *widget = GTK_WIDGET (binary);
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_BINARY (binary), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_BINARY (binary), FALSE);
 
   /* update if the widget if visible */
   if (G_LIKELY (GTK_WIDGET_VISIBLE (widget)))

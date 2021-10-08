@@ -35,7 +35,7 @@ typedef struct _ApplicationsMenuPlugin      ApplicationsMenuPlugin;
 
 GType applications_menu_plugin_get_type      (void) G_GNUC_CONST;
 
-void  applications_menu_plugin_register_type (XfcePanelTypeModule *type_module);
+void  applications_menu_plugin_register_type (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

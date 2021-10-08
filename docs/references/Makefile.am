@@ -1,10 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 
 # The name of the module.
-DOC_MODULE=libxfce4panel
+DOC_MODULE=libbladebar
 
 # Uncomment for versioned docs and specify the version of the module, e.g. '2'.
-DOC_MODULE_VERSION=$(LIBXFCE4PANEL_VERSION_API)
+DOC_MODULE_VERSION=$(LIBBLADEBAR_VERSION_API)
 
 # The top-level SGML file.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.xml
@@ -13,7 +13,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.xml
 SCAN_OPTIONS=
 
 # The directory containing the source code. Relative to $(srcdir)
-DOC_SOURCE_DIR=../../libxfce4panel
+DOC_SOURCE_DIR=../../libbladebar
 
 # Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--output-format=xml --sgml-mode --name-space=xfce
@@ -22,14 +22,14 @@ MKDB_OPTIONS=--output-format=xml --sgml-mode --name-space=xfce
 FIXXREF_OPTIONS=
 
 # Used for dependencies
-HFILE_GLOB=$(top_srcdir)/libxfce4panel/*.h
-CFILE_GLOB=$(top_srcdir)/libxfce4panel/*.c
+HFILE_GLOB=$(top_srcdir)/libbladebar/*.h
+CFILE_GLOB=$(top_srcdir)/libbladebar/*.c
 
 # Header files to ignore when scanning
 IGNORE_HFILES= \
-	libxfce4panel-alias.h \
-	libxfce4panel-marshal.h \
-	xfce-panel-plugin-provider.h
+	libbladebar-alias.h \
+	libbladebar-marshal.h \
+	blade-bar-plugin-provider.h
 
 # Extra files to add when scanning (relative to $srcdir)
 EXTRA_HFILES=
@@ -44,16 +44,17 @@ content_files = \
 # CFLAGS and LDFLAGS for compiling scan program. Only needed
 # if $(DOC_MODULE).types is non-empty.
 AM_CPPFLAGS = \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir) \
 	-I$(top_builddir) \
 	$(GTK_CFLAGS) \
-	$(LIBXFCE4UTIL_CFLAGS) \
+	$(LIBBLADEUTIL_CFLAGS) \
 	$(GTK_DOC_EXTRA_CFLAGS)
 
 GTKDOC_LIBS = \
 	$(GTK_LIBS) \
-	$(LIBXFCE4UTIL_LIBS) \
-	$(top_builddir)/libxfce4panel/libxfce4panel-$(LIBXFCE4PANEL_VERSION_API).la
+	$(LIBBLADEUTIL_LIBS) \
+	$(top_builddir)/libbladebar/libbladebar-$(LIBBLADEBAR_VERSION_API).la
 
 include $(top_srcdir)/gtk-doc.make
 

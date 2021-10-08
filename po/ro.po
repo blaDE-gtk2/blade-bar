@@ -18,101 +18,101 @@ msgstr ""
 "Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
 msgstr "Creați un lansator în panou"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
 "Adăugați un nou lansator în panou utilizând informațiile din acest fișier "
 "desktop"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2615
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2615
 #: ../migrate/main.c:117
-msgid "Panel"
+msgid "Bar"
 msgstr "Panouri"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
 msgstr "Personalizați panourile"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1190
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1190
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Sigur doriți să eliminați „%s”?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1193
-msgid "If you remove the item from the panel, it is permanently lost."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1193
+msgid "If you remove the item from the bar, it is permanently lost."
 msgstr "Dacă eliminați acest element din panou, el va fi șters definitiv."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_Mutare"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "P_anou"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2627
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2627
 msgid "Add _New Items..."
 msgstr "Adăugare de _noi elemente…"
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2638
-msgid "Panel Pr_eferences..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2638
+msgid "Bar Pr_eferences..."
 msgstr "_Preferințe pentru panouri…"
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2666
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2666
 msgid "Log _Out"
 msgstr "_Ieșire"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
 msgstr "Arată fereastra cu preferințele pentru panouri"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
 msgstr "NUMĂRUL-PANOULUI"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Arată fereastra pentru adăugarea de noi elemente"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
 msgstr "Salvează opțiunile panoului"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
 msgstr "Adăugați un nou modul în panou"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "NUMELE-MODULULUI"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
 msgstr "Repornește instanța pornită a panoului"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
 msgstr "Închide instanța pornită a panoului"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Nu aștepta pornirea unui manager de ferestre"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -120,91 +120,91 @@ msgid "Print version information and exit"
 msgstr "Arată versiunea detaliată și ieși"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE…]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Încercați „%s --help” pentru detalii de utilizare."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Echipa de dezvoltare Xfce. Toate drepturile sunt rezervate."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Raportați problemele la <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "Există deja o instanță pornită"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Repornire…"
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "Nu s-a putut deschide fereastra cu preferințe"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "Nu s-a putut deschide fereastra pentru adăugarea de noi elemente"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
 msgstr "Nu s-a putut salva configurația panoului"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
 msgstr "Nu s-a putut adăuga un modul în panou"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
 msgstr "Nu s-a putut reporni panoul"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
 msgstr "Nu s-a putut închide panoul"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "Nu s-a putut trimite mesajul D-BUS"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
 "Dacă doriți să porniți panoul, salvați sesiunea la ieșire, astfel încât "
 "panoul să fie pornit automat la următoarea autentificare."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "Nu s-a găsit o instanță pornită pentru %s"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "Nu s-a putut lansa programul de migrare"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "Creează un _lansator"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
 "Această acțiune va crea un nou modul de tip lansator în panou și va insera "
 "ca elemente de meniu fișierele plasate cu mausul."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
@@ -212,7 +212,7 @@ msgstr[0] "Creează un nou lansator din acest fișier desktop"
 msgstr[1] "Creează un nou lansator din cele %d fișiere desktop"
 msgstr[2] "Creează un nou lansator din cele %d de fișiere desktop"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -220,23 +220,23 @@ msgstr ""
 "Ați pornit serverul X fără un manager de sesiune. Dacă alegeți „Ieșire” veți"
 " închide serverul X."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
 msgstr "Sigur doriți să închideți panoul?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Nu s-a putut executa comanda „%s”"
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "Sintaxă nevalidă pentru evenimentul de modul. Utilizați NUME-"
 "MODUL:NUME[:TIP:VALOARE]."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -245,122 +245,122 @@ msgstr ""
 "Tip nevalid de hint: „%s”. Tipurile valide sunt: bool, double, int, string "
 "și uint."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Programatori activi"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "Mod deskbar"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "Programatori inactivi"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
 msgstr "Panoul mediului desktop Xfce"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr "Mișu Moldovan <dumol@xfce.org>"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Adăugare de noi elemente"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
 msgstr "Alegeți un panou pentru noul modul:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:853
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:853
 #, c-format
-msgid "Panel %d"
+msgid "Bar %d"
 msgstr "Panoul %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
 "Pentru că panoul este pornit în modul chioșc, nu aveți permisiunea să "
 "modificați configurația panoului ca utilizator obișnuit"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
 msgstr "Modificarea panoului nu este permisă"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Adăugare de noi elemente"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
 msgstr "Adăugați noi module în panou"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "Cau_tă:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Introduceți termenii de căutare"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr ""
 "Modulul „%s” a părăsit panoul într-un mod neașteptat, doriți să îl "
 "reporniți?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "Modulul s-a repornit de mai multe ori în ultimele %d secunde. Dacă alegeți "
 "„Execută”, panoul va încerca să repornească modulul, altfel el va fi "
 "eliminat definitiv din panou."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Automată"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:511
+#: ../bar/bar-preferences-dialog.c:511
 #, c-format
 msgid "Screen %d"
 msgstr "Ecranul %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:537
+#: ../bar/bar-preferences-dialog.c:537
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitorul %d"
 
-#: ../panel/panel-preferences-dialog.c:919
-msgid "The panel and plugin configurations will be permanently removed"
+#: ../bar/bar-preferences-dialog.c:919
+msgid "The bar and plugin configurations will be permanently removed"
 msgstr "Configurațiile panoului și ale modulelor sale vor fi șterse definitiv"
 
-#: ../panel/panel-preferences-dialog.c:920
+#: ../bar/bar-preferences-dialog.c:920
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
+msgid "Are you sure you want to remove bar %d?"
 msgstr "Sigur doriți să eliminați panoul %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1032
+#: ../bar/bar-preferences-dialog.c:1032
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(extern)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1037
+#: ../bar/bar-preferences-dialog.c:1037
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -371,291 +371,291 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1049
+#: ../bar/bar-preferences-dialog.c:1049
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "Nume intern: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Orizontal"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Vertical"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "Deskbar"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Niciodată"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "Inteligent"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Întotdeauna"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Utilizează stilul temei"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "Culoare solidă"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Imagine de fundal"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
 msgstr "Adăugați un nou panou"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
 msgstr "Eliminați panoul selectat"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "M_od:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "_Ieșire:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "Întinde pe toate mo_nitoarele"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
 msgstr ""
 "Selectați această opțiune pentru a extinde panoul pe mai multe monitoare."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
 msgstr "Fi_xează panoul"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
 "Selectați această opțiune pentru a ascunde mânerele panoului și a-i fixa "
 "poziția."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
 msgstr "Ascunde automat panoul:"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Nu rezer_va spațiu la margine"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "Selectați această opțiune dacă doriți ca ferestrele maximizate să acopere "
 "zona din spatele panoului. Ceea ce presupune că panoul este atașat marginii "
 "unui ecran."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Generale"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "Pixeli per _rând:"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "_Lungime (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "Număr _de rânduri:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "Cr_eștere automată în lungime"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
 "Selectați această opțiune pentru a incrementa automat lungimea unui panou "
 "dacă modulele sale necesită mai mult spațiu."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Măsurători"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "A_fișare"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "St_il:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "A_lfa:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
 "Valoare alfa pentru fundalul panoului, unde 0 este complet transparent și "
 "100 complet opac."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "Cul_oare:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
 msgstr "Alegeți o culoare pentru panou"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "Fișie_r:"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Selectați o culoare pentru fundal"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Fundal"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "I_ntrare:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "I_eșire:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
 "Transparență când cursorul mausului este deasupra panoului, 0 însemnând "
 "transparență completă, iar 100 însemnând opacitate completă."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 "Transparență când cursorul mausului nu este deasupra panoului, 0 însemnând "
 "transparență completă, iar 100 însemnând opacitate completă."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "Opacitate"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 "Activați compoziția pentru ecran în managerul de ferestre pentru a activa "
 "opțiunile de opacitate ale panoului."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "A_spect"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "Mutați elementul selectat cu un rând mai sus"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "Mutați elementul selectat cu un rând mai jos"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
 msgstr "Adăugați un nou element în acest panou"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "Eliminați elementul selectat"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "Editați elementul selectat"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "Arată detalii despre elementul selectat"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "Ele_mente"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "Joc _nou"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "Ni_vel:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "Începător"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "Intermediar"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "Avansat"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "Expert"
 
-#: ../panel/panel-window.c:2652
-msgid "_Lock Panel"
+#: ../bar/bar-window.c:2652
+msgid "_Lock Bar"
 msgstr "Fi_xează panoul"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
+msgid "Welcome to the first start of the bar"
 msgstr "Panoul a fost pornit pentru prima dată. Bun venit!"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 "Pentru că panoul a trecut la un nou sistem de stocare a opțiunilor, e "
@@ -670,8 +670,8 @@ msgid "Migrate old config"
 msgstr "Migrarea vechii configurații"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "Migrarea vechii configurații 4.6 la Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "Migrarea vechii configurații 4.6 la Blconf"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -682,15 +682,15 @@ msgid "Load the default configuration"
 msgstr "Încărcarea configurației implicite"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
+msgid "One empty bar"
 msgstr "Un panou gol"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
+msgid "Start with one empty bar"
 msgstr "Pornirea unui panou gol"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
+msgid "Failed to migrate the old bar configuration"
 msgstr "Nu s-a putut migra vechea configurație a panoului"
 
 #: ../migrate/main.c:172
@@ -698,7 +698,7 @@ msgid "Failed to load the default configuration"
 msgstr "Nu s-a putut încărca o configurație implicită"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr "Configurația panoului trebuie migrată…"
 
 #: ../migrate/main.c:189
@@ -706,7 +706,7 @@ msgid "Failed to migrate the existing configuration"
 msgstr "Nu s-a putut migra configurația existentă"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
+msgid "Bar configuration has been updated."
 msgstr "Configurația panoului a fost actualizată."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
@@ -889,10 +889,10 @@ msgstr "A_rată numele generice ale programelor"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "Selectați această opțiune pentru a afișa numele generice ale programelor în "
-"meniu, de exemplu „Manager de fișiere” pentru „Thunar”"
+"meniu, de exemplu „Manager de fișiere” pentru „Fmb”"
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1048,7 +1048,7 @@ msgstr "_Stil pentru indiciu:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
@@ -1522,7 +1522,7 @@ msgstr "Nu arăta _indicii"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "Selectați această opțiune pentru a dezactiva indiciile la trecerea "
@@ -1533,11 +1533,11 @@ msgid "Show _label instead of icon"
 msgstr "Arată o _etichetă în locul iconiței"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
+msgid "Show last _used item in bar"
 msgstr "Arată în panou _ultimul element utilizat"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
+msgid "Select this option to move the clicked menu item to the bar."
 msgstr ""
 "Selectați această opțiune pentru a muta în panou elementul selectat din "
 "meniu."
@@ -1618,7 +1618,7 @@ msgid "Dots"
 msgstr "Puncte"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
+msgid "Adds a separator or space between bar items"
 msgstr "Adăugați un separator ori un spațiu între elementele panoului"
 
 #: ../plugins/showdesktop/showdesktop.c:210

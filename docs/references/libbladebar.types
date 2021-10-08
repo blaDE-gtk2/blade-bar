@@ -1,0 +1,6 @@
+#include <libbladebar/libbladebar.h>
+
+xfce_arrow_button_get_type
+xfce_hvbox_get_type
+blade_bar_image_get_type
+blade_bar_plugin_get_type

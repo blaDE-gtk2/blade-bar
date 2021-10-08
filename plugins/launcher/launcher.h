@@ -20,7 +20,7 @@
 #define __LAUNCHER_H__
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
+#include <libbladebar/libbladebar.h>
 
 G_BEGIN_DECLS
 
@@ -47,16 +47,16 @@ enum _LauncherArrowType
 
 GType       launcher_plugin_get_type         (void) G_GNUC_CONST;
 
-void        launcher_plugin_register_type    (XfcePanelTypeModule *type_module);
+void        launcher_plugin_register_type    (BladeBarTypeModule *type_module);
 
 GSList     *launcher_plugin_get_items        (LauncherPlugin      *plugin);
 
 gchar      *launcher_plugin_unique_filename  (LauncherPlugin      *plugin);
 
-GHashTable *launcher_plugin_garcon_menu_pool (void);
+GHashTable *launcher_plugin_pojk_menu_pool (void);
 
 gboolean    launcher_plugin_item_is_editable (LauncherPlugin      *plugin,
-                                              GarconMenuItem      *item,
+                                              PojkMenuItem      *item,
                                               gboolean            *can_delete);
 
 G_END_DECLS

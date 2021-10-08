@@ -1,34 +1,34 @@
-The Xfce Panel .gtkrc-2.0 hacks
+The Blade Bar .gtkrc-2.0 hacks
 ===============================
 
 All Plugins
 -----------
 Every plugin has a unique widget name. You can find this name by
-hovering the plugin in the items tab in the panel preferences dialog.
+hovering the plugin in the items tab in the bar preferences dialog.
 
 
 
-XfcePanelWindow
+BladeBarWindow
 ---------------
-style "xfce-panel-window-style"
+style "blade-bar-window-style"
 {
-  # Time in miliseconds before the panel will unhide on an enter event
-  XfcePanelWindow::popup-delay = 225
+  # Time in miliseconds before the bar will unhide on an enter event
+  BladeBarWindow::popup-delay = 225
 
-  # Time in miliseconds before the panel will hide on a leave event
-  XfcePanelWindow::popdown-delay = 350
+  # Time in miliseconds before the bar will hide on a leave event
+  BladeBarWindow::popdown-delay = 350
 
   # Size of autohide window in pixels
-  XfcePanelWindow::autohide-size = 3
+  BladeBarWindow::autohide-size = 3
 }
-class "XfcePanelWindow" style "xfce-panel-window-style"
+class "BladeBarWindow" style "blade-bar-window-style"
 
 
 
 XfceActionsPlugin
 -----------------
 You can set a custom icon size in gtk-icon-sizes with the name
-panel-actions-menu. The default icon size is 16px.
+bar-actions-menu. The default icon size is 16px.
 Special widget name in this plugin is actions-button.
 
 
@@ -41,7 +41,7 @@ Special widget name in this plugin is showdesktop-button.
 XfceTasklist
 ------------
 You can set a custom icon size in gtk-icon-sizes with the name
-panel-tasklist-menu. The default icon size is 16px.
+bar-tasklist-menu. The default icon size is 16px.
 
 style "xfce-tasklist-style"
 {
@@ -68,29 +68,29 @@ class "XfceTasklist" style "xfce-tasklist-style"
 XfceLauncherPlugin
 ------------------
 You can set a custom menu and tooltip icon size in gtk-icon-sizes
-with the name panel-launcher-menu and panel-launcher-tooltip. The default
+with the name bar-launcher-menu and bar-launcher-tooltip. The default
 icon sizes are both 32px.
 Special widget names in this plugin are launcher-button and launcher-arrow.
 
 
 
-XfcePanelImage
+BladeBarImage
 --------------
-style "xfce-panel-image-style"
+style "blade-bar-image-style"
 {
-  # Fix the panel images to a default gtk icon size, is only works for
+  # Fix the bar images to a default gtk icon size, is only works for
   # images below 32 pixels. You can for example use this when you have
   # fuzzy launcher icons.
-  XfcePanelImage::force-gtk-icon-sizes = true
+  BladeBarImage::force-gtk-icon-sizes = true
 }
-class "XfcePanelImage" style "xfce-panel-image-style"
+class "BladeBarImage" style "blade-bar-image-style"
 
 
 
 XfceWindowMenuPlugin
 --------------------
 You can set a custom icon size in gtk-icon-sizes with the name
-panel-window-menu. The default icon size is 16px. Note that the window
+bar-window-menu. The default icon size is 16px. Note that the window
 icons are 16 or 32 pixels, all other sizes will result in scaling.
 Special widget name in this plugin is windowmenu-button.
 
@@ -114,7 +114,7 @@ class "XfceWindowMenuPlugin" style "xfce-window-menu-plugin-style"
 XfceDirectoryMenuPlugin
 -----------------------
 You can set a custom icon size in gtk-icon-sizes with the name
-panel-directory-menu. The default icon size is 16px.
+bar-directory-menu. The default icon size is 16px.
 Special widget name in this plugin is directorymenu-button.
 
 
@@ -122,5 +122,5 @@ Special widget name in this plugin is directorymenu-button.
 XfceApplicationsMenuPlugin
 -----------------------
 You can set a custom icon size in gtk-icon-sizes with the name
-panel-applications-menu. The default icon size is 16px.
+bar-applications-menu. The default icon size is 16px.
 Special widget name in this plugin is applicationmenu-button.

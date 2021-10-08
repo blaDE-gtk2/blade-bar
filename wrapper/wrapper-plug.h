@@ -23,8 +23,8 @@
 #if GTK_CHECK_VERSION (3, 0, 0)
 #include <gtk/gtkx.h>
 #endif
-#include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4panel/xfce-panel-plugin-provider.h>
+#include <libbladebar/libbladebar.h>
+#include <libbladebar/blade-bar-plugin-provider.h>
 
 G_BEGIN_DECLS
 

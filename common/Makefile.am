@@ -1,41 +1,42 @@
 
 AM_CPPFLAGS = \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir) \
-	-DG_LOG_DOMAIN=\"libpanel-common\" \
-	-DLIBXFCE4PANEL_COMPILATION \
+	-DG_LOG_DOMAIN=\"libbar-common\" \
+	-DLIBBLADEBAR_COMPILATION \
 	-DHELPDIR=\"$(docdir)/html\" \
 	$(PLATFORM_CPPFLAGS)
 
 noinst_LTLIBRARIES = \
-	libpanel-common.la
+	libbar-common.la
 
-libpanel_common_la_SOURCES = \
-	panel-debug.c \
-	panel-debug.h \
-	panel-utils.c \
-	panel-utils.h \
-	panel-xfconf.c \
-	panel-xfconf.h
+libbar_common_la_SOURCES = \
+	bar-debug.c \
+	bar-debug.h \
+	bar-utils.c \
+	bar-utils.h \
+	bar-blconf.c \
+	bar-blconf.h
 
-libpanel_common_la_CFLAGS = \
-	$(XFCONF_CFLAGS) \
+libbar_common_la_CFLAGS = \
+	$(BLCONF_CFLAGS) \
 	$(GTK_CFLAGS) \
-	$(EXO_CFLAGS) \
-	$(LIBXFCE4UI_CFLAGS) \
+	$(BLXO_CFLAGS) \
+	$(LIBBLADEUI_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
-libpanel_common_la_LDFLAGS = \
+libbar_common_la_LDFLAGS = \
 	-no-undefined \
 	$(PLATFORM_LDFLAGS)
 
-libpanel_common_la_LIBADD = \
-	$(XFCONF_LIBS) \
+libbar_common_la_LIBADD = \
+	$(BLCONF_LIBS) \
 	$(GTK_LIBS) \
-	$(LIBXFCE4UI_LIBS) \
-	$(EXO_LIBS)
+	$(LIBBLADEUI_LIBS) \
+	$(BLXO_LIBS)
 
 EXTRA_DIST = \
-	panel-dbus.h \
-	panel-private.h
+	bar-dbus.h \
+	bar-private.h
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

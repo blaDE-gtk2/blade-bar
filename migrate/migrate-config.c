@@ -28,7 +28,7 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
+#include <blconf/blconf.h>
 #include <migrate/migrate-config.h>
 
 
@@ -68,7 +68,7 @@ migrate_config_session_menu (gpointer key,
 
   /* this plugin never had any properties and matches the default
    * settings of the new actions plugin */
-  xfconf_channel_set_string (XFCONF_CHANNEL (channel), prop, "actions");
+  blconf_channel_set_string (BLCONF_CHANNEL (channel), prop, "actions");
 }
 
 
@@ -128,20 +128,20 @@ migrate_config_action_48 (gpointer key,
   /* this is a bug that affects pre users: don't try to migrate
    * when the appearance property is already set */
   g_snprintf (str, sizeof (str), "%s/appearance", prop);
-  if (xfconf_channel_has_property (channel, str))
+  if (blconf_channel_has_property (channel, str))
     return;
 
   /* set appearance to button mode */
-  xfconf_channel_set_uint (channel, str, 0);
+  blconf_channel_set_uint (channel, str, 0);
 
   /* read and remove the old properties */
   g_snprintf (str, sizeof (str), "%s/first-action", prop);
-  first_action_int = xfconf_channel_get_uint (channel, str, 0) + 1;
-  xfconf_channel_reset_property (channel, str, FALSE);
+  first_action_int = blconf_channel_get_uint (channel, str, 0) + 1;
+  blconf_channel_reset_property (channel, str, FALSE);
 
   g_snprintf (str, sizeof (str), "%s/second-action", prop);
-  second_action_int = xfconf_channel_get_uint (channel, str, 0);
-  xfconf_channel_reset_property (channel, str, FALSE);
+  second_action_int = blconf_channel_get_uint (channel, str, 0);
+  blconf_channel_reset_property (channel, str, FALSE);
 
   /* corrections for new plugin */
   if (first_action_int == 0)
@@ -151,7 +151,7 @@ migrate_config_action_48 (gpointer key,
 
   /* set orientation */
   g_snprintf (str, sizeof (str), "%s/invert-orientation", prop);
-  xfconf_channel_set_bool (channel, str, second_action_int > 0);
+  blconf_channel_set_bool (channel, str, second_action_int > 0);
 
   /* convert the old value to new ones */
   first_action = migrate_config_action_48_convert (first_action_int);
@@ -159,7 +159,7 @@ migrate_config_action_48 (gpointer key,
 
   /* set the visible properties */
   g_snprintf (str, sizeof (str), "%s/items", prop);
-  xfconf_channel_set_array (channel, str,
+  blconf_channel_set_array (channel, str,
                             G_TYPE_STRING, first_action,
                             G_TYPE_STRING, second_action,
                             G_TYPE_INVALID);
@@ -168,16 +168,16 @@ migrate_config_action_48 (gpointer key,
 
 
 gboolean
-migrate_config (XfconfChannel  *channel,
+migrate_config (BlconfChannel  *channel,
                 gint            configver,
                 GError        **error)
 {
   GHashTable *plugins;
-  guint       n, n_panels;
+  guint       n, n_bars;
   gchar       buf[50];
   gboolean    horizontal;
 
-  plugins = xfconf_channel_get_properties (channel, "/plugins");
+  plugins = blconf_channel_get_properties (channel, "/plugins");
 
   /* migrate plugins to the new actions plugin */
   if (configver < 1)
@@ -192,17 +192,17 @@ migrate_config (XfconfChannel  *channel,
   /* migrate horizontal to mode property */
   if (configver < 2)
     {
-      n_panels = xfconf_channel_get_uint (channel, "/panels", 0);
-      for (n = 0; n < n_panels; n++)
+      n_bars = blconf_channel_get_uint (channel, "/bars", 0);
+      for (n = 0; n < n_bars; n++)
         {
           /* read and remove old property */
-          g_snprintf (buf, sizeof (buf), "/panels/panel-%u/horizontal", n);
-          horizontal = xfconf_channel_get_bool (channel, buf, TRUE);
-          xfconf_channel_reset_property (channel, buf, FALSE);
+          g_snprintf (buf, sizeof (buf), "/bars/bar-%u/horizontal", n);
+          horizontal = blconf_channel_get_bool (channel, buf, TRUE);
+          blconf_channel_reset_property (channel, buf, FALSE);
 
           /* set new mode */
-          g_snprintf (buf, sizeof (buf), "/panels/panel-%u/mode", n);
-          xfconf_channel_set_uint (channel, buf, horizontal ? 0 : 1);
+          g_snprintf (buf, sizeof (buf), "/bars/bar-%u/mode", n);
+          blconf_channel_set_uint (channel, buf, horizontal ? 0 : 1);
         }
     }
 

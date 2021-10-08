@@ -18,101 +18,101 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
 msgstr "كۆزنەك ئۈستىگە ئىجراچى ياساش"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
 "مەزكۇر ئۈستەلئۈستى ھۆججىتىدىكى ئۇچۇرلارغا ئاساسەن يېڭىدىن ئىجراچىنى "
-"كۆزنەككە(panel) قوشىدۇ"
+"كۆزنەككە(bar) قوشىدۇ"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2615
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2615
 #: ../migrate/main.c:117
-msgid "Panel"
+msgid "Bar"
 msgstr "كۆزنەك"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
 msgstr "كۆزنەكنى ئۆزلەشتۈرۈش"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1190
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1190
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "«%s» راستلا ئۆچۈرەمسىز؟"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1193
-msgid "If you remove the item from the panel, it is permanently lost."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1193
+msgid "If you remove the item from the bar, it is permanently lost."
 msgstr "كۆزنەكتىكى تۈرنى ئۆچۈرسىڭىز، ئۇ مەڭگۈلۈككە يوقىلىدۇ."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "يۆتكە(_M)"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "كۆزنەك(_L)"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2627
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2627
 msgid "Add _New Items..."
 msgstr "يېڭى تۇر قوش(_N)..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2638
-msgid "Panel Pr_eferences..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2638
+msgid "Bar Pr_eferences..."
 msgstr "كۆزنەك تەڭشىكى (_E)"
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2666
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2666
 msgid "Log _Out"
 msgstr "تىزىمدىن چىق(_O)"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
 msgstr "‹كۆزنەك تەڭشىكى› سۆزلەشكۈسىنى كۆرسىتىدۇ"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
-msgstr "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
+msgstr "BAR-NUMBER"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "‹يېڭى تۇر قوش› سۆزلەشكۈسىنى كۆرسىتىدۇ"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
 msgstr "‹كۆزنەك› تەڭشىكىنى ساقلا"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
 msgstr "كۆزنەككە يېڭى قىستۇرما قوشۇش"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "PLUGIN-NAME"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
 msgstr "ئىجرا بولۇۋاتقان كۆزنەك ئۈلگىسىنى قايتا قوزغىتىش"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
 msgstr "ئىجرا بولۇۋاتقان كۆزنەك ئۈلگىسىنى توختىتىش"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "باشلانغاندا ھۆججەت باشقۇرغۇنى كۈتمىسۇن"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -120,97 +120,97 @@ msgid "Print version information and exit"
 msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "ئىشلىتىش ئۇسۇلىنى كۆرۈش ئۈچۈن «%s --help» نى كىرگۈزسە بولىدۇ."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. نەشر ھوقۇقى ئۆزىمىزگە تەۋە."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "ئىجرا بولۇۋاتقان ئۈلگە مەۋجۇت"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "قايتا قوزغىلىۋاتىدۇ..."
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "تەڭشەك سۆزلەشكۈسىنى كۆرسىتىش مەغلۇپ بولدى"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "يېڭى تۈر قوشۇش سۆزلەشكۈسىنى كۆرسىتىش مەغلۇپ بولدى"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
 msgstr "كۆزنەك تەڭشىكىنى ساقلاش مەغلۇپ بولدى"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
 msgstr "كۆزنەككە قىستۇرما قوشۇش مەغلۇپ بولدى"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
 msgstr "كۆزنەكنى قايتا قوزغىتىش مەغلۇپ بولدى"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
 msgstr "كۆزنەكنى توختىتىش مەغلۇپ بولدى"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "D-Bus ئۇچۇرىنى ئەۋەتىش مەغلۇپ بولدى"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
 "كۆزنەكنى باشلىغۇڭىز بارمۇ؟ شۇنداق بولسا، چىقىدىغان چاغدا چوقۇم ئەڭگىمەنى "
 "ساقلىشىڭىز كېرەك. شۇنىڭ بىلەن كېيىنكى قېتىم كىرگەندە ئاپتوماتىك باشلىنىدۇ."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "%s نىڭ ئىجرا بولۇۋاتقان ئۈلگىسى تېپىلمىدى"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "يۆتكەش(migration) پروگراممىسىنى ئىجرا قىلىش مەغلۇپ بولدى"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "ئىجراچى قۇر(_L)"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
 "بۇ قىستۇرما كۆزنىكىگە يېڭى ئىجراچى قۇرىدۇ ۋە تاشلانغان ھۆججەتنى تىزىملىك "
 "سۈپىتىدە ئىشلىتىدۇ."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "ئۈستەلئۈستى ھۆججىتى %d دىن ئىجراچى قۇرۇش"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -218,23 +218,23 @@ msgstr ""
 "ئەڭگىمە باشقۇرغىنى ئىشلەتمەي X نى قوزغاتتىڭىز. ئاخىرلاشتۇر نى باسسىڭىز X "
 "مۇلازىمېتىرى ئاخىرلىشىدۇ."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
-msgstr "راستلا كۆزنەك(panel)نى ئاخىرلاشتۇرغۇڭىز بارمۇ؟"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
+msgstr "راستلا كۆزنەك(bar)نى ئاخىرلاشتۇرغۇڭىز بارمۇ؟"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "«%s» نى ئىجرا قىلىش مەغلۇپ بولدى."
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "قىستۇرما ھادىسىسىنىڭ يېزىلىشى توغرا ئەمەس. PLUGIN-NAME:NAME[:TYPE:VALUE] دەك"
 " ئىشلىتىڭ."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -243,120 +243,120 @@ msgstr ""
 "بېشارەت ئۇچۇرى «%s» ئىناۋەتسىز. ئىناۋەتلىك تىپلار bool، double، int، string "
 "ۋە uint."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "مەسئۇل كىشىلەر"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "ئۈستەل بالداق(Deskbar) ھالىتى"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "پاسسىپ مەسئۇل كىشىلەر"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
 msgstr "Xfce ئىجادىيەت مۇھىتى كۆزنىكى"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr "غەيرەت ت.كەنجى <gheyret@gmail.com>"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "يېڭى تۈر قوشۇش"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
 msgstr "يېڭى قىستۇرمىنىڭ كۆزنەكنى تاللاڭ"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:853
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:853
 #, c-format
-msgid "Panel %d"
+msgid "Bar %d"
 msgstr "كۆزنەك %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
 "كۆزنەك ھازىر بوتكا(kiosk) ھالىتىدە ئىجرا بولۇۋاتقان بولغاچقا، سىز ئادەتتىكى "
 "ئىشلەتكۈچى سۈپىتىدە تۇرۇپ كۆزنەك سەپلىمىسىنى ئۆزگەرتەلمەيسىز."
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
 msgstr "كۆزنەكنى تۈزىتىشكە بولمايدۇ"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "يېڭى تۈر قوش قوشۇش"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
 msgstr "كۆزنەككە يېڭى قىستۇرمىلارنى قوشىدۇ"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "ئىزدە(_S):"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "ئىزدەيدىغاننى بۇ يەرگە كىرگۈزۈڭ"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr "قىستۇرما «%s» تېخىغىچە كۆزنەكتە بار، قايتا قوزغىتامسىز؟"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "قىستۇرما يېقىنقى %d سېكۇنت ئىچىدە بىر قانچە قېتىم قايتا قوزغىتىلدى. «ئىجرا "
 "قىل» نى باسسىڭىز قىستۇرمىنى قايتا قوزغىتىپ باقىدۇ، بولمىسا كۆزنەكتىن "
 "پۈتۈنلەي ئۆچۈرۈلىدۇ."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "ئاپتوماتىك"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:511
+#: ../bar/bar-preferences-dialog.c:511
 #, c-format
 msgid "Screen %d"
 msgstr "ئېكران %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:537
+#: ../bar/bar-preferences-dialog.c:537
 #, c-format
 msgid "Monitor %d"
 msgstr "كۆزەتكۈچ %d"
 
-#: ../panel/panel-preferences-dialog.c:919
-msgid "The panel and plugin configurations will be permanently removed"
+#: ../bar/bar-preferences-dialog.c:919
+msgid "The bar and plugin configurations will be permanently removed"
 msgstr "كۆزنەك ۋە قىستۇرما سەپلىمىلىرى مەڭگۈلۈككە ئۆچۈرۈلىدۇ"
 
-#: ../panel/panel-preferences-dialog.c:920
+#: ../bar/bar-preferences-dialog.c:920
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
+msgid "Are you sure you want to remove bar %d?"
 msgstr "كۆزنەك %d نى راستلا ئۆچۈرەمسىز؟"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1032
+#: ../bar/bar-preferences-dialog.c:1032
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(سىرتقى)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1037
+#: ../bar/bar-preferences-dialog.c:1037
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -367,286 +367,286 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1049
+#: ../bar/bar-preferences-dialog.c:1049
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "ئىچ ئاتى: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "گورىزونتال"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "ۋېرتىكال"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "ئۈستەل بالداق"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "زادىلا"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "ھەمىشە"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "يوق(سىستېما ئۇسلۇبىنى ئىشلىتىدۇ)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "ساپ رەڭ"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "تەگلىك سۈرەت"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
 msgstr "يېڭى كۆزنەك قوش"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
 msgstr "ھازىرقى كۆزنەكنى ئۆچۈر"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "شەكىل(_O):"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "چىقىرىش(_U)"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "بىر قانچە كۆزەتكۈچتە كۆرسەتسۇن(_N)"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
 msgstr "كۆزنەكنى بىر قانچە كۆزەتكۈچكە چوڭايتماقچى بولغاندا بۇنى تاللاڭ."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
 msgstr "كۆزنەكنى قۇلۇپلا(_L)"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
 "كۆزنەكنىڭ تۇتقۇسىنى يوشۇرۇپ ئورنىنى قۇلۇپلىماقچى بولغاندا بۇنى تاللاڭ."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "گىرۋەكلىرىدە بوشلۇق قالدۇرمىسۇن(_R)"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "كۆزنەكنى ئەڭ چوڭ قىلىپ كەينى كۆزنەكنىڭ ھەممە يېرىنى قاپلىۋەتمەكچى بولسىڭىز، "
 "بۇنى تاللاڭ. بۇ پەقەت كۆزنەك ئېكران گىرۋىكىگە چاپلىشىپ تۇرغان ۋاقىتتىلا "
 "ئىناۋەتلىك."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "ئادەتتىكى"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "قۇر چوڭلۇقى (پىكسېل)"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "ئۇزۇنلۇقى(_E)(%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "قۇر سانى(_B):"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "ئۇزۇنلۇقىنى ئاپتوماتىك چوڭايت(_U)"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
 "قىستۇرمىنىڭ تەلىپىگە ئاساسەن كۆزنەكنىڭ ئۇزۇنلۇقىنى ئاپتوماتىك چوڭايتىدۇ."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "ئۆلچەملىرى"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "كۆرسەتكۈچ(_I)"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "ئۇسلۇب(_S)"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "ئالفا(_A):"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
 "كۆزنەك تەگلىكىنىڭ ئالفا قىممىتى، 0 بولسا تولۇق سۈزۈك، 100 بولسا تولۇق تۇتۇق."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "رەڭ(_o):"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
 msgstr "كۆزنەك رەڭگىنى ئېلىش"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "ھۆججەت(_F)"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "تەگلىك رەسىمىنى تاللاش"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "تەگلىك"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "كىرگەن(_E):"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "چىققان(_L):"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
 "ئىسترېلكا كۆزنەك ئۈستىدە بار چاغدىكى سۈزۈكلۈكى، 0 تولۇق سۈزۈك، 100 پۈتۈنلەي "
 "غۇۋا."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 "ئىسترېلكا كۆزنەك ئۈستىدە يوق چاغدىكى سۈزۈكلۈكى، 0 تولۇق سۈزۈك، 100 پۈتۈنلەي "
 "غۇۋا."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "غۇۋالىقى"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 "كۆزنەكنىڭ غۇۋالىقىنى تەڭشىگەندە، كۆزنەكنىڭ بىرىكىشنى ئىناۋەتلىك قىلىڭ."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "كۆرۈنۈشى(_N)"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "ھازىرقى تاللانغان تۈرنى بىر قۇر ئۈستىگە چىقىرىدۇ"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "ھازىرقى تاللانغان تۈرنى بىر قۇر ئاستىغا چۈشۈرىدۇ"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
 msgstr "بۇ كۆزنەككە يېڭى تۈر قوش"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "ھازىرقى تاللانغان تۇرنى ئۆچۈرىدۇ"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "ھازىرقى تاللانغان تۈرنى تەھرىرلەيدۇ"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "ھازىرقى تاللانغان تۈر ھەققىدىكى ئۇچۇرلارنى كۆرسىتىدۇ"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "تۈرلەر(_M)"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "يېڭى ئويۇن(_N)"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "دەرىجە(_L)"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "يېڭى باشلىغۇچى"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "ئوتتۇرا سەۋىيىلىك"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "تەجرىبىلىك"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "مۇتەخەسسىس"
 
-#: ../panel/panel-window.c:2652
-msgid "_Lock Panel"
+#: ../bar/bar-window.c:2652
+msgid "_Lock Bar"
 msgstr "كۆزنەكنى قۇلۇپلا(_L)"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
+msgid "Welcome to the first start of the bar"
 msgstr "تۇنجى كۆزنەككە مەرھابا"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 "يېڭى سىستېمىدا كۆزنەكنى ئىشلەتكەندە ئىشلىتىدىغان دەسلەپكى سەپلىمىلەرنى "
@@ -661,8 +661,8 @@ msgid "Migrate old config"
 msgstr "كونا تەڭشەكلەرنى كۆچۈرۈپ كەل"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "كونا 4.6 نىڭ تەڭشىكىنى Xfconf غا كۆچۈرۈپ كېلىدۇ"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "كونا 4.6 نىڭ تەڭشىكىنى Blconf غا كۆچۈرۈپ كېلىدۇ"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -673,15 +673,15 @@ msgid "Load the default configuration"
 msgstr "كۆڭۈلدىكى تەڭشەكنى ئوقۇ"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
+msgid "One empty bar"
 msgstr "بىر قۇرۇق كۆزنەك"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
+msgid "Start with one empty bar"
 msgstr "بىر قۇرۇق كۆزنەك بىلەن باشلا"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
+msgid "Failed to migrate the old bar configuration"
 msgstr "كونا كۆزنەك تەڭشىكى يۆتكەپ كېلىش مەغلۇپ بولدى"
 
 #: ../migrate/main.c:172
@@ -689,7 +689,7 @@ msgid "Failed to load the default configuration"
 msgstr "كۆڭۈلدىكى تەڭشەكنى ئوقۇش مەغلۇپ بولدى"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr "كۆزنەك سەپلىمىسىنى كۆچۈرۈپ كېلىش زۆرۈر…"
 
 #: ../migrate/main.c:189
@@ -697,7 +697,7 @@ msgid "Failed to migrate the existing configuration"
 msgstr "مەۋجۇت سەپلىمىنى كۆچۈرۈپ كېلىش مەغلۇپ بولدى"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
+msgid "Bar configuration has been updated."
 msgstr "كۆزنەك سەپلىمىسى يېڭىلاندى."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
@@ -880,10 +880,10 @@ msgstr "ئادەتتىكى پروگرامما ئاتىنى كۆرسەتسۇن(_A
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "تىزىملىكتە پروگراممىنىڭ ئادەتتىكى ئاتىنى كۆرسەتمەكچى بولغاندا بۇنى تاللاڭ. "
-"مەسىلەن «سۇنار(Thunar)» ئەمەس «ھۆججەت باشقۇرغۇ» دەپ كۆرسەتمەكچى بولغاندا."
+"مەسىلەن «سۇنار(Fmb)» ئەمەس «ھۆججەت باشقۇرغۇ» دەپ كۆرسەتمەكچى بولغاندا."
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1039,7 +1039,7 @@ msgstr "كۆرسەتمە پىچىمى(_T):"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
@@ -1515,7 +1515,7 @@ msgstr "كۆرسەتمىلەر ئىناۋەتسىز(_O)"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "ئىسترېلكا كۆزنەك توپچىلىرى ياكى تىزىملىك تۇرلىرى ئۈستىگە كەلگەندە كۆرسەتمىنى"
@@ -1526,11 +1526,11 @@ msgid "Show _label instead of icon"
 msgstr "سىنبەلگىنى ئەمەس ئەننى كۆرسەتسۇن(_L)"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
+msgid "Show last _used item in bar"
 msgstr "ئەڭ ئاخىرىدا ئىشلىتىلگەن تۈرنى كۆزنەكتە كۆرسەت(_U)"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
+msgid "Select this option to move the clicked menu item to the bar."
 msgstr "چېكىلگەن تىزىملىكنى كۆزنەككە يۆتكەش ئۈچۈن بۇنى تاللاڭ."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
@@ -1608,7 +1608,7 @@ msgid "Dots"
 msgstr "چېكىتلەر"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
+msgid "Adds a separator or space between bar items"
 msgstr "كۆزنەكتىكى تۈرلەر ئارىسىغا ئايرىغۇ ياكى بوشلۇق قوش"
 
 #: ../plugins/showdesktop/showdesktop.c:210

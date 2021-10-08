@@ -1,10 +1,11 @@
 
 AM_CPPFLAGS = \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir) \
 	-DG_LOG_DOMAIN=\"libsystray\" \
 	$(PLATFORM_CPPFLAGS)
 
-plugindir = $(libdir)/xfce4/panel/plugins
+plugindir = $(libdir)/xfce4/bar/plugins
 
 plugin_LTLIBRARIES = \
 	libsystray.la
@@ -28,37 +29,37 @@ libsystray_la_SOURCES = \
 libsystray_la_CFLAGS = \
 	$(LIBX11_CFLAGS) \
 	$(GTK_CFLAGS) \
-	$(EXO_CFLAGS) \
-	$(XFCONF_CFLAGS) \
-	$(LIBXFCE4UTIL_CFLAGS) \
-	$(LIBXFCE4UI_CFLAGS) \
+	$(BLXO_CFLAGS) \
+	$(BLCONF_CFLAGS) \
+	$(LIBBLADEUTIL_CFLAGS) \
+	$(LIBBLADEUI_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 libsystray_la_LDFLAGS = \
 	-avoid-version \
 	-module \
 	-no-undefined \
-	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
+	-export-symbols-regex '^blade_bar_module_(preinit|init|construct)' \
 	$(PLATFORM_LDFLAGS)
 
 libsystray_la_LIBADD = \
-	$(top_builddir)/libxfce4panel/libxfce4panel-$(LIBXFCE4PANEL_VERSION_API).la \
-	$(top_builddir)/common/libpanel-common.la \
+	$(top_builddir)/libbladebar/libbladebar-$(LIBBLADEBAR_VERSION_API).la \
+	$(top_builddir)/common/libbar-common.la \
 	$(LIBX11_LIBS) \
 	$(GTK_LIBS) \
-	$(EXO_LIBS) \
-	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCE4UI_LIBS) \
-	$(XFCONF_LIBS)
+	$(BLXO_LIBS) \
+	$(LIBBLADEUTIL_LIBS) \
+	$(LIBBLADEUI_LIBS) \
+	$(BLCONF_LIBS)
 
 libsystray_la_DEPENDENCIES = \
-	$(top_builddir)/libxfce4panel/libxfce4panel-$(LIBXFCE4PANEL_VERSION_API).la \
-	$(top_builddir)/common/libpanel-common.la
+	$(top_builddir)/libbladebar/libbladebar-$(LIBBLADEBAR_VERSION_API).la \
+	$(top_builddir)/common/libbar-common.la
 
 #
 # .desktop file
 #
-desktopdir = $(datadir)/xfce4/panel/plugins
+desktopdir = $(datadir)/xfce4/bar/plugins
 desktop_in_files = systray.desktop.in.in
 desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
@@ -89,7 +90,7 @@ systray-marshal.c: systray-marshal.list Makefile
 	&& glib-genmarshal --prefix=_systray_marshal --body $< >> $@
 
 systray-dialog_ui.h: systray-dialog.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=systray_dialog_ui $< >$@
+	$(AM_V_GEN) blxo-csource --static --strip-comments --strip-content --name=systray_dialog_ui $< >$@
 endif
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

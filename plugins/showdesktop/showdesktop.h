@@ -20,7 +20,7 @@
 #define __XFCE_SHOW_DESKTOP_PLUGIN_H__
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
+#include <libbladebar/libbladebar.h>
 #include <libwnck/libwnck.h>
 
 G_BEGIN_DECLS
@@ -37,7 +37,7 @@ typedef struct _ShowDesktopPlugin      ShowDesktopPlugin;
 
 GType show_desktop_plugin_get_type      (void) G_GNUC_CONST;
 
-void  show_desktop_plugin_register_type (XfcePanelTypeModule *type_module);
+void  show_desktop_plugin_register_type (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

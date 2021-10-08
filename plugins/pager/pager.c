@@ -26,14 +26,14 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
-#include <common/panel-private.h>
+#include <libbladebar/libbladebar.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladeui/libbladeui.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
+#include <common/bar-private.h>
 #include <libwnck/libwnck.h>
-#include <exo/exo.h>
+#include <blxo/blxo.h>
 
 #include "pager.h"
 #include "pager-buttons.h"
@@ -59,26 +59,26 @@ static gboolean pager_plugin_scroll_event                 (GtkWidget         *wi
                                                            GdkEventScroll    *event);
 static void     pager_plugin_screen_changed               (GtkWidget         *widget,
                                                            GdkScreen         *previous_screen);
-static void     pager_plugin_construct                    (XfcePanelPlugin   *panel_plugin);
-static void     pager_plugin_free_data                    (XfcePanelPlugin   *panel_plugin);
-static gboolean pager_plugin_size_changed                 (XfcePanelPlugin   *panel_plugin,
+static void     pager_plugin_construct                    (BladeBarPlugin   *bar_plugin);
+static void     pager_plugin_free_data                    (BladeBarPlugin   *bar_plugin);
+static gboolean pager_plugin_size_changed                 (BladeBarPlugin   *bar_plugin,
                                                            gint               size);
-static void     pager_plugin_mode_changed                 (XfcePanelPlugin     *panel_plugin,
-                                                           XfcePanelPluginMode  mode);
+static void     pager_plugin_mode_changed                 (BladeBarPlugin     *bar_plugin,
+                                                           BladeBarPluginMode  mode);
 static void     pager_plugin_configure_workspace_settings (GtkWidget         *button);
-static void     pager_plugin_configure_plugin             (XfcePanelPlugin   *panel_plugin);
+static void     pager_plugin_configure_plugin             (BladeBarPlugin   *bar_plugin);
 static void     pager_plugin_screen_layout_changed        (PagerPlugin       *plugin);
 
 
 
 struct _PagerPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _PagerPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   GtkWidget     *pager;
 
@@ -104,7 +104,7 @@ enum
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN_RESIDENT (PagerPlugin, pager_plugin,
+BLADE_BAR_DEFINE_PLUGIN_RESIDENT (PagerPlugin, pager_plugin,
     pager_buttons_register_type)
 
 
@@ -112,7 +112,7 @@ XFCE_PANEL_DEFINE_PLUGIN_RESIDENT (PagerPlugin, pager_plugin,
 static void
 pager_plugin_class_init (PagerPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
   GObjectClass         *gobject_class;
   GtkWidgetClass       *widget_class;
 
@@ -124,7 +124,7 @@ pager_plugin_class_init (PagerPluginClass *klass)
   widget_class->scroll_event = pager_plugin_scroll_event;
   widget_class->size_request = pager_plugin_size_request;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = pager_plugin_construct;
   plugin_class->free_data = pager_plugin_free_data;
   plugin_class->size_changed = pager_plugin_size_changed;
@@ -136,28 +136,28 @@ pager_plugin_class_init (PagerPluginClass *klass)
                                    g_param_spec_boolean ("workspace-scrolling",
                                                          NULL, NULL,
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_WRAP_WORKSPACES,
                                    g_param_spec_boolean ("wrap-workspaces",
                                                          NULL, NULL,
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_MINIATURE_VIEW,
                                    g_param_spec_boolean ("miniature-view",
                                                          NULL, NULL,
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_ROWS,
                                    g_param_spec_uint ("rows",
                                                       NULL, NULL,
                                                       1, 50, 1,
-                                                      EXO_PARAM_READWRITE));
+                                                      BLXO_PARAM_READWRITE));
 }
 
 
@@ -243,7 +243,7 @@ pager_plugin_set_property (GObject      *object,
             {
               if (!wnck_pager_set_n_rows (WNCK_PAGER (plugin->pager), plugin->rows))
                 g_message ("Failed to set the number of pager rows. You probably "
-                           "have more than 1 pager in your panel setup.");
+                           "have more than 1 pager in your bar setup.");
             }
           else
             pager_buttons_set_n_rows (XFCE_PAGER_BUTTONS (plugin->pager), plugin->rows);
@@ -268,7 +268,7 @@ pager_plugin_scroll_event (GtkWidget      *widget,
   gint           active_n;
   gint           n_workspaces;
 
-  panel_return_val_if_fail (WNCK_IS_SCREEN (plugin->wnck_screen), FALSE);
+  bar_return_val_if_fail (WNCK_IS_SCREEN (plugin->wnck_screen), FALSE);
 
   /* leave when scrolling is not enabled */
   if (plugin->scrolling == FALSE)
@@ -311,11 +311,11 @@ pager_plugin_scroll_event (GtkWidget      *widget,
 static void
 pager_plugin_screen_layout_changed (PagerPlugin *plugin)
 {
-  XfcePanelPluginMode mode;
+  BladeBarPluginMode mode;
   GtkOrientation      orientation;
 
-  panel_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
-  panel_return_if_fail (WNCK_IS_SCREEN (plugin->wnck_screen));
+  bar_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
+  bar_return_if_fail (WNCK_IS_SCREEN (plugin->wnck_screen));
 
   if (G_UNLIKELY (plugin->pager != NULL))
     {
@@ -323,9 +323,9 @@ pager_plugin_screen_layout_changed (PagerPlugin *plugin)
       wnck_screen_force_update (plugin->wnck_screen);
     }
 
-  mode = xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin));
+  mode = blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin));
   orientation =
-    (mode != XFCE_PANEL_PLUGIN_MODE_VERTICAL) ?
+    (mode != BLADE_BAR_PLUGIN_MODE_VERTICAL) ?
     GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL;
 
   if (plugin->miniature_view)
@@ -378,11 +378,11 @@ pager_plugin_screen_changed (GtkWidget *widget,
 
 
 static void
-pager_plugin_construct (XfcePanelPlugin *panel_plugin)
+pager_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  PagerPlugin         *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+  PagerPlugin         *plugin = XFCE_PAGER_PLUGIN (bar_plugin);
   GtkWidget           *mi, *image;
-  const PanelProperty  properties[] =
+  const BarProperty  properties[] =
   {
     { "workspace-scrolling", G_TYPE_BOOLEAN },
     { "wrap-workspaces", G_TYPE_BOOLEAN },
@@ -391,10 +391,10 @@ pager_plugin_construct (XfcePanelPlugin *panel_plugin)
     { NULL }
   };
 
-  xfce_panel_plugin_menu_show_configure (panel_plugin);
+  blade_bar_plugin_menu_show_configure (bar_plugin);
 
   mi = gtk_image_menu_item_new_with_mnemonic (_("Workspace _Settings..."));
-  xfce_panel_plugin_menu_insert_item (panel_plugin, GTK_MENU_ITEM (mi));
+  blade_bar_plugin_menu_insert_item (bar_plugin, GTK_MENU_ITEM (mi));
   g_signal_connect (G_OBJECT (mi), "activate",
       G_CALLBACK (pager_plugin_configure_workspace_settings), NULL);
   gtk_widget_show (mi);
@@ -403,8 +403,8 @@ pager_plugin_construct (XfcePanelPlugin *panel_plugin)
   gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
   gtk_widget_show (image);
 
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   g_signal_connect (G_OBJECT (plugin), "screen-changed",
@@ -415,9 +415,9 @@ pager_plugin_construct (XfcePanelPlugin *panel_plugin)
 
 
 static void
-pager_plugin_free_data (XfcePanelPlugin *panel_plugin)
+pager_plugin_free_data (BladeBarPlugin *bar_plugin)
 {
-  PagerPlugin *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+  PagerPlugin *plugin = XFCE_PAGER_PLUGIN (bar_plugin);
 
   g_signal_handlers_disconnect_by_func (G_OBJECT (plugin),
       pager_plugin_screen_changed, NULL);
@@ -426,10 +426,10 @@ pager_plugin_free_data (XfcePanelPlugin *panel_plugin)
 
 
 static gboolean
-pager_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+pager_plugin_size_changed (BladeBarPlugin *bar_plugin,
                            gint             size)
 {
-  gtk_widget_queue_resize (GTK_WIDGET (panel_plugin));
+  gtk_widget_queue_resize (GTK_WIDGET (bar_plugin));
 
   /* do not set fixed size */
   return TRUE;
@@ -438,14 +438,14 @@ pager_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-pager_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
-                           XfcePanelPluginMode  mode)
+pager_plugin_mode_changed (BladeBarPlugin     *bar_plugin,
+                           BladeBarPluginMode  mode)
 {
-  PagerPlugin       *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+  PagerPlugin       *plugin = XFCE_PAGER_PLUGIN (bar_plugin);
   GtkOrientation     orientation;
 
   orientation =
-    (mode != XFCE_PANEL_PLUGIN_MODE_VERTICAL) ?
+    (mode != BLADE_BAR_PLUGIN_MODE_VERTICAL) ?
     GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL;
 
   if (plugin->miniature_view)
@@ -463,7 +463,7 @@ pager_plugin_configure_workspace_settings (GtkWidget *button)
   GError    *error = NULL;
   GtkWidget *toplevel;
 
-  panel_return_if_fail (GTK_IS_WIDGET (button));
+  bar_return_if_fail (GTK_IS_WIDGET (button));
 
   screen = gtk_widget_get_screen (button);
   if (G_UNLIKELY (screen == NULL))
@@ -492,8 +492,8 @@ pager_plugin_configure_n_workspaces_changed (WnckScreen    *wnck_screen,
   gdouble        upper, value;
   WnckWorkspace *active_ws;
 
-  panel_return_if_fail (WNCK_IS_SCREEN (wnck_screen));
-  panel_return_if_fail (GTK_IS_BUILDER (builder));
+  bar_return_if_fail (WNCK_IS_SCREEN (wnck_screen));
+  bar_return_if_fail (GTK_IS_BUILDER (builder));
 
   object = gtk_builder_get_object (builder, "rows");
 
@@ -531,17 +531,17 @@ pager_plugin_configure_destroyed (gpointer  data,
 
 
 static void
-pager_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+pager_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  PagerPlugin *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+  PagerPlugin *plugin = XFCE_PAGER_PLUGIN (bar_plugin);
   GtkBuilder  *builder;
   GObject     *dialog, *object;
 
-  panel_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, pager_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, pager_dialog_ui,
                                      pager_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
@@ -554,23 +554,23 @@ pager_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
   g_object_weak_ref (G_OBJECT (builder), pager_plugin_configure_destroyed, plugin);
 
   object = gtk_builder_get_object (builder, "settings-button");
-  panel_return_if_fail (GTK_IS_BUTTON (object));
+  bar_return_if_fail (GTK_IS_BUTTON (object));
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (pager_plugin_configure_workspace_settings), dialog);
 
   object = gtk_builder_get_object (builder, "workspace-scrolling");
-  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "workspace-scrolling",
+  bar_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "workspace-scrolling",
                           G_OBJECT (object), "active");
 
   object = gtk_builder_get_object (builder, "miniature-view");
-  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "miniature-view",
+  bar_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "miniature-view",
                           G_OBJECT (object), "active");
 
   object = gtk_builder_get_object (builder, "rows");
-  panel_return_if_fail (GTK_IS_ADJUSTMENT (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "rows",
+  bar_return_if_fail (GTK_IS_ADJUSTMENT (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "rows",
                           G_OBJECT (object), "value");
 
   /* update the rows limit */
@@ -586,27 +586,27 @@ pager_plugin_size_request (GtkWidget      *widget,
                            GtkRequisition *requisition)
 {
   PagerPlugin         *plugin = XFCE_PAGER_PLUGIN (widget);
-  XfcePanelPluginMode  mode;
+  BladeBarPluginMode  mode;
   gint                 n_workspaces, n_cols;
 
   if (plugin->miniature_view)
     {
-      mode   = xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin));
+      mode   = blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin));
       n_workspaces = wnck_screen_get_workspace_count (plugin->wnck_screen);
       n_cols = MAX (1, (n_workspaces + plugin->rows - 1) / plugin->rows);
-      if (mode == XFCE_PANEL_PLUGIN_MODE_HORIZONTAL)
+      if (mode == BLADE_BAR_PLUGIN_MODE_HORIZONTAL)
         {
-          requisition->height = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+          requisition->height = blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin));
           requisition->width = (gint) (requisition->height / plugin->rows * plugin->ratio * n_cols);
         }
-      else if (mode == XFCE_PANEL_PLUGIN_MODE_VERTICAL)
+      else if (mode == BLADE_BAR_PLUGIN_MODE_VERTICAL)
         {
-          requisition->width = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+          requisition->width = blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin));
           requisition->height = (gint) (requisition->width / plugin->rows / plugin->ratio * n_cols);
         }
-      else /* (mode == XFCE_PANEL_PLUGIN_MODE_DESKBAR) */
+      else /* (mode == BLADE_BAR_PLUGIN_MODE_DESKBAR) */
         {
-          requisition->width = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+          requisition->width = blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin));
           requisition->height = (gint) (requisition->width / n_cols / plugin->ratio * plugin->rows);
         }
     }

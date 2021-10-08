@@ -34,10 +34,10 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
-#include <libxfce4panel/libxfce4panel.h>
+#include <libbladebar/libbladebar.h>
 
-#include <common/panel-private.h>
-#include <common/panel-debug.h>
+#include <common/bar-private.h>
+#include <common/bar-debug.h>
 
 #include "systray-socket.h"
 
@@ -75,7 +75,7 @@ static void     systray_socket_style_set     (GtkWidget      *widget,
 
 
 
-XFCE_PANEL_DEFINE_TYPE (SystraySocket, systray_socket, GTK_TYPE_SOCKET)
+BLADE_BAR_DEFINE_TYPE (SystraySocket, systray_socket, GTK_TYPE_SOCKET)
 
 
 
@@ -155,11 +155,11 @@ systray_socket_realize (GtkWidget *widget)
 
   gtk_widget_set_double_buffered (widget, socket->parent_relative_bg);
 
-  panel_debug_filtered (PANEL_DEBUG_SYSTRAY,
+  bar_debug_filtered (BAR_DEBUG_SYSTRAY,
       "socket %s[%p] (composited=%s, relative-bg=%s",
       systray_socket_get_name (socket), socket,
-      PANEL_DEBUG_BOOL (socket->is_composited),
-      PANEL_DEBUG_BOOL (socket->parent_relative_bg));
+      BAR_DEBUG_BOOL (socket->is_composited),
+      BAR_DEBUG_BOOL (socket->parent_relative_bg));
 }
 
 
@@ -249,7 +249,7 @@ systray_socket_new (GdkScreen       *screen,
   GdkColormap       *colormap;
   gboolean           release_colormap = FALSE;
 
-  panel_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  bar_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
   /* get the window attributes */
   display = gdk_screen_get_display (screen);
@@ -263,7 +263,7 @@ systray_socket_new (GdkScreen       *screen,
 
   /* get the windows visual */
   visual = gdk_x11_screen_lookup_visual (screen, attr.visual->visualid);
-  panel_return_val_if_fail (visual == NULL || GDK_IS_VISUAL (visual), NULL);
+  bar_return_val_if_fail (visual == NULL || GDK_IS_VISUAL (visual), NULL);
   if (G_UNLIKELY (visual == NULL))
     return NULL;
 
@@ -308,7 +308,7 @@ systray_socket_force_redraw (SystraySocket *socket)
   XEvent      xev;
   GdkDisplay *display;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
 
   if (GTK_WIDGET_MAPPED (socket) && socket->parent_relative_bg)
     {
@@ -340,7 +340,7 @@ systray_socket_force_redraw (SystraySocket *socket)
 gboolean
 systray_socket_is_composited (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
 
   return socket->is_composited;
 }
@@ -361,8 +361,8 @@ systray_socket_get_name_prop (SystraySocket *socket,
   gulong      bytes_after;
   gchar      *name = NULL;
 
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
-  panel_return_val_if_fail (type_name != NULL && prop_name != NULL, NULL);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
+  bar_return_val_if_fail (type_name != NULL && prop_name != NULL, NULL);
 
   display = gtk_widget_get_display (GTK_WIDGET (socket));
 
@@ -405,7 +405,7 @@ systray_socket_get_name_prop (SystraySocket *socket,
 const gchar *
 systray_socket_get_name (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
 
   if (G_LIKELY (socket->name != NULL))
     return socket->name;
@@ -424,7 +424,7 @@ systray_socket_get_name (SystraySocket *socket)
 GdkNativeWindow *
 systray_socket_get_window (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
 
   return &socket->window;
 }
@@ -434,7 +434,7 @@ systray_socket_get_window (SystraySocket *socket)
 gboolean
 systray_socket_get_hidden (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
 
   return socket->hidden;
 }
@@ -445,7 +445,7 @@ void
 systray_socket_set_hidden (SystraySocket *socket,
                            gboolean       hidden)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
 
   socket->hidden = hidden;
 }

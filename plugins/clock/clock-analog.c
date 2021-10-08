@@ -90,7 +90,7 @@ struct _XfceClockAnalog
 
 
 
-XFCE_PANEL_DEFINE_TYPE (XfceClockAnalog, xfce_clock_analog, GTK_TYPE_IMAGE)
+BLADE_BAR_DEFINE_TYPE (XfceClockAnalog, xfce_clock_analog, GTK_TYPE_IMAGE)
 
 
 
@@ -218,7 +218,7 @@ xfce_clock_analog_expose_event (GtkWidget      *widget,
   cairo_t         *cr;
   GDateTime       *date_time;
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_ANALOG (analog), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_ANALOG (analog), FALSE);
 
   /* get center of the widget and the radius */
   xc = (widget->allocation.width / 2.0);
@@ -351,8 +351,8 @@ xfce_clock_analog_update (XfceClockAnalog *analog,
 {
   GtkWidget *widget = GTK_WIDGET (analog);
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_ANALOG (analog), FALSE);
-  panel_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_ANALOG (analog), FALSE);
+  bar_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), FALSE);
 
   /* update if the widget if visible */
   if (G_LIKELY (GTK_WIDGET_VISIBLE (widget)))

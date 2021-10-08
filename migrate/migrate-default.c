@@ -28,16 +28,16 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
-#include <libxfce4util/libxfce4util.h>
+#include <blconf/blconf.h>
+#include <libbladeutil/libbladeutil.h>
 #include <migrate/migrate-default.h>
-#include <libxfce4panel/xfce-panel-macros.h>
+#include <libbladebar/blade-bar-macros.h>
 
 
 
 typedef struct
 {
-  XfconfChannel *channel;
+  BlconfChannel *channel;
   GSList        *path;
   GPtrArray     *array;
 }
@@ -148,17 +148,17 @@ migrate_default_start_element_handler (GMarkupParseContext  *context,
                 {
                   channel_name = attribute_values[i];
 
-                  /* this is an xfce4-panel workaround to make it work
+                  /* this is an blade-bar workaround to make it work
                    * with the custom channel names */
-                  channel_name = XFCE_PANEL_CHANNEL_NAME;
+                  channel_name = BLADE_BAR_CHANNEL_NAME;
                 }
             }
         }
 
       if (channel_name != NULL)
         {
-          /* open the xfconf channel */
-          parser->channel = xfconf_channel_get (channel_name);
+          /* open the blconf channel */
+          parser->channel = blconf_channel_get (channel_name);
         }
       else
         {
@@ -176,10 +176,10 @@ migrate_default_start_element_handler (GMarkupParseContext  *context,
       if (parser->array != NULL)
         {
           prop_path = migrate_default_property_path (parser);
-          xfconf_channel_set_arrayv (parser->channel, prop_path, parser->array);
+          blconf_channel_set_arrayv (parser->channel, prop_path, parser->array);
           g_free (prop_path);
 
-          xfconf_array_free (parser->array);
+          blconf_array_free (parser->array);
           parser->array = NULL;
         }
 
@@ -218,7 +218,7 @@ migrate_default_start_element_handler (GMarkupParseContext  *context,
               migrate_default_set_value (&value, prop_value);
 
               prop_path = migrate_default_property_path (parser);
-              xfconf_channel_set_property (parser->channel, prop_path, &value);
+              blconf_channel_set_property (parser->channel, prop_path, &value);
               g_free (prop_path);
 
               g_value_unset (&value);
@@ -316,10 +316,10 @@ migrate_default_end_element_handler (GMarkupParseContext  *context,
       if (parser->array != NULL)
         {
           prop_path = migrate_default_property_path (parser);
-          xfconf_channel_set_arrayv (parser->channel, prop_path, parser->array);
+          blconf_channel_set_arrayv (parser->channel, prop_path, parser->array);
           g_free (prop_path);
 
-          xfconf_array_free (parser->array);
+          blconf_array_free (parser->array);
           parser->array = NULL;
         }
 

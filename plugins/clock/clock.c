@@ -27,12 +27,12 @@
 
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-#include <exo/exo.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <common/panel-private.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
+#include <blxo/blxo.h>
+#include <libbladeui/libbladeui.h>
+#include <libbladebar/libbladebar.h>
+#include <common/bar-private.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
 
 #include "clock.h"
 #include "clock-time.h"
@@ -72,16 +72,16 @@ static gboolean clock_plugin_enter_notify_event        (GtkWidget             *w
 static gboolean clock_plugin_button_press_event        (GtkWidget             *widget,
                                                         GdkEventButton        *event,
                                                         ClockPlugin           *plugin);
-static void     clock_plugin_construct                 (XfcePanelPlugin       *panel_plugin);
-static void     clock_plugin_free_data                 (XfcePanelPlugin       *panel_plugin);
-static gboolean clock_plugin_size_changed              (XfcePanelPlugin       *panel_plugin,
+static void     clock_plugin_construct                 (BladeBarPlugin       *bar_plugin);
+static void     clock_plugin_free_data                 (BladeBarPlugin       *bar_plugin);
+static gboolean clock_plugin_size_changed              (BladeBarPlugin       *bar_plugin,
                                                         gint                   size);
-static void     clock_plugin_size_ratio_changed        (XfcePanelPlugin       *panel_plugin);
-static void     clock_plugin_mode_changed              (XfcePanelPlugin       *panel_plugin,
-                                                        XfcePanelPluginMode    mode);
-static void     clock_plugin_screen_position_changed   (XfcePanelPlugin       *panel_plugin,
+static void     clock_plugin_size_ratio_changed        (BladeBarPlugin       *bar_plugin);
+static void     clock_plugin_mode_changed              (BladeBarPlugin       *bar_plugin,
+                                                        BladeBarPluginMode    mode);
+static void     clock_plugin_screen_position_changed   (BladeBarPlugin       *bar_plugin,
                                                         XfceScreenPosition     position);
-static void     clock_plugin_configure_plugin          (XfcePanelPlugin       *panel_plugin);
+static void     clock_plugin_configure_plugin          (BladeBarPlugin       *bar_plugin);
 static void     clock_plugin_set_mode                  (ClockPlugin           *plugin);
 static void     clock_plugin_reposition_calendar       (ClockPlugin           *plugin);
 static gboolean clock_plugin_pointer_grab              (ClockPlugin           *plugin,
@@ -132,12 +132,12 @@ ClockPluginMode;
 
 struct _ClockPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _ClockPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   GtkWidget          *clock;
   GtkWidget          *button;
@@ -195,7 +195,7 @@ enum
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN (ClockPlugin, clock_plugin,
+BLADE_BAR_DEFINE_PLUGIN (ClockPlugin, clock_plugin,
   clock_time_register_type,
   xfce_clock_analog_register_type,
   xfce_clock_binary_register_type,
@@ -209,13 +209,13 @@ static void
 clock_plugin_class_init (ClockPluginClass *klass)
 {
   GObjectClass         *gobject_class;
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->set_property = clock_plugin_set_property;
   gobject_class->get_property = clock_plugin_get_property;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = clock_plugin_construct;
   plugin_class->free_data = clock_plugin_free_data;
   plugin_class->size_changed = clock_plugin_size_changed;
@@ -230,34 +230,34 @@ clock_plugin_class_init (ClockPluginClass *klass)
                                                       CLOCK_PLUGIN_MODE_MIN,
                                                       CLOCK_PLUGIN_MODE_MAX,
                                                       CLOCK_PLUGIN_MODE_DEFAULT,
-                                                      EXO_PARAM_READWRITE));
+                                                      BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_TOOLTIP_FORMAT,
                                    g_param_spec_string ("tooltip-format",
                                                         NULL, NULL,
                                                         DEFAULT_TOOLTIP_FORMAT,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_ROTATE_VERTICALLY,
                                    g_param_spec_boolean ("rotate-vertically",
                                                          NULL, NULL,
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_COMMAND,
                                    g_param_spec_string ("command",
                                                         NULL, NULL, NULL,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_TIME_CONFIG_TOOL,
                                    g_param_spec_string ("time-config-tool",
                                                         NULL, NULL,
                                                         DEFAULT_TIME_CONFIG_TOOL,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 }
 
 
@@ -274,8 +274,8 @@ clock_plugin_init (ClockPlugin *plugin)
   plugin->rotate_vertically = TRUE;
   plugin->time = clock_time_new ();
 
-  plugin->button = xfce_panel_create_toggle_button ();
-  /* xfce_panel_plugin_add_action_widget (XFCE_PANEL_PLUGIN (plugin), plugin->button); */
+  plugin->button = blade_bar_create_toggle_button ();
+  /* blade_bar_plugin_add_action_widget (BLADE_BAR_PLUGIN (plugin), plugin->button); */
   gtk_container_add (GTK_CONTAINER (plugin), plugin->button);
   gtk_widget_set_name (plugin->button, "clock-button");
   gtk_button_set_relief (GTK_BUTTON (plugin->button), GTK_RELIEF_NONE);
@@ -433,7 +433,7 @@ clock_plugin_button_press_event (GtkWidget      *widget,
   if (event->button == 1 || event->button == 2)
     {
       if (event->type == GDK_BUTTON_PRESS &&
-          exo_str_is_empty (plugin->command))
+          blxo_str_is_empty (plugin->command))
         {
           /* toggle calendar window visibility */
           if (plugin->calendar_window == NULL
@@ -446,7 +446,7 @@ clock_plugin_button_press_event (GtkWidget      *widget,
           return TRUE;
         }
       else if (event->type == GDK_2BUTTON_PRESS
-               && !exo_str_is_empty (plugin->command))
+               && !blxo_str_is_empty (plugin->command))
         {
           /* launch command */
           if (!xfce_spawn_command_line_on_screen (gtk_widget_get_screen (widget),
@@ -470,10 +470,10 @@ clock_plugin_button_press_event (GtkWidget      *widget,
 
 
 static void
-clock_plugin_construct (XfcePanelPlugin *panel_plugin)
+clock_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  ClockPlugin         *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  ClockPlugin         *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
     { "mode", G_TYPE_UINT },
     { "tooltip-format", G_TYPE_STRING },
@@ -483,22 +483,22 @@ clock_plugin_construct (XfcePanelPlugin *panel_plugin)
     { NULL }
   };
 
-  const PanelProperty  time_properties[] =
+  const BarProperty  time_properties[] =
     {
       { "timezone", G_TYPE_STRING },
       { NULL }
     };
 
   /* show configure */
-  xfce_panel_plugin_menu_show_configure (panel_plugin);
+  blade_bar_plugin_menu_show_configure (bar_plugin);
 
   /* connect all properties */
-  panel_properties_bind (NULL, G_OBJECT (panel_plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (bar_plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
-  panel_properties_bind (NULL, G_OBJECT (plugin->time),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin->time),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          time_properties, FALSE);
 
   /* make sure a mode is set */
@@ -509,9 +509,9 @@ clock_plugin_construct (XfcePanelPlugin *panel_plugin)
 
 
 static void
-clock_plugin_free_data (XfcePanelPlugin *panel_plugin)
+clock_plugin_free_data (BladeBarPlugin *bar_plugin)
 {
-  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
+  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
 
   if (plugin->tooltip_timeout != NULL)
     clock_time_timeout_free (plugin->tooltip_timeout);
@@ -529,10 +529,10 @@ clock_plugin_free_data (XfcePanelPlugin *panel_plugin)
 
 
 static gboolean
-clock_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+clock_plugin_size_changed (BladeBarPlugin *bar_plugin,
                            gint             size)
 {
-  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
+  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
   gdouble      ratio;
   gint         ratio_size;
   gint         offset;
@@ -554,7 +554,7 @@ clock_plugin_size_changed (XfcePanelPlugin *panel_plugin,
     }
 
   /* set the clock size */
-  if (xfce_panel_plugin_get_mode (panel_plugin) == XFCE_PANEL_PLUGIN_MODE_HORIZONTAL)
+  if (blade_bar_plugin_get_mode (bar_plugin) == BLADE_BAR_PLUGIN_MODE_HORIZONTAL)
     {
       if (ratio > 0)
         {
@@ -562,7 +562,7 @@ clock_plugin_size_changed (XfcePanelPlugin *panel_plugin,
           ratio_size += offset;
         }
 
-      gtk_widget_set_size_request (GTK_WIDGET (panel_plugin), ratio_size, size);
+      gtk_widget_set_size_request (GTK_WIDGET (bar_plugin), ratio_size, size);
     }
   else
     {
@@ -572,7 +572,7 @@ clock_plugin_size_changed (XfcePanelPlugin *panel_plugin,
           ratio_size += offset;
         }
 
-      gtk_widget_set_size_request (GTK_WIDGET (panel_plugin), size, ratio_size);
+      gtk_widget_set_size_request (GTK_WIDGET (bar_plugin), size, ratio_size);
     }
 
   if (plugin->calendar_window != NULL
@@ -585,38 +585,38 @@ clock_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-clock_plugin_size_ratio_changed (XfcePanelPlugin *panel_plugin)
+clock_plugin_size_ratio_changed (BladeBarPlugin *bar_plugin)
 {
-  clock_plugin_size_changed (panel_plugin, xfce_panel_plugin_get_size (panel_plugin));
+  clock_plugin_size_changed (bar_plugin, blade_bar_plugin_get_size (bar_plugin));
 }
 
 
 
 static void
-clock_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
-                           XfcePanelPluginMode  mode)
+clock_plugin_mode_changed (BladeBarPlugin     *bar_plugin,
+                           BladeBarPluginMode  mode)
 {
-  ClockPlugin    *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
+  ClockPlugin    *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
   GtkOrientation  orientation;
 
   if (plugin->rotate_vertically)
     {
-      orientation = (mode == XFCE_PANEL_PLUGIN_MODE_VERTICAL) ?
+      orientation = (mode == BLADE_BAR_PLUGIN_MODE_VERTICAL) ?
         GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL;
       g_object_set (G_OBJECT (plugin->clock), "orientation", orientation, NULL);
     }
 
   /* do a size update */
-  clock_plugin_size_changed (panel_plugin, xfce_panel_plugin_get_size (panel_plugin));
+  clock_plugin_size_changed (bar_plugin, blade_bar_plugin_get_size (bar_plugin));
 }
 
 
 
 static void
-clock_plugin_screen_position_changed (XfcePanelPlugin    *panel_plugin,
+clock_plugin_screen_position_changed (BladeBarPlugin    *bar_plugin,
                                       XfceScreenPosition  position)
 {
-  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
+  ClockPlugin *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
 
   if (plugin->calendar_window != NULL
       && gtk_widget_get_visible (GTK_WIDGET (plugin->calendar_window)))
@@ -647,9 +647,9 @@ clock_plugin_configure_plugin_mode_changed (GtkComboBox       *combo,
     { "show-grid", "show-grid", "active" },
   };
 
-  panel_return_if_fail (GTK_IS_COMBO_BOX (combo));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (dialog->plugin));
+  bar_return_if_fail (GTK_IS_COMBO_BOX (combo));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (dialog->plugin));
 
   /* the active items for each mode */
   mode = gtk_combo_box_get_active (combo);
@@ -676,7 +676,7 @@ clock_plugin_configure_plugin_mode_changed (GtkComboBox       *combo,
       break;
 
     default:
-      panel_assert_not_reached ();
+      bar_assert_not_reached ();
       active = 0;
       break;
     }
@@ -685,8 +685,8 @@ clock_plugin_configure_plugin_mode_changed (GtkComboBox       *combo,
   for (i = 0; i < G_N_ELEMENTS (names); i++)
     {
       object = gtk_builder_get_object (dialog->builder, names[i].widget);
-      panel_return_if_fail (GTK_IS_WIDGET (object));
-      if (PANEL_HAS_FLAG (active, 1 << (i + 1)))
+      bar_return_if_fail (GTK_IS_WIDGET (object));
+      if (BAR_HAS_FLAG (active, 1 << (i + 1)))
         gtk_widget_show (GTK_WIDGET (object));
       else
         gtk_widget_hide (GTK_WIDGET (object));
@@ -695,16 +695,16 @@ clock_plugin_configure_plugin_mode_changed (GtkComboBox       *combo,
   /* make sure the new mode is set */
   if (dialog->plugin->mode != mode)
     g_object_set (G_OBJECT (dialog->plugin), "mode", mode, NULL);
-  panel_return_if_fail (G_IS_OBJECT (dialog->plugin->clock));
+  bar_return_if_fail (G_IS_OBJECT (dialog->plugin->clock));
 
-  /* connect the exo bindings */
+  /* connect the blxo bindings */
   for (i = 0; i < G_N_ELEMENTS (names); i++)
     {
-      if (PANEL_HAS_FLAG (active, 1 << (i + 1)))
+      if (BAR_HAS_FLAG (active, 1 << (i + 1)))
         {
           object = gtk_builder_get_object (dialog->builder, names[i].binding);
-          panel_return_if_fail (G_IS_OBJECT (object));
-          exo_mutual_binding_new (G_OBJECT (dialog->plugin->clock), names[i].binding,
+          bar_return_if_fail (G_IS_OBJECT (object));
+          blxo_mutual_binding_new (G_OBJECT (dialog->plugin->clock), names[i].binding,
                                   G_OBJECT (object), names[i].property);
         }
     }
@@ -720,8 +720,8 @@ clock_plugin_configure_plugin_chooser_changed (GtkComboBox *combo,
   GtkTreeModel *model;
   gchar        *format;
 
-  panel_return_if_fail (GTK_IS_COMBO_BOX (combo));
-  panel_return_if_fail (GTK_IS_ENTRY (entry));
+  bar_return_if_fail (GTK_IS_COMBO_BOX (combo));
+  bar_return_if_fail (GTK_IS_ENTRY (entry));
 
   if (gtk_combo_box_get_active_iter (combo, &iter))
     {
@@ -770,9 +770,9 @@ clock_plugin_configure_plugin_chooser_fill (ClockPlugin *plugin,
   const gchar  *active_format;
   gboolean      has_active = FALSE;
 
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
-  panel_return_if_fail (GTK_IS_COMBO_BOX (combo));
-  panel_return_if_fail (GTK_IS_ENTRY (entry));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
+  bar_return_if_fail (GTK_IS_COMBO_BOX (combo));
+  bar_return_if_fail (GTK_IS_ENTRY (entry));
 
   gtk_combo_box_set_row_separator_func (combo,
       clock_plugin_configure_plugin_chooser_separator, NULL, NULL);
@@ -791,7 +791,7 @@ clock_plugin_configure_plugin_chooser_fill (ClockPlugin *plugin,
       g_free (preview);
 
       if (has_active == FALSE
-          && !exo_str_is_empty (active_format)
+          && !blxo_str_is_empty (active_format)
           && strcmp (active_format, formats[i]) == 0)
         {
           gtk_combo_box_set_active_iter (combo, &iter);
@@ -838,11 +838,11 @@ clock_plugin_configure_config_tool_changed (ClockPluginDialog *dialog)
   GObject *object;
   gchar   *path;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (dialog->plugin));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (dialog->plugin));
 
   object = gtk_builder_get_object (dialog->builder, "run-time-config-tool");
-  panel_return_if_fail (GTK_IS_BUTTON (object));
+  bar_return_if_fail (GTK_IS_BUTTON (object));
   path = g_find_program_in_path (dialog->plugin->time_config_tool);
   gtk_widget_set_visible (GTK_WIDGET (object), path != NULL);
   g_free (path);
@@ -856,7 +856,7 @@ clock_plugin_configure_run_config_tool (GtkWidget   *button,
 {
   GError *error = NULL;
 
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
 
   if (!xfce_spawn_command_line_on_screen (gtk_widget_get_screen (button),
                                           plugin->time_config_tool,
@@ -879,7 +879,7 @@ clock_plugin_configure_zoneinfo_model_insert (GtkListStore *store,
   const gchar *name;
   gsize        dirlen = strlen (ZONEINFO_DIR);
 
-  panel_return_if_fail (GTK_IS_LIST_STORE (store));
+  bar_return_if_fail (GTK_IS_LIST_STORE (store));
 
   dir = g_dir_open (parent, 0, NULL);
   if (dir == NULL)
@@ -925,7 +925,7 @@ clock_plugin_configure_zoneinfo_model (gpointer data)
   dialog->zonecompletion_idle = 0;
 
   object = gtk_builder_get_object (dialog->builder, "timezone-name");
-  panel_return_val_if_fail (GTK_IS_ENTRY (object), FALSE);
+  bar_return_val_if_fail (GTK_IS_ENTRY (object), FALSE);
 
   /* build timezone model */
   store = gtk_list_store_new (1, G_TYPE_STRING);
@@ -950,20 +950,20 @@ clock_plugin_configure_zoneinfo_model (gpointer data)
 
 
 static void
-clock_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+clock_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  ClockPlugin       *plugin = XFCE_CLOCK_PLUGIN (panel_plugin);
+  ClockPlugin       *plugin = XFCE_CLOCK_PLUGIN (bar_plugin);
   ClockPluginDialog *dialog;
   GtkBuilder        *builder;
   GObject           *window;
   GObject           *object;
   GObject           *combo;
 
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, clock_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, clock_dialog_ui,
                                      clock_dialog_ui_length, &window);
   if (G_UNLIKELY (builder == NULL))
     return;
@@ -973,7 +973,7 @@ clock_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
   dialog->builder = builder;
 
   object = gtk_builder_get_object (builder, "run-time-config-tool");
-  panel_return_if_fail (GTK_IS_BUTTON (object));
+  bar_return_if_fail (GTK_IS_BUTTON (object));
   g_signal_connect_swapped (G_OBJECT (plugin), "notify::time-config-tool",
                             G_CALLBACK (clock_plugin_configure_config_tool_changed),
                             dialog);
@@ -982,8 +982,8 @@ clock_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
       G_CALLBACK (clock_plugin_configure_run_config_tool), plugin);
 
   object = gtk_builder_get_object (builder, "timezone-name");
-  panel_return_if_fail (GTK_IS_ENTRY (object));
-  exo_mutual_binding_new (G_OBJECT (plugin->time), "timezone",
+  bar_return_if_fail (GTK_IS_ENTRY (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin->time), "timezone",
                           G_OBJECT (object), "text");
 
   /* idle add the zone completion */
@@ -993,11 +993,11 @@ clock_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
   g_signal_connect_data (G_OBJECT (object), "changed",
       G_CALLBACK (clock_plugin_configure_plugin_mode_changed), dialog,
       (GClosureNotify) clock_plugin_configure_plugin_free, 0);
-  exo_mutual_binding_new (G_OBJECT (plugin), "mode",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "mode",
                           G_OBJECT (object), "active");
 
   object = gtk_builder_get_object (builder, "tooltip-format");
-  exo_mutual_binding_new (G_OBJECT (plugin), "tooltip-format",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "tooltip-format",
                           G_OBJECT (object), "text");
   combo = gtk_builder_get_object (builder, "tooltip-chooser");
   clock_plugin_configure_plugin_chooser_fill (plugin,
@@ -1020,7 +1020,7 @@ clock_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
 static void
 clock_plugin_set_mode (ClockPlugin *plugin)
 {
-  const PanelProperty properties[][5] =
+  const BarProperty properties[][5] =
   {
     { /* analog */
       { "show-seconds", G_TYPE_BOOLEAN },
@@ -1051,7 +1051,7 @@ clock_plugin_set_mode (ClockPlugin *plugin)
   };
   GtkOrientation      orientation;
 
-  panel_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_CLOCK_PLUGIN (plugin));
 
   if (plugin->clock != NULL)
     gtk_widget_destroy (plugin->clock);
@@ -1072,8 +1072,8 @@ clock_plugin_set_mode (ClockPlugin *plugin)
   if (plugin->rotate_vertically)
     {
       orientation =
-        (xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin))
-         == XFCE_PANEL_PLUGIN_MODE_VERTICAL) ?
+        (blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin))
+         == BLADE_BAR_PLUGIN_MODE_VERTICAL) ?
         GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL;
       g_object_set (G_OBJECT (plugin->clock), "orientation", orientation, NULL);
     }
@@ -1082,11 +1082,11 @@ clock_plugin_set_mode (ClockPlugin *plugin)
   g_signal_connect_swapped (G_OBJECT (plugin->clock), "notify::size-ratio",
       G_CALLBACK (clock_plugin_size_ratio_changed), plugin);
 
-  clock_plugin_size_changed (XFCE_PANEL_PLUGIN (plugin),
-      xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin)));
+  clock_plugin_size_changed (BLADE_BAR_PLUGIN (plugin),
+      blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin)));
 
-  panel_properties_bind (NULL, G_OBJECT (plugin->clock),
-                         xfce_panel_plugin_get_property_base (XFCE_PANEL_PLUGIN (plugin)),
+  bar_properties_bind (NULL, G_OBJECT (plugin->clock),
+                         blade_bar_plugin_get_property_base (BLADE_BAR_PLUGIN (plugin)),
                          properties[plugin->mode], FALSE);
 
   gtk_container_add (GTK_CONTAINER (plugin->button), plugin->clock);
@@ -1101,7 +1101,7 @@ clock_plugin_reposition_calendar (ClockPlugin *plugin)
 {
   gint x, y;
 
-  xfce_panel_plugin_position_widget (XFCE_PANEL_PLUGIN (plugin),
+  blade_bar_plugin_position_widget (BLADE_BAR_PLUGIN (plugin),
                                      GTK_WIDGET (plugin->calendar_window),
                                      NULL, &x, &y);
   gtk_window_move (GTK_WINDOW (plugin->calendar_window), x, y);
@@ -1115,7 +1115,7 @@ clock_plugin_calendar_show_event (GtkWidget   *calendar_window,
 {
   GDateTime *date_time;
 
-  panel_return_if_fail (XFCE_IS_PANEL_PLUGIN (plugin));
+  bar_return_if_fail (BLADE_IS_BAR_PLUGIN (plugin));
 
   clock_plugin_reposition_calendar (plugin);
 
@@ -1275,7 +1275,7 @@ clock_plugin_popup_calendar (ClockPlugin *plugin,
 
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (plugin->button), TRUE);
   gtk_widget_show (GTK_WIDGET (plugin->calendar_window));
-  xfce_panel_plugin_block_autohide (XFCE_PANEL_PLUGIN (plugin), TRUE);
+  blade_bar_plugin_block_autohide (BLADE_BAR_PLUGIN (plugin), TRUE);
   if (modal)
     clock_plugin_pointer_grab (plugin, GTK_WIDGET (plugin->calendar_window), TRUE);
 }
@@ -1291,7 +1291,7 @@ clock_plugin_hide_calendar (ClockPlugin *plugin)
 
   clock_plugin_pointer_ungrab (plugin, GTK_WIDGET (plugin->calendar_window));
   gtk_widget_hide (GTK_WIDGET (plugin->calendar_window));
-  xfce_panel_plugin_block_autohide (XFCE_PANEL_PLUGIN (plugin), FALSE);
+  blade_bar_plugin_block_autohide (BLADE_BAR_PLUGIN (plugin), FALSE);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (plugin->button), FALSE);
 }
 

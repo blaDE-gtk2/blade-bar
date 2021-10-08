@@ -1,8 +1,8 @@
-[Xfce Panel]
-Type=X-XFCE-PanelPlugin
+[Blade Bar]
+Type=X-XFCE-BarPlugin
 _Name=Action Buttons
 _Comment=Log out, lock or other system actions
 Icon=system-log-out
 X-XFCE-Module=actions
 X-XFCE-Internal=FALSE
-X-XFCE-API=@LIBXFCE4PANEL_VERSION_API@
+X-XFCE-API=@LIBBLADEBAR_VERSION_API@

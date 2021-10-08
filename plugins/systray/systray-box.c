@@ -27,11 +27,11 @@
 #include <math.h>
 #endif
 
-#include <exo/exo.h>
+#include <blxo/blxo.h>
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <common/panel-private.h>
-#include <common/panel-debug.h>
+#include <libbladebar/libbladebar.h>
+#include <common/bar-private.h>
+#include <common/bar-debug.h>
 
 #include "systray-box.h"
 #include "systray-socket.h"
@@ -104,7 +104,7 @@ struct _SystrayBox
 
 
 
-XFCE_PANEL_DEFINE_TYPE (SystrayBox, systray_box, GTK_TYPE_CONTAINER)
+BLADE_BAR_DEFINE_TYPE (SystrayBox, systray_box, GTK_TYPE_CONTAINER)
 
 
 
@@ -134,7 +134,7 @@ systray_box_class_init (SystrayBoxClass *klass)
                                    g_param_spec_boolean ("has-hidden",
                                                          NULL, NULL,
                                                          FALSE,
-                                                         EXO_PARAM_READABLE));
+                                                         BLXO_PARAM_READABLE));
 }
 
 
@@ -271,7 +271,7 @@ systray_box_size_request (GtkWidget      *widget,
   for (li = box->childeren, cells = 0.00; li != NULL; li = li->next)
     {
       child = GTK_WIDGET (li->data);
-      panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (child));
+      bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (child));
 
       gtk_widget_size_request (child, &child_req);
 
@@ -320,7 +320,7 @@ systray_box_size_request (GtkWidget      *widget,
         }
     }
 
-  panel_debug_filtered (PANEL_DEBUG_SYSTRAY,
+  bar_debug_filtered (BAR_DEBUG_SYSTRAY,
       "requested cells=%g, rows=%d, row_size=%d, children=%d",
       cells, rows, row_size, box->n_visible_children);
 
@@ -359,7 +359,7 @@ systray_box_size_request (GtkWidget      *widget,
   /* emit property if changed */
   if (box->n_hidden_childeren != n_hidden_childeren)
     {
-      panel_debug_filtered (PANEL_DEBUG_SYSTRAY,
+      bar_debug_filtered (BAR_DEBUG_SYSTRAY,
           "hidden children changed (%d -> %d)",
           n_hidden_childeren, box->n_hidden_childeren);
 
@@ -402,9 +402,9 @@ systray_box_size_allocate (GtkWidget     *widget,
 
   systray_box_size_get_max_child_size (box, alloc_size, &rows, &row_size, &offset);
 
-  panel_debug_filtered (PANEL_DEBUG_SYSTRAY, "allocate rows=%d, row_size=%d, w=%d, h=%d, horiz=%s, border=%d",
+  bar_debug_filtered (BAR_DEBUG_SYSTRAY, "allocate rows=%d, row_size=%d, w=%d, h=%d, horiz=%s, border=%d",
                         rows, row_size, allocation->width, allocation->height,
-                        PANEL_DEBUG_BOOL (box->horizontal), border);
+                        BAR_DEBUG_BOOL (box->horizontal), border);
 
   /* get allocation bounds */
   x_start = allocation->x + border;
@@ -427,7 +427,7 @@ systray_box_size_allocate (GtkWidget     *widget,
   for (li = box->childeren; li != NULL; li = li->next)
     {
       child = GTK_WIDGET (li->data);
-      panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (child));
+      bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (child));
 
       if (!GTK_WIDGET_VISIBLE (child))
         continue;
@@ -519,7 +519,7 @@ systray_box_size_allocate (GtkWidget     *widget,
                        * allocation with 1px smaller icons */
                       row_size--;
 
-                      panel_debug_filtered (PANEL_DEBUG_SYSTRAY,
+                      bar_debug_filtered (BAR_DEBUG_SYSTRAY,
                           "y overflow (%d > %d), restart with row_size=%d",
                           y, y_end, row_size);
 
@@ -537,7 +537,7 @@ systray_box_size_allocate (GtkWidget     *widget,
                        * allocation with 1px smaller icons */
                       row_size--;
 
-                      panel_debug_filtered (PANEL_DEBUG_SYSTRAY,
+                      bar_debug_filtered (BAR_DEBUG_SYSTRAY,
                           "x overflow (%d > %d), restart with row_size=%d",
                           x, x_end, row_size);
 
@@ -555,7 +555,7 @@ systray_box_size_allocate (GtkWidget     *widget,
             y += row_size * ratio + SPACING;
         }
 
-      panel_debug_filtered (PANEL_DEBUG_SYSTRAY, "allocated %s[%p] at (%d,%d;%d,%d)",
+      bar_debug_filtered (BAR_DEBUG_SYSTRAY, "allocated %s[%p] at (%d,%d;%d,%d)",
           systray_socket_get_name (XFCE_SYSTRAY_SOCKET (child)), child,
           child_alloc.x, child_alloc.y, child_alloc.width, child_alloc.height);
 
@@ -571,9 +571,9 @@ systray_box_add (GtkContainer *container,
 {
   SystrayBox *box = XFCE_SYSTRAY_BOX (container);
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
-  panel_return_if_fail (GTK_IS_WIDGET (child));
-  panel_return_if_fail (child->parent == NULL);
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (GTK_IS_WIDGET (child));
+  bar_return_if_fail (child->parent == NULL);
 
   box->childeren = g_slist_insert_sorted (box->childeren, child,
                                           systray_box_compare_function);
@@ -596,7 +596,7 @@ systray_box_remove (GtkContainer *container,
   li = g_slist_find (box->childeren, child);
   if (G_LIKELY (li != NULL))
     {
-      panel_assert (GTK_WIDGET (li->data) == child);
+      bar_assert (GTK_WIDGET (li->data) == child);
 
       /* unparent widget */
       box->childeren = g_slist_remove_link (box->childeren, li);
@@ -682,7 +682,7 @@ systray_box_set_orientation (SystrayBox     *box,
 {
   gboolean horizontal;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   horizontal = !!(orientation == GTK_ORIENTATION_HORIZONTAL);
   if (G_LIKELY (box->horizontal != horizontal))
@@ -700,7 +700,7 @@ void
 systray_box_set_size_max (SystrayBox *box,
                           gint        size_max)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   size_max = CLAMP (size_max, SIZE_MAX_MIN, SIZE_MAX_MAX);
 
@@ -718,7 +718,7 @@ systray_box_set_size_max (SystrayBox *box,
 gint
 systray_box_get_size_max (SystrayBox *box)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), SIZE_MAX_DEFAULT);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), SIZE_MAX_DEFAULT);
 
   return box->size_max;
 }
@@ -729,7 +729,7 @@ void
 systray_box_set_size_alloc (SystrayBox *box,
                             gint        size_alloc)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (G_LIKELY (size_alloc != box->size_alloc))
     {
@@ -746,7 +746,7 @@ void
 systray_box_set_show_hidden (SystrayBox *box,
                               gboolean   show_hidden)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (box->show_hidden != show_hidden)
     {
@@ -762,7 +762,7 @@ systray_box_set_show_hidden (SystrayBox *box,
 gboolean
 systray_box_get_show_hidden (SystrayBox *box)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
+  bar_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
 
   return box->show_hidden;
 }
@@ -772,7 +772,7 @@ systray_box_get_show_hidden (SystrayBox *box)
 void
 systray_box_update (SystrayBox *box)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   box->childeren = g_slist_sort (box->childeren,
                                  systray_box_compare_function);

@@ -18,100 +18,100 @@ msgstr ""
 "Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
-msgstr "Vytvoriť spúšťač na paneli"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
+msgstr "Vytvoriť spúšťač na bari"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
-"Pridať na panel nový spúšťač založený na informáciách zo súboru plochy"
+"Pridať na bar nový spúšťač založený na informáciách zo súboru plochy"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2623
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2623
 #: ../migrate/main.c:117
-msgid "Panel"
-msgstr "Panel"
+msgid "Bar"
+msgstr "Bar"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
-msgstr "Prispôsobiť panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
+msgstr "Prispôsobiť bar"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1199
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1199
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Ste si istý, že chcete odstrániť „%s“?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1202
-msgid "If you remove the item from the panel, it is permanently lost."
-msgstr "Ak odstránite položku z panela, bude navždy stratená."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1202
+msgid "If you remove the item from the bar, it is permanently lost."
+msgstr "Ak odstránite položku z bara, bude navždy stratená."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_Presunúť"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "Pane_l"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2635
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2635
 msgid "Add _New Items..."
 msgstr "Pridať _nové položky..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2646
-msgid "Panel Pr_eferences..."
-msgstr "_Nastavenia panela..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2646
+msgid "Bar Pr_eferences..."
+msgstr "_Nastavenia bara..."
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2674
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2674
 msgid "Log _Out"
 msgstr "_Odhlásiť"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
-msgstr "Zobrazí dialógové okno „Prispôsobiť panel“"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
+msgstr "Zobrazí dialógové okno „Prispôsobiť bar“"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
-msgstr "PANEL-ČÍSLO"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
+msgstr "BAR-ČÍSLO"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Zobrazí dialógové okno „Pridať nové položky“"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
-msgstr "Uloží konfiguráciu panela"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
+msgstr "Uloží konfiguráciu bara"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
-msgstr "Pridá nový zásuvný modul na panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
+msgstr "Pridá nový zásuvný modul na bar"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "NÁZOV-ZÁSUVNÉHO-MODULU"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
-msgstr "Reštartuje bežiacu inštanciu panela"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
+msgstr "Reštartuje bežiacu inštanciu bara"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
-msgstr "Ukončí bežiacu inštanciu panela"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
+msgstr "Ukončí bežiacu inštanciu bara"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Nečakať na správcu okien pri spúšťaní"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -119,91 +119,91 @@ msgid "Print version information and exit"
 msgstr "Zobrazí informáciu o verzii a ukončí sa"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRE...]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informácie pre použitie získate príkazom „%s --help“."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tím vývojárov Xfce. Všetky práva vyhradené."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prosím, chyby nahláste na <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "Už je spustená jedna inštancia"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Reštartuje sa…"
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "Nepodarilo sa zobraziť dialógové okno nastavení"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "Nepodarilo sa zobraziť dialógové okno pre pridanie novej položky"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
-msgstr "Nepodarilo sa uložiť konfiguráciu panela"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
+msgstr "Nepodarilo sa uložiť konfiguráciu bara"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
-msgstr "Nepodarilo sa pridať zásuvný modul na panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
+msgstr "Nepodarilo sa pridať zásuvný modul na bar"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
-msgstr "Nepodarilo sa reštartovať panel"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
+msgstr "Nepodarilo sa reštartovať bar"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
-msgstr "Nepodarilo sa ukončiť panel"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
+msgstr "Nepodarilo sa ukončiť bar"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "Nepodarilo sa odoslať správu D-Bus"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
-"Chcete spustiť panel? Pokiaľ áno, uistite sa, že ste uložili reláciu pri "
-"odhlásení, aby sa panel automaticky spustil počas ďalšieho prihlásenia."
+"Chcete spustiť bar? Pokiaľ áno, uistite sa, že ste uložili reláciu pri "
+"odhlásení, aby sa bar automaticky spustil počas ďalšieho prihlásenia."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "Nebola nájdená žiadna spustená inštancia %s"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "Nepodarilo sa spustiť aplikáciu pre migráciu"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "Vytvoriť _spúšťač"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
-"Toto vytvorí nový zásuvný modul spúšťača na paneli a vloží súbory ako "
+"Toto vytvorí nový zásuvný modul spúšťača na bari a vloží súbory ako "
 "položky ponuky."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
@@ -211,7 +211,7 @@ msgstr[0] "Vytvoriť nový spúšťač z %d súboru plochy"
 msgstr[1] "Vytvoriť nový spúšťač z %d súborov plochy"
 msgstr[2] "Vytvoriť nový spúšťač z %d súborov plochy"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -219,23 +219,23 @@ msgstr ""
 "Spustili ste X server bez správcu relácie. Kliknutím na tlačidlo Ukončiť "
 "zatvoríte X server."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
-msgstr "Naozaj chcete ukončiť panel?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
+msgstr "Naozaj chcete ukončiť bar?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Nepodarilo sa spustiť príkaz „%s“"
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "Bola zadaná neplatná syntax udalosti zásuvného modulu. Použite NÁZOV-"
 "ZÁSUVNÉHO-MODULU:NÁZOV[:TYP:HODNOTA]."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -244,126 +244,126 @@ msgstr ""
 "Neplatný typ tipu \"%s\". Platnými typmi sú bool, double, int, string a "
 "uint."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Správcovia"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
-msgstr "Režim panela plochy"
+msgstr "Režim bara plochy"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "Neaktívny správcovia"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
-msgstr "Panel pracovného prostredia Xfce"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
+msgstr "Bar pracovného prostredia Xfce"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr ""
 "Robert Hartl <hartl.robert@gmail.com>\n"
 "Tomáš Vadina <kyberdev@gmail.com>"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Pridať novú položku"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
-msgstr "Prosím vyberte panel pre nový zásuvný modul:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
+msgstr "Prosím vyberte bar pre nový zásuvný modul:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:862
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:862
 #, c-format
-msgid "Panel %d"
-msgstr "Panel %d"
+msgid "Bar %d"
+msgstr "Bar %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
-"Z dôvodu spustenia panela v režime kiosk nemáte právo vykonávať zmeny v "
-"nastaveniach panela ako bežný používateľ."
+"Z dôvodu spustenia bara v režime kiosk nemáte právo vykonávať zmeny v "
+"nastaveniach bara ako bežný používateľ."
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
-msgstr "Úprava panela nie je povolená"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
+msgstr "Úprava bara nie je povolená"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Pridať nové položky"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
-msgstr "Pridá nové zásuvné moduly na panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
+msgstr "Pridá nové zásuvné moduly na bar"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "_Hľadať:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Sem zadajte hľadaný výraz"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
-msgstr "Zásuvný modul \"%s\" neočakávane opustil panel, želáte si ho reštartovať?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
+msgstr "Zásuvný modul \"%s\" neočakávane opustil bar, želáte si ho reštartovať?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "Zásuvný modul sa počas predchádzajúcich %d sekúnd reštartoval viac než jeden"
-" krát. Pokiaľ stlačíte tlačidlo Spustiť, panel sa pokúsi o reštart zásuvného"
-" modulu, v opačnom prípade bude zásuvný modul trvalo odobraný z panela."
+" krát. Pokiaľ stlačíte tlačidlo Spustiť, bar sa pokúsi o reštart zásuvného"
+" modulu, v opačnom prípade bude zásuvný modul trvalo odobraný z bara."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Automatický"
 
-#: ../panel/panel-preferences-dialog.c:500
+#: ../bar/bar-preferences-dialog.c:500
 msgid "Primary"
 msgstr "Hlavný"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:520
+#: ../bar/bar-preferences-dialog.c:520
 #, c-format
 msgid "Screen %d"
 msgstr "Obrazovka %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:546
+#: ../bar/bar-preferences-dialog.c:546
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../panel/panel-preferences-dialog.c:928
-msgid "The panel and plugin configurations will be permanently removed"
-msgstr "Nastavenia panela a zásuvných modulov budú natrvalo odstránené"
+#: ../bar/bar-preferences-dialog.c:928
+msgid "The bar and plugin configurations will be permanently removed"
+msgstr "Nastavenia bara a zásuvných modulov budú natrvalo odstránené"
 
-#: ../panel/panel-preferences-dialog.c:929
+#: ../bar/bar-preferences-dialog.c:929
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
-msgstr "Naozaj chcete odstrániť panel %d?"
+msgid "Are you sure you want to remove bar %d?"
+msgstr "Naozaj chcete odstrániť bar %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1041
+#: ../bar/bar-preferences-dialog.c:1041
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(external)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1046
+#: ../bar/bar-preferences-dialog.c:1046
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -374,290 +374,290 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1058
+#: ../bar/bar-preferences-dialog.c:1058
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "Interný názov: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Vodorovná"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Zvislá"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "Pracovná lišta"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Nikdy"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "Inteligentne"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Vždy"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Žiadny (použiť systémový štýl)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "Jednofarebný"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Obrázok na pozadí"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
-msgstr "Pridať nový panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
+msgstr "Pridať nový bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
-msgstr "Odstrániť práve vybraný panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
+msgstr "Odstrániť práve vybraný bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
-msgstr "Prepínanie medzi predvoľbami panelu"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
+msgstr "Prepínanie medzi predvoľbami baru"
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "R_ežim:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "_Výstup:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "Roztiahnuť cez viac mo_nitorov"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
-msgstr "Túto možnosť vyberte pre rozšírenie panela cez viac monitorov."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
+msgstr "Túto možnosť vyberte pre rozšírenie bara cez viac monitorov."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
-msgstr "_Zamknúť panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
+msgstr "_Zamknúť bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
-msgstr "Vyberte túto možnosť pre skrytie ušiek panela a uzamknutie pozície"
+"Select this option to hide the handles of the bar and lock its position."
+msgstr "Vyberte túto možnosť pre skrytie ušiek bara a uzamknutie pozície"
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
-msgstr "Automaticky skryť panel"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
+msgstr "Automaticky skryť bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Nerezervovať priestor na rámoch"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "Vyberte túto možnosť pre maximalizáciu okien tak, aby pokryli priestor za "
-"panelom. Toto funguje iba pokiaľ je panel prichytený k okraju obrazovky."
+"barom. Toto funguje iba pokiaľ je bar prichytený k okraju obrazovky."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Všeobecné"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "_Veľkosť riadka (v pixloch):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "_Dĺžka (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "Počet _riadkov:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "_Automaticky predĺžiť"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
-"Túto možnosť vyberte pre automatické zväčšenie dĺžky panela, pokiaľ zásuvné "
+"Túto možnosť vyberte pre automatické zväčšenie dĺžky bara, pokiaľ zásuvné "
 "moduly požadujú viac priestoru."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Rozmery"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "D_isplej"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "Š_týl:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "_Alfa:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
-"Hodnota alfa pre pozadie panela. 0 pre plne priehľadný, 100 pre plne "
+"Hodnota alfa pre pozadie bara. 0 pre plne priehľadný, 100 pre plne "
 "nepriehľadný."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "_Farba:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
-msgstr "Vyberte farbu panela"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
+msgstr "Vyberte farbu bara"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_Súbor:"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Vybrať obrázok na pozadí"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Pozadie"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "_Vstup:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "_Opustenie:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
-"Priehľadnosť v okamihu umiestnenia kurzora myši  nad panelom. Hodnota 0 "
+"Priehľadnosť v okamihu umiestnenia kurzora myši  nad barom. Hodnota 0 "
 "znamená plnú priehľadnosť, hodnota 100 plnú nepriehľadnosť."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
-"Priehľadnosť v okamihu umiestnenia kurzora myši mimo panel. Hodnota 0 "
+"Priehľadnosť v okamihu umiestnenia kurzora myši mimo bar. Hodnota 0 "
 "znamená plnú priehľadnosť, hodnota 100 plnú nepriehľadnosť."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "Nepriehľadnosť"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 "Povoliť kompozíciu v správcovi okien pre nastavenie nepriehľadnosti v "
-"paneli."
+"bari."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "_Vzhľad"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "Presunúť práve vybranú položku o jeden riadok hore"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "Presunúť práve vybranú položku o jeden riadok dole"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
-msgstr "Pridá novú položku na tento panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
+msgstr "Pridá novú položku na tento bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "Odstrániť práve vybranú položku"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "Upraviť práve označenú položku"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "Zobraziť údaje o vybranej položke"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "_Položky"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "_Nová hra"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "_Úroveň:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "Začiatočník"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "Stredne pokročilý"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "Skúsený"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "Expert"
 
-#: ../panel/panel-window.c:2660
-msgid "_Lock Panel"
-msgstr "_Zamknúť panel"
+#: ../bar/bar-window.c:2660
+msgid "_Lock Bar"
+msgstr "_Zamknúť bar"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
-msgstr "Vitajte pri prvom spustení panela"
+msgid "Welcome to the first start of the bar"
+msgstr "Vitajte pri prvom spustení bara"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
-"Pretože bol panel presunutý do nového systému uchovania nastavení, bude "
+"Pretože bol bar presunutý do nového systému uchovania nastavení, bude "
 "načítaná nová počiatočná konfigurácia."
 
 #: ../migrate/main.c:127 ../migrate/main.c:136
@@ -669,8 +669,8 @@ msgid "Migrate old config"
 msgstr "Presunúť staré nastavenie"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "Preveďte starú 4.6 konfiguráciu do konfiguračného systému Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "Preveďte starú 4.6 konfiguráciu do konfiguračného systému Blconf"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -681,32 +681,32 @@ msgid "Load the default configuration"
 msgstr "Načítať predvolenú konfiguráciu"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
-msgstr "Jeden prázdny panel"
+msgid "One empty bar"
+msgstr "Jeden prázdny bar"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
-msgstr "Spustí sa s jedným prázdnym panelom"
+msgid "Start with one empty bar"
+msgstr "Spustí sa s jedným prázdnym barom"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
-msgstr "Nepodarilo sa presunúť starú konfiguráciu panela"
+msgid "Failed to migrate the old bar configuration"
+msgstr "Nepodarilo sa presunúť starú konfiguráciu bara"
 
 #: ../migrate/main.c:172
 msgid "Failed to load the default configuration"
 msgstr "Nepodarilo sa načítať predvolenú konfiguráciu"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
-msgstr "Nastavenie panela potrebuje presunúť..."
+msgid "Bar config needs migration..."
+msgstr "Nastavenie bara potrebuje presunúť..."
 
 #: ../migrate/main.c:189
 msgid "Failed to migrate the existing configuration"
-msgstr "Nepodarilo sa presunúť existujúce nastavenie panela"
+msgstr "Nepodarilo sa presunúť existujúce nastavenie bara"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
-msgstr "Nastavenie panela bolo aktualizované."
+msgid "Bar configuration has been updated."
+msgstr "Nastavenie bara bolo aktualizované."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
 #: ../plugins/actions/actions.desktop.in.in.h:1
@@ -887,10 +887,10 @@ msgstr "Zobrazovať všeobecné _názvy aplikácií"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "Vyberte túto možnosť pre zobrazenie všeobecných názvov aplikácií v ponuke, "
-"napríklad  \"Správca súborov\" namiesto \"Thunar\""
+"napríklad  \"Správca súborov\" namiesto \"Fmb\""
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1046,12 +1046,12 @@ msgstr "Formát popiska:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
 msgstr ""
-"Formát dátumu a času, ako bude vložený do panela. Napríklad, %Y bude "
+"Formát dátumu a času, ako bude vložený do bara. Napríklad, %Y bude "
 "nahradené rokom, %m mesiacom a %d zase dňom. Podobne, značky <b></b> urobia "
 "tučný text. Viď stránku „Pomocník” s ďalšími informáciami."
 
@@ -1519,23 +1519,23 @@ msgstr "_Zakázať popisky"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "Vyberte túto možnosť pre zakázanie zobrazovania plávajúcej nápovedy pri "
-"prejdení kurzora myši nad tlačidlo panela alebo položky ponuky."
+"prejdení kurzora myši nad tlačidlo bara alebo položky ponuky."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:22
 msgid "Show _label instead of icon"
 msgstr "Zobraziť _názov namiesto ikony"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
-msgstr "Zobraziť naposledy _použitú položku na paneli"
+msgid "Show last _used item in bar"
+msgstr "Zobraziť naposledy _použitú položku na bari"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
-msgstr "Vyberte túto možnosť pre presun položky ponuky na panel."
+msgid "Select this option to move the clicked menu item to the bar."
+msgstr "Vyberte túto možnosť pre presun položky ponuky na bar."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
 msgid "_Arrow button position:"
@@ -1612,8 +1612,8 @@ msgid "Dots"
 msgstr "Bodky"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
-msgstr "Pridá oddeľovač alebo medzeru medzi položkami panela"
+msgid "Adds a separator or space between bar items"
+msgstr "Pridá oddeľovač alebo medzeru medzi položkami bara"
 
 #: ../plugins/showdesktop/showdesktop.c:210
 msgid "Restore the minimized windows"

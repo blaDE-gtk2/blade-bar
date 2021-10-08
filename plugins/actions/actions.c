@@ -22,15 +22,15 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <exo/exo.h>
+#include <libbladebar/libbladebar.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladeui/libbladeui.h>
+#include <blxo/blxo.h>
 #include <dbus/dbus-glib.h>
 
-#include <common/panel-private.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
+#include <common/bar-private.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
 
 #include "actions.h"
 #include "actions-dialog_ui.h"
@@ -50,13 +50,13 @@ static void       actions_plugin_set_property        (GObject               *obj
                                                       guint                  prop_id,
                                                       const GValue          *value,
                                                       GParamSpec            *pspec);
-static void       actions_plugin_construct           (XfcePanelPlugin       *panel_plugin);
-static void       actions_plugin_free_data           (XfcePanelPlugin       *panel_plugin);
-static gboolean   actions_plugin_size_changed        (XfcePanelPlugin       *panel_plugin,
+static void       actions_plugin_construct           (BladeBarPlugin       *bar_plugin);
+static void       actions_plugin_free_data           (BladeBarPlugin       *bar_plugin);
+static gboolean   actions_plugin_size_changed        (BladeBarPlugin       *bar_plugin,
                                                       gint                   size);
-static void       actions_plugin_configure_plugin    (XfcePanelPlugin       *panel_plugin);
-static void       actions_plugin_mode_changed        (XfcePanelPlugin       *panel_plugin,
-                                                      XfcePanelPluginMode    mode);
+static void       actions_plugin_configure_plugin    (BladeBarPlugin       *bar_plugin);
+static void       actions_plugin_mode_changed        (BladeBarPlugin       *bar_plugin,
+                                                      BladeBarPluginMode    mode);
 static void       actions_plugin_pack                (ActionsPlugin         *plugin);
 static GPtrArray *actions_plugin_default_array       (void);
 static void       actions_plugin_menu                (GtkWidget             *button,
@@ -90,12 +90,12 @@ enum
 
 struct _ActionsPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _ActionsPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   AppearanceType  type;
   GPtrArray      *items;
@@ -212,7 +212,7 @@ static ActionEntry action_entries[] =
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN (ActionsPlugin, actions_plugin)
+BLADE_BAR_DEFINE_PLUGIN (ActionsPlugin, actions_plugin)
 
 
 
@@ -224,14 +224,14 @@ static GQuark      action_quark = 0;
 static void
 actions_plugin_class_init (ActionsPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
   GObjectClass         *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->set_property = actions_plugin_set_property;
   gobject_class->get_property = actions_plugin_get_property;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = actions_plugin_construct;
   plugin_class->free_data = actions_plugin_free_data;
   plugin_class->size_changed = actions_plugin_size_changed;
@@ -242,8 +242,8 @@ actions_plugin_class_init (ActionsPluginClass *klass)
                                    PROP_ITEMS,
                                    g_param_spec_boxed ("items",
                                                        NULL, NULL,
-                                                       PANEL_PROPERTIES_TYPE_VALUE_ARRAY,
-                                                       EXO_PARAM_READWRITE));
+                                                       BAR_PROPERTIES_TYPE_VALUE_ARRAY,
+                                                       BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_APPEARANCE,
@@ -252,29 +252,29 @@ actions_plugin_class_init (ActionsPluginClass *klass)
                                                       APPEARANCE_TYPE_BUTTONS,
                                                       APPEARANCE_TYPE_MENU,
                                                       APPEARANCE_TYPE_MENU,
-                                                      EXO_PARAM_READWRITE));
+                                                      BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_INVERT_ORIENTATION,
                                    g_param_spec_boolean ("invert-orientation",
                                                          NULL, NULL,
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_ASK_CONFIRMATION,
                                    g_param_spec_boolean ("ask-confirmation",
                                                          NULL, NULL,
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
-  menu_icon_size = gtk_icon_size_from_name ("panel-actions-menu");
+  menu_icon_size = gtk_icon_size_from_name ("bar-actions-menu");
   if (menu_icon_size == GTK_ICON_SIZE_INVALID)
-    menu_icon_size = gtk_icon_size_register ("panel-actions-menu",
+    menu_icon_size = gtk_icon_size_register ("bar-actions-menu",
                                              DEFAULT_ICON_SIZE,
                                              DEFAULT_ICON_SIZE);
 
-  action_quark = g_quark_from_string ("panel-action-quark");
+  action_quark = g_quark_from_string ("bar-action-quark");
 }
 
 
@@ -335,7 +335,7 @@ actions_plugin_set_property (GObject      *object,
     {
     case PROP_ITEMS:
       if (plugin->items != NULL)
-        xfconf_array_free (plugin->items);
+        blconf_array_free (plugin->items);
       plugin->items = g_value_dup_boxed (value);
       actions_plugin_pack (plugin);
       break;
@@ -363,12 +363,12 @@ actions_plugin_set_property (GObject      *object,
 
 
 static void
-actions_plugin_construct (XfcePanelPlugin *panel_plugin)
+actions_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  ActionsPlugin       *plugin = XFCE_ACTIONS_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  ActionsPlugin       *plugin = XFCE_ACTIONS_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
-    { "items", PANEL_PROPERTIES_TYPE_VALUE_ARRAY },
+    { "items", BAR_PROPERTIES_TYPE_VALUE_ARRAY },
     { "appearance", G_TYPE_UINT },
     { "invert-orientation", G_TYPE_BOOLEAN },
     { "ask-confirmation", G_TYPE_BOOLEAN },
@@ -376,32 +376,32 @@ actions_plugin_construct (XfcePanelPlugin *panel_plugin)
   };
 
   /* show the properties dialog */
-  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+  blade_bar_plugin_menu_show_configure (BLADE_BAR_PLUGIN (plugin));
 
   /* bind all properties */
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   actions_plugin_pack (plugin);
 
   /* set orientation and size */
-  actions_plugin_mode_changed (panel_plugin,
-      xfce_panel_plugin_get_mode (panel_plugin));
+  actions_plugin_mode_changed (bar_plugin,
+      blade_bar_plugin_get_mode (bar_plugin));
 }
 
 
 
 static void
-actions_plugin_free_data (XfcePanelPlugin *panel_plugin)
+actions_plugin_free_data (BladeBarPlugin *bar_plugin)
 {
-  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (panel_plugin);
+  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (bar_plugin);
 
   if (plugin->pack_idle_id != 0)
     g_source_remove (plugin->pack_idle_id);
 
   if (plugin->items != NULL)
-    xfconf_array_free (plugin->items);
+    blconf_array_free (plugin->items);
 
   if (plugin->menu != NULL)
     gtk_widget_destroy (plugin->menu);
@@ -422,10 +422,10 @@ actions_plugin_size_changed_child (GtkWidget *child,
 
 
 static gboolean
-actions_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+actions_plugin_size_changed (BladeBarPlugin *bar_plugin,
                              gint             size)
 {
-  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (panel_plugin);
+  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (bar_plugin);
   GtkWidget     *box;
   GList         *children, *li;
   gint           n_children;
@@ -434,12 +434,12 @@ actions_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
   if (plugin->type == APPEARANCE_TYPE_BUTTONS)
     {
-      max_size = size / xfce_panel_plugin_get_nrows (panel_plugin);
+      max_size = size / blade_bar_plugin_get_nrows (bar_plugin);
       box = gtk_bin_get_child (GTK_BIN (plugin));
       if (box != NULL)
         {
           if (plugin->invert_orientation !=
-              (xfce_panel_plugin_get_mode (panel_plugin) == XFCE_PANEL_PLUGIN_MODE_DESKBAR))
+              (blade_bar_plugin_get_mode (bar_plugin) == BLADE_BAR_PLUGIN_MODE_DESKBAR))
             {
               children = gtk_container_get_children (GTK_CONTAINER (box));
               if (G_UNLIKELY (children == NULL))
@@ -483,7 +483,7 @@ actions_plugin_configure_store (gpointer data)
   gchar          save_name[32];
 
   model = g_object_get_data (G_OBJECT (plugin), "items-store");
-  panel_return_val_if_fail (GTK_IS_LIST_STORE (model), FALSE);
+  bar_return_val_if_fail (GTK_IS_LIST_STORE (model), FALSE);
 
   array = g_ptr_array_new ();
 
@@ -510,7 +510,7 @@ actions_plugin_configure_store (gpointer data)
 
   /* Store the new array */
   if (plugin->items != NULL)
-    xfconf_array_free (plugin->items);
+    blconf_array_free (plugin->items);
   plugin->items = array;
   g_object_notify (G_OBJECT (plugin), "items");
 
@@ -536,10 +536,10 @@ actions_plugin_configure_visible_toggled (GtkCellRendererToggle *renderer,
   gboolean      visible;
   GtkTreeModel *model;
 
-  panel_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
 
   model = g_object_get_data (G_OBJECT (plugin), "items-store");
-  panel_return_if_fail (GTK_IS_LIST_STORE (model));
+  bar_return_if_fail (GTK_IS_LIST_STORE (model));
   if (gtk_tree_model_get_iter_from_string (model, &iter, path_string))
     {
       gtk_tree_model_get (model, &iter, COLUMN_VISIBLE, &visible, -1);
@@ -567,9 +567,9 @@ actions_plugin_lookup_entry (const gchar *name)
 
 
 static void
-actions_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+actions_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (panel_plugin);
+  ActionsPlugin *plugin = XFCE_ACTIONS_PLUGIN (bar_plugin);
   GtkBuilder    *builder;
   GObject       *dialog;
   GObject       *object;
@@ -585,36 +585,36 @@ actions_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
   gchar         *sep_str;
   const gchar   *display_name;
 
-  panel_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
-  panel_return_if_fail (plugin->items != NULL);
+  bar_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
+  bar_return_if_fail (plugin->items != NULL);
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, actions_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, actions_dialog_ui,
                                      actions_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
 
   combo = gtk_builder_get_object (builder, "combo-mode");
-  exo_mutual_binding_new (G_OBJECT (plugin), "appearance",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "appearance",
                           G_OBJECT (combo), "active");
 
   object = gtk_builder_get_object (builder, "invert-orientation");
-  exo_mutual_binding_new (G_OBJECT (plugin), "invert-orientation",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "invert-orientation",
                           G_OBJECT (object), "active");
-  exo_binding_new_with_negation (G_OBJECT (combo), "active",
+  blxo_binding_new_with_negation (G_OBJECT (combo), "active",
                                  G_OBJECT (object), "sensitive");
 
   object = gtk_builder_get_object (builder, "confirmation-dialog");
-  exo_mutual_binding_new (G_OBJECT (plugin), "ask-confirmation",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "ask-confirmation",
                           G_OBJECT (object), "active");
 
   store = gtk_builder_get_object (builder, "items-store");
-  panel_return_if_fail (GTK_IS_LIST_STORE (store));
+  bar_return_if_fail (GTK_IS_LIST_STORE (store));
   g_object_set_data (G_OBJECT (plugin), "items-store", store);
 
   object = gtk_builder_get_object (builder, "visible-toggle");
-  panel_return_if_fail (GTK_IS_CELL_RENDERER_TOGGLE (object));
+  bar_return_if_fail (GTK_IS_CELL_RENDERER_TOGGLE (object));
   g_signal_connect (G_OBJECT (object), "toggled",
       G_CALLBACK (actions_plugin_configure_visible_toggled), plugin);
 
@@ -626,7 +626,7 @@ actions_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
       /* get the value and check if it is within range */
       val = g_ptr_array_index (plugin->items, i);
       name = g_value_get_string (val);
-      if (exo_str_is_empty (name))
+      if (blxo_str_is_empty (name))
         continue;
 
       /* find the entry in the available actions */
@@ -689,10 +689,10 @@ actions_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
 
 
 static void
-actions_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
-                             XfcePanelPluginMode  mode)
+actions_plugin_mode_changed (BladeBarPlugin     *bar_plugin,
+                             BladeBarPluginMode  mode)
 {
-  actions_plugin_pack (XFCE_ACTIONS_PLUGIN (panel_plugin));
+  actions_plugin_pack (XFCE_ACTIONS_PLUGIN (bar_plugin));
 }
 
 
@@ -702,7 +702,7 @@ actions_plugin_action_confirmation_time (gpointer data)
 {
   ActionTimeout *timeout = data;
 
-  panel_return_val_if_fail (timeout->entry != NULL, FALSE);
+  bar_return_val_if_fail (timeout->entry != NULL, FALSE);
 
   if (timeout->time_left == 0)
     {
@@ -736,8 +736,8 @@ actions_plugin_action_confirmation (ActionsPlugin *plugin,
   ActionTimeout *timeout;
   guint          timeout_id;
 
-  panel_return_val_if_fail (entry->question != NULL, FALSE);
-  panel_return_val_if_fail (entry->status != NULL, FALSE);
+  bar_return_val_if_fail (entry->question != NULL, FALSE);
+  bar_return_val_if_fail (entry->status != NULL, FALSE);
 
   dialog = gtk_message_dialog_new (NULL, 0,
                                    GTK_MESSAGE_QUESTION, GTK_BUTTONS_CANCEL,
@@ -781,9 +781,9 @@ static DBusGProxy *
 actions_plugin_action_dbus_proxy_session (DBusGConnection *conn)
 {
   return dbus_g_proxy_new_for_name (conn,
-                                    "org.xfce.SessionManager",
-                                    "/org/xfce/SessionManager",
-                                    "org.xfce.Session.Manager");
+                                    "org.blade.SessionManager",
+                                    "/org/blade/SessionManager",
+                                    "org.blade.Session.Manager");
 }
 
 
@@ -862,12 +862,12 @@ actions_plugin_actions_allowed (void)
   /* check for commands we use */
   path = g_find_program_in_path ("gdmflexiserver");
   if (path != NULL)
-    PANEL_SET_FLAG (allow_mask, ACTION_TYPE_SWITCH_USER);
+    BAR_SET_FLAG (allow_mask, ACTION_TYPE_SWITCH_USER);
   g_free (path);
 
   path = g_find_program_in_path ("xflock4");
   if (path != NULL)
-    PANEL_SET_FLAG (allow_mask, ACTION_TYPE_LOCK_SCREEN);
+    BAR_SET_FLAG (allow_mask, ACTION_TYPE_LOCK_SCREEN);
   g_free (path);
 
   /* session bus for querying the managers */
@@ -879,19 +879,19 @@ actions_plugin_actions_allowed (void)
       if (G_LIKELY (proxy != NULL))
         {
           /* when xfce4-session is connected, we can logout */
-          PANEL_SET_FLAG (allow_mask, ACTION_TYPE_LOGOUT | ACTION_TYPE_LOGOUT_DIALOG);
+          BAR_SET_FLAG (allow_mask, ACTION_TYPE_LOGOUT | ACTION_TYPE_LOGOUT_DIALOG);
 
           if (actions_plugin_action_dbus_can (proxy, "CanShutdown"))
-            PANEL_SET_FLAG (allow_mask, ACTION_TYPE_SHUTDOWN);
+            BAR_SET_FLAG (allow_mask, ACTION_TYPE_SHUTDOWN);
 
           if (actions_plugin_action_dbus_can (proxy, "CanRestart"))
-            PANEL_SET_FLAG (allow_mask, ACTION_TYPE_RESTART);
+            BAR_SET_FLAG (allow_mask, ACTION_TYPE_RESTART);
         
           if (actions_plugin_action_dbus_can (proxy, "CanSuspend"))
-            PANEL_SET_FLAG (allow_mask, ACTION_TYPE_SUSPEND);
+            BAR_SET_FLAG (allow_mask, ACTION_TYPE_SUSPEND);
           
           if (actions_plugin_action_dbus_can (proxy, "CanHibernate"))
-            PANEL_SET_FLAG (allow_mask, ACTION_TYPE_HIBERNATE);
+            BAR_SET_FLAG (allow_mask, ACTION_TYPE_HIBERNATE);
 
           g_object_unref (G_OBJECT (proxy));
         }
@@ -915,11 +915,11 @@ actions_plugin_action_activate (GtkWidget      *widget,
   gboolean       unattended = FALSE;
   GError        *error = NULL;
   gboolean       succeed = FALSE;
-  XfconfChannel *channel;
+  BlconfChannel *channel;
   gboolean       allow_save;
 
   entry = g_object_get_qdata (G_OBJECT (widget), action_quark);
-  panel_return_if_fail (entry != NULL);
+  bar_return_if_fail (entry != NULL);
 
   if (plugin->ask_confirmation
       && entry->question != NULL
@@ -927,8 +927,8 @@ actions_plugin_action_activate (GtkWidget      *widget,
       && !actions_plugin_action_confirmation (plugin, entry, &unattended))
     return;
 
-  channel = xfconf_channel_get ("xfce4-session");
-  allow_save = xfconf_channel_get_bool (channel, "/general/SaveOnExit", FALSE);
+  channel = blconf_channel_get ("xfce4-session");
+  allow_save = blconf_channel_get_bool (channel, "/general/SaveOnExit", FALSE);
   /* unattended shutdown, don't save the session to avoid blocking the logout */
   allow_save = allow_save && !unattended;
 
@@ -973,7 +973,7 @@ actions_plugin_action_activate (GtkWidget      *widget,
       break;
 
     default:
-      panel_assert_not_reached ();
+      bar_assert_not_reached ();
       return;
     }
 
@@ -1014,19 +1014,19 @@ actions_plugin_action_button (ActionsPlugin  *plugin,
     }
   else
     {
-      widget = xfce_panel_create_button ();
+      widget = blade_bar_create_button ();
       gtk_button_set_relief (GTK_BUTTON (widget), GTK_RELIEF_NONE);
       g_object_set_qdata (G_OBJECT (widget), action_quark, entry);
       gtk_widget_set_tooltip_text (widget, _(entry->display_name));
       g_signal_connect (G_OBJECT (widget), "clicked",
           G_CALLBACK (actions_plugin_action_activate), plugin);
 
-      image = xfce_panel_image_new_from_source (entry->icon_name);
+      image = blade_bar_image_new_from_source (entry->icon_name);
       gtk_container_add (GTK_CONTAINER (widget), image);
       gtk_widget_show (image);
     }
 
-  xfce_panel_plugin_add_action_widget (XFCE_PANEL_PLUGIN (plugin), widget);
+  blade_bar_plugin_add_action_widget (BLADE_BAR_PLUGIN (plugin), widget);
 
   return widget;
 }
@@ -1061,8 +1061,8 @@ actions_plugin_action_menu_item (ActionsPlugin *plugin,
 
   if (size > 0)
     {
-      image = xfce_panel_image_new_from_source (entry->icon_name);
-      xfce_panel_image_set_size (XFCE_PANEL_IMAGE (image), size);
+      image = blade_bar_image_new_from_source (entry->icon_name);
+      blade_bar_image_set_size (BLADE_BAR_IMAGE (image), size);
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
       gtk_widget_show (image);
     }
@@ -1088,7 +1088,7 @@ actions_plugin_pack_idle (gpointer data)
   GtkOrientation       orientation;
   ActionType           allowed_types;
   ActionType           type;
-  XfcePanelPluginMode  mode;
+  BladeBarPluginMode  mode;
 
   child = gtk_bin_get_child (GTK_BIN (plugin));
   if (child != NULL)
@@ -1104,7 +1104,7 @@ actions_plugin_pack_idle (gpointer data)
 
   if (plugin->type == APPEARANCE_TYPE_BUTTONS)
     {
-      if (xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin)) == XFCE_PANEL_PLUGIN_MODE_VERTICAL)
+      if (blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin)) == BLADE_BAR_PLUGIN_MODE_VERTICAL)
         orientation = GTK_ORIENTATION_VERTICAL;
       else
         orientation = GTK_ORIENTATION_HORIZONTAL;
@@ -1125,7 +1125,7 @@ actions_plugin_pack_idle (gpointer data)
           /* skip separators when packing buttons in the opposite
            * orientation */
           if (plugin->invert_orientation !=
-              (xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin)) == XFCE_PANEL_PLUGIN_MODE_DESKBAR)
+              (blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin)) == BLADE_BAR_PLUGIN_MODE_DESKBAR)
               && g_strcmp0 (name + 1, "separator") == 0)
             continue;
 
@@ -1133,23 +1133,23 @@ actions_plugin_pack_idle (gpointer data)
           if (widget != NULL)
             {
               gtk_box_pack_start (GTK_BOX (box), widget, FALSE, FALSE, 0);
-              gtk_widget_set_sensitive (widget, PANEL_HAS_FLAG (allowed_types, type));
+              gtk_widget_set_sensitive (widget, BAR_HAS_FLAG (allowed_types, type));
               gtk_widget_show (widget);
             }
         }
 
-      actions_plugin_size_changed (XFCE_PANEL_PLUGIN (plugin),
-          xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin)));
+      actions_plugin_size_changed (BLADE_BAR_PLUGIN (plugin),
+          blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin)));
     }
   else
     {
       /* get a decent username, not the glib defaults */
       username = g_get_real_name ();
-      if (exo_str_is_empty (username)
+      if (blxo_str_is_empty (username)
           || strcmp (username, "Unknown") == 0)
         {
           username = g_get_user_name ();
-          if (exo_str_is_empty (username)
+          if (blxo_str_is_empty (username)
               || strcmp (username, "somebody") == 0)
             username = _("John Doe");
         }
@@ -1157,7 +1157,7 @@ actions_plugin_pack_idle (gpointer data)
       button = xfce_arrow_button_new (GTK_ARROW_NONE);
       gtk_widget_set_name (button, "actions-button");
       gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-      xfce_panel_plugin_add_action_widget (XFCE_PANEL_PLUGIN (plugin), button);
+      blade_bar_plugin_add_action_widget (BLADE_BAR_PLUGIN (plugin), button);
       gtk_container_add (GTK_CONTAINER (plugin), button);
       g_signal_connect (G_OBJECT (button), "toggled",
           G_CALLBACK (actions_plugin_menu), plugin);
@@ -1165,9 +1165,9 @@ actions_plugin_pack_idle (gpointer data)
 
       label = gtk_label_new (username);
       gtk_container_add (GTK_CONTAINER (button), label);
-      mode = xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin));
+      mode = blade_bar_plugin_get_mode (BLADE_BAR_PLUGIN (plugin));
       gtk_label_set_angle (GTK_LABEL (label),
-          (mode == XFCE_PANEL_PLUGIN_MODE_VERTICAL) ? 270 : 0);
+          (mode == BLADE_BAR_PLUGIN_MODE_VERTICAL) ? 270 : 0);
       gtk_widget_show (label);
     }
 
@@ -1234,8 +1234,8 @@ static void
 actions_plugin_menu_deactivate (GtkWidget *menu,
                                 GtkWidget *button)
 {
-  panel_return_if_fail (button == NULL || GTK_IS_TOGGLE_BUTTON (button));
-  panel_return_if_fail (GTK_IS_MENU (menu));
+  bar_return_if_fail (button == NULL || GTK_IS_TOGGLE_BUTTON (button));
+  bar_return_if_fail (GTK_IS_MENU (menu));
 
   /* button is NULL when we popup the menu under the cursor position */
   if (button != NULL)
@@ -1258,8 +1258,8 @@ actions_plugin_menu (GtkWidget     *button,
   ActionType    type;
   ActionType    allowed_types;
 
-  panel_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
-  panel_return_if_fail (button != NULL);
+  bar_return_if_fail (XFCE_IS_ACTIONS_PLUGIN (plugin));
+  bar_return_if_fail (button != NULL);
 
   /* do not popup the menu if the button is being toggled off */
   if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
@@ -1289,13 +1289,13 @@ actions_plugin_menu (GtkWidget     *button,
           if (mi != NULL)
             {
               gtk_menu_shell_append (GTK_MENU_SHELL (plugin->menu), mi);
-              gtk_widget_set_sensitive (mi, PANEL_HAS_FLAG (allowed_types, type));
+              gtk_widget_set_sensitive (mi, BAR_HAS_FLAG (allowed_types, type));
               gtk_widget_show (mi);
             }
         }
     }
 
   gtk_menu_popup (GTK_MENU (plugin->menu), NULL, NULL,
-                  button != NULL ? xfce_panel_plugin_position_menu : NULL,
+                  button != NULL ? blade_bar_plugin_position_menu : NULL,
                   plugin, 1, gtk_get_current_event_time ());
 }

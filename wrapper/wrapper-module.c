@@ -24,7 +24,7 @@
 #include <string.h>
 #endif
 
-#include <common/panel-private.h>
+#include <common/bar-private.h>
 #include <wrapper/wrapper-module.h>
 
 
@@ -130,13 +130,13 @@ wrapper_module_new_provider (WrapperModule  *module,
   PluginInitFunc       init_func;
   GType                type;
 
-  panel_return_val_if_fail (WRAPPER_IS_MODULE (module), NULL);
-  panel_return_val_if_fail (module->library != NULL, NULL);
+  bar_return_val_if_fail (WRAPPER_IS_MODULE (module), NULL);
+  bar_return_val_if_fail (module->library != NULL, NULL);
 
   g_type_module_use (G_TYPE_MODULE (module));
 
   /* try to link the contruct or init function */
-  if (g_module_symbol (module->library, "xfce_panel_module_init",
+  if (g_module_symbol (module->library, "blade_bar_module_init",
       (gpointer) &init_func) && init_func != NULL)
     {
       /* initialize the plugin */
@@ -150,10 +150,10 @@ wrapper_module_new_provider (WrapperModule  *module,
                              "comment", comment,
                              "arguments", arguments, NULL);
     }
-  else if (g_module_symbol (module->library, "xfce_panel_module_construct",
+  else if (g_module_symbol (module->library, "blade_bar_module_construct",
            (gpointer) &construct_func) && construct_func != NULL)
     {
-      /* create a new panel plugin */
+      /* create a new bar plugin */
       plugin = (*construct_func) (name, unique_id,
                                   display_name, comment,
                                   arguments, screen);

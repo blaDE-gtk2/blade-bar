@@ -22,14 +22,14 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4panel/xfce-panel-plugin-provider.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <common/panel-private.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
-#include <exo/exo.h>
+#include <libbladebar/libbladebar.h>
+#include <libbladebar/blade-bar-plugin-provider.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladeui/libbladeui.h>
+#include <common/bar-private.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
+#include <blxo/blxo.h>
 
 #include "separator.h"
 #include "separator-dialog_ui.h"
@@ -51,11 +51,11 @@ static void     separator_plugin_set_property              (GObject             
                                                             GParamSpec            *pspec);
 static gboolean separator_plugin_expose_event              (GtkWidget             *widget,
                                                             GdkEventExpose        *event);
-static void     separator_plugin_construct                 (XfcePanelPlugin       *panel_plugin);
-static gboolean separator_plugin_size_changed              (XfcePanelPlugin       *panel_plugin,
+static void     separator_plugin_construct                 (BladeBarPlugin       *bar_plugin);
+static gboolean separator_plugin_size_changed              (BladeBarPlugin       *bar_plugin,
                                                             gint                   size);
-static void     separator_plugin_configure_plugin          (XfcePanelPlugin       *panel_plugin);
-static void     separator_plugin_orientation_changed       (XfcePanelPlugin       *panel_plugin,
+static void     separator_plugin_configure_plugin          (BladeBarPlugin       *bar_plugin);
+static void     separator_plugin_orientation_changed       (BladeBarPlugin       *bar_plugin,
                                                             GtkOrientation         orientation);
 
 
@@ -77,13 +77,13 @@ enum _SeparatorPluginStyle
 struct _SeparatorPluginClass
 {
   /* parent class */
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _SeparatorPlugin
 {
   /* parent type */
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   /* separator style */
   SeparatorPluginStyle  style;
@@ -108,14 +108,14 @@ static const gchar bits[3][6] =
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN (SeparatorPlugin, separator_plugin)
+BLADE_BAR_DEFINE_PLUGIN (SeparatorPlugin, separator_plugin)
 
 
 
 static void
 separator_plugin_class_init (SeparatorPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
   GObjectClass         *gobject_class;
   GtkWidgetClass       *widget_class;
 
@@ -126,7 +126,7 @@ separator_plugin_class_init (SeparatorPluginClass *klass)
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->expose_event = separator_plugin_expose_event;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = separator_plugin_construct;
   plugin_class->size_changed = separator_plugin_size_changed;
   plugin_class->configure_plugin = separator_plugin_configure_plugin;
@@ -139,14 +139,14 @@ separator_plugin_class_init (SeparatorPluginClass *klass)
                                                       SEPARATOR_PLUGIN_STYLE_MIN,
                                                       SEPARATOR_PLUGIN_STYLE_MAX,
                                                       SEPARATOR_PLUGIN_STYLE_DEFAULT,
-                                                      EXO_PARAM_READWRITE));
+                                                      BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_EXPAND,
                                    g_param_spec_boolean ("expand",
                                                          NULL, NULL,
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 }
 
 
@@ -175,7 +175,7 @@ separator_plugin_get_property (GObject    *object,
       break;
 
     case PROP_EXPAND:
-      expand = xfce_panel_plugin_get_expand (XFCE_PANEL_PLUGIN (plugin));
+      expand = blade_bar_plugin_get_expand (BLADE_BAR_PLUGIN (plugin));
       g_value_set_boolean (value, expand);
       break;
 
@@ -208,7 +208,7 @@ separator_plugin_set_property (GObject      *object,
       break;
 
     case PROP_EXPAND:
-      xfce_panel_plugin_set_expand (XFCE_PANEL_PLUGIN (plugin),
+      blade_bar_plugin_set_expand (BLADE_BAR_PLUGIN (plugin),
                                     g_value_get_boolean (value));
       break;
 
@@ -241,7 +241,7 @@ separator_plugin_expose_event (GtkWidget      *widget,
       break;
 
     case SEPARATOR_PLUGIN_STYLE_SEPARATOR:
-      if (xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin)) ==
+      if (blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin)) ==
           GTK_ORIENTATION_HORIZONTAL)
         {
           gtk_paint_vline (widget->style,
@@ -276,13 +276,13 @@ separator_plugin_expose_event (GtkWidget      *widget,
                         alloc->x, alloc->y,
                         alloc->width,
                         alloc->height,
-                        xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin)) ==
+                        blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin)) ==
                             GTK_ORIENTATION_HORIZONTAL ? GTK_ORIENTATION_VERTICAL
                             : GTK_ORIENTATION_HORIZONTAL);
       break;
 
     case SEPARATOR_PLUGIN_STYLE_DOTS:
-      if (xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin)) ==
+      if (blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin)) ==
           GTK_ORIENTATION_HORIZONTAL)
         {
           rows = MAX (alloc->height / DOTS_SIZE, 1);
@@ -336,10 +336,10 @@ separator_plugin_expose_event (GtkWidget      *widget,
 
 
 static void
-separator_plugin_construct (XfcePanelPlugin *panel_plugin)
+separator_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  SeparatorPlugin     *plugin = XFCE_SEPARATOR_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  SeparatorPlugin     *plugin = XFCE_SEPARATOR_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
     { "style", G_TYPE_UINT },
     { "expand", G_TYPE_BOOLEAN },
@@ -347,31 +347,31 @@ separator_plugin_construct (XfcePanelPlugin *panel_plugin)
   };
 
   /* show the properties dialog */
-  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+  blade_bar_plugin_menu_show_configure (BLADE_BAR_PLUGIN (plugin));
 
   /* connect all properties */
-  PANEL_UTILS_LINK_4UI
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  BAR_UTILS_LINK_4UI
+  bar_properties_bind (NULL, G_OBJECT (plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   /* make sure the plugin is drawn */
-  gtk_widget_queue_draw (GTK_WIDGET (panel_plugin));
+  gtk_widget_queue_draw (GTK_WIDGET (bar_plugin));
 }
 
 
 
 static gboolean
-separator_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+separator_plugin_size_changed (BladeBarPlugin *bar_plugin,
                                gint             size)
 {
   /* set the minimum separator size */
-  if (xfce_panel_plugin_get_orientation (panel_plugin) ==
+  if (blade_bar_plugin_get_orientation (bar_plugin) ==
       GTK_ORIENTATION_HORIZONTAL)
-    gtk_widget_set_size_request (GTK_WIDGET (panel_plugin),
+    gtk_widget_set_size_request (GTK_WIDGET (bar_plugin),
                                  SEPARATOR_SIZE, size);
   else
-    gtk_widget_set_size_request (GTK_WIDGET (panel_plugin),
+    gtk_widget_set_size_request (GTK_WIDGET (bar_plugin),
                                  size, SEPARATOR_SIZE);
 
   return TRUE;
@@ -380,27 +380,27 @@ separator_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-separator_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+separator_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  SeparatorPlugin *plugin = XFCE_SEPARATOR_PLUGIN (panel_plugin);
+  SeparatorPlugin *plugin = XFCE_SEPARATOR_PLUGIN (bar_plugin);
   GtkBuilder      *builder;
   GObject         *dialog;
   GObject         *style, *expand;
 
-  panel_return_if_fail (XFCE_IS_SEPARATOR_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SEPARATOR_PLUGIN (plugin));
 
   /* setup the dialog */
-  builder = panel_utils_builder_new (panel_plugin, separator_dialog_ui,
+  builder = bar_utils_builder_new (bar_plugin, separator_dialog_ui,
                                      separator_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
 
   style = gtk_builder_get_object (builder, "style");
-  exo_mutual_binding_new (G_OBJECT (plugin), "style",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "style",
                           G_OBJECT (style), "active");
 
   expand = gtk_builder_get_object (builder, "expand");
-  exo_mutual_binding_new (G_OBJECT (plugin), "expand",
+  blxo_mutual_binding_new (G_OBJECT (plugin), "expand",
                           G_OBJECT (expand), "active");
 
   gtk_widget_show (GTK_WIDGET (dialog));
@@ -409,10 +409,10 @@ separator_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
 
 
 static void
-separator_plugin_orientation_changed (XfcePanelPlugin *panel_plugin,
+separator_plugin_orientation_changed (BladeBarPlugin *bar_plugin,
                                       GtkOrientation   orientation)
 {
   /* for a size change to set the widget size request properly */
-  separator_plugin_size_changed (panel_plugin,
-                                 xfce_panel_plugin_get_size (panel_plugin));
+  separator_plugin_size_changed (bar_plugin,
+                                 blade_bar_plugin_get_size (bar_plugin));
 }

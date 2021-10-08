@@ -36,7 +36,7 @@ typedef struct _SystrayBox      SystrayBox;
 
 GType      systray_box_get_type        (void) G_GNUC_CONST;
 
-void       systray_box_register_type   (XfcePanelTypeModule *module);
+void       systray_box_register_type   (BladeBarTypeModule *module);
 
 GtkWidget *systray_box_new             (void) G_GNUC_MALLOC;
 

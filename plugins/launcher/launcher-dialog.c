@@ -24,16 +24,16 @@
 #include <string.h>
 #endif
 
-#include <exo/exo.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4util/libxfce4util.h>
-#include <garcon/garcon.h>
-#include <xfconf/xfconf.h>
+#include <blxo/blxo.h>
+#include <libbladeui/libbladeui.h>
+#include <libbladeutil/libbladeutil.h>
+#include <pojk/pojk.h>
+#include <blconf/blconf.h>
 #include <gio/gio.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <common/panel-private.h>
-#include <common/panel-utils.h>
+#include <common/bar-private.h>
+#include <common/bar-utils.h>
 
 #include "launcher.h"
 #include "launcher-dialog.h"
@@ -60,7 +60,7 @@ LauncherPluginDialog;
 typedef struct
 {
   LauncherPluginDialog *dialog;
-  GarconMenuItem       *item;
+  PojkMenuItem       *item;
 }
 LauncherChangedHandler;
 
@@ -77,7 +77,7 @@ enum
 
 static void     launcher_dialog_items_set_item         (GtkTreeModel         *model,
                                                         GtkTreeIter          *iter,
-                                                        GarconMenuItem       *item,
+                                                        PojkMenuItem       *item,
                                                         LauncherPluginDialog *dialog);
 static void     launcher_dialog_tree_save              (LauncherPluginDialog *dialog);
 static void     launcher_dialog_tree_selection_changed (GtkTreeSelection     *selection,
@@ -132,7 +132,7 @@ launcher_dialog_add_visible_function (GtkTreeModel *model,
 
   /* get the search string from the item */
   text = gtk_entry_get_text (GTK_ENTRY (user_data));
-  if (G_UNLIKELY (exo_str_is_empty (text)))
+  if (G_UNLIKELY (blxo_str_is_empty (text)))
     return TRUE;
 
   /* casefold the search text */
@@ -142,7 +142,7 @@ launcher_dialog_add_visible_function (GtkTreeModel *model,
 
   /* try the pre-build search string first */
   gtk_tree_model_get (model, iter, COL_SEARCH, &string, -1);
-  if (!exo_str_is_empty (string))
+  if (!blxo_str_is_empty (string))
     {
       /* search */
       visible = (strstr (string, text_casefolded) != NULL);
@@ -151,7 +151,7 @@ launcher_dialog_add_visible_function (GtkTreeModel *model,
     {
       /* get the name */
       gtk_tree_model_get (model, iter, COL_NAME, &string, -1);
-      if (!exo_str_is_empty (string))
+      if (!blxo_str_is_empty (string))
         {
           /* escape and casefold the name */
           escaped = g_markup_escape_text (string, -1);
@@ -185,11 +185,11 @@ launcher_dialog_add_store_insert (gpointer key,
                                   gpointer user_data)
 {
   GtkTreeIter     iter;
-  GarconMenuItem *item = GARCON_MENU_ITEM (value);
+  PojkMenuItem *item = POJK_MENU_ITEM (value);
   GtkTreeModel   *model = GTK_TREE_MODEL (user_data);
 
-  panel_return_if_fail (GARCON_IS_MENU_ITEM (item));
-  panel_return_if_fail (GTK_IS_LIST_STORE (model));
+  bar_return_if_fail (POJK_IS_MENU_ITEM (item));
+  bar_return_if_fail (GTK_IS_LIST_STORE (model));
 
   gtk_list_store_append (GTK_LIST_STORE (model), &iter);
   launcher_dialog_items_set_item (model, &iter, item, NULL);
@@ -204,12 +204,12 @@ launcher_dialog_add_populate_model_idle (gpointer user_data)
   GObject              *store;
   GHashTable           *pool;
 
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
 
   GDK_THREADS_ENTER ();
 
   /* load the item pool */
-  pool = launcher_plugin_garcon_menu_pool ();
+  pool = launcher_plugin_pojk_menu_pool ();
 
   /* insert the items in the store */
   store = gtk_builder_get_object (dialog->builder, "add-store");
@@ -237,7 +237,7 @@ launcher_dialog_add_populate_model (LauncherPluginDialog *dialog)
 {
   GObject *store;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   /* get the store and make sure it's empty */
   store = gtk_builder_get_object (dialog->builder, "add-store");
@@ -265,12 +265,12 @@ launcher_dialog_add_drag_data_get (GtkWidget            *treeview,
   GList             *rows, *li;
   GtkTreeModel      *model;
   gchar            **uris;
-  GarconMenuItem    *item;
+  PojkMenuItem    *item;
   guint              i;
   GtkTreeIter        iter;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (GTK_IS_TREE_VIEW (treeview));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_TREE_VIEW (treeview));
 
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
   rows = gtk_tree_selection_get_selected_rows (selection, &model);
@@ -287,7 +287,7 @@ launcher_dialog_add_drag_data_get (GtkWidget            *treeview,
       if (G_UNLIKELY (item == NULL))
         continue;
 
-      uris[i++] = garcon_menu_item_get_uri (item);
+      uris[i++] = pojk_menu_item_get_uri (item);
       g_object_unref (G_OBJECT (item));
     }
 
@@ -305,8 +305,8 @@ launcher_dialog_add_selection_changed (GtkTreeSelection     *selection,
   GObject  *object;
   gboolean  sensitive;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (GTK_IS_TREE_SELECTION (selection));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_TREE_SELECTION (selection));
 
   object = gtk_builder_get_object (dialog->builder, "button-add");
   sensitive = !!(gtk_tree_selection_count_selected_rows (selection) > 0);
@@ -320,8 +320,8 @@ launcher_dialog_add_button_press_event (GtkTreeView          *treeview,
                                         GdkEventButton       *event,
                                         LauncherPluginDialog *dialog)
 {
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
-  panel_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
 
   if (event->button == 1
       && event->type == GDK_2BUTTON_PRESS
@@ -340,8 +340,8 @@ launcher_dialog_add_key_press_event (GtkTreeView          *treeview,
                                      GdkEventKey          *event,
                                      LauncherPluginDialog *dialog)
 {
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
-  panel_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
 
   if (event->keyval == GDK_Return
       || event->keyval == GDK_KP_Enter)
@@ -361,11 +361,11 @@ launcher_dialog_add_response (GtkWidget            *widget,
   GtkTreeSelection *selection;
   GtkTreeModel     *item_model, *add_model;
   GtkTreeIter       iter, sibling, tmp;
-  GarconMenuItem   *item;
+  PojkMenuItem   *item;
   GList            *list, *li;
 
-  panel_return_if_fail (GTK_IS_DIALOG (widget));
-  panel_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (dialog->plugin));
+  bar_return_if_fail (GTK_IS_DIALOG (widget));
+  bar_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (dialog->plugin));
 
   if (response_id != 0)
     {
@@ -414,7 +414,7 @@ launcher_dialog_add_response (GtkWidget            *widget,
 
       g_list_free (list);
 
-      /* write the model to xfconf */
+      /* write the model to blconf */
       launcher_dialog_tree_save (dialog);
 
       /* update the selection */
@@ -439,7 +439,7 @@ launcher_dialog_tree_save_foreach (GtkTreeModel *model,
 {
   GPtrArray      *array = user_data;
   GValue         *value;
-  GarconMenuItem *item;
+  PojkMenuItem *item;
 
   /* get the desktop id of the item from the store */
   gtk_tree_model_get (model, iter, COL_ITEM, &item, -1);
@@ -448,7 +448,7 @@ launcher_dialog_tree_save_foreach (GtkTreeModel *model,
       /* create a value with the filename */
       value = g_new0 (GValue, 1);
       g_value_init (value, G_TYPE_STRING);
-      g_value_take_string (value, garcon_menu_item_get_uri (item));
+      g_value_take_string (value, pojk_menu_item_get_uri (item));
 
       /* put it in the array and release */
       g_ptr_array_add (array, value);
@@ -480,7 +480,7 @@ launcher_dialog_tree_save (LauncherPluginDialog *dialog)
     g_signal_handlers_unblock_by_func (G_OBJECT (dialog->plugin),
           G_CALLBACK (launcher_dialog_items_load), dialog);
 
-  xfconf_array_free (array);
+  blconf_array_free (array);
 
   GDK_THREADS_LEAVE ();
 }
@@ -503,11 +503,11 @@ launcher_dialog_tree_drag_data_received (GtkWidget            *treeview,
   GtkTreeIter               iter;
   GtkTreeModel             *model;
   gint                      position;
-  GarconMenuItem           *item;
+  PojkMenuItem           *item;
   guint                     i;
 
-  panel_return_if_fail (GTK_IS_TREE_VIEW (treeview));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_TREE_VIEW (treeview));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   if (info == DROP_TARGET_URI)
     {
@@ -541,7 +541,7 @@ launcher_dialog_tree_drag_data_received (GtkWidget            *treeview,
           if (!g_str_has_suffix (uris[i], ".desktop"))
             continue;
 
-          item = garcon_menu_item_new_for_uri (uris[i]);
+          item = pojk_menu_item_new_for_uri (uris[i]);
           if (G_UNLIKELY (item == NULL))
             continue;
 
@@ -575,11 +575,11 @@ launcher_dialog_tree_selection_changed (GtkTreeSelection     *selection,
   gint            position = 0;
   GtkTreePath    *path;
   gboolean        sensitive;
-  GarconMenuItem *item = NULL;
+  PojkMenuItem *item = NULL;
   gboolean        editable = FALSE;
 
-  panel_return_if_fail (GTK_IS_TREE_SELECTION (selection));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_TREE_SELECTION (selection));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   if (gtk_tree_selection_get_selected (selection, &model, &iter))
     {
@@ -643,10 +643,10 @@ launcher_dialog_press_event (LauncherPluginDialog *dialog,
 {
   GObject *object;
 
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
 
   object = gtk_builder_get_object (dialog->builder, object_name);
-  panel_return_val_if_fail (GTK_IS_BUTTON (object), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUTTON (object), FALSE);
   if (GTK_WIDGET_SENSITIVE (object))
     {
       gtk_button_clicked (GTK_BUTTON (object));
@@ -664,8 +664,8 @@ launcher_dialog_tree_popup_menu (GtkWidget            *treeview,
 {
   GObject *menu;
 
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
-  panel_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
 
   /* show the menu */
   menu = gtk_builder_get_object (dialog->builder, "popup-menu");
@@ -685,8 +685,8 @@ launcher_dialog_tree_popup_menu_activated (GtkWidget            *mi,
 {
   const gchar *name;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (GTK_IS_BUILDABLE (mi));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_BUILDABLE (mi));
 
   /* name of the button */
   name = gtk_buildable_get_name (GTK_BUILDABLE (mi));
@@ -709,7 +709,7 @@ launcher_dialog_tree_popup_menu_activated (GtkWidget            *mi,
   else if (strcmp (name, "mi-link") == 0)
     launcher_dialog_item_desktop_item_edit (mi, "Link", NULL, dialog);
   else
-    panel_assert_not_reached ();
+    bar_assert_not_reached ();
 }
 
 
@@ -719,8 +719,8 @@ launcher_dialog_tree_button_press_event (GtkTreeView          *treeview,
                                          GdkEventButton       *event,
                                          LauncherPluginDialog *dialog)
 {
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
-  panel_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
 
   if (event->button == 1
       && event->type == GDK_2BUTTON_PRESS
@@ -746,8 +746,8 @@ launcher_dialog_tree_key_press_event (GtkTreeView          *treeview,
                                       GdkEventKey          *event,
                                       LauncherPluginDialog *dialog)
 {
-  panel_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
-  panel_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
+  bar_return_val_if_fail (GTK_IS_BUILDER (dialog->builder), FALSE);
+  bar_return_val_if_fail (GTK_IS_TREE_VIEW (treeview), FALSE);
 
   if (event->keyval == GDK_Return
       || event->keyval == GDK_KP_Enter)
@@ -770,20 +770,20 @@ launcher_dialog_item_desktop_item_edit (GtkWidget            *widget,
   GError    *error = NULL;
   GtkWidget *toplevel;
 
-  panel_return_if_fail (GTK_IS_WIDGET (widget));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
-  panel_return_if_fail (type != NULL || uri != NULL);
+  bar_return_if_fail (GTK_IS_WIDGET (widget));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (type != NULL || uri != NULL);
 
   /* build command */
   if (uri != NULL)
     {
-      command = g_strdup_printf ("exo-desktop-item-edit --xid=0x%x '%s'",
+      command = g_strdup_printf ("blxo-desktop-item-edit --xid=0x%x '%s'",
                                  LAUNCHER_WIDGET_XID (widget), uri);
     }
   else
     {
       filename = launcher_plugin_unique_filename (dialog->plugin);
-      command = g_strdup_printf ("exo-desktop-item-edit -t %s -c --xid=0x%x '%s'",
+      command = g_strdup_printf ("blxo-desktop-item-edit -t %s -c --xid=0x%x '%s'",
                                  type, LAUNCHER_WIDGET_XID (widget),
                                  filename);
       g_free (filename);
@@ -817,12 +817,12 @@ launcher_dialog_item_button_clicked (GtkWidget            *button,
   GtkTreeIter       iter_a, iter_b;
   GtkTreePath      *path;
   gchar            *uri;
-  GarconMenuItem   *item;
+  PojkMenuItem   *item;
   GtkWidget        *toplevel;
   gboolean          save_items = TRUE;
 
-  panel_return_if_fail (GTK_IS_BUILDABLE (button));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_BUILDABLE (button));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   /* name of the button */
   name = gtk_buildable_get_name (GTK_BUILDABLE (button));
@@ -849,14 +849,14 @@ launcher_dialog_item_button_clicked (GtkWidget            *button,
           /* get item name */
           gtk_tree_model_get (model, &iter_a, COL_ITEM, &item, -1);
           if (G_LIKELY (item != NULL))
-            display_name = garcon_menu_item_get_name (item);
+            display_name = pojk_menu_item_get_name (item);
 
           /* ask the user */
           toplevel = gtk_widget_get_toplevel (button);
           if (xfce_dialog_confirm (GTK_WINDOW (toplevel), GTK_STOCK_DELETE, NULL,
                   _("If you delete an item, it will be permanently removed"),
                   _("Are you sure you want to remove \"%s\"?"),
-                  exo_str_is_empty (display_name) ? _("Unnamed item") : display_name))
+                  blxo_str_is_empty (display_name) ? _("Unnamed item") : display_name))
             {
               /* remove the item from the store */
               gtk_list_store_remove (GTK_LIST_STORE (model), &iter_a);
@@ -881,7 +881,7 @@ launcher_dialog_item_button_clicked (GtkWidget            *button,
                 return;
 
               /* build command */
-              uri = garcon_menu_item_get_uri (item);
+              uri = pojk_menu_item_get_uri (item);
               launcher_dialog_item_desktop_item_edit (button, NULL, uri, dialog);
               g_free (uri);
             }
@@ -908,7 +908,7 @@ launcher_dialog_item_button_clicked (GtkWidget            *button,
         }
       else
         {
-          panel_assert_not_reached ();
+          bar_assert_not_reached ();
         }
 
       /* store the new settings */
@@ -929,9 +929,9 @@ launcher_dialog_response (GtkWidget            *widget,
 {
   GObject *add_dialog;
 
-  panel_return_if_fail (GTK_IS_DIALOG (widget));
-  panel_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (dialog->plugin));
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_DIALOG (widget));
+  bar_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (dialog->plugin));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   if (G_UNLIKELY (response_id != 1))
     {
@@ -965,11 +965,11 @@ launcher_dialog_item_changed_foreach (GtkTreeModel *model,
                                       GtkTreeIter  *iter,
                                       gpointer      user_data)
 {
-  GarconMenuItem         *item;
+  PojkMenuItem         *item;
   gboolean                found;
   LauncherChangedHandler *handler = user_data;
 
-  panel_return_val_if_fail (GARCON_IS_MENU_ITEM (handler->item), TRUE);
+  bar_return_val_if_fail (POJK_IS_MENU_ITEM (handler->item), TRUE);
 
   /* check if this is the item in the model */
   gtk_tree_model_get (model, iter, COL_ITEM, &item, -1);
@@ -986,14 +986,14 @@ launcher_dialog_item_changed_foreach (GtkTreeModel *model,
 
 
 static void
-launcher_dialog_item_changed (GarconMenuItem       *item,
+launcher_dialog_item_changed (PojkMenuItem       *item,
                               LauncherPluginDialog *dialog)
 {
   GObject                *treeview;
   GtkTreeModel           *model;
   LauncherChangedHandler *handler;
 
-  panel_return_if_fail (GARCON_IS_MENU_ITEM (item));
+  bar_return_if_fail (POJK_IS_MENU_ITEM (item));
 
   treeview = gtk_builder_get_object (dialog->builder, "item-treeview");
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
@@ -1017,7 +1017,7 @@ launcher_dialog_tree_row_changed (GtkTreeModel         *model,
   GtkTreeSelection *selection;
   GObject          *treeview;
 
-  panel_return_if_fail (GTK_IS_BUILDER (dialog->builder));
+  bar_return_if_fail (GTK_IS_BUILDER (dialog->builder));
 
   /* item moved with dnd, save the tree to update the plugin */
   g_idle_add ((GSourceFunc) launcher_dialog_tree_save, dialog);
@@ -1033,7 +1033,7 @@ launcher_dialog_tree_row_changed (GtkTreeModel         *model,
 static void
 launcher_dialog_items_set_item (GtkTreeModel         *model,
                                 GtkTreeIter          *iter,
-                                GarconMenuItem       *item,
+                                PojkMenuItem       *item,
                                 LauncherPluginDialog *dialog)
 {
   const gchar *name, *comment;
@@ -1044,31 +1044,31 @@ launcher_dialog_items_set_item (GtkTreeModel         *model,
   gchar       *tooltip;
   GFile       *gfile;
 
-  panel_return_if_fail (GTK_IS_LIST_STORE (model));
-  panel_return_if_fail (GARCON_IS_MENU_ITEM (item));
+  bar_return_if_fail (GTK_IS_LIST_STORE (model));
+  bar_return_if_fail (POJK_IS_MENU_ITEM (item));
 
-  name = garcon_menu_item_get_name (item);
-  comment = garcon_menu_item_get_comment (item);
+  name = pojk_menu_item_get_name (item);
+  comment = pojk_menu_item_get_comment (item);
 
-  if (!exo_str_is_empty (comment))
+  if (!blxo_str_is_empty (comment))
     markup = g_markup_printf_escaped ("<b>%s</b>\n%s", name, comment);
   else
     markup = g_markup_printf_escaped ("<b>%s</b>", name);
 
-  icon_name = garcon_menu_item_get_icon_name (item);
-  if (!exo_str_is_empty (icon_name))
+  icon_name = pojk_menu_item_get_icon_name (item);
+  if (!blxo_str_is_empty (icon_name))
     {
       if (!gtk_icon_size_lookup (GTK_ICON_SIZE_DND, &w, &h))
         w = h = 32;
 
-      icon = xfce_panel_pixbuf_from_source (icon_name, NULL, MIN (w, h));
+      icon = blade_bar_pixbuf_from_source (icon_name, NULL, MIN (w, h));
     }
 
   if (dialog != NULL)
     g_signal_handlers_block_by_func (G_OBJECT (model),
         G_CALLBACK (launcher_dialog_tree_row_changed), dialog);
 
-  gfile = garcon_menu_item_get_file (item);
+  gfile = pojk_menu_item_get_file (item);
   tooltip = g_file_get_parse_name (gfile);
   g_object_unref (G_OBJECT (gfile));
 
@@ -1098,7 +1098,7 @@ launcher_dialog_items_unload (LauncherPluginDialog *dialog)
 
   for (li = dialog->items; li != NULL; li = li->next)
     {
-      panel_return_if_fail (GARCON_IS_MENU_ITEM (li->data));
+      bar_return_if_fail (POJK_IS_MENU_ITEM (li->data));
       g_signal_handlers_disconnect_by_func (G_OBJECT (li->data),
           G_CALLBACK (launcher_dialog_item_changed), dialog);
       g_object_unref (G_OBJECT (li->data));
@@ -1139,7 +1139,7 @@ launcher_dialog_items_load (LauncherPluginDialog *dialog)
   for (li = dialog->items; li != NULL; li = li->next)
     {
       gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-      launcher_dialog_items_set_item (model, &iter, GARCON_MENU_ITEM (li->data), dialog);
+      launcher_dialog_items_set_item (model, &iter, POJK_MENU_ITEM (li->data), dialog);
       g_signal_connect (G_OBJECT (li->data), "changed",
           G_CALLBACK (launcher_dialog_item_changed), dialog);
     }
@@ -1176,11 +1176,11 @@ launcher_dialog_show (LauncherPlugin *plugin)
   const gchar          *binding_names[] = { "disable-tooltips", "show-label",
                                             "move-first", "arrow-position" };
 
-  panel_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_LAUNCHER_PLUGIN (plugin));
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (XFCE_PANEL_PLUGIN (plugin), launcher_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (BLADE_BAR_PLUGIN (plugin), launcher_dialog_ui,
                                      launcher_dialog_ui_length, &window);
   if (G_UNLIKELY (builder == NULL))
     return;
@@ -1198,7 +1198,7 @@ launcher_dialog_show (LauncherPlugin *plugin)
   for (i = 0; i < G_N_ELEMENTS (button_names); i++)
     {
       object = gtk_builder_get_object (builder, button_names[i]);
-      panel_return_if_fail (GTK_IS_WIDGET (object));
+      bar_return_if_fail (GTK_IS_WIDGET (object));
       g_signal_connect (G_OBJECT (object), "clicked",
           G_CALLBACK (launcher_dialog_item_button_clicked), dialog);
     }
@@ -1207,7 +1207,7 @@ launcher_dialog_show (LauncherPlugin *plugin)
   for (i = 0; i < G_N_ELEMENTS (mi_names); i++)
     {
       object = gtk_builder_get_object (builder, mi_names[i]);
-      panel_return_if_fail (GTK_IS_WIDGET (object));
+      bar_return_if_fail (GTK_IS_WIDGET (object));
       g_signal_connect (G_OBJECT (object), "activate",
           G_CALLBACK (launcher_dialog_tree_popup_menu_activated), dialog);
     }
@@ -1240,8 +1240,8 @@ launcher_dialog_show (LauncherPlugin *plugin)
   for (i = 0; i < G_N_ELEMENTS (binding_names); i++)
     {
       object = gtk_builder_get_object (builder, binding_names[i]);
-      panel_return_if_fail (GTK_IS_WIDGET (object));
-      exo_mutual_binding_new (G_OBJECT (plugin), binding_names[i],
+      bar_return_if_fail (GTK_IS_WIDGET (object));
+      blxo_mutual_binding_new (G_OBJECT (plugin), binding_names[i],
                               G_OBJECT (object), "active");
     }
 

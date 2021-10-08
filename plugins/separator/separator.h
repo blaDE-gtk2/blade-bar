@@ -37,7 +37,7 @@ typedef enum   _SeparatorPluginStyle  SeparatorPluginStyle;
 
 GType separator_plugin_get_type      (void) G_GNUC_CONST;
 
-void  separator_plugin_register_type (XfcePanelTypeModule *type_module);
+void  separator_plugin_register_type (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

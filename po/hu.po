@@ -18,99 +18,99 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
-msgstr "Parancsikon létrehozása a panelen"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
+msgstr "Parancsikon létrehozása a baren"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
-msgstr "Új parancsikon panelhez adása ezen asztali fájl információi alapján"
+msgstr "Új parancsikon barhez adása ezen asztali fájl információi alapján"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2615
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2615
 #: ../migrate/main.c:117
-msgid "Panel"
-msgstr "Panel"
+msgid "Bar"
+msgstr "Bar"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
-msgstr "A panel személyre szabása"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
+msgstr "A bar személyre szabása"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1190
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1190
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Biztosan eltávolítja a következőt: „%s”?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1193
-msgid "If you remove the item from the panel, it is permanently lost."
-msgstr "Ha eltávolítja az elemet a panelről, az véglegesen elvész."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1193
+msgid "If you remove the item from the bar, it is permanently lost."
+msgstr "Ha eltávolítja az elemet a barről, az véglegesen elvész."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "Át_helyezés"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
-msgstr "_Panel"
+msgstr "_Bar"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2627
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2627
 msgid "Add _New Items..."
 msgstr "Új _elemek hozzáadása…"
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2638
-msgid "Panel Pr_eferences..."
-msgstr "_Panel beállításai…"
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2638
+msgid "Bar Pr_eferences..."
+msgstr "_Bar beállításai…"
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2666
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2666
 msgid "Log _Out"
 msgstr "_Kijelentkezés"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
-msgstr "A „Panel beállításai” ablak megjelenítése"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
+msgstr "A „Bar beállításai” ablak megjelenítése"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
-msgstr "PANELSZÁM"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
+msgstr "BARSZÁM"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Az „Új elemek hozzáadása” ablak megjelenítése"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
-msgstr "Panel beállításainak mentése"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
+msgstr "Bar beállításainak mentése"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
-msgstr "Új bővítmény hozzáadása a panelhez"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
+msgstr "Új bővítmény hozzáadása a barhez"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "BŐVÍTMÉNYNÉV"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
-msgstr "A panel futó példányának újraindítása"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
+msgstr "A bar futó példányának újraindítása"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
-msgstr "Kilépés a panel futó példányából"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
+msgstr "Kilépés a bar futó példányából"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Ne várjon az ablakkezelőre indításkor"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -118,98 +118,98 @@ msgid "Print version information and exit"
 msgstr "Verzióinformációk kiírása és kilépés"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTUMOK…]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Segítségért adja ki a „%s --help” parancsot."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Az Xfce fejlesztőcsapata. Minden jog fenntartva."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "A hibákat ide jelentse: <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "Már fut egy példány"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Újraindítás…"
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "A beállítóablak megjelenítése meghiúsult"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "Az „Új elemek hozzáadása” ablak megjelenítése meghiúsult"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
-msgstr "A panel beállításainak mentése meghiúsult"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
+msgstr "A bar beállításainak mentése meghiúsult"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
-msgstr "A bővítmény panelhez adása meghiúsult"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
+msgstr "A bővítmény barhez adása meghiúsult"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
-msgstr "A panel újraindítása meghiúsult"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
+msgstr "A bar újraindítása meghiúsult"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
-msgstr "A panelből való kilépés meghiúsult"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
+msgstr "A barből való kilépés meghiúsult"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "A D-Bus üzenet elküldése meghiúsult"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
-"El kívánja indítani a panelt? Ebben az esetben mentse a munkamenetet "
-"kilépéskor, így a panel a következő bejelentkezéskor automatikusan elindul."
+"El kívánja indítani a bart? Ebben az esetben mentse a munkamenetet "
+"kilépéskor, így a bar a következő bejelentkezéskor automatikusan elindul."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "Nem található a(z) %s futó példánya"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "A költöztető alkalmazás indítása meghiúsult"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "_Parancsikon létrehozása"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
-"Ez egy új indítóbővítményt hoz létre a panelen, a ráejtett fájlokat "
+"Ez egy új indítóbővítményt hoz létre a baren, a ráejtett fájlokat "
 "menüelemekként pedig veszi fel."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "Új parancsikon létrehozása %d asztali fájlból"
 msgstr[1] "Új parancsikon létrehozása %d asztali fájlból"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -217,23 +217,23 @@ msgstr ""
 "Az X-et munkamenet-kezelő nélkül indította. A Kilépés gombra kattintás "
 "bezárja az X kiszolgálót."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
-msgstr "Biztos, hogy be kívánja zárni a panelt?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
+msgstr "Biztos, hogy be kívánja zárni a bart?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "A parancs („%s”) indítása meghiúsult"
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "Érvénytelen bővítményesemény-szintaxis került megadásra. Használja a "
 "BŐVÍTMÉNYNÉV:NÉV[:TÍPUS:ÉRTÉK] alakot."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -242,120 +242,120 @@ msgstr ""
 "Érvénytelen tipptípus: „%s”. Az érvényes típusok: bool, double, int, string "
 "és uint."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Karbantartók"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "Deskbar mód"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "Korábbi karbantartók"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
-msgstr "Az Xfce asztali környezet panelja"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
+msgstr "Az Xfce asztali környezet barja"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr "Kelemen Gábor <kelemeng at gnome dot hu>"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Új elem felvétele"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
-msgstr "Válasszon panelt az új bővítményhez:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
+msgstr "Válasszon bart az új bővítményhez:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:853
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:853
 #, c-format
-msgid "Panel %d"
-msgstr "%d. panel"
+msgid "Bar %d"
+msgstr "%d. bar"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
-"Mivel a panel kioszk módban fut, normál felhasználóként nem módosíthatja a "
-"panel beállításait"
+"Mivel a bar kioszk módban fut, normál felhasználóként nem módosíthatja a "
+"bar beállításait"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
-msgstr "A panel módosítása nem engedélyezett"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
+msgstr "A bar módosítása nem engedélyezett"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Új elemek felvétele"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
-msgstr "Új elemek hozzáadása a panelhez"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
+msgstr "Új elemek hozzáadása a barhez"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "_Keresés:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Adja meg a keresőkifejezést"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr "A(z) „%s” bővítmény összeomlott, újra akarja indítani?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "A bővítmény többször is újraindult az elmúlt %d másodpercben. A Végrehajtás "
-"gomb megnyomásával a panel megpróbálja újraindítani a bővítményt, egyébként "
-"az véglegesen eltávolításra kerül a panelről."
+"gomb megnyomásával a bar megpróbálja újraindítani a bővítményt, egyébként "
+"az véglegesen eltávolításra kerül a barről."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Automatikus"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:511
+#: ../bar/bar-preferences-dialog.c:511
 #, c-format
 msgid "Screen %d"
 msgstr "%d. képernyő"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:537
+#: ../bar/bar-preferences-dialog.c:537
 #, c-format
 msgid "Monitor %d"
 msgstr "%d. monitor"
 
-#: ../panel/panel-preferences-dialog.c:919
-msgid "The panel and plugin configurations will be permanently removed"
-msgstr "A panel és a bővítmények beállításai el lesznek távolítva"
+#: ../bar/bar-preferences-dialog.c:919
+msgid "The bar and plugin configurations will be permanently removed"
+msgstr "A bar és a bővítmények beállításai el lesznek távolítva"
 
-#: ../panel/panel-preferences-dialog.c:920
+#: ../bar/bar-preferences-dialog.c:920
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
-msgstr "Biztos, hogy el kívánja távolítani a(z) %d. panelt?"
+msgid "Are you sure you want to remove bar %d?"
+msgstr "Biztos, hogy el kívánja távolítani a(z) %d. bart?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1032
+#: ../bar/bar-preferences-dialog.c:1032
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(külső)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1037
+#: ../bar/bar-preferences-dialog.c:1037
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -366,289 +366,289 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1049
+#: ../bar/bar-preferences-dialog.c:1049
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "Belső név: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Vízszintes"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Függőleges"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "Deskbar"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Soha"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "Intelligensen"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Mindig"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Nincs (rendszerstílus használata)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "Homogén szín"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Háttérkép"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
-msgstr "Új panel hozzáadása"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
+msgstr "Új bar hozzáadása"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
-msgstr "A kiválasztott panel eltávolítása"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
+msgstr "A kiválasztott bar eltávolítása"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
-msgstr "Váltás panelbeállítások között"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
+msgstr "Váltás barbeállítások között"
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "Mó_d:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "_Kimenet:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "Több mo_nitoron"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
-msgstr "A panel kiterjesztése több monitorra"
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
+msgstr "A bar kiterjesztése több monitorra"
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
-msgstr "_Panel zárolása"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
+msgstr "_Bar zárolása"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
-msgstr "A panel fogantyúinak elrejtése és pozíciójának zárolása"
+"Select this option to hide the handles of the bar and lock its position."
+msgstr "A bar fogantyúinak elrejtése és pozíciójának zárolása"
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
-msgstr "A panel automatikus elrejtése:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
+msgstr "A bar automatikus elrejtése:"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Ne _foglaljon helyet a szegélyeken"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
-"A teljes méretű ablakok lefedik-e a panel mögötti területet. Ez csak akkor "
-"működik, ha a panel a képernyő széléhez csatlakozik."
+"A teljes méretű ablakok lefedik-e a bar mögötti területet. Ez csak akkor "
+"működik, ha a bar a képernyő széléhez csatlakozik."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Általános"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "Sor_méret (képpont):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "_Hossz (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "_Sorok száma:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "A hossz a_utomatikus növelése"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
-"A panel méretének automatikus növelése, ha a bővítmények több helyet "
+"A bar méretének automatikus növelése, ha a bővítmények több helyet "
 "igényelnek"
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Méretek"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "_Megjelenítés"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "_Stílus:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "_Alfa:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
-"A panel hátterének alfa értéke 0 (átlátszó) és 100 (átlátszatlan) között."
+"A bar hátterének alfa értéke 0 (átlátszó) és 100 (átlátszatlan) között."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "_Szín:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
-msgstr "Válasszon panelszínt"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
+msgstr "Válasszon barszínt"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_Fájl:"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Válasszon háttérképet"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Háttér"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "Rám_utatás:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "_Elhagyás:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
-"Átlátszóság, amikor a mutató a panel fölött áll, 0 (átlátszó) és 100 "
+"Átlátszóság, amikor a mutató a bar fölött áll, 0 (átlátszó) és 100 "
 "(átlátszatlan) között."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
-"Átlátszóság, amikor a mutató nem a panel fölött áll, 0 (átlátszó) és 100 "
+"Átlátszóság, amikor a mutató nem a bar fölött áll, 0 (átlátszó) és 100 "
 "(átlátszatlan) között."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "Átlátszóság"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
-"Kompozitálás engedélyezése az ablakkezelőben a panel átlátszatlansági "
+"Kompozitálás engedélyezése az ablakkezelőben a bar átlátszatlansági "
 "beállításaihoz."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "_Megjelenés"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "A kiválasztott elem mozgatása egy sorral feljebb"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "A kiválasztott elem mozgatása egy sorral lejjebb"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
-msgstr "Új elem hozzáadása a panelhez"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
+msgstr "Új elem hozzáadása a barhez"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "A kiválasztott elem eltávolítása"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "A kiválasztott elem szerkesztése"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "A kiválasztott elem névjegy-információinak megjelenítése"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "_Elemek"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "Ú_j játék"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "S_zint:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "Újonc"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "Haladó"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "Gyakorlott"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "Szakértő"
 
-#: ../panel/panel-window.c:2652
-msgid "_Lock Panel"
-msgstr "_Panel zárolása"
+#: ../bar/bar-window.c:2652
+msgid "_Lock Bar"
+msgstr "_Bar zárolása"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
-msgstr "Üdvözöljük a panel első indításakor"
+msgid "Welcome to the first start of the bar"
+msgstr "Üdvözöljük a bar első indításakor"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
-"Mivel a panel a beállításait immár új rendszerben tárolja, friss "
+"Mivel a bar a beállításait immár új rendszerben tárolja, friss "
 "kezdőbeállításokat kell betöltenie."
 
 #: ../migrate/main.c:127 ../migrate/main.c:136
@@ -660,8 +660,8 @@ msgid "Migrate old config"
 msgstr "Régi beállítások átköltöztetése"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "A régi 4.6 beállítások átköltöztetése az Xfconfba"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "A régi 4.6 beállítások átköltöztetése az Blconfba"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -672,32 +672,32 @@ msgid "Load the default configuration"
 msgstr "Az alapértelmezett beállítások betöltése"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
-msgstr "Egy üres panel"
+msgid "One empty bar"
+msgstr "Egy üres bar"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
-msgstr "Indítás egy üres panellal"
+msgid "Start with one empty bar"
+msgstr "Indítás egy üres barlal"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
-msgstr "A panel régi beállításainak átköltöztetése meghiúsult"
+msgid "Failed to migrate the old bar configuration"
+msgstr "A bar régi beállításainak átköltöztetése meghiúsult"
 
 #: ../migrate/main.c:172
 msgid "Failed to load the default configuration"
 msgstr "Az alapértelmezett beállítások betöltése meghiúsult"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
-msgstr "A panel beállításait át kell költöztetni…"
+msgid "Bar config needs migration..."
+msgstr "A bar beállításait át kell költöztetni…"
 
 #: ../migrate/main.c:189
 msgid "Failed to migrate the existing configuration"
 msgstr "A meglévő beállítások átköltöztetése meghiúsult"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
-msgstr "A panel beállításai frissítésre kerültek."
+msgid "Bar configuration has been updated."
+msgstr "A bar beállításai frissítésre kerültek."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
 #: ../plugins/actions/actions.desktop.in.in.h:1
@@ -879,9 +879,9 @@ msgstr "Általános _alkalmazásnevek megjelenítése"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
-"Az általános alkalmazásnév, például a „Thunar” helyett a „Fájlkezelő” "
+"Az általános alkalmazásnév, például a „Fmb” helyett a „Fájlkezelő” "
 "megjelenítése a menüben"
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
@@ -1039,12 +1039,12 @@ msgstr "B_uboréksúgó formátuma:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
 msgstr ""
-"A formátum leírja a panelbe beszúrandó dátum és idő részeket. A %Y például "
+"A formátum leírja a barbe beszúrandó dátum és idő részeket. A %Y például "
 "az évet, a %m a hónapot, a %d pedig a napot jelöli. További információkért "
 "lásd a date segédprogram kézikönyvoldalát."
 
@@ -1512,22 +1512,22 @@ msgstr "B_uboréksúgók tiltása"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
-"A buboréksúgók letiltása a panel gombjaira vagy menüelemekre mutatáskor."
+"A buboréksúgók letiltása a bar gombjaira vagy menüelemekre mutatáskor."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:22
 msgid "Show _label instead of icon"
 msgstr "_Címke megjelenítése ikon helyett"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
-msgstr "_Utoljára használt elem megjelenítése a panelen"
+msgid "Show last _used item in bar"
+msgstr "_Utoljára használt elem megjelenítése a baren"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
-msgstr "A kattintással kiválasztott menüelem panelre mozgatása."
+msgid "Select this option to move the clicked menu item to the bar."
+msgstr "A kattintással kiválasztott menüelem barre mozgatása."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
 msgid "_Arrow button position:"
@@ -1605,8 +1605,8 @@ msgid "Dots"
 msgstr "Pontok"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
-msgstr "Elválasztó vagy hely beszúrása a panelelemek közé"
+msgid "Adds a separator or space between bar items"
+msgstr "Elválasztó vagy hely beszúrása a barelemek közé"
 
 #: ../plugins/showdesktop/showdesktop.c:210
 msgid "Restore the minimized windows"

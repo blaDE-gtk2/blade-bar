@@ -18,100 +18,100 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
-msgstr "Tạo launcher trên thanh panel"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
+msgstr "Tạo launcher trên thanh bar"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
-"Thêm một launcher mới trên thanh panel dựa vào thông tin của tệp tin desktop"
+"Thêm một launcher mới trên thanh bar dựa vào thông tin của tệp tin desktop"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2615
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2615
 #: ../migrate/main.c:117
-msgid "Panel"
+msgid "Bar"
 msgstr "Bảng"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
 msgstr "Tùy chỉnh bảng điều khiển"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1190
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1190
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Bạn có chắc là bạn muốn loại bỏ \"%s\"?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1193
-msgid "If you remove the item from the panel, it is permanently lost."
-msgstr "Nếu bạn gỡ bỏ mục này khỏi thanh panel, nó sẽ bị mất vĩnh viễn."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1193
+msgid "If you remove the item from the bar, it is permanently lost."
+msgstr "Nếu bạn gỡ bỏ mục này khỏi thanh bar, nó sẽ bị mất vĩnh viễn."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_Di chuyển"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "Thanh pane_l"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2627
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2627
 msgid "Add _New Items..."
 msgstr "Thêm _mục mới..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2638
-msgid "Panel Pr_eferences..."
-msgstr "Tùy _chọn thanh panel..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2638
+msgid "Bar Pr_eferences..."
+msgstr "Tùy _chọn thanh bar..."
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2666
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2666
 msgid "Log _Out"
 msgstr "Đăng _xuất"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
 msgstr "Hiện hộp thoại 'Tùy thích'"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
 msgstr ""
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Hiển thị hộp thoại \"Thêm mục mới\""
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
-msgstr "Lưu thiết lập của thanh panel"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
+msgstr "Lưu thiết lập của thanh bar"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
-msgstr "Thêm phần mở rộng cho thanh panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
+msgstr "Thêm phần mở rộng cho thanh bar"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr ""
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
-msgstr "Khởi động lại thanh panel ngay tức thì"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
+msgstr "Khởi động lại thanh bar ngay tức thì"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
-msgstr "Thoát thanh panel ngay lập tức"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
+msgstr "Thoát thanh bar ngay lập tức"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Không chờ trình quản lý cửa sổ khởi động"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -119,237 +119,237 @@ msgid "Print version information and exit"
 msgstr "In thông tin phiên bản và thoát"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Nhập \"%s --help\" để biết cách sử dụng"
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Nhóm phát triển Xfce. Tất cả các quyền được bảo lưu"
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Hãy gởi báo lỗi đến <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr ""
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Khởi động lại..."
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "Hiển thị hộp thoại tùy thích thất bại"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "Hiển thị hộp thoại thêm mục mới thất bại"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
 msgstr "Lưu "
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
-msgstr "Thêm phần mở rộng cho thanh panel thất bại"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
+msgstr "Thêm phần mở rộng cho thanh bar thất bại"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
-msgstr "Khởi động lại thanh panel thất bại"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
+msgstr "Khởi động lại thanh bar thất bại"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
-msgstr "Tắt thanh panel thất bại"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
+msgstr "Tắt thanh bar thất bại"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "Gửi tin nhắn D-Bus thất bại"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
-"Bạn có muốn bật thanh panel? Nếu muốn, hãy chắc rằng bạn đã lưu phiên chạy "
-"khi đăng xuất, như thế thanh panel sẽ tự động chạy mỗi khi bạn đăng nhập."
+"Bạn có muốn bật thanh bar? Nếu muốn, hãy chắc rằng bạn đã lưu phiên chạy "
+"khi đăng xuất, như thế thanh bar sẽ tự động chạy mỗi khi bạn đăng nhập."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr ""
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr ""
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "Tạo _launcher"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
-"Việc này sẽ tạo phần launcher mở rộng trên thanh panel và chèn tệp tin được "
+"Việc này sẽ tạo phần launcher mở rộng trên thanh bar và chèn tệp tin được "
 "thả như là một mục của thực đơn."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "Tạo launcher mới từ tệp tin màn hình nền %d"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
 msgstr ""
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
-msgstr "Bạn có chắc là muốn tắt thanh panel?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
+msgstr "Bạn có chắc là muốn tắt thanh bar?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Thực thi lệnh \"%s\" thất bại"
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
 "uint."
 msgstr ""
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Người bảo trì"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
-msgstr "Thanh panel của môi trường màn hình XFCE"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
+msgstr "Thanh bar của môi trường màn hình XFCE"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr "Giới thiệu-Người dịch"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Thêm mục mới"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
-msgstr "Hãy chọn thanh panel cho phần mở rộng mới:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
+msgstr "Hãy chọn thanh bar cho phần mở rộng mới:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:853
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:853
 #, c-format
-msgid "Panel %d"
-msgstr "Panel %d"
+msgid "Bar %d"
+msgstr "Bar %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
-"Do thanh panel đang chạy ở chế độ kiosk, bạn không được phép thay đổi cấu "
+"Do thanh bar đang chạy ở chế độ kiosk, bạn không được phép thay đổi cấu "
 "hình của thanh như người dùng thường"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
-msgstr "Không cho phép chỉnh sửa thanh panel"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
+msgstr "Không cho phép chỉnh sửa thanh bar"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Thêm mục mới"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
-msgstr "Thêm phần mở rộng vào thanh panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
+msgstr "Thêm phần mở rộng vào thanh bar"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "Tìm _kiếm:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Nhập cụm từ cần tìm vào đây"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr "Phần mở rộng \"%s\" thoát không mong đợi , bạn có muốn khởi động lại nó?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "Phần mở khởi động lại hơn một lần trong %d giây. Nếu bạn nhấn \"Thực thi\" "
-"thanh panel sẽ cố khởi động lại phần mở rộng nếu không nó sẽ bị gỡ bỏ vĩnh "
+"thanh bar sẽ cố khởi động lại phần mở rộng nếu không nó sẽ bị gỡ bỏ vĩnh "
 "viễn."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Tự động"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:511
+#: ../bar/bar-preferences-dialog.c:511
 #, c-format
 msgid "Screen %d"
 msgstr "Màn hình %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:537
+#: ../bar/bar-preferences-dialog.c:537
 #, c-format
 msgid "Monitor %d"
 msgstr "Màn hình %d"
 
-#: ../panel/panel-preferences-dialog.c:919
-msgid "The panel and plugin configurations will be permanently removed"
-msgstr "Cấu hình của thanh panel và phần mở rộng sẽ bị xóa vĩnh viễn"
+#: ../bar/bar-preferences-dialog.c:919
+msgid "The bar and plugin configurations will be permanently removed"
+msgstr "Cấu hình của thanh bar và phần mở rộng sẽ bị xóa vĩnh viễn"
 
-#: ../panel/panel-preferences-dialog.c:920
+#: ../bar/bar-preferences-dialog.c:920
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
-msgstr "Bạn có chắc là muốn xóa thanh panel %d?"
+msgid "Are you sure you want to remove bar %d?"
+msgstr "Bạn có chắc là muốn xóa thanh bar %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1032
+#: ../bar/bar-preferences-dialog.c:1032
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1037
+#: ../bar/bar-preferences-dialog.c:1037
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -358,281 +358,281 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1049
+#: ../bar/bar-preferences-dialog.c:1049
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Ngang"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Dọc"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Không bao giờ"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Luôn luôn"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Không (sử dụng kiểu của hệ thống)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Ảnh nền"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
-msgstr "Thêm thanh panel mới"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
+msgstr "Thêm thanh bar mới"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
-msgstr "Gỡ bỏ thanh panel vừa được chọn"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
+msgstr "Gỡ bỏ thanh bar vừa được chọn"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "_Chế độ"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
-msgstr "Lựa chọn tùy chọn này để mở rộng thanh panel qua nhiều màn hình."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
+msgstr "Lựa chọn tùy chọn này để mở rộng thanh bar qua nhiều màn hình."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
-msgstr "_Khóa thanh panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
+msgstr "_Khóa thanh bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
-"Lựa chọn tùy chọn này sẽ ẩn đi phần tay cầm của thanh panel và khóa vị trí "
+"Lựa chọn tùy chọn này sẽ ẩn đi phần tay cầm của thanh bar và khóa vị trí "
 "của nó."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Không dự trữ không gian đường viền"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "Lựa chọn tùy chọn này nếu bạn muốn tối đa không gian cửa sổ trên phần sau "
-"của thanh panel. Nó chỉ làm việc khi thanh panel ở cạnh của màn hình."
+"của thanh bar. Nó chỉ làm việc khi thanh bar ở cạnh của màn hình."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Chung"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "Kích cỡ _hàng (pixels):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "Chiều _dài (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "_Số hàng:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "Tự động tăng chiều dài"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
-"Lựa chọn tùy chọn này để tự động tăng chiều dài của thanh panel nếu phần mở "
+"Lựa chọn tùy chọn này để tự động tăng chiều dài của thanh bar nếu phần mở "
 "rộng đòi hỏi nhiều không gian hơn."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Các thông số"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "Hiển _thị"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "_Kiểu:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "_Màu sắc:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
-msgstr "Chọn một màu cho thanh panel"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
+msgstr "Chọn một màu cho thanh bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_Tệp tin"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Lựa chọn hình ảnh nền"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Nền"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "_Nhập:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "_Xuất:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "Diện mạo"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "Di chuyển mục được chọn lên trên một hàng"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "Di chuyển mục được chọn xuống dưới một hàng"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
-msgstr "Thêm mục mới cho thanh panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
+msgstr "Thêm mục mới cho thanh bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "Gỡ bỏ mục được chọn"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "Chỉnh sửa mục được chọn"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "Hiển thị thông tin về mục được chọn"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "_Mục"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "Trò _chơi mới"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "_Mức độ:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr ""
 
-#: ../panel/panel-window.c:2652
-msgid "_Lock Panel"
-msgstr "_Khóa thanh panel"
+#: ../bar/bar-window.c:2652
+msgid "_Lock Bar"
+msgstr "_Khóa thanh bar"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
+msgid "Welcome to the first start of the bar"
 msgstr ""
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 
@@ -645,7 +645,7 @@ msgid "Migrate old config"
 msgstr ""
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
 msgstr ""
 
 #: ../migrate/main.c:141
@@ -657,15 +657,15 @@ msgid "Load the default configuration"
 msgstr "Nạp cấu hình mặc đinh"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
-msgstr "Một thanh panel trống"
+msgid "One empty bar"
+msgstr "Một thanh bar trống"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
-msgstr "Bắt đầu với thanh panel trống"
+msgid "Start with one empty bar"
+msgstr "Bắt đầu với thanh bar trống"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
+msgid "Failed to migrate the old bar configuration"
 msgstr ""
 
 #: ../migrate/main.c:172
@@ -673,7 +673,7 @@ msgid "Failed to load the default configuration"
 msgstr "Nạp cấu hình mặc định, thất bại"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr ""
 
 #: ../migrate/main.c:189
@@ -681,8 +681,8 @@ msgid "Failed to migrate the existing configuration"
 msgstr ""
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
-msgstr "Cấu hình thanh panel đã được cập nhật."
+msgid "Bar configuration has been updated."
+msgstr "Cấu hình thanh bar đã được cập nhật."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
 #: ../plugins/actions/actions.desktop.in.in.h:1
@@ -862,10 +862,10 @@ msgstr "Hiển thị tên chung cho ứng dụng"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "Chọn tùy chọn này để hiển thị tên chung của ứng dụng trong thực đơn, ví dụ "
-"\"Quản lý tệp tin\" thay vì \"Thunar\""
+"\"Quản lý tệp tin\" thay vì \"Fmb\""
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1019,12 +1019,12 @@ msgstr "Định dạng _tooltip:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
 msgstr ""
-"Định dạng miêu tả phần ngày và giờ được chèn vào thanh panel. Ví dụ, %Y sẽ "
+"Định dạng miêu tả phần ngày và giờ được chèn vào thanh bar. Ví dụ, %Y sẽ "
 "tương ứng với năm, %m tương ứng vơi tháng và %d tương ứng với ngày. Tương "
 "tự, thẻ <b></b> sẽ làm chữ in đậm. Xem \"Trợ giúp\" để có thêm thông tin chi"
 " tiết."
@@ -1493,7 +1493,7 @@ msgstr "Vô hiệu hóa tooltip_s"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "Chọn tùy chọn này để vô hiệu hóa chú thích khi bạn di chuyển qua một nút hay"
@@ -1504,12 +1504,12 @@ msgid "Show _label instead of icon"
 msgstr "Hiện tên tha_y vì biểu tượng"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
-msgstr "Hiển thị mục được sử dụng lần cuối trên thanh panel"
+msgid "Show last _used item in bar"
+msgstr "Hiển thị mục được sử dụng lần cuối trên thanh bar"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
-msgstr "Chọn tùy chọn này để di chuyển mục được chọn đến thanh panel."
+msgid "Select this option to move the clicked menu item to the bar."
+msgstr "Chọn tùy chọn này để di chuyển mục được chọn đến thanh bar."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
 msgid "_Arrow button position:"
@@ -1587,7 +1587,7 @@ msgid "Dots"
 msgstr "Chấm"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
+msgid "Adds a separator or space between bar items"
 msgstr ""
 
 #: ../plugins/showdesktop/showdesktop.c:210

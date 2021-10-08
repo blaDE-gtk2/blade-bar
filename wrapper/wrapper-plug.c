@@ -25,7 +25,7 @@
 #endif
 
 #include <wrapper/wrapper-plug.h>
-#include <common/panel-private.h>
+#include <common/bar-private.h>
 
 
 
@@ -106,7 +106,7 @@ wrapper_plug_init (WrapperPlug *plug)
   plug->background_image = NULL;
   plug->background_image_cache = NULL;
 
-  gtk_widget_set_name (GTK_WIDGET (plug), "XfcePanelWindowWrapper");
+  gtk_widget_set_name (GTK_WIDGET (plug), "BladeBarWindowWrapper");
 
   /* allow painting, else compositing won't work */
   gtk_widget_set_app_paintable (GTK_WIDGET (plug), TRUE);
@@ -133,14 +133,14 @@ wrapper_plug_init (WrapperPlug *plug)
 #endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-  /* set the panel class */
+  /* set the bar class */
   context = gtk_widget_get_style_context (GTK_WIDGET (plug));
-  gtk_style_context_add_class (context, "panel");
-  gtk_style_context_add_class (context, "xfce4-panel");
+  gtk_style_context_add_class (context, "bar");
+  gtk_style_context_add_class (context, "blade-bar");
 
   /* We need to set the plugin button to transparent and let everything else
-   * be in the theme or panel's color */
-  css_string = g_strdup_printf (".xfce4-panel .button { background-color: transparent; }");
+   * be in the theme or bar's color */
+  css_string = g_strdup_printf (".blade-bar .button { background-color: transparent; }");
   gtk_css_provider_load_from_data (provider, css_string, -1, NULL);
   gtk_style_context_add_provider (context,
                                   GTK_STYLE_PROVIDER (provider),
@@ -228,7 +228,7 @@ wrapper_plug_draw (GtkWidget *widget,
       if (plug->background_color != NULL)
         {
           color = plug->background_color;
-          cairo_set_source_rgba (cr, PANEL_GDKCOLOR_TO_DOUBLE (color), alpha);
+          cairo_set_source_rgba (cr, BAR_GDKCOLOR_TO_DOUBLE (color), alpha);
         }
       else
         {
@@ -318,7 +318,7 @@ wrapper_plug_expose_event (GtkWidget      *widget,
               /* draw the background color */
               cr = gdk_cairo_create (widget->window);
               cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-              cairo_set_source_rgba (cr, PANEL_GDKCOLOR_TO_DOUBLE (color), alpha);
+              cairo_set_source_rgba (cr, BAR_GDKCOLOR_TO_DOUBLE (color), alpha);
               gdk_cairo_rectangle (cr, &event->area);
               cairo_fill (cr);
               cairo_destroy (cr);
@@ -335,7 +335,7 @@ wrapper_plug_expose_event (GtkWidget      *widget,
 static void
 wrapper_plug_background_reset (WrapperPlug *plug)
 {
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
+  bar_return_if_fail (WRAPPER_IS_PLUG (plug));
 
   if (plug->background_color != NULL)
     gdk_color_free (plug->background_color);
@@ -375,8 +375,8 @@ void
 wrapper_plug_set_background_alpha (WrapperPlug *plug,
                                    gdouble      alpha)
 {
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
-  panel_return_if_fail (GTK_IS_WIDGET (plug));
+  bar_return_if_fail (WRAPPER_IS_PLUG (plug));
+  bar_return_if_fail (GTK_IS_WIDGET (plug));
 
   /* set the alpha */
   plug->background_alpha = CLAMP (alpha, 0.00, 1.00);
@@ -395,7 +395,7 @@ wrapper_plug_set_background_color (WrapperPlug *plug,
 {
   GdkColor color = { 0, };
 
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
+  bar_return_if_fail (WRAPPER_IS_PLUG (plug));
 
   wrapper_plug_background_reset (plug);
 
@@ -412,7 +412,7 @@ void
 wrapper_plug_set_background_image (WrapperPlug *plug,
                                    const gchar *image)
 {
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
+  bar_return_if_fail (WRAPPER_IS_PLUG (plug));
 
   wrapper_plug_background_reset (plug);
 

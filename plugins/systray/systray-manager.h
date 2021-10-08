@@ -48,7 +48,7 @@ enum
 
 GType           systray_manager_get_type             (void) G_GNUC_CONST;
 
-void            systray_manager_register_type        (XfcePanelTypeModule *type_module);
+void            systray_manager_register_type        (BladeBarTypeModule *type_module);
 
 GQuark          systray_manager_error_quark          (void);
 

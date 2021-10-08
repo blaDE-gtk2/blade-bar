@@ -18,99 +18,99 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
 msgstr "צור מפעיל על הלוח"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr "הוסף מפעיל ללוח על בסיס המידע של קובץ שולחן עבודה זה"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2623
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2623
 #: ../migrate/main.c:117
-msgid "Panel"
+msgid "Bar"
 msgstr "לוח"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
 msgstr "התאם אישית את הלוח"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1199
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1199
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "האם אתה בטוח כי ברצונך להסיר את \"%s\"?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1202
-msgid "If you remove the item from the panel, it is permanently lost."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1202
+msgid "If you remove the item from the bar, it is permanently lost."
 msgstr "אם תסיר את הפריט מתוך הלוח, הוא יאבד באופן קבוע."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_הזז"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "_לוח"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2635
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2635
 msgid "Add _New Items..."
 msgstr "הוסף פריטים _חדשים..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2646
-msgid "Panel Pr_eferences..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2646
+msgid "Bar Pr_eferences..."
 msgstr "_העדפות לוח..."
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2674
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2674
 msgid "Log _Out"
 msgstr "הת_נתק"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
 msgstr "הצג את דיאלוג 'העדפות פאנל'"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
 msgstr "מספר-פאנל"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "הצג את דיאלוג 'הוסף פריטים חדשים'"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
 msgstr "שמור את הגדרת הפאנל"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
 msgstr "הוסף תוסף חדש לפאנל"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "שם-תוסף"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
 msgstr "התחל מחדש את הפאנל הפעיל"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
 msgstr "הפסק את הפאנל הפעיל"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "אל תחכה למנהל חלונות בהדלקה"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -118,118 +118,118 @@ msgid "Print version information and exit"
 msgstr "הדפס מידע גרסה וצא"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ארגומנטים...]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "הקלד \"%s --help\" לשימוש."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "קבוצת הפיתוח של Xfce. כל הזכויות שמורות."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "אנא דווח באגים ל <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "יש כבר התרחשות פעילה."
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "מתחיל מחדש..."
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "נכשל להציג את דיאלוג ההעדפות"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "נכשל להציג את דיאלוג הוספת פריטים חדשים"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
 msgstr "נכשל לשמור את הגדרות הפאנל"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
 msgstr "נכשל להוסיף תוסף לפאנל"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
 msgstr "נכשל להתחיל מחדש את הפאנל"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
 msgstr "נכשל להפסיק את הפאנל"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "נכשל לשלוח מסר D-Bus"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
 "האם ברצונך להתחיל את הפאנל? אם כן, וודא ששמרת את הסשן ביציאה, כך שהפאנל "
 "יתחיל אוטומטית בפעם הבאה בה תתחבר."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "אף מופע פועל של %s לא נמצא"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "נכשל להפעיל את תוכנת הנדידה"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "צור _מפעיל"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
 "פעולה זו תיצור תוסף מפעיל חדש בפאנל ותכניס את הקבצים שהושלכו כפריטים בתפריט."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "צור מפעיל חדש מקובץ שולחן עבודה %d"
 msgstr[1] "צור מפעיל חדש מקבצי שולחן עבודה %d "
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
 msgstr "התחלת את X בלי מנהל סשן. לחיצה על יציאה תסגור את שרת ה-X."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
 msgstr "האם אתה בטוח כי ברצונך לצאת מהלוח?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "נכשל לבצע פקודה \"%s\""
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "הוגדר תחביר שגוי של מאורע תוסף. השתמש ב PLUGIN-NAME:NAME[:TYPE:VALUE]."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -238,123 +238,123 @@ msgstr ""
 "סוג רמז לא חוקי \"%s\". סוגים חוקיים הם בוליאני, דאבל, שלם, מחרוזת ושלם "
 "חיובי."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "מתחזקים"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "מצב סרגל שולחני"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "מתחזקים לא פעילים"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
 msgstr "הלוח של סביבת שולחן העבודה Xfce"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr "שבחים-מתרגמים"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "הוסף פריט חדש"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
 msgstr "אנא בחר לוח עבור התוסף החדש:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:862
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:862
 #, c-format
-msgid "Panel %d"
+msgid "Bar %d"
 msgstr "פאנל %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
 "משום שהפאנל מורץ במצב קיוסק, אינך מורשה לערוך שינויים לתצורת פאנל כמו משתמש "
 "רגיל"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
 msgstr "התאמת הפאנל אינה מורשית"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "הוספת פריטים חדשים"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
 msgstr "הוסף תוספים חדשים לפאנל"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "חפש:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "הכנס צירוף מילים לחיפוש כאן"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr "התוסף \"%s\" עזב את הפאנל במפתיע, האם ברצונך להפעיל אותו מחדש?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "התוסף הופעל מחדש למעלה מפעם אחת במהלך %d השניות האחרונות. אם תלחץ על בצע "
 "הלוח ינסה להפעיל מחדש את התוסף אחרת הוא יוסר באופן קבוע מתוך הלוח."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "אוטומטי"
 
-#: ../panel/panel-preferences-dialog.c:500
+#: ../bar/bar-preferences-dialog.c:500
 msgid "Primary"
 msgstr "ראשי"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:520
+#: ../bar/bar-preferences-dialog.c:520
 #, c-format
 msgid "Screen %d"
 msgstr "מסך %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:546
+#: ../bar/bar-preferences-dialog.c:546
 #, c-format
 msgid "Monitor %d"
 msgstr "צג %d"
 
-#: ../panel/panel-preferences-dialog.c:928
-msgid "The panel and plugin configurations will be permanently removed"
+#: ../bar/bar-preferences-dialog.c:928
+msgid "The bar and plugin configurations will be permanently removed"
 msgstr "הלוח ותצורות התוסף יוסרו באופן קבוע"
 
-#: ../panel/panel-preferences-dialog.c:929
+#: ../bar/bar-preferences-dialog.c:929
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
+msgid "Are you sure you want to remove bar %d?"
 msgstr "האם אתה בטוח כי ברצונך להסיר את לוח %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1041
+#: ../bar/bar-preferences-dialog.c:1041
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(חיצוני)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1046
+#: ../bar/bar-preferences-dialog.c:1046
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -365,283 +365,283 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1058
+#: ../bar/bar-preferences-dialog.c:1058
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "שם פנימי: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "אופקי"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "אנכי"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "סרגל שולחני"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "אף פעם"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "בתבונה"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "תמיד"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "אף אחד (השתמש בסגנון מערכת)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "צבע רצוף"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "תמונת רקע"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
 msgstr "הוסף לוח חדש"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
 msgstr "הסר את הלוח הנבחר הנוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
 msgstr "העבר בין כיוונים מוקדמים של הלוח"
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "_מצב:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "_פלט:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "_כסה צגים"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
 msgstr "בחר באפשרות זו כדי להרחיב את הלוח למספר צגים."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
 msgstr "_נעל לוח"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr "בחר באפשרות זו כדי להסתיר את הידיות של הלוח ולנעול את מיקומו."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
 msgstr "הסתר את הלוח אוטומטית:"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "_אל תשמור מקום בשוליים"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "בחר באפשרות זו אם ברצונך שחלונות מוגדלים יכסו את השטח מאחורי הלוח. זה עובד "
 "רק כאשר הלוח מחובר לקצה המסך."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "כללי"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "_גודל שורה (פיקסלים):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "או_רך (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "מס_פר שורות:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "הג_דל אורך אוטומטית"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
 "בחר את אפשרות זו כדי להגדיל אוטומטית את האורך של הלוח אם התוספות מצריכות עוד"
 " מרווח."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "מידות"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "_תצוגה"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "_סגנון:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "_אלפא:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr "ערך אלפא של רקע הלוח, כאשר 0 שקוף לגמרי ו- 100 אטום לגמרי."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "_צבע:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
 msgstr "בחר צבע לוח"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_קובץ:"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "בחר תמונת רקע"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "רקע"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "_כניסה:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "_עזיבה:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
 "שקיפות כאשר הסמן הינו מעל הלוח, כאשר הערך 0 הוא שקוף לגמרי והערך 100 הוא "
 "אטום לגמרי."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 "שקיפות כאשר הסמן אינו מעל הלוח, כאשר הערך 0 הוא שקוף לגמרי והערך 100 הוא "
 "אטום לגמרי."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "אטימות"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr "אפשר חיבור במנהל החלונות להגדרות אטימות בלוח."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "מ_ראה"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "הזז מעלה בשורה אחת פריט נבחר נוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "הזז מטה בשורה אחת פריט נבחר נוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
 msgstr "הוסף פריט חדש ללוח זה"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "הסר פריט נבחר נוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "ערוך את הפריט הנבחר הנוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "הצג מידע אודות של הפריט הנבחר הנוכחי"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "פרי_טים"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "משחק _חדש"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "_רמה:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "טירון"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "בינוני"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "מנוסה"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "מומחה"
 
-#: ../panel/panel-window.c:2660
-msgid "_Lock Panel"
+#: ../bar/bar-window.c:2660
+msgid "_Lock Bar"
 msgstr "_נעל לוח"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
+msgid "Welcome to the first start of the bar"
 msgstr "ברוך בואך להפעלה הראשונה של הלוח"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 "מכיוון שהלוח עבר למערכת חדשה לאחסון ההגדרות, הוא חייב לטעון תצורה התחלתית "
@@ -656,8 +656,8 @@ msgid "Migrate old config"
 msgstr "העברת תצורה ישנה"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "העברת התצורה הישנה של 4.6 אל Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "העברת התצורה הישנה של 4.6 אל Blconf"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -668,15 +668,15 @@ msgid "Load the default configuration"
 msgstr "טעינת תצורת ברירת המחדל"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
+msgid "One empty bar"
 msgstr "לוח ריק אחד"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
+msgid "Start with one empty bar"
 msgstr "התחלה עם לוח ריק אחד"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
+msgid "Failed to migrate the old bar configuration"
 msgstr "המעבר של תצורת הלוח הישנה נכשל"
 
 #: ../migrate/main.c:172
@@ -684,7 +684,7 @@ msgid "Failed to load the default configuration"
 msgstr "טעינת תצורת ברירת המחדל נכשלה"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr "תצורת הלוח צריכה העברה..."
 
 #: ../migrate/main.c:189
@@ -692,7 +692,7 @@ msgid "Failed to migrate the existing configuration"
 msgstr "העברת התצורה הנוכחית נכשלה"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
+msgid "Bar configuration has been updated."
 msgstr "תצורת לוח עודכנה."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
@@ -873,10 +873,10 @@ msgstr "הצג שמות יישומים _כלליים"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "בחר באפשרות זו כדי להציג את השם הכללי של יישום בתפריט, לדוגמא \"מנהל קבצים\""
-" במקום \"Thunar\""
+" במקום \"Fmb\""
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1032,7 +1032,7 @@ msgstr "פורמט _רמז צץ:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
@@ -1505,7 +1505,7 @@ msgstr "נטרל _תיבות צצות"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "בחר את אפשרות זו כדי לנטרל תיבות צצות בעת מעבר מעל לחצן לוח או פריטי תפריט."
@@ -1515,11 +1515,11 @@ msgid "Show _label instead of icon"
 msgstr "הצג _תווית במקום סמל"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
+msgid "Show last _used item in bar"
 msgstr "הצג פריט אחרון ב_שימוש בלוח"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
+msgid "Select this option to move the clicked menu item to the bar."
 msgstr "בחר את אפשרות זו כדי להזיז פריט תפריט שנלחץ אל הלוח."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
@@ -1596,7 +1596,7 @@ msgid "Dots"
 msgstr "נקודות"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
+msgid "Adds a separator or space between bar items"
 msgstr "מוסיף מפריד או רווח בין פריטי לוח"
 
 #: ../plugins/showdesktop/showdesktop.c:210

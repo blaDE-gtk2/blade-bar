@@ -36,7 +36,7 @@ typedef struct _PagerButtons      PagerButtons;
 
 GType      pager_buttons_get_type        (void) G_GNUC_CONST;
 
-void       pager_buttons_register_type   (XfcePanelTypeModule *type_module);
+void       pager_buttons_register_type   (BladeBarTypeModule *type_module);
 
 GtkWidget *pager_buttons_new             (WnckScreen          *screen) G_GNUC_MALLOC;
 

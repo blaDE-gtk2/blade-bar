@@ -1,8 +1,8 @@
-[Xfce Panel]
-Type=X-XFCE-PanelPlugin
+[Blade Bar]
+Type=X-XFCE-BarPlugin
 _Name=Window Buttons
 _Comment=Switch between open windows using buttons
 Icon=preferences-system-windows
 X-XFCE-Module=tasklist
 X-XFCE-Internal=TRUE
-X-XFCE-API=@LIBXFCE4PANEL_VERSION_API@
+X-XFCE-API=@LIBBLADEBAR_VERSION_API@

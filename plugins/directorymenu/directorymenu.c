@@ -21,13 +21,13 @@
 #endif
 
 #include <gio/gio.h>
-#include <exo/exo.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
-#include <common/panel-private.h>
+#include <blxo/blxo.h>
+#include <libbladeui/libbladeui.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladebar/libbladebar.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
+#include <common/bar-private.h>
 
 #ifdef HAVE_GIO_UNIX
 #include <gio/gdesktopappinfo.h>
@@ -41,12 +41,12 @@
 
 struct _DirectoryMenuPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _DirectoryMenuPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   GtkWidget       *button;
   GtkWidget       *icon;
@@ -82,13 +82,13 @@ static void      directory_menu_plugin_set_property         (GObject            
                                                              guint                prop_id,
                                                              const GValue        *value,
                                                              GParamSpec          *pspec);
-static void      directory_menu_plugin_construct            (XfcePanelPlugin     *panel_plugin);
+static void      directory_menu_plugin_construct            (BladeBarPlugin     *bar_plugin);
 static void      directory_menu_plugin_free_file_patterns   (DirectoryMenuPlugin *plugin);
-static void      directory_menu_plugin_free_data            (XfcePanelPlugin     *panel_plugin);
-static gboolean  directory_menu_plugin_size_changed         (XfcePanelPlugin     *panel_plugin,
+static void      directory_menu_plugin_free_data            (BladeBarPlugin     *bar_plugin);
+static gboolean  directory_menu_plugin_size_changed         (BladeBarPlugin     *bar_plugin,
                                                              gint                 size);
-static void      directory_menu_plugin_configure_plugin     (XfcePanelPlugin     *panel_plugin);
-static gboolean  directory_menu_plugin_remote_event         (XfcePanelPlugin     *panel_plugin,
+static void      directory_menu_plugin_configure_plugin     (BladeBarPlugin     *bar_plugin);
+static gboolean  directory_menu_plugin_remote_event         (BladeBarPlugin     *bar_plugin,
                                                              const gchar         *name,
                                                              const GValue        *value);
 static void      directory_menu_plugin_menu                 (GtkWidget           *button,
@@ -97,7 +97,7 @@ static void      directory_menu_plugin_menu                 (GtkWidget          
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN (DirectoryMenuPlugin, directory_menu_plugin)
+BLADE_BAR_DEFINE_PLUGIN (DirectoryMenuPlugin, directory_menu_plugin)
 
 
 
@@ -108,14 +108,14 @@ static GtkIconSize menu_icon_size = GTK_ICON_SIZE_INVALID;
 static void
 directory_menu_plugin_class_init (DirectoryMenuPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
   GObjectClass         *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->get_property = directory_menu_plugin_get_property;
   gobject_class->set_property = directory_menu_plugin_set_property;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = directory_menu_plugin_construct;
   plugin_class->free_data = directory_menu_plugin_free_data;
   plugin_class->size_changed = directory_menu_plugin_size_changed;
@@ -127,34 +127,34 @@ directory_menu_plugin_class_init (DirectoryMenuPluginClass *klass)
                                    g_param_spec_string ("base-directory",
                                                         NULL, NULL,
                                                         NULL,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_ICON_NAME,
                                    g_param_spec_string ("icon-name",
                                                         NULL, NULL,
                                                         NULL,
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_FILE_PATTERN,
                                    g_param_spec_string ("file-pattern",
                                                         NULL, NULL,
                                                         "",
-                                                        EXO_PARAM_READWRITE));
+                                                        BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_HIDDEN_FILES,
                                    g_param_spec_boolean ("hidden-files",
                                                          NULL, NULL,
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   menu_file = g_quark_from_static_string ("dir-menu-file");
 
-  menu_icon_size = gtk_icon_size_from_name ("panel-directory-menu");
+  menu_icon_size = gtk_icon_size_from_name ("bar-directory-menu");
   if (menu_icon_size == GTK_ICON_SIZE_INVALID)
-    menu_icon_size = gtk_icon_size_register ("panel-directory-menu", 16, 16);
+    menu_icon_size = gtk_icon_size_register ("bar-directory-menu", 16, 16);
 }
 
 
@@ -162,15 +162,15 @@ directory_menu_plugin_class_init (DirectoryMenuPluginClass *klass)
 static void
 directory_menu_plugin_init (DirectoryMenuPlugin *plugin)
 {
-  plugin->button = xfce_panel_create_toggle_button ();
-  xfce_panel_plugin_add_action_widget (XFCE_PANEL_PLUGIN (plugin), plugin->button);
+  plugin->button = blade_bar_create_toggle_button ();
+  blade_bar_plugin_add_action_widget (BLADE_BAR_PLUGIN (plugin), plugin->button);
   gtk_container_add (GTK_CONTAINER (plugin), plugin->button);
   gtk_widget_set_name (plugin->button, "directorymenu-button");
   gtk_button_set_relief (GTK_BUTTON (plugin->button), GTK_RELIEF_NONE);
   g_signal_connect (G_OBJECT (plugin->button), "toggled",
       G_CALLBACK (directory_menu_plugin_menu), plugin);
 
-  plugin->icon = xfce_panel_image_new_from_source (DEFAULT_ICON_NAME);
+  plugin->icon = blade_bar_image_new_from_source (DEFAULT_ICON_NAME);
   gtk_container_add (GTK_CONTAINER (plugin->button), plugin->icon);
   gtk_widget_show (plugin->icon);
 }
@@ -201,7 +201,7 @@ directory_menu_plugin_get_property (GObject    *object,
       break;
 
     case PROP_FILE_PATTERN:
-      g_value_set_string (value, exo_str_is_empty (plugin->file_pattern) ?
+      g_value_set_string (value, blxo_str_is_empty (plugin->file_pattern) ?
           "" : plugin->file_pattern);
       break;
 
@@ -233,7 +233,7 @@ directory_menu_plugin_set_property (GObject      *object,
     {
     case PROP_BASE_DIRECTORY:
       path = g_value_get_string (value);
-      if (exo_str_is_empty (path))
+      if (blxo_str_is_empty (path))
         path = g_get_home_dir ();
 
       if (plugin->base_directory != NULL)
@@ -243,7 +243,7 @@ directory_menu_plugin_set_property (GObject      *object,
       display_name = g_file_get_parse_name (plugin->base_directory);
       gtk_widget_set_tooltip_text (plugin->button, display_name);
 
-      panel_utils_set_atk_info (plugin->button, _("Directory Menu"), display_name);
+      bar_utils_set_atk_info (plugin->button, _("Directory Menu"), display_name);
 
       g_free (display_name);
       break;
@@ -251,8 +251,8 @@ directory_menu_plugin_set_property (GObject      *object,
     case PROP_ICON_NAME:
       g_free (plugin->icon_name);
       plugin->icon_name = g_value_dup_string (value);
-      xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (plugin->icon),
-          exo_str_is_empty (plugin->icon_name) ? DEFAULT_ICON_NAME : plugin->icon_name);
+      blade_bar_image_set_from_source (BLADE_BAR_IMAGE (plugin->icon),
+          blxo_str_is_empty (plugin->icon_name) ? DEFAULT_ICON_NAME : plugin->icon_name);
       break;
 
     case PROP_FILE_PATTERN:
@@ -265,7 +265,7 @@ directory_menu_plugin_set_property (GObject      *object,
       if (G_LIKELY (array != NULL))
         {
           for (i = 0; array[i] != NULL; i++)
-            if (!exo_str_is_empty (array[i]))
+            if (!blxo_str_is_empty (array[i]))
                 plugin->patterns = g_slist_prepend (plugin->patterns,
                     g_pattern_spec_new (array[i]));
 
@@ -286,10 +286,10 @@ directory_menu_plugin_set_property (GObject      *object,
 
 
 static void
-directory_menu_plugin_construct (XfcePanelPlugin *panel_plugin)
+directory_menu_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
     { "base-directory", G_TYPE_STRING },
     { "icon-name", G_TYPE_STRING },
@@ -298,13 +298,13 @@ directory_menu_plugin_construct (XfcePanelPlugin *panel_plugin)
     { NULL }
   };
 
-  xfce_panel_plugin_menu_show_configure (panel_plugin);
+  blade_bar_plugin_menu_show_configure (bar_plugin);
 
-  xfce_panel_plugin_set_small (panel_plugin, TRUE);
+  blade_bar_plugin_set_small (bar_plugin, TRUE);
 
   /* bind all properties */
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   if (plugin->base_directory == NULL)
@@ -320,7 +320,7 @@ directory_menu_plugin_free_file_patterns (DirectoryMenuPlugin *plugin)
 {
   GSList *li;
 
-  panel_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
 
   for (li = plugin->patterns; li != NULL; li = li->next)
     g_pattern_spec_free (li->data);
@@ -332,9 +332,9 @@ directory_menu_plugin_free_file_patterns (DirectoryMenuPlugin *plugin)
 
 
 static void
-directory_menu_plugin_free_data (XfcePanelPlugin *panel_plugin)
+directory_menu_plugin_free_data (BladeBarPlugin *bar_plugin)
 {
-  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (panel_plugin);
+  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (bar_plugin);
 
   g_object_unref (G_OBJECT (plugin->base_directory));
   g_free (plugin->icon_name);
@@ -346,12 +346,12 @@ directory_menu_plugin_free_data (XfcePanelPlugin *panel_plugin)
 
 
 static gboolean
-directory_menu_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+directory_menu_plugin_size_changed (BladeBarPlugin *bar_plugin,
                                     gint             size)
 {
   /* force a square button */
-  size /= xfce_panel_plugin_get_nrows (panel_plugin);
-  gtk_widget_set_size_request (GTK_WIDGET (panel_plugin), size, size);
+  size /= blade_bar_plugin_get_nrows (bar_plugin);
+  gtk_widget_set_size_request (GTK_WIDGET (bar_plugin), size, size);
 
   return TRUE;
 }
@@ -365,8 +365,8 @@ directory_menu_plugin_configure_plugin_file_set (GtkFileChooserButton *button,
 {
   gchar *uri;
 
-  panel_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (button));
-  panel_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
+  bar_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (button));
+  bar_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
 
   uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (button));
   g_object_set (G_OBJECT (plugin), "base-directory", uri, NULL);
@@ -382,10 +382,10 @@ directory_menu_plugin_configure_plugin_icon_chooser (GtkWidget           *button
   GtkWidget *chooser;
   gchar     *icon;
 
-  panel_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
-  panel_return_if_fail (XFCE_IS_PANEL_IMAGE (plugin->dialog_icon));
+  bar_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
+  bar_return_if_fail (BLADE_IS_BAR_IMAGE (plugin->dialog_icon));
 
-  chooser = exo_icon_chooser_dialog_new (_("Select An Icon"),
+  chooser = blxo_icon_chooser_dialog_new (_("Select An Icon"),
                                          GTK_WINDOW (gtk_widget_get_toplevel (button)),
                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                          GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
@@ -395,14 +395,14 @@ directory_menu_plugin_configure_plugin_icon_chooser (GtkWidget           *button
                                            GTK_RESPONSE_ACCEPT,
                                            GTK_RESPONSE_CANCEL, -1);
 
-  if (!exo_str_is_empty (plugin->icon_name))
-  exo_icon_chooser_dialog_set_icon (EXO_ICON_CHOOSER_DIALOG (chooser), plugin->icon_name);
+  if (!blxo_str_is_empty (plugin->icon_name))
+  blxo_icon_chooser_dialog_set_icon (BLXO_ICON_CHOOSER_DIALOG (chooser), plugin->icon_name);
 
   if (gtk_dialog_run (GTK_DIALOG (chooser)) == GTK_RESPONSE_ACCEPT)
     {
-      icon = exo_icon_chooser_dialog_get_icon (EXO_ICON_CHOOSER_DIALOG (chooser));
+      icon = blxo_icon_chooser_dialog_get_icon (BLXO_ICON_CHOOSER_DIALOG (chooser));
       g_object_set (G_OBJECT (plugin), "icon-name", icon, NULL);
-      xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (plugin->dialog_icon), icon);
+      blade_bar_image_set_from_source (BLADE_BAR_IMAGE (plugin->dialog_icon), icon);
       g_free (icon);
     }
 
@@ -412,25 +412,25 @@ directory_menu_plugin_configure_plugin_icon_chooser (GtkWidget           *button
 
 
 static void
-directory_menu_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+directory_menu_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (panel_plugin);
+  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (bar_plugin);
   GtkBuilder          *builder;
   GObject             *dialog, *object;
   const gchar         *icon_name = plugin->icon_name;
 
-  if (exo_str_is_empty (icon_name))
+  if (blxo_str_is_empty (icon_name))
     icon_name = DEFAULT_ICON_NAME;
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, directorymenu_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, directorymenu_dialog_ui,
                                      directorymenu_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
 
   object = gtk_builder_get_object (builder, "base-directory");
-  panel_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (object));
+  bar_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (object));
   if (!gtk_file_chooser_set_current_folder_file (GTK_FILE_CHOOSER (object),
                                                  plugin->base_directory, NULL))
     gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (object), g_get_home_dir ());
@@ -438,24 +438,24 @@ directory_menu_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
      G_CALLBACK (directory_menu_plugin_configure_plugin_file_set), plugin);
 
   object = gtk_builder_get_object (builder, "icon-button");
-  panel_return_if_fail (GTK_IS_BUTTON (object));
+  bar_return_if_fail (GTK_IS_BUTTON (object));
   g_signal_connect (G_OBJECT (object), "clicked",
      G_CALLBACK (directory_menu_plugin_configure_plugin_icon_chooser), plugin);
 
-  plugin->dialog_icon = xfce_panel_image_new_from_source (icon_name);
-  xfce_panel_image_set_size (XFCE_PANEL_IMAGE (plugin->dialog_icon), 48);
+  plugin->dialog_icon = blade_bar_image_new_from_source (icon_name);
+  blade_bar_image_set_size (BLADE_BAR_IMAGE (plugin->dialog_icon), 48);
   gtk_container_add (GTK_CONTAINER (object), plugin->dialog_icon);
   g_object_add_weak_pointer (G_OBJECT (plugin->dialog_icon), (gpointer) &plugin->dialog_icon);
   gtk_widget_show (plugin->dialog_icon);
 
   object = gtk_builder_get_object (builder, "file-pattern");
-  panel_return_if_fail (GTK_IS_ENTRY (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "file-pattern",
+  bar_return_if_fail (GTK_IS_ENTRY (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "file-pattern",
                           G_OBJECT (object), "text");
 
   object = gtk_builder_get_object (builder, "hidden-files");
-  panel_return_if_fail (GTK_IS_CHECK_BUTTON (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "hidden-files",
+  bar_return_if_fail (GTK_IS_CHECK_BUTTON (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "hidden-files",
                           G_OBJECT (object), "active");
 
   gtk_widget_show (GTK_WIDGET (dialog));
@@ -464,18 +464,18 @@ directory_menu_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
 
 
 static gboolean
-directory_menu_plugin_remote_event (XfcePanelPlugin *panel_plugin,
+directory_menu_plugin_remote_event (BladeBarPlugin *bar_plugin,
                                     const gchar     *name,
                                     const GValue    *value)
 {
-  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (panel_plugin);
+  DirectoryMenuPlugin *plugin = XFCE_DIRECTORY_MENU_PLUGIN (bar_plugin);
 
-  panel_return_val_if_fail (value == NULL || G_IS_VALUE (value), FALSE);
+  bar_return_val_if_fail (value == NULL || G_IS_VALUE (value), FALSE);
 
   if (strcmp (name, "popup") == 0
-      && GTK_WIDGET_VISIBLE (panel_plugin)
+      && GTK_WIDGET_VISIBLE (bar_plugin)
       && !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (plugin->button))
-      && panel_utils_grab_available ())
+      && bar_utils_grab_available ())
     {
       if (value != NULL
           && G_VALUE_HOLDS_BOOLEAN (value)
@@ -503,14 +503,14 @@ static void
 directory_menu_plugin_selection_done (GtkWidget *menu,
                                       GtkWidget *button)
 {
-  panel_return_if_fail (button == NULL || GTK_IS_TOGGLE_BUTTON (button));
-  panel_return_if_fail (GTK_IS_MENU (menu));
+  bar_return_if_fail (button == NULL || GTK_IS_TOGGLE_BUTTON (button));
+  bar_return_if_fail (GTK_IS_MENU (menu));
 
   if (button != NULL)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), FALSE);
 
   /* delay destruction so we can handle the activate event first */
-  exo_gtk_object_destroy_later (GTK_OBJECT (menu));
+  blxo_gtk_object_destroy_later (GTK_OBJECT (menu));
 }
 
 
@@ -554,8 +554,8 @@ directory_menu_plugin_menu_launch_desktop_file (GtkWidget *mi,
   GIcon               *icon;
   GError              *error = NULL;
 
-  panel_return_if_fail (G_IS_APP_INFO (info));
-  panel_return_if_fail (GTK_IS_WIDGET (mi));
+  bar_return_if_fail (G_IS_APP_INFO (info));
+  bar_return_if_fail (GTK_IS_WIDGET (mi));
 
   context = gdk_app_launch_context_new ();
   gdk_app_launch_context_set_screen (context, gtk_widget_get_screen (mi));
@@ -590,8 +590,8 @@ directory_menu_plugin_menu_launch (GtkWidget *mi,
   const gchar         *message;
   gboolean             result;
 
-  panel_return_if_fail (G_IS_FILE (file));
-  panel_return_if_fail (GTK_IS_WIDGET (mi));
+  bar_return_if_fail (G_IS_FILE (file));
+  bar_return_if_fail (GTK_IS_WIDGET (mi));
 
   info = g_file_query_info (file, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
                             G_FILE_QUERY_INFO_NONE, NULL, &error);
@@ -653,7 +653,7 @@ directory_menu_plugin_menu_open (GtkWidget   *mi,
   gchar        *argv[3];
   gboolean      startup_notify = FALSE;
 
-  /* try to work around the exo code and get the direct command */
+  /* try to work around the blxo code and get the direct command */
   rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, "xfce4/helpers.rc", TRUE);
   if (G_LIKELY (rc != NULL))
     {
@@ -694,7 +694,7 @@ directory_menu_plugin_menu_open (GtkWidget   *mi,
           argv[1] = path_as_arg ? working_dir : NULL;
           argv[2] = NULL;
 
-          /* try to spawn the program, if this fails we try exo for
+          /* try to spawn the program, if this fails we try blxo for
            * a decent error message */
           result = xfce_spawn_on_screen (gtk_widget_get_screen (mi),
                                          working_dir, argv, NULL, 0,
@@ -709,7 +709,7 @@ directory_menu_plugin_menu_open (GtkWidget   *mi,
     }
 
   if (!result
-      && !exo_execute_preferred_application_on_screen (category,
+      && !blxo_execute_preferred_application_on_screen (category,
                                                        path_as_arg ? working_dir : NULL,
                                                        working_dir,
                                                        NULL,
@@ -729,8 +729,8 @@ static void
 directory_menu_plugin_menu_open_terminal (GtkWidget *mi,
                                           GFile     *dir)
 {
-  panel_return_if_fail (GTK_IS_WIDGET (mi));
-  panel_return_if_fail (G_IS_FILE (dir));
+  bar_return_if_fail (GTK_IS_WIDGET (mi));
+  bar_return_if_fail (G_IS_FILE (dir));
 
   directory_menu_plugin_menu_open (mi, dir, "TerminalEmulator", FALSE);
 }
@@ -741,8 +741,8 @@ static void
 directory_menu_plugin_menu_open_folder (GtkWidget *mi,
                                         GFile     *dir)
 {
-  panel_return_if_fail (GTK_IS_WIDGET (mi));
-  panel_return_if_fail (G_IS_FILE (dir));
+  bar_return_if_fail (GTK_IS_WIDGET (mi));
+  bar_return_if_fail (G_IS_FILE (dir));
 
   directory_menu_plugin_menu_open (mi, dir, "FileManager", TRUE);
 }
@@ -754,7 +754,7 @@ directory_menu_plugin_menu_unload (GtkWidget *menu)
 {
   /* delay destruction so we can handle the activate event first */
   gtk_container_foreach (GTK_CONTAINER (menu),
-     (GtkCallback) exo_gtk_object_destroy_later, NULL);
+     (GtkCallback) blxo_gtk_object_destroy_later, NULL);
 }
 
 
@@ -781,11 +781,11 @@ directory_menu_plugin_menu_load (GtkWidget           *menu,
   const gchar     *description;
 #endif
 
-  panel_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
-  panel_return_if_fail (GTK_IS_MENU (menu));
+  bar_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
+  bar_return_if_fail (GTK_IS_MENU (menu));
 
   dir = g_object_get_qdata (G_OBJECT (menu), menu_file);
-  panel_return_if_fail (G_IS_FILE (dir));
+  bar_return_if_fail (G_IS_FILE (dir));
   if (G_UNLIKELY (dir == NULL))
     return;
 
@@ -901,7 +901,7 @@ directory_menu_plugin_menu_load (GtkWidget           *menu,
                   icon = g_app_info_get_icon (G_APP_INFO (desktopinfo));
 
                   /* ignore invalid or hidden files */
-                  if (exo_str_is_empty (display_name)
+                  if (blxo_str_is_empty (display_name)
                       || g_desktop_app_info_get_is_hidden (desktopinfo))
                     {
                       g_object_unref (G_OBJECT (desktopinfo));
@@ -942,7 +942,7 @@ directory_menu_plugin_menu_load (GtkWidget           *menu,
           else if (G_UNLIKELY (desktopinfo != NULL))
             {
               description = g_app_info_get_description (G_APP_INFO (desktopinfo));
-              if (!exo_str_is_empty (description))
+              if (!blxo_str_is_empty (description))
                 gtk_widget_set_tooltip_text (mi, description);
 
               g_signal_connect_data (G_OBJECT (mi), "activate",
@@ -974,8 +974,8 @@ directory_menu_plugin_menu (GtkWidget           *button,
 {
   GtkWidget *menu;
 
-  panel_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
-  panel_return_if_fail (button == NULL || plugin->button == button);
+  bar_return_if_fail (XFCE_IS_DIRECTORY_MENU_PLUGIN (plugin));
+  bar_return_if_fail (button == NULL || plugin->button == button);
 
   if (button != NULL
       && !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
@@ -991,6 +991,6 @@ directory_menu_plugin_menu (GtkWidget           *button,
   directory_menu_plugin_menu_load (menu, plugin);
 
   gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-                  button != NULL ? xfce_panel_plugin_position_menu : NULL,
+                  button != NULL ? blade_bar_plugin_position_menu : NULL,
                   plugin, 1, gtk_get_current_event_time ());
 }

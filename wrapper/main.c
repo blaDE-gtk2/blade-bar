@@ -38,11 +38,11 @@
 #include <dbus/dbus-glib-lowlevel.h>
 
 #include <gtk/gtk.h>
-#include <common/panel-private.h>
-#include <common/panel-dbus.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4panel/xfce-panel-plugin-provider.h>
+#include <common/bar-private.h>
+#include <common/bar-dbus.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladebar/libbladebar.h>
+#include <libbladebar/blade-bar-plugin-provider.h>
 
 #include <wrapper/wrapper-plug.h>
 #include <wrapper/wrapper-module.h>
@@ -59,17 +59,17 @@ static gint     retval = PLUGIN_EXIT_FAILURE;
 static void
 wrapper_gproxy_set (DBusGProxy              *dbus_gproxy,
                     const GPtrArray         *array,
-                    XfcePanelPluginProvider *provider)
+                    BladeBarPluginProvider *provider)
 {
   WrapperPlug                    *plug;
   guint                           i;
   GValue                         *value;
-  XfcePanelPluginProviderPropType type;
+  BladeBarPluginProviderPropType type;
   GValue                          msg = { 0, };
 
-  panel_return_if_fail (XFCE_IS_PANEL_PLUGIN_PROVIDER (provider));
+  bar_return_if_fail (BLADE_IS_BAR_PLUGIN_PROVIDER (provider));
 
-  g_value_init (&msg, PANEL_TYPE_DBUS_SET_PROPERTY);
+  g_value_init (&msg, BAR_TYPE_DBUS_SET_PROPERTY);
 
   for (i = 0; i < array->len; i++)
     {
@@ -79,30 +79,30 @@ wrapper_gproxy_set (DBusGProxy              *dbus_gproxy,
                                    DBUS_SET_VALUE, &value,
                                    G_MAXUINT))
         {
-          panel_assert_not_reached ();
+          bar_assert_not_reached ();
           continue;
         }
 
       switch (type)
         {
         case PROVIDER_PROP_TYPE_SET_SIZE:
-          xfce_panel_plugin_provider_set_size (provider, g_value_get_int (value));
+          blade_bar_plugin_provider_set_size (provider, g_value_get_int (value));
           break;
 
         case PROVIDER_PROP_TYPE_SET_MODE:
-          xfce_panel_plugin_provider_set_mode (provider, g_value_get_int (value));
+          blade_bar_plugin_provider_set_mode (provider, g_value_get_int (value));
           break;
 
         case PROVIDER_PROP_TYPE_SET_SCREEN_POSITION:
-          xfce_panel_plugin_provider_set_screen_position (provider, g_value_get_int (value));
+          blade_bar_plugin_provider_set_screen_position (provider, g_value_get_int (value));
           break;
 
         case PROVIDER_PROP_TYPE_SET_NROWS:
-          xfce_panel_plugin_provider_set_nrows (provider, g_value_get_int (value));
+          blade_bar_plugin_provider_set_nrows (provider, g_value_get_int (value));
           break;
 
         case PROVIDER_PROP_TYPE_SET_LOCKED:
-          xfce_panel_plugin_provider_set_locked (provider, g_value_get_boolean (value));
+          blade_bar_plugin_provider_set_locked (provider, g_value_get_boolean (value));
           break;
 
         case PROVIDER_PROP_TYPE_SET_SENSITIVE:
@@ -126,11 +126,11 @@ wrapper_gproxy_set (DBusGProxy              *dbus_gproxy,
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_REMOVED:
-          xfce_panel_plugin_provider_removed (provider);
+          blade_bar_plugin_provider_removed (provider);
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_SAVE:
-          xfce_panel_plugin_provider_save (provider);
+          blade_bar_plugin_provider_save (provider);
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_QUIT_FOR_RESTART:
@@ -140,19 +140,19 @@ wrapper_gproxy_set (DBusGProxy              *dbus_gproxy,
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_SHOW_CONFIGURE:
-          xfce_panel_plugin_provider_show_configure (provider);
+          blade_bar_plugin_provider_show_configure (provider);
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_SHOW_ABOUT:
-          xfce_panel_plugin_provider_show_about (provider);
+          blade_bar_plugin_provider_show_about (provider);
           break;
 
         case PROVIDER_PROP_TYPE_ACTION_ASK_REMOVE:
-          xfce_panel_plugin_provider_ask_remove (provider);
+          blade_bar_plugin_provider_ask_remove (provider);
           break;
 
         default:
-          panel_assert_not_reached ();
+          bar_assert_not_reached ();
           break;
         }
 
@@ -168,12 +168,12 @@ wrapper_gproxy_remote_event (DBusGProxy              *dbus_gproxy,
                              const gchar             *name,
                              const GValue            *value,
                              guint                    handle,
-                             XfcePanelPluginProvider *provider)
+                             BladeBarPluginProvider *provider)
 {
   const GValue *real_value;
   gboolean      result;
 
-  panel_return_if_fail (XFCE_IS_PANEL_PLUGIN_PROVIDER (provider));
+  bar_return_if_fail (BLADE_IS_BAR_PLUGIN_PROVIDER (provider));
 
   if (G_VALUE_HOLDS_UCHAR (value)
      && g_value_get_uchar (value) == '\0')
@@ -181,7 +181,7 @@ wrapper_gproxy_remote_event (DBusGProxy              *dbus_gproxy,
   else
     real_value = value;
 
-  result = xfce_panel_plugin_provider_remote_event (provider, name, real_value, NULL);
+  result = blade_bar_plugin_provider_remote_event (provider, name, real_value, NULL);
 
   wrapper_dbus_remote_event_result (dbus_gproxy, handle, result, NULL);
 }
@@ -205,7 +205,7 @@ wrapper_marshal_VOID__STRING_BOXED_UINT (GClosure     *closure,
   register GCClosure *cc = (GCClosure*) closure;
   register gpointer data1, data2;
 
-  panel_return_if_fail (n_param_values == 4);
+  bar_return_if_fail (n_param_values == 4);
 
   if (G_CCLOSURE_SWAP_DATA (closure))
     {
@@ -230,13 +230,13 @@ wrapper_marshal_VOID__STRING_BOXED_UINT (GClosure     *closure,
 
 
 static void
-wrapper_gproxy_provider_signal (XfcePanelPluginProvider       *provider,
-                                XfcePanelPluginProviderSignal  provider_signal,
+wrapper_gproxy_provider_signal (BladeBarPluginProvider       *provider,
+                                BladeBarPluginProviderSignal  provider_signal,
                                 DBusGProxy                    *dbus_gproxy)
 {
-  panel_return_if_fail (XFCE_IS_PANEL_PLUGIN_PROVIDER (provider));
+  bar_return_if_fail (BLADE_IS_BAR_PLUGIN_PROVIDER (provider));
 
-  /* send the provider signal to the panel */
+  /* send the provider signal to the bar */
   wrapper_dbus_provider_signal (dbus_gproxy, provider_signal, NULL);
 }
 
@@ -245,7 +245,7 @@ wrapper_gproxy_provider_signal (XfcePanelPluginProvider       *provider,
 static void
 wrapper_gproxy_destroyed (DBusGProxy *dbus_gproxy)
 {
-  /* we lost communication with the panel, silently close the wrapper */
+  /* we lost communication with the bar, silently close the wrapper */
   gproxy_destroyed = TRUE;
 
   gtk_main_quit ();
@@ -260,7 +260,7 @@ main (gint argc, gchar **argv)
   gchar                    process_name[16];
 #endif
   GModule                 *library = NULL;
-  XfcePanelPluginPreInit   preinit_func;
+  BladeBarPluginPreInit   preinit_func;
   DBusGConnection         *dbus_gconnection;
   DBusGProxy              *dbus_gproxy = NULL;
   WrapperModule           *module = NULL;
@@ -307,7 +307,7 @@ main (gint argc, gchar **argv)
 
 #if defined(HAVE_SYS_PRCTL_H) && defined(PR_SET_NAME)
   /* change the process name to something that makes sence */
-  g_snprintf (process_name, sizeof (process_name), "panel-%d-%s",
+  g_snprintf (process_name, sizeof (process_name), "bar-%d-%s",
               unique_id, name);
   if (prctl (PR_SET_NAME, (gulong) process_name, 0, 0, 0) == -1)
     g_warning ("Failed to change the process name to \"%s\".", process_name);
@@ -323,7 +323,7 @@ main (gint argc, gchar **argv)
     }
 
   /* check for a plugin preinit function */
-  if (g_module_symbol (library, "xfce_panel_module_preinit", (gpointer) &preinit_func)
+  if (g_module_symbol (library, "blade_bar_module_preinit", (gpointer) &preinit_func)
       && preinit_func != NULL
       && (*preinit_func) (argc, argv) == FALSE)
     {
@@ -338,17 +338,17 @@ main (gint argc, gchar **argv)
   if (G_UNLIKELY (dbus_gconnection == NULL))
     goto leave;
 
-  path = g_strdup_printf (PANEL_DBUS_WRAPPER_PATH, unique_id);
+  path = g_strdup_printf (BAR_DBUS_WRAPPER_PATH, unique_id);
   dbus_gproxy = dbus_g_proxy_new_for_name_owner (dbus_gconnection,
-                                                 PANEL_DBUS_NAME,
+                                                 BAR_DBUS_NAME,
                                                  path,
-                                                 PANEL_DBUS_WRAPPER_INTERFACE,
+                                                 BAR_DBUS_WRAPPER_INTERFACE,
                                                  &error);
   g_free (path);
   if (G_UNLIKELY (dbus_gproxy == NULL))
     goto leave;
 
-  /* quit when the proxy is destroyed (panel segfault for example) */
+  /* quit when the proxy is destroyed (bar segfault for example) */
   gproxy_destroy_id = g_signal_connect (G_OBJECT (dbus_gproxy), "destroy",
       G_CALLBACK (wrapper_gproxy_destroyed), NULL);
 
@@ -380,7 +380,7 @@ main (gint argc, gchar **argv)
 
       /* connect to service signals */
       dbus_g_proxy_add_signal (dbus_gproxy, "Set",
-          PANEL_TYPE_DBUS_SET_SIGNAL, G_TYPE_INVALID);
+          BAR_TYPE_DBUS_SET_SIGNAL, G_TYPE_INVALID);
       dbus_g_proxy_connect_signal (dbus_gproxy, "Set",
           G_CALLBACK (wrapper_gproxy_set), g_object_ref (provider),
           (GClosureNotify) g_object_unref);

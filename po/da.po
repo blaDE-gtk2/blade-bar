@@ -18,101 +18,101 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
-msgstr "Opret starter på panelet"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
+msgstr "Opret starter på baret"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
-"Tilføj en ny starter til panelet baseret på informationen fra denne "
+"Tilføj en ny starter til baret baseret på informationen fra denne "
 "skrivebordsfil"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2623
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2623
 #: ../migrate/main.c:117
-msgid "Panel"
-msgstr "Panel"
+msgid "Bar"
+msgstr "Bar"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
-msgstr "Tilpas panelet"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
+msgstr "Tilpas baret"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1199
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1199
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Er du sikker på, at du vil fjerne \"%s\"?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1202
-msgid "If you remove the item from the panel, it is permanently lost."
-msgstr "Hvis du fjerner elementet fra panelet vil det gå tabt permanent."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1202
+msgid "If you remove the item from the bar, it is permanently lost."
+msgstr "Hvis du fjerner elementet fra baret vil det gå tabt permanent."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_Flyt"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "Pane_l"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2635
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2635
 msgid "Add _New Items..."
 msgstr "Tilføj _nye elementer..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2646
-msgid "Panel Pr_eferences..."
-msgstr "Paneli_ndstillinger..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2646
+msgid "Bar Pr_eferences..."
+msgstr "Bari_ndstillinger..."
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2674
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2674
 msgid "Log _Out"
 msgstr "_Log ud"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
-msgstr "Vis dialogen 'Panelindstillinger'"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
+msgstr "Vis dialogen 'Barindstillinger'"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
-msgstr "PANELNUMMER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
+msgstr "BARNUMMER"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Vis dialogen 'Tilføj nye elementer'"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
-msgstr "Gem indstilling til panelet"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
+msgstr "Gem indstilling til baret"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
-msgstr "Tilføj et nyt plugin til panelet"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
+msgstr "Tilføj et nyt plugin til baret"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "PLUGINNAVN"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
-msgstr "Genstart den kørende panelinstans"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
+msgstr "Genstart den kørende barinstans"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
-msgstr "Afslut den kørende panelinstans"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
+msgstr "Afslut den kørende barinstans"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Vent ikke på vindueshåndtering ved opstart"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -120,99 +120,99 @@ msgid "Print version information and exit"
 msgstr "Udskriv versionsinformation og afslut"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for anvendelse."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce udviklingsholdet. Alle rettigheder forbeholdes."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapporter venligst fejl til <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "Der findes allerede en kørende instans"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Genstarter..."
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "Kunne ikke vise dialogen indstillinger"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr "Kunne ikke vise dialogen tilføj nye elementer"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
-msgstr "Kunne ikke gemme indstillingen til panelet"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
+msgstr "Kunne ikke gemme indstillingen til baret"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
-msgstr "Kunne ikke føje et plugin til panelet"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
+msgstr "Kunne ikke føje et plugin til baret"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
-msgstr "Kunne ikke genstarte panelet"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
+msgstr "Kunne ikke genstarte baret"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
-msgstr "Kunne ikke afslutte panelet"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
+msgstr "Kunne ikke afslutte baret"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "Kunne ikke sende D-bus-besked"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
-"Ønsker du at starte panelet? Hvis du vil det skal du huske at gemme "
-"sessionen ved log ud. Det vil sikre dig at panelet vil blive startet "
+"Ønsker du at starte baret? Hvis du vil det skal du huske at gemme "
+"sessionen ved log ud. Det vil sikre dig at baret vil blive startet "
 "automatisk næste gang ved login."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "Ingen kørende instans af %s blev fundet"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "Kunne ikke starte migrationsprogrammet"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "Opret op_starter"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
-"Dette vil oprette et plugin for opstart på panelet og indsætter dine "
+"Dette vil oprette et plugin for opstart på baret og indsætter dine "
 "flyttede filer som menuelementer."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "Opret en ny opstarter fra %d skrivebordsfilen"
 msgstr[1] "Opret en ny starter fra %d skrivebordsfilerne"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -220,22 +220,22 @@ msgstr ""
 "Hvis du har startet X uden sessionshåndteringen vil dette lukke X-serveren "
 "ned."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
-msgstr "Er du sikker på, at du vil afslutte panelet?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
+msgstr "Er du sikker på, at du vil afslutte baret?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Kunne ikke køre kommando \"%s\""
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "Ugyldig plugin event syntaks angivet. Brug PLUGINNAVN:NAVN[:TYPE:VÆRDI]."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -244,23 +244,23 @@ msgstr ""
 "Ugyldig hentydningstype  \"%s\". Valide typer er boolesk, heltal , strenge "
 "og heltal uden fortegn."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Vedligeholdere"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "Skrivebordsbjælketilstand"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "Inaktive vedligeholdere"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
-msgstr "Panelet til Xfce-skrivebordsmiljøet"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
+msgstr "Baret til Xfce-skrivebordsmiljøet"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr ""
 "Per Kongstad <p_kongstad@op.pl>\n"
@@ -269,103 +269,103 @@ msgstr ""
 "Mere info: http://www.dansk-gruppen.dk"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Tilføj nyt element"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
-msgstr "Vælg venligst et panel for det nye plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
+msgstr "Vælg venligst et bar for det nye plugin:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:862
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:862
 #, c-format
-msgid "Panel %d"
-msgstr "Panel %d"
+msgid "Bar %d"
+msgstr "Bar %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
-"Fordi panelet kører i kiosktilstand, er du ikke tilladt at lave ændringer "
-"til panelindstillingen som en normal bruger"
+"Fordi baret kører i kiosktilstand, er du ikke tilladt at lave ændringer "
+"til barindstillingen som en normal bruger"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
-msgstr "Tilpasning af panelet er ikke tilladt"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
+msgstr "Tilpasning af baret er ikke tilladt"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Tilføj nye elementer"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
-msgstr "Tilføj nye plugins til panelet"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
+msgstr "Tilføj nye plugins til baret"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "_Søg:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Indtast søgeudtryk her"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
-msgstr "Pluginet \"%s\" forlod uventet panelet. Vil du genstarte det?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
+msgstr "Pluginet \"%s\" forlod uventet baret. Vil du genstarte det?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "Pluginet genstartede mere end én gang i de sidste %d sekunder. Hvis du "
-"trykker 'Kør' vil panelet prøve at genstarte pluginet ellers vil det blive "
-"permanent fjernet fra panelet."
+"trykker 'Kør' vil baret prøve at genstarte pluginet ellers vil det blive "
+"permanent fjernet fra baret."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Automatisk"
 
-#: ../panel/panel-preferences-dialog.c:500
+#: ../bar/bar-preferences-dialog.c:500
 msgid "Primary"
 msgstr "Primær"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:520
+#: ../bar/bar-preferences-dialog.c:520
 #, c-format
 msgid "Screen %d"
 msgstr "Skærm %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:546
+#: ../bar/bar-preferences-dialog.c:546
 #, c-format
 msgid "Monitor %d"
 msgstr "Overvåg %d"
 
-#: ../panel/panel-preferences-dialog.c:928
-msgid "The panel and plugin configurations will be permanently removed"
-msgstr "Indstillingerne til panel og plugin vil blive fjernet for altid"
+#: ../bar/bar-preferences-dialog.c:928
+msgid "The bar and plugin configurations will be permanently removed"
+msgstr "Indstillingerne til bar og plugin vil blive fjernet for altid"
 
-#: ../panel/panel-preferences-dialog.c:929
+#: ../bar/bar-preferences-dialog.c:929
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
-msgstr "Er du sikker på, at du vil fjerne panel %d?"
+msgid "Are you sure you want to remove bar %d?"
+msgstr "Er du sikker på, at du vil fjerne bar %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1041
+#: ../bar/bar-preferences-dialog.c:1041
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(ekstern)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1046
+#: ../bar/bar-preferences-dialog.c:1046
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -376,292 +376,292 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1058
+#: ../bar/bar-preferences-dialog.c:1058
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "Intert navn: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Vandret"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Lodret"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "Skrivebordsbjælke"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Aldrig"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "Intelligent"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Altid"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Ingen (brug systemstil)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "Ensfarvet"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Baggrundsbillede"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
-msgstr "Tilføj et nyt panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
+msgstr "Tilføj et nyt bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
-msgstr "Fjern det nuværende valgte panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
+msgstr "Fjern det nuværende valgte bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
-msgstr "Skift mellem panel-forhåndsindstillinger"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
+msgstr "Skift mellem bar-forhåndsindstillinger"
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "Til_stand:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "Ud_data:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "Udbred på _skærme"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
-msgstr "Vælg denne indstilling for af brede panelet ud over flere skærme."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
+msgstr "Vælg denne indstilling for af brede baret ud over flere skærme."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
-msgstr "_Lås panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
+msgstr "_Lås bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
-"Vælg denne indstilling for at skjule håndtagene til panelet og fastlåse "
+"Vælg denne indstilling for at skjule håndtagene til baret og fastlåse "
 "positionen."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
-msgstr "Skjul automatisk panelet:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
+msgstr "Skjul automatisk baret:"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Undlad at _reservere plads ved kanter"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "Vælg dette tilvalg hvis du ønsker maksimerede vinduer til at dække arealet "
-"bag panelet. Dette fungerer kun, når panelet er tilsluttet til et "
+"bag baret. Dette fungerer kun, når baret er tilsluttet til et "
 "skærmhjørne."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Generelt"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "Række_højde (pixels):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "L_ængde (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "A_ntal rækker:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "Udvid længden a_utomatisk"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
-"Vælg denne indstilling for automatisk udvidelse af panelets længde hvis "
+"Vælg denne indstilling for automatisk udvidelse af barets længde hvis "
 "pluginsene behøver mere plads."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Dimensioner"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "_Vis"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "_Stil:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "_Alfa:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
-"Alfaværdi af panelbaggrunden hvor 0 er fuld gennemsigtig og 100 er fuld "
+"Alfaværdi af barbaggrunden hvor 0 er fuld gennemsigtig og 100 er fuld "
 "synlig."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "_Farve:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
-msgstr "Vælg en panelfarve"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
+msgstr "Vælg en barfarve"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_Fil:"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Vælg et baggrundsbillede"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Baggrund"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "_Indtast:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "_Forlad:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
-"Gennemsigtigt når markøren svæver over panelet hvor 0 er fuld gennemsigtig "
+"Gennemsigtigt når markøren svæver over baret hvor 0 er fuld gennemsigtig "
 "og 100 er fuld synlig."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
-"Gennemsigtigt når markøren svæver over panelet hvor 0 er fuld gennemsigtig "
+"Gennemsigtigt når markøren svæver over baret hvor 0 er fuld gennemsigtig "
 "og 100 er fuld synlig."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "Opacitet"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
-"Aktivér sammensætning i vindueshåndteringen for uigennemsigtighed i panelet."
+"Aktivér sammensætning i vindueshåndteringen for uigennemsigtighed i baret."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "Ud_seende"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "Flyt det nuværende valgte element en række op"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "Flyt det nuværende valgte element en række ned"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
-msgstr "Tilføj nye elementer til dette panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
+msgstr "Tilføj nye elementer til dette bar"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "Fjern det nuværende valgte element"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "Rediger det nuværende valgte element"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "Vis om information af det nuværende valgte element"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "Ele_menter"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "_Nyt spil"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "_Niveau:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "Begynder"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "Mellem"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "Øvet"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "Ekspert"
 
-#: ../panel/panel-window.c:2660
-msgid "_Lock Panel"
-msgstr "_Lås panel"
+#: ../bar/bar-window.c:2660
+msgid "_Lock Bar"
+msgstr "_Lås bar"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
-msgstr "Velkommen til den første opstart af panelet"
+msgid "Welcome to the first start of the bar"
+msgstr "Velkommen til den første opstart af baret"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
-"Fordi panelet er flyttet til et nyt system for gemme indstillingerne, er det"
+"Fordi baret er flyttet til et nyt system for gemme indstillingerne, er det"
 " nødt til at indlæse en frisk basisindstilling."
 
 #: ../migrate/main.c:127 ../migrate/main.c:136
@@ -673,8 +673,8 @@ msgid "Migrate old config"
 msgstr "Migrér gamle config"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "Migrér den gamle indstilling 4.6 til Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "Migrér den gamle indstilling 4.6 til Blconf"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -685,32 +685,32 @@ msgid "Load the default configuration"
 msgstr "Indlæs standardindstillingen"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
-msgstr "Et tomt panel"
+msgid "One empty bar"
+msgstr "Et tomt bar"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
-msgstr "Begynd med et tomt panel"
+msgid "Start with one empty bar"
+msgstr "Begynd med et tomt bar"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
-msgstr "Kunne ikke migrere den gamle panelindstilling"
+msgid "Failed to migrate the old bar configuration"
+msgstr "Kunne ikke migrere den gamle barindstilling"
 
 #: ../migrate/main.c:172
 msgid "Failed to load the default configuration"
 msgstr "Kunne ikke indlæse standardindstillingen"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
-msgstr "Panelindstilling skal migreres..."
+msgid "Bar config needs migration..."
+msgstr "Barindstilling skal migreres..."
 
 #: ../migrate/main.c:189
 msgid "Failed to migrate the existing configuration"
-msgstr "Kunne ikke migrere den nuværende panelindstilling"
+msgstr "Kunne ikke migrere den nuværende barindstilling"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
-msgstr "Panelindstilling er blevet opdateret."
+msgid "Bar configuration has been updated."
+msgstr "Barindstilling er blevet opdateret."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
 #: ../plugins/actions/actions.desktop.in.in.h:1
@@ -892,10 +892,10 @@ msgstr "Vis generiske programn_avne"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "Vælg denne indstilling for at vise det generiske navn i menuen, eksempelvis "
-"\"Filhåndtering\" i stedet for \"Thunar\""
+"\"Filhåndtering\" i stedet for \"Fmb\""
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1051,12 +1051,12 @@ msgstr "_Værktøjstipformat:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
 msgstr ""
-"Formatet beskriver dato- og tidsdele som skal indsættes i panelet. "
+"Formatet beskriver dato- og tidsdele som skal indsættes i baret. "
 "Eksempelvis vil %Y blive erstattet med året, %m med måneden og %d med dagen."
 " Tilsvarende vil <b></b>-mærker give fed skrift. Læs siden \"Hjælp\" for "
 "yderligere information."
@@ -1525,23 +1525,23 @@ msgstr "Deaktivér væ_rktøjstips"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "Vælg denne indstilling for at deaktivere værkstøjtips når du svæver over "
-"panelknappen eller menuelementer."
+"barknappen eller menuelementer."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:22
 msgid "Show _label instead of icon"
 msgstr "Vis _mærkat i stedet for ikon"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
-msgstr "Vis sidst _brugte element i panel"
+msgid "Show last _used item in bar"
+msgstr "Vis sidst _brugte element i bar"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
-msgstr "Vælg denne indstilling for at flytte den valgte menu til panelet."
+msgid "Select this option to move the clicked menu item to the bar."
+msgstr "Vælg denne indstilling for at flytte den valgte menu til baret."
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
 msgid "_Arrow button position:"
@@ -1619,8 +1619,8 @@ msgid "Dots"
 msgstr "Prikker"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
-msgstr "Tilføj en separator eller et mellemrum mellem panelets elementer"
+msgid "Adds a separator or space between bar items"
+msgstr "Tilføj en separator eller et mellemrum mellem barets elementer"
 
 #: ../plugins/showdesktop/showdesktop.c:210
 msgid "Restore the minimized windows"

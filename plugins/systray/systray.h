@@ -20,7 +20,7 @@
 #define __SYSTRAY_H__
 
 #include <gtk/gtk.h>
-#include <libxfce4panel/libxfce4panel.h>
+#include <libbladebar/libbladebar.h>
 
 G_BEGIN_DECLS
 
@@ -38,7 +38,7 @@ typedef enum   _SystrayChildState  SystrayChildState;
 
 GType systray_plugin_get_type      (void) G_GNUC_CONST;
 
-void  systray_plugin_register_type (XfcePanelTypeModule *type_module);
+void  systray_plugin_register_type (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

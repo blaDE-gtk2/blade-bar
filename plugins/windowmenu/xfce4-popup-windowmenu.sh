@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
 
-export TEXTDOMAIN="xfce4-panel"
+export TEXTDOMAIN="blade-bar"
 export TEXTDOMAINDIR="@localedir@"
 
 ATPOINTER="false"
@@ -34,7 +34,7 @@ case "$1" in
     exit 0
     ;;
   -V|--version)
-    exec @bindir@/xfce4-panel -V "$(basename $0)"
+    exec @bindir@/blade-bar -V "$(basename $0)"
     exit 0
     ;;
   -p|--pointer)
@@ -42,6 +42,6 @@ case "$1" in
     ;;
 esac
 
-exec @bindir@/xfce4-panel --plugin-event=windowmenu:popup:bool:$ATPOINTER
+exec @bindir@/blade-bar --plugin-event=windowmenu:popup:bool:$ATPOINTER
 
 # vim:set ts=2 sw=2 et ai:

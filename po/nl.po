@@ -18,103 +18,103 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
-msgid "Create Launcher on the panel"
+#: ../bar-desktop-handler.desktop.in.h:1
+msgid "Create Launcher on the bar"
 msgstr "Maak starter op de werkbalk"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop "
+"Add a new launcher to the bar based on the information of this desktop "
 "file"
 msgstr ""
 "Voeg een nieuwe starter toe aan de werkbalk, gebaseerd op de informatie van "
 "dit bureaubladbestand"
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:10 ../panel/panel-window.c:2623
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:10 ../bar/bar-window.c:2623
 #: ../migrate/main.c:117
-msgid "Panel"
+msgid "Bar"
 msgstr "Werkbalk"
 
-#: ../panel-preferences.desktop.in.h:2
-msgid "Customize the panel"
+#: ../bar-preferences.desktop.in.h:2
+msgid "Customize the bar"
 msgstr "Pas de werkbalk aan"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1199
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1199
 #, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Weet u zeker dat u '%s' wil verwijderen?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1202
-msgid "If you remove the item from the panel, it is permanently lost."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1202
+msgid "If you remove the item from the bar, it is permanently lost."
 msgstr ""
 "Als u een element van de werkbalk verwijdert, dan kan dit niet meer ongedaan"
 " worden gemaakt."
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 msgid "_Move"
 msgstr "_Verplaatsen"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 msgid "Pane_l"
 msgstr "_Werkbalk"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2635
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2635
 msgid "Add _New Items..."
 msgstr "_Nieuwe elementen toevoegen..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2646
-msgid "Panel Pr_eferences..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2646
+msgid "Bar Pr_eferences..."
 msgstr "Werkbalkvoork_euren..."
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2674
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2674
 msgid "Log _Out"
 msgstr "Af_melden"
 
-#: ../panel/main.c:80
-msgid "Show the 'Panel Preferences' dialog"
+#: ../bar/main.c:80
+msgid "Show the 'Bar Preferences' dialog"
 msgstr "Geef het 'werkbalkvoorkeuren'-dialoogvenster weer"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
 msgstr "WERKBALKNUMMER"
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 msgid "Show the 'Add New Items' dialog"
 msgstr "Geef het 'Nieuwe elementen toevoegen'-dialoogvenster weer"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
 msgstr "Sla de werkbalkconfiguratie op"
 
-#: ../panel/main.c:83
-msgid "Add a new plugin to the panel"
+#: ../bar/main.c:83
+msgid "Add a new plugin to the bar"
 msgstr "Nieuwe invoegtoepassing aan de werkbalk toevoegen"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr "NAAM VAN INVOEGTOEPASSING"
 
-#: ../panel/main.c:84
-msgid "Restart the running panel instance"
+#: ../bar/main.c:84
+msgid "Restart the running bar instance"
 msgstr "Start de werkbalk opnieuw op"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
 msgstr "Sluit actieve werkbalken af"
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr "Wacht niet op een vensterbeheerder bij opstarten"
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -122,101 +122,101 @@ msgid "Print version information and exit"
 msgstr "Druk versie-informatie af en sluit af"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTEN...]"
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Tik '%s --help' voor gebruiksaanwijzingen."
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Fouten graag melden bij <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 msgid "There is already a running instance"
 msgstr "Er is al een actieve functie"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 msgid "Restarting..."
 msgstr "Aan het herstarten..."
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 msgid "Failed to show the preferences dialog"
 msgstr "Kon de voorkeurendialoog niet weergeven"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 msgid "Failed to show the add new items dialog"
 msgstr ""
 "Kon het dialoogvenster voor het toevoegen van nieuwe elementen niet "
 "weergeven"
 
-#: ../panel/main.c:385
-msgid "Failed to save the panel configuration"
+#: ../bar/main.c:385
+msgid "Failed to save the bar configuration"
 msgstr "Kon de werkbalkinstellingen niet opslaan"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
 msgstr "Kon de invoegtoepassing niet aan de werkbalk toevoegen"
 
-#: ../panel/main.c:389
-msgid "Failed to restart the panel"
+#: ../bar/main.c:389
+msgid "Failed to restart the bar"
 msgstr "Kon de werkbalk niet herstarten"
 
-#: ../panel/main.c:391
-msgid "Failed to quit the panel"
+#: ../bar/main.c:391
+msgid "Failed to quit the bar"
 msgstr "Kon de werkbalk niet afsluiten"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 msgid "Failed to send D-Bus message"
 msgstr "Kon het D-Busbericht niet versturen"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on"
-" logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on"
+" logout, so the bar is automatically started the next time you login."
 msgstr ""
 "Wilt u de werkbalk starten? Zo ja, zorg er dan voor dat u de sessie opslaat "
 "bij afmelden, zodat de werkbalk automatisch wordt gestart wanneer u zich "
 "weer aanmeldt."
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr "Geen actieve functie van %s gevonden"
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr "Kon de migratietoepassing niet openen"
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 msgid "Create _Launcher"
 msgstr "Maak starter"
 
-#: ../panel/panel-application.c:986
+#: ../bar/bar-application.c:986
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
 "Dit zal een nieuwe starter toevoegen aan de werkbalk en voegt de geplaatste "
 "bestanden in als menu-onderdelen."
 
-#: ../panel/panel-application.c:988
+#: ../bar/bar-application.c:988
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] "Maak een nieuwe starter van %d bureaubladbestand"
 msgstr[1] "Maak een nieuwe starter van %d bureaubladbestanden"
 
-#: ../panel/panel-application.c:1728
+#: ../bar/bar-application.c:1728
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
@@ -224,23 +224,23 @@ msgstr ""
 "U hebt X (de grafische omgeving) gestart zonder sessiebeheerder. Wanneer u "
 "op sluiten klikt, dan zal dat de grafische omgeving afsluiten."
 
-#: ../panel/panel-application.c:1729
-msgid "Are you sure you want to quit the panel?"
+#: ../bar/bar-application.c:1729
+msgid "Are you sure you want to quit the bar?"
 msgstr "Weet u zeker dat u de werkbalk wil afsluiten?"
 
-#: ../panel/panel-application.c:1737
+#: ../bar/bar-application.c:1737
 #, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Kon de opdracht '%s' niet uitvoeren"
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 "Ongeldige invoegtoepassing-gebeurtenis-syntax gespecificeerd. Gebruik "
 "PLUGINNAAM:NAAM[:TYPE:WAARDE]."
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and "
@@ -248,131 +248,131 @@ msgid ""
 msgstr ""
 "Ongeldig type '%s'. Geldige types zijn bool, double, int, string en uint."
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr "Pakketbeheerders"
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr "Bureaubalkmodus"
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr "Inactieve pakketbeheerders"
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
 msgstr "De werkbalk van de Xfce-werkomgeving"
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr ""
 "Vincent Tunru <projects@vinnl.nl>\n"
 "Pjotr pjotrvertaalt@gmail.com"
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 msgid "Add New Item"
 msgstr "Voeg nieuw element toe"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
 msgstr "Kies een werkbalk voor de nieuwe invoegtoepassing:"
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:862
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:862
 #, c-format
-msgid "Panel %d"
+msgid "Bar %d"
 msgstr "Werkbalk %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
 "Omdat de werkbalk in kioskmodus draait, kunt u als normale gebruiker geen "
 "veranderingen aan de configuratie aanbrengen"
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
 msgstr "Aanpassen van de werkbalk is niet toegestaan"
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Voeg nieuwe elementen toe"
 
-#: ../panel/panel-item-dialog.c:192
-msgid "Add new plugins to the panel"
+#: ../bar/bar-item-dialog.c:192
+msgid "Add new plugins to the bar"
 msgstr "Voeg nieuwe invoegtoepassingen toe aan de werkbalk"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "_Zoeken:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr "Geef hier een zoekterm op"
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr ""
 "De invoegtoepassing '%s' heeft onverwacht de werkbalk verlaten, wilt u hem "
 "herstarten?"
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 "De invoegtoepassing is meer dan één keer opnieuw opgestart in de afgelopen "
 "%d seconden. Druk op 'Uitvoeren' om te proberen de invoegtoepassing opnieuw "
 "te starten, anders zal deze invoegtoepassing blijvend van de werkbalk worden"
 " verwijderd."
 
-#: ../panel/panel-preferences-dialog.c:492
+#: ../bar/bar-preferences-dialog.c:492
 msgid "Automatic"
 msgstr "Automatisch"
 
-#: ../panel/panel-preferences-dialog.c:500
+#: ../bar/bar-preferences-dialog.c:500
 msgid "Primary"
 msgstr "Primair"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:520
+#: ../bar/bar-preferences-dialog.c:520
 #, c-format
 msgid "Screen %d"
 msgstr "Scherm %d"
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:546
+#: ../bar/bar-preferences-dialog.c:546
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../panel/panel-preferences-dialog.c:928
-msgid "The panel and plugin configurations will be permanently removed"
+#: ../bar/bar-preferences-dialog.c:928
+msgid "The bar and plugin configurations will be permanently removed"
 msgstr ""
 "De instellingen van de werkbalk en de invoegtoepassingen zullen blijvend "
 "verwijderd worden"
 
-#: ../panel/panel-preferences-dialog.c:929
+#: ../bar/bar-preferences-dialog.c:929
 #, c-format
-msgid "Are you sure you want to remove panel %d?"
+msgid "Are you sure you want to remove bar %d?"
 msgstr "Weet u zeker dat u werkbalk %d wil verwijderen?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:1041
+#: ../bar/bar-preferences-dialog.c:1041
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr "%s <span color=\"grey\" size=\"small\">(extern)</span>"
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:1046
+#: ../bar/bar-preferences-dialog.c:1046
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -383,291 +383,291 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:1058
+#: ../bar/bar-preferences-dialog.c:1058
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr "Interne naam: %s-%d"
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Horizontaal"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Verticaal"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr "Bureaubalk"
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 #: ../plugins/tasklist/tasklist-dialog.glade.h:1
 msgid "Never"
 msgstr "Nooit"
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Intelligently"
 msgstr "Intelligent"
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 #: ../plugins/tasklist/tasklist-dialog.glade.h:2
 msgid "Always"
 msgstr "Altijd"
 
-#: ../panel/panel-preferences-dialog.glade.h:7
+#: ../bar/bar-preferences-dialog.glade.h:7
 msgid "None (use system style)"
 msgstr "Geen (gebruik systeemstijl)"
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 msgid "Solid color"
 msgstr "Effen kleur"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 msgid "Background image"
 msgstr "Achtergrondafbeelding"
 
-#: ../panel/panel-preferences-dialog.glade.h:11
-msgid "Add a new panel"
+#: ../bar/bar-preferences-dialog.glade.h:11
+msgid "Add a new bar"
 msgstr "Voeg een nieuwe werkbalk toe"
 
-#: ../panel/panel-preferences-dialog.glade.h:12
-msgid "Remove the currently selected panel"
+#: ../bar/bar-preferences-dialog.glade.h:12
+msgid "Remove the currently selected bar"
 msgstr "Verwijder de geselecteerde werkbalk"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Switch between panel presets"
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Switch between bar presets"
 msgstr "Schakelen tussen voorinstellingen van werkbalk"
 
-#: ../panel/panel-preferences-dialog.glade.h:14
+#: ../bar/bar-preferences-dialog.glade.h:14
 msgid "M_ode:"
 msgstr "Modus:"
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid "O_utput:"
 msgstr "_Uitvoer:"
 
-#: ../panel/panel-preferences-dialog.glade.h:16
+#: ../bar/bar-preferences-dialog.glade.h:16
 msgid "Span mo_nitors"
 msgstr "Over meerdere _beeldschermen"
 
-#: ../panel/panel-preferences-dialog.glade.h:17
-msgid "Select this option to extend the panel over multiple monitors."
+#: ../bar/bar-preferences-dialog.glade.h:17
+msgid "Select this option to extend the bar over multiple monitors."
 msgstr ""
 "Selecteer deze optie om de werkbalk over meerdere schermen uit te strekken."
 
-#: ../panel/panel-preferences-dialog.glade.h:18
-msgid "_Lock panel"
+#: ../bar/bar-preferences-dialog.glade.h:18
+msgid "_Lock bar"
 msgstr "Werkbalk _vergrendelen"
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
 "Selecteer deze optie om de handgrepen van de werkbalk te verbergen en de "
 "positie vast te zetten."
 
-#: ../panel/panel-preferences-dialog.glade.h:20
-msgid "Automatically hide the panel:"
+#: ../bar/bar-preferences-dialog.glade.h:20
+msgid "Automatically hide the bar:"
 msgstr "Verberg de werkbalk automatisch:"
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 msgid "Don't _reserve space on borders"
 msgstr "Rese_rveer geen ruimte aan de randen"
 
-#: ../panel/panel-preferences-dialog.glade.h:22
+#: ../bar/bar-preferences-dialog.glade.h:22
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 "Selecteer deze optie indien u wil dat gemaximaliseerde vensters het gebied "
 "achter de werkbalk bedekken. Dit werkt alleen wanneer de werkbalk aan de "
 "rand van het scherm is vastgemaakt."
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr "Algemeen"
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 msgid "Row _Size (pixels):"
 msgstr "Grootte van rij (pixels):"
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 #, no-c-format
 msgid "L_ength (%):"
 msgstr "L_engte (%):"
 
-#: ../panel/panel-preferences-dialog.glade.h:27
+#: ../bar/bar-preferences-dialog.glade.h:27
 msgid "Num_ber of rows:"
 msgstr "Aantal rijen:"
 
-#: ../panel/panel-preferences-dialog.glade.h:28
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "A_utomatically increase the length"
 msgstr "Verleng de werkbalk a_utomatisch"
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
 "Kies deze optie om de lengte van de werkbalk automatisch te vergroten "
 "wanneer de invoegtoepassingen meer ruimte nodig hebben."
 
-#. I18N: name of the section (frame) in the panel preferences where the user
-#. can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:31
+#. I18N: name of the section (frame) in the bar preferences where the user
+#. can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "Measurements"
 msgstr "Afmetingen"
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid "D_isplay"
 msgstr "_Weergave"
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr "_Stijl:"
 
-#: ../panel/panel-preferences-dialog.glade.h:34
+#: ../bar/bar-preferences-dialog.glade.h:34
 msgid "_Alpha:"
 msgstr "_Alfa:"
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
 "Alfawaarde van de achtergrond van de werkbalk, tussen 0 (volledig "
 "transparant) en 100 (volledig ondoorzichtig)."
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 msgid "C_olor:"
 msgstr "Kle_ur:"
 
-#: ../panel/panel-preferences-dialog.glade.h:37
-msgid "Pick a Panel Color"
+#: ../bar/bar-preferences-dialog.glade.h:37
+msgid "Pick a Bar Color"
 msgstr "Kies een werkbalkkleur"
 
-#: ../panel/panel-preferences-dialog.glade.h:38
+#: ../bar/bar-preferences-dialog.glade.h:38
 msgid "_File:"
 msgstr "_Bestand"
 
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "Select A Background Image"
 msgstr "Kies een achtergrondafbeelding"
 
-#: ../panel/panel-preferences-dialog.glade.h:40
+#: ../bar/bar-preferences-dialog.glade.h:40
 msgid "Background"
 msgstr "Achtergrond"
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid "_Enter:"
 msgstr "_Binnengaan:"
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "_Leave:"
 msgstr "Ver_laten:"
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully"
+"Transparency when the pointer is hovering over the bar, with 0 being fully"
 " transparent and 100 fully opaque."
 msgstr ""
 "Transparantie wanneer de muisaanwijzer over de werkbalk gaat, tussen 0 "
 "(volledig transparant) en 100 (volledig ondoorzichtig)."
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 "Transparantie wanneer de muisaanwijzer NIET over de werkbalk gaat, tussen 0 "
 "(volledig transparant) en 100 (volledig ondoorzichtig)."
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 msgid "Opacity"
 msgstr "Ondoorzichtigheid"
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 "Schakel animaties in de vensterbeheerder in, voor "
 "doorzichtigheidinstellingen in de werkbalk."
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 msgid "Appeara_nce"
 msgstr "_Uiterlijk"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 msgid "Move currently selected item up by one row"
 msgstr "Verplaats het thans geselecteerde element één rij omhoog"
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 msgid "Move currently selected item down by one row"
 msgstr "Verplaats het thans geselecteerde element één rij omlaag"
 
-#: ../panel/panel-preferences-dialog.glade.h:52
-msgid "Add new item to this panel"
+#: ../bar/bar-preferences-dialog.glade.h:52
+msgid "Add new item to this bar"
 msgstr "Voeg nieuw element toe aan deze werkbalk"
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 msgid "Remove currently selected item"
 msgstr "Verwijder het geselecteerde element"
 
-#: ../panel/panel-preferences-dialog.glade.h:54
+#: ../bar/bar-preferences-dialog.glade.h:54
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 msgid "Edit the currently selected item"
 msgstr "Bewerk het geselecteerde element"
 
-#: ../panel/panel-preferences-dialog.glade.h:55
+#: ../bar/bar-preferences-dialog.glade.h:55
 msgid "Show about information of the currently selected item"
 msgstr "Toon informatie over het thans geselecteerde element"
 
-#: ../panel/panel-preferences-dialog.glade.h:56
+#: ../bar/bar-preferences-dialog.glade.h:56
 msgid "Ite_ms"
 msgstr "Ele_menten"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr "_Nieuw spel"
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 msgid "_Level:"
 msgstr "_Niveau"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr "Beginner"
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr "Gemiddeld"
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr "Ervaren"
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr "Deskundige"
 
-#: ../panel/panel-window.c:2660
-msgid "_Lock Panel"
+#: ../bar/bar-window.c:2660
+msgid "_Lock Bar"
 msgstr "Werkbalk vergrendelen"
 
 #: ../migrate/main.c:116
-msgid "Welcome to the first start of the panel"
+msgid "Welcome to the first start of the bar"
 msgstr "Welkom bij de eerste start van de werkbalk"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 "Omdat de werkbalk een nieuw configuratiesysteem heeft, moeten in het begin "
@@ -684,8 +684,8 @@ msgid "Migrate old config"
 msgstr "Neem oude instellingen over"
 
 #: ../migrate/main.c:130
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "Neem de oude instellingen over in Xfconf"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "Neem de oude instellingen over in Blconf"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -696,15 +696,15 @@ msgid "Load the default configuration"
 msgstr "Laad de standaardinstellingen"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
+msgid "One empty bar"
 msgstr "Eén lege werkbalk"
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
+msgid "Start with one empty bar"
 msgstr "Begin met één lege werkbalk"
 
 #: ../migrate/main.c:160
-msgid "Failed to migrate the old panel configuration"
+msgid "Failed to migrate the old bar configuration"
 msgstr "Kon de oude instellingen niet overnemen"
 
 #: ../migrate/main.c:172
@@ -712,7 +712,7 @@ msgid "Failed to load the default configuration"
 msgstr "Kon de standaardinstellingen niet laden"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr "Werkbalkconfiguratie heeft migratie nodig..."
 
 #: ../migrate/main.c:189
@@ -720,7 +720,7 @@ msgid "Failed to migrate the existing configuration"
 msgstr "Kon de bestaande instellingen niet overbrengen"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
+msgid "Bar configuration has been updated."
 msgstr "Werkbalkconfiguratie is bijgewerkt."
 
 #: ../plugins/actions/actions-dialog.glade.h:1
@@ -903,10 +903,10 @@ msgstr "Toon generieke namen van toepassingen"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 "Kies deze optie om de generieke naam in het menu weer te geven, bijvoorbeeld"
-" 'Bestandbeheerder' in plaats van 'Thunar'"
+" 'Bestandbeheerder' in plaats van 'Fmb'"
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
 msgid "Show ic_ons in menu"
@@ -1062,7 +1062,7 @@ msgstr "Opmaak van gereedschap_tip:"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with"
 " the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
@@ -1537,7 +1537,7 @@ msgstr "_Gereedschaptips uitschakelen"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button"
+"Select this option to disable the tooltips when moving over the bar button"
 " or menu items."
 msgstr ""
 "Selecteer deze optie om de gereedschaptips uit te schakelen, die verschijnen"
@@ -1548,11 +1548,11 @@ msgid "Show _label instead of icon"
 msgstr "Toon _etiket in plaats van pictogram"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
+msgid "Show last _used item in bar"
 msgstr "Toon laatstgebr_uikte element in de werkbalk"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
+msgid "Select this option to move the clicked menu item to the bar."
 msgstr ""
 "Selecteer deze optie om het geselecteerde menu-element naar de werkbalk te "
 "verplaatsen"
@@ -1633,7 +1633,7 @@ msgid "Dots"
 msgstr "Punten"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
-msgid "Adds a separator or space between panel items"
+msgid "Adds a separator or space between bar items"
 msgstr "Voegt een scheidingslijn of witruimte tussen elementen in"
 
 #: ../plugins/showdesktop/showdesktop.c:210

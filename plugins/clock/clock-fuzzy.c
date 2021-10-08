@@ -25,7 +25,7 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <exo/exo.h>
+#include <blxo/blxo.h>
 
 #include "clock.h"
 #include "clock-time.h"
@@ -151,7 +151,7 @@ static const gchar *i18n_hour_names[] =
 
 
 
-XFCE_PANEL_DEFINE_TYPE (XfceClockFuzzy, xfce_clock_fuzzy, GTK_TYPE_LABEL)
+BLADE_BAR_DEFINE_TYPE (XfceClockFuzzy, xfce_clock_fuzzy, GTK_TYPE_LABEL)
 
 
 
@@ -285,7 +285,7 @@ xfce_clock_fuzzy_update (XfceClockFuzzy *fuzzy,
   gchar          *p;
   gchar           pattern[3];
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_FUZZY (fuzzy), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_FUZZY (fuzzy), FALSE);
 
   /* get the local time */
   date_time = clock_time_get_time (fuzzy->time);
@@ -315,7 +315,7 @@ xfce_clock_fuzzy_update (XfceClockFuzzy *fuzzy,
 
       /* add hour offset (%0 or %1 on the string) */
       p = strchr (time_format, '%');
-      panel_assert (p != NULL && g_ascii_isdigit (*(p + 1)));
+      bar_assert (p != NULL && g_ascii_isdigit (*(p + 1)));
       if (G_LIKELY (p != NULL))
         hour += g_ascii_digit_value (*(p + 1));
 
@@ -331,12 +331,12 @@ xfce_clock_fuzzy_update (XfceClockFuzzy *fuzzy,
 
           /* make sure we have to correct digit for the replace pattern */
           p = strchr (time_format, '%');
-          panel_assert (p != NULL && g_ascii_isdigit (*(p + 1)));
+          bar_assert (p != NULL && g_ascii_isdigit (*(p + 1)));
         }
 
       /* replace the %? with the hour name */
       g_snprintf (pattern, sizeof (pattern), "%%%c", p != NULL ? *(p + 1) : '0');
-      string = exo_str_replace (time_format, pattern, _(i18n_hour_names[hour]));
+      string = blxo_str_replace (time_format, pattern, _(i18n_hour_names[hour]));
       gtk_label_set_text (GTK_LABEL (fuzzy), string);
       g_free (string);
     }

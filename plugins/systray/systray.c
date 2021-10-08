@@ -21,13 +21,13 @@
 #include <config.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <common/panel-private.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
-#include <common/panel-debug.h>
-#include <exo/exo.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladeui/libbladeui.h>
+#include <common/bar-private.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
+#include <common/bar-debug.h>
+#include <blxo/blxo.h>
 
 #include "systray.h"
 #include "systray-box.h"
@@ -48,13 +48,13 @@ static void     systray_plugin_set_property                 (GObject            
                                                              guint                  prop_id,
                                                              const GValue          *value,
                                                              GParamSpec            *pspec);
-static void     systray_plugin_construct                    (XfcePanelPlugin       *panel_plugin);
-static void     systray_plugin_free_data                    (XfcePanelPlugin       *panel_plugin);
-static void     systray_plugin_orientation_changed          (XfcePanelPlugin       *panel_plugin,
+static void     systray_plugin_construct                    (BladeBarPlugin       *bar_plugin);
+static void     systray_plugin_free_data                    (BladeBarPlugin       *bar_plugin);
+static void     systray_plugin_orientation_changed          (BladeBarPlugin       *bar_plugin,
                                                              GtkOrientation         orientation);
-static gboolean systray_plugin_size_changed                 (XfcePanelPlugin       *panel_plugin,
+static gboolean systray_plugin_size_changed                 (BladeBarPlugin       *bar_plugin,
                                                              gint                   size);
-static void     systray_plugin_configure_plugin             (XfcePanelPlugin       *panel_plugin);
+static void     systray_plugin_configure_plugin             (BladeBarPlugin       *bar_plugin);
 static void     systray_plugin_box_expose_event             (GtkWidget             *box,
                                                              GdkEventExpose        *event);
 static void     systray_plugin_button_toggled               (GtkWidget             *button,
@@ -93,12 +93,12 @@ static void     systray_plugin_dialog_clear_clicked         (GtkWidget          
 
 struct _SystrayPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 struct _SystrayPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   /* systray manager */
   SystrayManager *manager;
@@ -136,7 +136,7 @@ enum
 
 
 /* define the plugin */
-XFCE_PANEL_DEFINE_PLUGIN (SystrayPlugin, systray_plugin,
+BLADE_BAR_DEFINE_PLUGIN (SystrayPlugin, systray_plugin,
     systray_box_register_type,
     systray_manager_register_type,
     systray_socket_register_type)
@@ -148,12 +148,12 @@ static const gchar *known_applications[][3] =
 {
   /* application name, icon-name, understandable name */
   { "networkmanager applet", "network-workgroup", "Network Manager Applet" },
-  { "thunar", "Thunar", "Thunar Progress Dialog" },
+  { "fmb", "Fmb", "Fmb Progress Dialog" },
   { "workrave", NULL, "Workrave" },
   { "workrave tray icon", NULL, "Workrave Applet" },
   { "audacious2", "audacious", "Audacious" },
   { "wicd-client.py", "wicd-gtk", "Wicd" },
-  { "xfce4-power-manager", "xfpm-ac-adapter", "Xfce Power Manager" },
+  { "blade-pm", "blpm-ac-adapter", "Xfce Power Manager" },
 };
 
 
@@ -161,14 +161,14 @@ static const gchar *known_applications[][3] =
 static void
 systray_plugin_class_init (SystrayPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
   GObjectClass         *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->get_property = systray_plugin_get_property;
   gobject_class->set_property = systray_plugin_set_property;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = systray_plugin_construct;
   plugin_class->free_data = systray_plugin_free_data;
   plugin_class->size_changed = systray_plugin_size_changed;
@@ -182,28 +182,28 @@ systray_plugin_class_init (SystrayPluginClass *klass)
                                                       SIZE_MAX_MIN,
                                                       SIZE_MAX_MAX,
                                                       SIZE_MAX_DEFAULT,
-                                                      EXO_PARAM_READWRITE));
+                                                      BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_SHOW_FRAME,
                                    g_param_spec_boolean ("show-frame",
                                                          NULL, NULL,
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_NAMES_HIDDEN,
                                    g_param_spec_boxed ("names-hidden",
                                                        NULL, NULL,
-                                                       PANEL_PROPERTIES_TYPE_VALUE_ARRAY,
-                                                       EXO_PARAM_READWRITE));
+                                                       BAR_PROPERTIES_TYPE_VALUE_ARRAY,
+                                                       BLXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_NAMES_VISIBLE,
                                    g_param_spec_boxed ("names-visible",
                                                        NULL, NULL,
-                                                       PANEL_PROPERTIES_TYPE_VALUE_ARRAY,
-                                                       EXO_PARAM_READWRITE));
+                                                       BAR_PROPERTIES_TYPE_VALUE_ARRAY,
+                                                       BLXO_PARAM_READWRITE));
 }
 
 
@@ -244,8 +244,8 @@ systray_plugin_init (SystrayPlugin *plugin)
   g_signal_connect (G_OBJECT (plugin->button), "toggled",
       G_CALLBACK (systray_plugin_button_toggled), plugin);
   gtk_button_set_relief (GTK_BUTTON (plugin->button), GTK_RELIEF_NONE);
-  exo_binding_new (G_OBJECT (plugin->box), "has-hidden", G_OBJECT (plugin->button), "visible");
-  xfce_panel_plugin_add_action_widget (XFCE_PANEL_PLUGIN (plugin), plugin->button);
+  blxo_binding_new (G_OBJECT (plugin->box), "has-hidden", G_OBJECT (plugin->button), "visible");
+  blade_bar_plugin_add_action_widget (BLADE_BAR_PLUGIN (plugin), plugin->button);
 }
 
 
@@ -274,14 +274,14 @@ systray_plugin_get_property (GObject    *object,
       array = g_ptr_array_new ();
       g_hash_table_foreach (plugin->names, systray_plugin_names_collect_visible, array);
       g_value_set_boxed (value, array);
-      xfconf_array_free (array);
+      blconf_array_free (array);
       break;
 
     case PROP_NAMES_HIDDEN:
       array = g_ptr_array_new ();
       g_hash_table_foreach (plugin->names, systray_plugin_names_collect_hidden, array);
       g_value_set_boxed (value, array);
-      xfconf_array_free (array);
+      blconf_array_free (array);
       break;
 
     default:
@@ -327,8 +327,8 @@ systray_plugin_set_property (GObject      *object,
           gtk_widget_modify_style (plugin->frame, style);
           g_object_unref (G_OBJECT (style));
 
-          systray_plugin_size_changed (XFCE_PANEL_PLUGIN (plugin),
-              xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin)));
+          systray_plugin_size_changed (BLADE_BAR_PLUGIN (plugin),
+              blade_bar_plugin_get_size (BLADE_BAR_PLUGIN (plugin)));
         }
       break;
 
@@ -349,7 +349,7 @@ systray_plugin_set_property (GObject      *object,
           for (i = 0; i < array->len; i++)
             {
               tmp = g_ptr_array_index (array, i);
-              panel_assert (G_VALUE_HOLDS_STRING (tmp));
+              bar_assert (G_VALUE_HOLDS_STRING (tmp));
               name = g_value_dup_string (tmp);
               g_hash_table_replace (plugin->names, name, GUINT_TO_POINTER (hidden));
             }
@@ -390,8 +390,8 @@ systray_plugin_screen_changed_idle (gpointer user_data)
   if (systray_manager_register (plugin->manager, screen, &error))
     {
       /* send the plugin orientation */
-      systray_plugin_orientation_changed (XFCE_PANEL_PLUGIN (plugin),
-         xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin)));
+      systray_plugin_orientation_changed (BLADE_BAR_PLUGIN (plugin),
+         blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin)));
     }
   else
     {
@@ -445,22 +445,22 @@ systray_plugin_composited_changed (GtkWidget *widget)
 
 
 static void
-systray_plugin_construct (XfcePanelPlugin *panel_plugin)
+systray_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  SystrayPlugin       *plugin = XFCE_SYSTRAY_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  SystrayPlugin       *plugin = XFCE_SYSTRAY_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
     { "size-max", G_TYPE_UINT },
     { "show-frame", G_TYPE_BOOLEAN },
-    { "names-visible", PANEL_PROPERTIES_TYPE_VALUE_ARRAY },
-    { "names-hidden", PANEL_PROPERTIES_TYPE_VALUE_ARRAY },
+    { "names-visible", BAR_PROPERTIES_TYPE_VALUE_ARRAY },
+    { "names-hidden", BAR_PROPERTIES_TYPE_VALUE_ARRAY },
     { NULL }
   };
 
-  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+  blade_bar_plugin_menu_show_configure (BLADE_BAR_PLUGIN (plugin));
 
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   /* monitor screen changes */
@@ -476,9 +476,9 @@ systray_plugin_construct (XfcePanelPlugin *panel_plugin)
 
 
 static void
-systray_plugin_free_data (XfcePanelPlugin *panel_plugin)
+systray_plugin_free_data (BladeBarPlugin *bar_plugin)
 {
-  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (panel_plugin);
+  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (bar_plugin);
 
   /* stop pending idle startup */
   if (plugin->idle_startup != 0)
@@ -500,10 +500,10 @@ systray_plugin_free_data (XfcePanelPlugin *panel_plugin)
 
 
 static void
-systray_plugin_orientation_changed (XfcePanelPlugin *panel_plugin,
+systray_plugin_orientation_changed (BladeBarPlugin *bar_plugin,
                                     GtkOrientation   orientation)
 {
-  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (panel_plugin);
+  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (bar_plugin);
 
   xfce_hvbox_set_orientation (XFCE_HVBOX (plugin->hvbox), orientation);
   systray_box_set_orientation (XFCE_SYSTRAY_BOX (plugin->box), orientation);
@@ -522,10 +522,10 @@ systray_plugin_orientation_changed (XfcePanelPlugin *panel_plugin,
 
 
 static gboolean
-systray_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+systray_plugin_size_changed (BladeBarPlugin *bar_plugin,
                              gint             size)
 {
-  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (panel_plugin);
+  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (bar_plugin);
   GtkWidget     *frame = plugin->frame;
   gint           border = 0;
 
@@ -536,7 +536,7 @@ systray_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
   /* because the allocated size, used in size_requested is always 1 step
    * behind the allocated size when resizing and during startup, we
-   * correct the maximum size set by the user with the size the panel
+   * correct the maximum size set by the user with the size the bar
    * will most likely allocated */
   border += MAX (frame->style->xthickness, frame->style->ythickness);
   systray_box_set_size_alloc (XFCE_SYSTRAY_BOX (plugin->box), size - 2 * border);
@@ -547,42 +547,42 @@ systray_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-systray_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+systray_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (panel_plugin);
+  SystrayPlugin *plugin = XFCE_SYSTRAY_PLUGIN (bar_plugin);
   GtkBuilder    *builder;
   GObject       *dialog, *object, *store;
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, systray_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, systray_dialog_ui,
                                      systray_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
 
   object = gtk_builder_get_object (builder, "size-max");
-  panel_return_if_fail (GTK_IS_WIDGET (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "size-max",
+  bar_return_if_fail (GTK_IS_WIDGET (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "size-max",
                           G_OBJECT (object), "value");
 
   object = gtk_builder_get_object (builder, "show-frame");
-  panel_return_if_fail (GTK_IS_WIDGET (object));
-  exo_mutual_binding_new (G_OBJECT (plugin), "show-frame",
+  bar_return_if_fail (GTK_IS_WIDGET (object));
+  blxo_mutual_binding_new (G_OBJECT (plugin), "show-frame",
                           G_OBJECT (object), "active");
 
   store = gtk_builder_get_object (builder, "applications-store");
-  panel_return_if_fail (GTK_IS_LIST_STORE (store));
+  bar_return_if_fail (GTK_IS_LIST_STORE (store));
   g_hash_table_foreach (plugin->names,
       systray_plugin_dialog_add_application_names, store);
   g_object_set_data (G_OBJECT (plugin), "applications-store", store);
 
   object = gtk_builder_get_object (builder, "hidden-toggle");
-  panel_return_if_fail (GTK_IS_CELL_RENDERER_TOGGLE (object));
+  bar_return_if_fail (GTK_IS_CELL_RENDERER_TOGGLE (object));
   g_signal_connect (G_OBJECT (object), "toggled",
       G_CALLBACK (systray_plugin_dialog_hidden_toggled), plugin);
 
   object = gtk_builder_get_object (builder, "applications-clear");
-  panel_return_if_fail (GTK_IS_BUTTON (object));
+  bar_return_if_fail (GTK_IS_BUTTON (object));
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (systray_plugin_dialog_clear_clicked), plugin);
 
@@ -644,9 +644,9 @@ static void
 systray_plugin_button_toggled (GtkWidget     *button,
                                SystrayPlugin *plugin)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (button));
-  panel_return_if_fail (plugin->button == button);
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (GTK_IS_TOGGLE_BUTTON (button));
+  bar_return_if_fail (plugin->button == button);
 
   systray_box_set_show_hidden (XFCE_SYSTRAY_BOX (plugin->box),
       gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)));
@@ -662,10 +662,10 @@ systray_plugin_button_set_arrow (SystrayPlugin *plugin)
   gboolean       show_hidden;
   GtkOrientation orientation;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
 
   show_hidden = systray_box_get_show_hidden (XFCE_SYSTRAY_BOX (plugin->box));
-  orientation = xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin));
+  orientation = blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin));
   if (orientation == GTK_ORIENTATION_HORIZONTAL)
     arrow_type = show_hidden ? GTK_ARROW_LEFT : GTK_ARROW_RIGHT;
   else
@@ -732,8 +732,8 @@ systray_plugin_names_update_icon (GtkWidget *icon,
   SystraySocket *socket = XFCE_SYSTRAY_SOCKET (icon);
   const gchar   *name;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (icon));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (icon));
 
   name = systray_socket_get_name (socket);
   systray_socket_set_hidden (socket,
@@ -745,7 +745,7 @@ systray_plugin_names_update_icon (GtkWidget *icon,
 static void
 systray_plugin_names_update (SystrayPlugin *plugin)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
 
   gtk_container_foreach (GTK_CONTAINER (plugin->box),
      systray_plugin_names_update_icon, plugin);
@@ -759,8 +759,8 @@ systray_plugin_names_set_hidden (SystrayPlugin *plugin,
                                  const gchar   *name,
                                  gboolean       hidden)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (!exo_str_is_empty (name));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (!blxo_str_is_empty (name));
 
   g_hash_table_replace (plugin->names, g_strdup (name),
                         GUINT_TO_POINTER (hidden ? 1 : 0));
@@ -779,7 +779,7 @@ systray_plugin_names_get_hidden (SystrayPlugin *plugin,
 {
   gpointer p;
 
-  if (exo_str_is_empty (name))
+  if (blxo_str_is_empty (name))
     return FALSE;
 
   /* lookup the name in the table */
@@ -819,17 +819,17 @@ systray_plugin_icon_added (SystrayManager *manager,
                            GtkWidget      *icon,
                            SystrayPlugin  *plugin)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (icon));
-  panel_return_if_fail (plugin->manager == manager);
-  panel_return_if_fail (GTK_IS_WIDGET (icon));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (icon));
+  bar_return_if_fail (plugin->manager == manager);
+  bar_return_if_fail (GTK_IS_WIDGET (icon));
 
   systray_plugin_names_update_icon (icon, plugin);
   gtk_container_add (GTK_CONTAINER (plugin->box), icon);
   gtk_widget_show (icon);
 
-  panel_debug_filtered (PANEL_DEBUG_SYSTRAY, "added %s[%p] icon",
+  bar_debug_filtered (BAR_DEBUG_SYSTRAY, "added %s[%p] icon",
       systray_socket_get_name (XFCE_SYSTRAY_SOCKET (icon)), icon);
 }
 
@@ -840,15 +840,15 @@ systray_plugin_icon_removed (SystrayManager *manager,
                              GtkWidget      *icon,
                              SystrayPlugin  *plugin)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (plugin->manager == manager);
-  panel_return_if_fail (GTK_IS_WIDGET (icon));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (plugin->manager == manager);
+  bar_return_if_fail (GTK_IS_WIDGET (icon));
 
   /* remove the icon from the box */
   gtk_container_remove (GTK_CONTAINER (plugin->box), icon);
 
-  panel_debug_filtered (PANEL_DEBUG_SYSTRAY, "removed %s[%p] icon",
+  bar_debug_filtered (BAR_DEBUG_SYSTRAY, "removed %s[%p] icon",
       systray_socket_get_name (XFCE_SYSTRAY_SOCKET (icon)), icon);
 }
 
@@ -860,9 +860,9 @@ systray_plugin_lost_selection (SystrayManager *manager,
 {
   GError error;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (plugin->manager == manager);
+  bar_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (plugin->manager == manager);
 
   /* create fake error and show it */
   error.message = _("Most likely another widget took over the function "
@@ -880,7 +880,7 @@ systray_plugin_dialog_camel_case (const gchar *text)
   gunichar     c;
   GString     *result;
 
-  panel_return_val_if_fail (!exo_str_is_empty (text), NULL);
+  bar_return_val_if_fail (!blxo_str_is_empty (text), NULL);
 
   /* allocate a new string for the result */
   result = g_string_sized_new (32);
@@ -928,11 +928,11 @@ systray_plugin_dialog_add_application_names (gpointer key,
   guint         i;
   GtkTreeIter   iter;
 
-  panel_return_if_fail (GTK_IS_LIST_STORE (store));
-  panel_return_if_fail (name == NULL || g_utf8_validate (name, -1, NULL));
+  bar_return_if_fail (GTK_IS_LIST_STORE (store));
+  bar_return_if_fail (name == NULL || g_utf8_validate (name, -1, NULL));
 
   /* skip invalid names */
-  if (exo_str_is_empty (name))
+  if (blxo_str_is_empty (name))
      return;
 
   /* check if we have a better name for the application */
@@ -955,7 +955,7 @@ systray_plugin_dialog_add_application_names (gpointer key,
 
   /* try to load the icon name */
   if (G_LIKELY (icon_name != NULL))
-    pixbuf = xfce_panel_pixbuf_from_source (icon_name, NULL, ICON_SIZE);
+    pixbuf = blade_bar_pixbuf_from_source (icon_name, NULL, ICON_SIZE);
   else
     pixbuf = NULL;
 
@@ -985,11 +985,11 @@ systray_plugin_dialog_hidden_toggled (GtkCellRendererToggle *renderer,
   GtkTreeModel *model;
   gchar        *name;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (plugin->box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (plugin->box));
 
   model = g_object_get_data (G_OBJECT (plugin), "applications-store");
-  panel_return_if_fail (GTK_IS_LIST_STORE (model));
+  bar_return_if_fail (GTK_IS_LIST_STORE (model));
   if (gtk_tree_model_get_iter_from_string (model, &iter, path_string))
     {
       gtk_tree_model_get (model, &iter,
@@ -1015,8 +1015,8 @@ systray_plugin_dialog_clear_clicked (GtkWidget     *button,
 {
   GtkListStore *store;
 
-  panel_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
-  panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (plugin->box));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_PLUGIN (plugin));
+  bar_return_if_fail (XFCE_IS_SYSTRAY_BOX (plugin->box));
 
   if (xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (button)),
                            GTK_STOCK_CLEAR, NULL, NULL,
@@ -1024,7 +1024,7 @@ systray_plugin_dialog_clear_clicked (GtkWidget     *button,
                              "known applications?")))
     {
       store = g_object_get_data (G_OBJECT (plugin), "applications-store");
-      panel_return_if_fail (GTK_IS_LIST_STORE (store));
+      bar_return_if_fail (GTK_IS_LIST_STORE (store));
       gtk_list_store_clear (store);
 
       systray_plugin_names_clear (plugin);

@@ -33,7 +33,7 @@ typedef struct _XfceClockLcd      XfceClockLcd;
 
 GType      xfce_clock_lcd_get_type      (void) G_GNUC_CONST;
 
-void       xfce_clock_lcd_register_type (XfcePanelTypeModule *type_module);
+void       xfce_clock_lcd_register_type (BladeBarTypeModule *type_module);
 
 GtkWidget *xfce_clock_lcd_new           (ClockTime           *time) G_GNUC_MALLOC;
 

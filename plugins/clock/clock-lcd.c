@@ -103,7 +103,7 @@ LcdPoint;
 
 
 
-XFCE_PANEL_DEFINE_TYPE (XfceClockLcd, xfce_clock_lcd, GTK_TYPE_IMAGE)
+BLADE_BAR_DEFINE_TYPE (XfceClockLcd, xfce_clock_lcd, GTK_TYPE_IMAGE)
 
 
 
@@ -287,12 +287,12 @@ xfce_clock_lcd_expose_event (GtkWidget      *widget,
   gdouble       ratio;
   GDateTime    *date_time;
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_LCD (lcd), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_LCD (lcd), FALSE);
 
   /* get the width:height ratio */
   ratio = xfce_clock_lcd_get_ratio (XFCE_CLOCK_LCD (widget));
 
-  /* make sure we also fit on small vertical panels */
+  /* make sure we also fit on small vertical bars */
   size = MIN ((gdouble) widget->allocation.width / ratio, widget->allocation.height);
 
   /* begin offsets */
@@ -521,7 +521,7 @@ xfce_clock_lcd_draw_digit (cairo_t *cr,
     { 4, 5, 0, 1, 6, -1 }
   };
 
-  panel_return_val_if_fail (number <= 11, offset_x);
+  bar_return_val_if_fail (number <= 11, offset_x);
 
   for (i = 0; i < 9; i++)
     {
@@ -588,7 +588,7 @@ xfce_clock_lcd_update (XfceClockLcd *lcd,
 {
   GtkWidget *widget = GTK_WIDGET (lcd);
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_LCD (lcd), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_LCD (lcd), FALSE);
 
   /* update if the widget if visible */
   if (G_LIKELY (GTK_WIDGET_VISIBLE (widget)))

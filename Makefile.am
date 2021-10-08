@@ -1,8 +1,8 @@
 
 SUBDIRS = \
-	libxfce4panel \
+	libbladebar \
 	common \
-	panel \
+	bar \
 	plugins \
 	wrapper \
 	migrate \
@@ -18,8 +18,8 @@ distuninstallcheck_listfiles = 						\
 
 desktopdir = $(datadir)/applications
 desktop_in_files = \
-	panel-desktop-handler.desktop.in \
-	panel-preferences.desktop.in
+	bar-desktop-handler.desktop.in \
+	bar-preferences.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 

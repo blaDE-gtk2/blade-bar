@@ -1,10 +1,11 @@
 
 AM_CPPFLAGS = \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir) \
 	-DG_LOG_DOMAIN=\"libclock\" \
 	$(PLATFORM_CPPFLAGS)
 
-plugindir = $(libdir)/xfce4/panel/plugins
+plugindir = $(libdir)/xfce4/bar/plugins
 
 plugin_LTLIBRARIES = \
 	libclock.la
@@ -32,40 +33,40 @@ libclock_la_SOURCES = \
 libclock_la_CFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(GTK_CFLAGS) \
-	$(LIBXFCE4UTIL_CFLAGS) \
+	$(LIBBLADEUTIL_CFLAGS) \
 	$(CAIRO_CFLAGS) \
-	$(LIBXFCE4UI_CFLAGS) \
-	$(EXO_CFLAGS) \
-	$(XFCONF_CFLAGS) \
+	$(LIBBLADEUI_CFLAGS) \
+	$(BLXO_CFLAGS) \
+	$(BLCONF_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 libclock_la_LDFLAGS =	 \
 	-avoid-version \
 	-module \
 	-no-undefined \
-	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
+	-export-symbols-regex '^blade_bar_module_(preinit|init|construct)' \
 	$(PLATFORM_LDFLAGS)
 
 libclock_la_LIBADD = \
-	$(top_builddir)/libxfce4panel/libxfce4panel-$(LIBXFCE4PANEL_VERSION_API).la \
-	$(top_builddir)/common/libpanel-common.la \
+	$(top_builddir)/libbladebar/libbladebar-$(LIBBLADEBAR_VERSION_API).la \
+	$(top_builddir)/common/libbar-common.la \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS) \
 	$(CAIRO_LIBS) \
-	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCE4UI_LIBS) \
-	$(EXO_LIBS) \
-	$(XFCONF_LIBS) \
+	$(LIBBLADEUTIL_LIBS) \
+	$(LIBBLADEUI_LIBS) \
+	$(BLXO_LIBS) \
+	$(BLCONF_LIBS) \
 	-lm
 
 libclock_la_DEPENDENCIES = \
-	$(top_builddir)/libxfce4panel/libxfce4panel-$(LIBXFCE4PANEL_VERSION_API).la \
-	$(top_builddir)/common/libpanel-common.la
+	$(top_builddir)/libbladebar/libbladebar-$(LIBBLADEBAR_VERSION_API).la \
+	$(top_builddir)/common/libbar-common.la
 
 #
 # .desktop file
 #
-desktopdir = $(datadir)/xfce4/panel/plugins
+desktopdir = $(datadir)/xfce4/bar/plugins
 desktop_in_files =	clock.desktop.in.in
 desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
@@ -85,7 +86,7 @@ DISTCLEANFILES += \
 	$(libclock_built_sources)
 
 clock-dialog_ui.h: clock-dialog.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=clock_dialog_ui $< >$@
+	$(AM_V_GEN) blxo-csource --static --strip-comments --strip-content --name=clock_dialog_ui $< >$@
 endif
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

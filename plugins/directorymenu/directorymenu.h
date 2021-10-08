@@ -35,7 +35,7 @@ typedef struct _DirectoryMenuPlugin      DirectoryMenuPlugin;
 
 GType directory_menu_plugin_get_type      (void) G_GNUC_CONST;
 
-void  directory_menu_plugin_register_type (XfcePanelTypeModule *type_module);
+void  directory_menu_plugin_register_type (BladeBarTypeModule *type_module);
 
 G_END_DECLS
 

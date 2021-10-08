@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-gboolean migrate_config (XfconfChannel  *channel,
+gboolean migrate_config (BlconfChannel  *channel,
                          gint            configver,
                          GError        **error);
 

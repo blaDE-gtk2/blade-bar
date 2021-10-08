@@ -31,10 +31,10 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4panel/xfce-panel-macros.h>
+#include <blconf/blconf.h>
+#include <libbladeutil/libbladeutil.h>
+#include <libbladeui/libbladeui.h>
+#include <libbladebar/blade-bar-macros.h>
 
 #include <migrate/migrate-46.h>
 #include <migrate/migrate-config.h>
@@ -42,7 +42,7 @@
 
 
 
-#define DEFAULT_CONFIG_FILENAME "xfce4" G_DIR_SEPARATOR_S "panel" G_DIR_SEPARATOR_S "default.xml"
+#define DEFAULT_CONFIG_FILENAME "xfce4" G_DIR_SEPARATOR_S "bar" G_DIR_SEPARATOR_S "default.xml"
 #define DEFAULT_CONFIG_PATH     XDGCONFIGDIR G_DIR_SEPARATOR_S DEFAULT_CONFIG_FILENAME
 
 
@@ -55,7 +55,7 @@ main (gint argc, gchar **argv)
   gint           result;
   gint           retval = EXIT_SUCCESS;
   gint           default_response = GTK_RESPONSE_CANCEL;
-  XfconfChannel *channel;
+  BlconfChannel *channel;
   gint           configver;
   gchar         *filename_46;
   gchar         *filename_default;
@@ -71,15 +71,15 @@ main (gint argc, gchar **argv)
 
   gtk_init (&argc, &argv);
 
-  if (!xfconf_init (&error))
+  if (!blconf_init (&error))
     {
-      g_critical ("Failed to initialize Xfconf: %s", error->message);
+      g_critical ("Failed to initialize Blconf: %s", error->message);
       g_error_free (error);
       return EXIT_FAILURE;
     }
 
-  channel = xfconf_channel_get (XFCE_PANEL_CHANNEL_NAME);
-  if (!xfconf_channel_has_property (channel, "/panels"))
+  channel = blconf_channel_get (BLADE_BAR_CHANNEL_NAME);
+  if (!blconf_channel_has_property (channel, "/bars"))
     {
       /* lookup the old 4.6 config file */
       filename_46 = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, XFCE_46_CONFIG);
@@ -100,7 +100,7 @@ main (gint argc, gchar **argv)
       migrate_vendor_default = (g_strcmp0 (DEFAULT_CONFIG_PATH, filename_default) != 0);
 
       /* check if we auto-migrate the default configuration */
-      if (g_getenv ("XFCE_PANEL_MIGRATE_DEFAULT") != NULL
+      if (g_getenv ("BLADE_BAR_MIGRATE_DEFAULT") != NULL
           || migrate_vendor_default)
         {
           if (filename_46 != NULL)
@@ -113,8 +113,8 @@ main (gint argc, gchar **argv)
 
       /* create question dialog */
       dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
-                                       _("Welcome to the first start of the panel"));
-      gtk_window_set_title (GTK_WINDOW (dialog), _("Panel"));
+                                       _("Welcome to the first start of the bar"));
+      gtk_window_set_title (GTK_WINDOW (dialog), _("Bar"));
       gtk_window_set_icon_name (GTK_WINDOW (dialog), GTK_STOCK_PREFERENCES);
       gtk_window_stick (GTK_WINDOW (dialog));
       gtk_window_set_keep_above (GTK_WINDOW (dialog), TRUE);
@@ -122,12 +122,12 @@ main (gint argc, gchar **argv)
       if (filename_46 != NULL)
         {
           gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s\n%s",
-              _("Because the panel moved to a new system for storing the "
+              _("Because the bar moved to a new system for storing the "
                 "settings, it has to load a fresh initial configuration."),
               _("Choose below which setup you want for the first startup."));
 
           button = gtk_dialog_add_button (GTK_DIALOG (dialog), _("Migrate old config"), GTK_RESPONSE_OK);
-          gtk_widget_set_tooltip_text (button, _("Migrate the old 4.6 configuration to Xfconf"));
+          gtk_widget_set_tooltip_text (button, _("Migrate the old 4.6 configuration to Blconf"));
           default_response = GTK_RESPONSE_OK;
         }
       else
@@ -145,8 +145,8 @@ main (gint argc, gchar **argv)
             default_response = GTK_RESPONSE_YES;
         }
 
-      button = gtk_dialog_add_button (GTK_DIALOG (dialog), _("One empty panel"), GTK_RESPONSE_CANCEL);
-      gtk_widget_set_tooltip_text (button, _("Start with one empty panel"));
+      button = gtk_dialog_add_button (GTK_DIALOG (dialog), _("One empty bar"), GTK_RESPONSE_CANCEL);
+      gtk_widget_set_tooltip_text (button, _("Start with one empty bar"));
 
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), default_response);
       result = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -157,7 +157,7 @@ main (gint argc, gchar **argv)
           /* restore 4.6 config */
           if (!migrate_46 (filename_46, channel, &error))
             {
-              xfce_dialog_show_error (NULL, error, _("Failed to migrate the old panel configuration"));
+              xfce_dialog_show_error (NULL, error, _("Failed to migrate the old bar configuration"));
               g_error_free (error);
               retval = EXIT_FAILURE;
             }
@@ -179,10 +179,10 @@ main (gint argc, gchar **argv)
       g_free (filename_default);
     }
 
-  configver = xfconf_channel_get_int (channel, "/configver", -1);
-  if (configver < XFCE4_PANEL_CONFIG_VERSION)
+  configver = blconf_channel_get_int (channel, "/configver", -1);
+  if (configver < BLADE_BAR_CONFIG_VERSION)
     {
-      g_message (_("Panel config needs migration..."));
+      g_message (_("Bar config needs migration..."));
 
       if (!migrate_config (channel, configver, &error))
         {
@@ -192,14 +192,14 @@ main (gint argc, gchar **argv)
         }
       else
         {
-          g_message (_("Panel configuration has been updated."));
+          g_message (_("Bar configuration has been updated."));
         }
 
       /* migration complete, set new version */
-      xfconf_channel_set_int (channel, "/configver", XFCE4_PANEL_CONFIG_VERSION);
+      blconf_channel_set_int (channel, "/configver", BLADE_BAR_CONFIG_VERSION);
     }
 
-  xfconf_shutdown ();
+  blconf_shutdown ();
 
   return retval;
 }

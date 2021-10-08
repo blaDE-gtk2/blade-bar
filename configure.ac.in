@@ -8,21 +8,21 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([libxfce4panel_verinfo], [4:0:0]) dnl current:revision:age
-m4_define([libxfce4panel_version_api], [1.0])
-m4_define([xfce4_panel_config_version], [2])
-m4_define([xfce4_panel_version_major], [4])
-m4_define([xfce4_panel_version_minor], [12])
-m4_define([xfce4_panel_version_micro], [2])
-m4_define([xfce4_panel_version_nano],  []) dnl leave this empty to have no nano version
-m4_define([xfce4_panel_version_build], [@REVISION@])
-m4_define([xfce4_panel_version_tag],   [])
-m4_define([xfce4_panel_version], [xfce4_panel_version_major().xfce4_panel_version_minor().xfce4_panel_version_micro()ifelse(xfce4_panel_version_nano(), [], [], [.xfce4_panel_version_nano()])ifelse(xfce4_panel_version_tag(), [git], [xfce4_panel_version_tag()-xfce4_panel_version_build()], [xfce4_panel_version_tag()])])
+m4_define([libbladebar_verinfo], [4:0:0]) dnl current:revision:age
+m4_define([libbladebar_version_api], [1.0])
+m4_define([blade_bar_config_version], [2])
+m4_define([blade_bar_version_major], [4])
+m4_define([blade_bar_version_minor], [12])
+m4_define([blade_bar_version_micro], [2])
+m4_define([blade_bar_version_nano],  []) dnl leave this empty to have no nano version
+m4_define([blade_bar_version_build], [@REVISION@])
+m4_define([blade_bar_version_tag],   [])
+m4_define([blade_bar_version], [blade_bar_version_major().blade_bar_version_minor().blade_bar_version_micro()ifelse(blade_bar_version_nano(), [], [], [.blade_bar_version_nano()])ifelse(blade_bar_version_tag(), [git], [blade_bar_version_tag()-blade_bar_version_build()], [blade_bar_version_tag()])])
 
 dnl *******************************************
 dnl *** Debugging support for GIT snapshots ***
 dnl *******************************************
-m4_define([panel_debug_default], [ifelse(xfce4_panel_version_tag(), [git], [yes], [minimum])])
+m4_define([bar_debug_default], [ifelse(blade_bar_version_tag(), [git], [yes], [minimum])])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
@@ -32,9 +32,9 @@ AC_COPYRIGHT([Copyright (c) 2002 - 2011
 
 Written for Xfce by Jasper Huijsmans <jasper@xfce.org>
 and Nick Schermer <nick@xfce.org>.])
-AC_INIT([xfce4-panel], [xfce4_panel_version], [http://bugzilla.xfce.org/], [xfce4-panel])
+AC_INIT([blade-bar], [blade_bar_version], [http://bugzilla.xfce.org/], [blade-bar])
 AC_PREREQ([2.50])
-AC_REVISION([xfce4_panel_version_build])
+AC_REVISION([blade_bar_version_build])
 
 dnl ***************************
 dnl *** Initialize automake ***
@@ -80,30 +80,30 @@ LT_INIT([disable-static])
 dnl **************************************
 dnl *** Substitute version information ***
 dnl **************************************
-LIBXFCE4PANEL_VERINFO=libxfce4panel_verinfo()
-AC_SUBST([LIBXFCE4PANEL_VERINFO])
+LIBBLADEBAR_VERINFO=libbladebar_verinfo()
+AC_SUBST([LIBBLADEBAR_VERINFO])
 
 dnl **************************
 dnl *** Substitute version ***
 dnl **************************
-LIBXFCE4PANEL_VERSION=xfce4_panel_version()
-LIBXFCE4PANEL_VERSION_API=libxfce4panel_version_api()
-LIBXFCE4PANEL_VERSION_MAJOR=xfce4_panel_version_major()
-LIBXFCE4PANEL_VERSION_MINOR=xfce4_panel_version_minor()
-LIBXFCE4PANEL_VERSION_MICRO=xfce4_panel_version_micro()
-AC_DEFINE([LIBXFCE4PANEL_VERSION_API], "libxfce4panel_version_api()", [libxfce4panel api version])
-AC_SUBST([LIBXFCE4PANEL_VERSION])
-AC_SUBST([LIBXFCE4PANEL_VERSION_API])
-AC_SUBST([LIBXFCE4PANEL_VERSION_MAJOR])
-AC_SUBST([LIBXFCE4PANEL_VERSION_MINOR])
-AC_SUBST([LIBXFCE4PANEL_VERSION_MICRO])
+LIBBLADEBAR_VERSION=blade_bar_version()
+LIBBLADEBAR_VERSION_API=libbladebar_version_api()
+LIBBLADEBAR_VERSION_MAJOR=blade_bar_version_major()
+LIBBLADEBAR_VERSION_MINOR=blade_bar_version_minor()
+LIBBLADEBAR_VERSION_MICRO=blade_bar_version_micro()
+AC_DEFINE([LIBBLADEBAR_VERSION_API], "libbladebar_version_api()", [libbladebar api version])
+AC_SUBST([LIBBLADEBAR_VERSION])
+AC_SUBST([LIBBLADEBAR_VERSION_API])
+AC_SUBST([LIBBLADEBAR_VERSION_MAJOR])
+AC_SUBST([LIBBLADEBAR_VERSION_MINOR])
+AC_SUBST([LIBBLADEBAR_VERSION_MICRO])
 
 dnl *********************************
 dnl *** Substitute config version ***
 dnl *********************************
-XFCE4_PANEL_CONFIG_VERSION=xfce4_panel_config_version()
-AC_DEFINE([XFCE4_PANEL_CONFIG_VERSION], xfce4_panel_config_version(), [config migration version])
-AC_SUBST([XFCE4_PANEL_CONFIG_VERSION])
+BLADE_BAR_CONFIG_VERSION=blade_bar_config_version()
+AC_DEFINE([BLADE_BAR_CONFIG_VERSION], blade_bar_config_version(), [config migration version])
+AC_SUBST([BLADE_BAR_CONFIG_VERSION])
 
 dnl **********************************
 dnl *** Check for standard headers ***
@@ -127,12 +127,12 @@ XDT_CHECK_LIBX11_REQUIRE()
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.9.0])
-XDT_CHECK_PACKAGE([GARCON], [garcon-1], [0.1.5])
-XDT_CHECK_PACKAGE([GARCON_GTK2], [garcon-gtk2-1], [0.3.0])
-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.11.0])
-XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.9.0])
-XDT_CHECK_PACKAGE([EXO], [exo-1], [0.7.2])
+XDT_CHECK_PACKAGE([LIBBLADEUTIL], [libbladeutil-1.0], [4.9.0])
+XDT_CHECK_PACKAGE([POJK], [pojk-1], [0.1.5])
+XDT_CHECK_PACKAGE([POJK_GTK2], [pojk-gtk2-1], [0.3.0])
+XDT_CHECK_PACKAGE([LIBBLADEUI], [libbladeui-1], [4.11.0])
+XDT_CHECK_PACKAGE([BLCONF], [libblconf-0], [4.9.0])
+XDT_CHECK_PACKAGE([BLXO], [blxo-1], [0.7.2])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.20.0])
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.24.0])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.24.0])
@@ -163,7 +163,7 @@ GTK_DOC_CHECK([1.9])
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
-XDT_FEATURE_DEBUG([panel_debug_default])
+XDT_FEATURE_DEBUG([bar_debug_default])
 
 dnl **************************************
 dnl *** Check for linker optimizations ***
@@ -236,13 +236,13 @@ icons/24x24/Makefile
 icons/32x32/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile
-libxfce4panel/Makefile
-libxfce4panel/libxfce4panel-1.0.pc
-libxfce4panel/libxfce4panel-2.0.pc
-libxfce4panel/libxfce4panel-config.h
+libbladebar/Makefile
+libbladebar/libbladebar-1.0.pc
+libbladebar/libbladebar-2.0.pc
+libbladebar/libbladebar-config.h
 migrate/Makefile
 migrate/default.xml
-panel/Makefile
+bar/Makefile
 wrapper/Makefile
 plugins/Makefile
 plugins/actions/Makefile

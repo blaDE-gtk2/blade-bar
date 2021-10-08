@@ -20,19 +20,19 @@
 #include <config.h>
 #endif
 
-#include <exo/exo.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <common/panel-xfconf.h>
-#include <common/panel-utils.h>
-#include <common/panel-private.h>
-#include <libxfce4panel/libxfce4panel.h>
+#include <blxo/blxo.h>
+#include <libbladeui/libbladeui.h>
+#include <common/bar-blconf.h>
+#include <common/bar-utils.h>
+#include <common/bar-private.h>
+#include <libbladebar/libbladebar.h>
 
 #include "tasklist-widget.h"
 #include "tasklist-dialog_ui.h"
 
 /* TODO move to header */
 GType tasklist_plugin_get_type (void) G_GNUC_CONST;
-void tasklist_plugin_register_type (XfcePanelTypeModule *type_module);
+void tasklist_plugin_register_type (BladeBarTypeModule *type_module);
 #define XFCE_TYPE_TASKLIST_PLUGIN            (tasklist_plugin_get_type ())
 #define XFCE_TASKLIST_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), XFCE_TYPE_TASKLIST_PLUGIN, TasklistPlugin))
 #define XFCE_TASKLIST_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), XFCE_TYPE_TASKLIST_PLUGIN, TasklistPluginClass))
@@ -44,13 +44,13 @@ void tasklist_plugin_register_type (XfcePanelTypeModule *type_module);
 typedef struct _TasklistPluginClass TasklistPluginClass;
 struct _TasklistPluginClass
 {
-  XfcePanelPluginClass __parent__;
+  BladeBarPluginClass __parent__;
 };
 
 typedef struct _TasklistPlugin TasklistPlugin;
 struct _TasklistPlugin
 {
-  XfcePanelPlugin __parent__;
+  BladeBarPlugin __parent__;
 
   /* the tasklist widget */
   GtkWidget     *tasklist;
@@ -59,16 +59,16 @@ struct _TasklistPlugin
 
 
 
-static void     tasklist_plugin_construct               (XfcePanelPlugin    *panel_plugin);
-static void     tasklist_plugin_mode_changed            (XfcePanelPlugin    *panel_plugin,
-                                                         XfcePanelPluginMode mode);
-static gboolean tasklist_plugin_size_changed            (XfcePanelPlugin    *panel_plugin,
+static void     tasklist_plugin_construct               (BladeBarPlugin    *bar_plugin);
+static void     tasklist_plugin_mode_changed            (BladeBarPlugin    *bar_plugin,
+                                                         BladeBarPluginMode mode);
+static gboolean tasklist_plugin_size_changed            (BladeBarPlugin    *bar_plugin,
                                                          gint                size);
-static void     tasklist_plugin_nrows_changed           (XfcePanelPlugin    *panel_plugin,
+static void     tasklist_plugin_nrows_changed           (BladeBarPlugin    *bar_plugin,
                                                          guint               nrows);
-static void     tasklist_plugin_screen_position_changed (XfcePanelPlugin    *panel_plugin,
+static void     tasklist_plugin_screen_position_changed (BladeBarPlugin    *bar_plugin,
                                                          XfceScreenPosition  position);
-static void     tasklist_plugin_configure_plugin        (XfcePanelPlugin    *panel_plugin);
+static void     tasklist_plugin_configure_plugin        (BladeBarPlugin    *bar_plugin);
 static gboolean tasklist_plugin_handle_expose_event     (GtkWidget          *widget,
                                                          GdkEventExpose     *event,
                                                          TasklistPlugin     *plugin);
@@ -76,16 +76,16 @@ static gboolean tasklist_plugin_handle_expose_event     (GtkWidget          *wid
 
 
 /* define and register the plugin */
-XFCE_PANEL_DEFINE_PLUGIN_RESIDENT (TasklistPlugin, tasklist_plugin)
+BLADE_BAR_DEFINE_PLUGIN_RESIDENT (TasklistPlugin, tasklist_plugin)
 
 
 
 static void
 tasklist_plugin_class_init (TasklistPluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+  BladeBarPluginClass *plugin_class;
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+  plugin_class = BLADE_BAR_PLUGIN_CLASS (klass);
   plugin_class->construct = tasklist_plugin_construct;
   plugin_class->mode_changed = tasklist_plugin_mode_changed;
   plugin_class->size_changed = tasklist_plugin_size_changed;
@@ -104,7 +104,7 @@ tasklist_plugin_init (TasklistPlugin *plugin)
   /* create widgets */
   box = xfce_hvbox_new (GTK_ORIENTATION_HORIZONTAL, FALSE, 0);
   gtk_container_add (GTK_CONTAINER (plugin), box);
-  exo_binding_new (G_OBJECT (plugin), "orientation", G_OBJECT (box), "orientation");
+  blxo_binding_new (G_OBJECT (plugin), "orientation", G_OBJECT (box), "orientation");
   gtk_widget_show (box);
 
   plugin->handle = gtk_alignment_new (0.00, 0.00, 0.00, 0.00);
@@ -117,17 +117,17 @@ tasklist_plugin_init (TasklistPlugin *plugin)
   plugin->tasklist = g_object_new (XFCE_TYPE_TASKLIST, NULL);
   gtk_box_pack_start (GTK_BOX (box), plugin->tasklist, TRUE, TRUE, 0);
 
-  exo_binding_new (G_OBJECT (plugin->tasklist), "show-handle",
+  blxo_binding_new (G_OBJECT (plugin->tasklist), "show-handle",
                    G_OBJECT (plugin->handle), "visible");
 }
 
 
 
 static void
-tasklist_plugin_construct (XfcePanelPlugin *panel_plugin)
+tasklist_plugin_construct (BladeBarPlugin *bar_plugin)
 {
-  TasklistPlugin      *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
-  const PanelProperty  properties[] =
+  TasklistPlugin      *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
+  const BarProperty  properties[] =
   {
     { "show-labels", G_TYPE_BOOLEAN },
     { "grouping", G_TYPE_UINT },
@@ -147,15 +147,15 @@ tasklist_plugin_construct (XfcePanelPlugin *panel_plugin)
   };
 
   /* show configure */
-  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+  blade_bar_plugin_menu_show_configure (BLADE_BAR_PLUGIN (plugin));
 
   /* expand the plugin */
-  /* xfce_panel_plugin_set_expand (panel_plugin, FALSE); */
-  xfce_panel_plugin_set_shrink (panel_plugin, TRUE);
+  /* blade_bar_plugin_set_expand (bar_plugin, FALSE); */
+  blade_bar_plugin_set_shrink (bar_plugin, TRUE);
 
   /* bind all properties */
-  panel_properties_bind (NULL, G_OBJECT (plugin->tasklist),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
+  bar_properties_bind (NULL, G_OBJECT (plugin->tasklist),
+                         blade_bar_plugin_get_property_base (bar_plugin),
                          properties, FALSE);
 
   /* show the tasklist */
@@ -165,10 +165,10 @@ tasklist_plugin_construct (XfcePanelPlugin *panel_plugin)
 
 
 static void
-tasklist_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
-                              XfcePanelPluginMode  mode)
+tasklist_plugin_mode_changed (BladeBarPlugin     *bar_plugin,
+                              BladeBarPluginMode  mode)
 {
-  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
+  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
 
   /* set the new tasklist mode */
   xfce_tasklist_set_mode (XFCE_TASKLIST (plugin->tasklist), mode);
@@ -177,10 +177,10 @@ tasklist_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
 
 
 static gboolean
-tasklist_plugin_size_changed (XfcePanelPlugin *panel_plugin,
+tasklist_plugin_size_changed (BladeBarPlugin *bar_plugin,
                               gint             size)
 {
-  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
+  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
 
   /* set the tasklist size */
   xfce_tasklist_set_size (XFCE_TASKLIST (plugin->tasklist), size);
@@ -191,10 +191,10 @@ tasklist_plugin_size_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-tasklist_plugin_nrows_changed (XfcePanelPlugin *panel_plugin,
+tasklist_plugin_nrows_changed (BladeBarPlugin *bar_plugin,
                                guint            nrows)
 {
-  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
+  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
 
   /* set the tasklist nrows */
   xfce_tasklist_set_nrows (XFCE_TASKLIST (plugin->tasklist), nrows);
@@ -203,44 +203,44 @@ tasklist_plugin_nrows_changed (XfcePanelPlugin *panel_plugin,
 
 
 static void
-tasklist_plugin_screen_position_changed (XfcePanelPlugin    *panel_plugin,
+tasklist_plugin_screen_position_changed (BladeBarPlugin    *bar_plugin,
                                          XfceScreenPosition  position)
 {
-  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
+  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
 
   /* update monitor geometry; this function is also triggered when
-   * the panel is moved to another monitor during runtime */
+   * the bar is moved to another monitor during runtime */
   xfce_tasklist_update_monitor_geometry (XFCE_TASKLIST (plugin->tasklist));
 }
 
 
 
 static void
-tasklist_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+tasklist_plugin_configure_plugin (BladeBarPlugin *bar_plugin)
 {
-  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (panel_plugin);
+  TasklistPlugin *plugin = XFCE_TASKLIST_PLUGIN (bar_plugin);
   GtkBuilder     *builder;
   GObject        *dialog;
   GObject        *object;
   GtkTreeIter     iter;
 
   /* setup the dialog */
-  PANEL_UTILS_LINK_4UI
-  builder = panel_utils_builder_new (panel_plugin, tasklist_dialog_ui,
+  BAR_UTILS_LINK_4UI
+  builder = bar_utils_builder_new (bar_plugin, tasklist_dialog_ui,
                                      tasklist_dialog_ui_length, &dialog);
   if (G_UNLIKELY (builder == NULL))
     return;
 
 #define TASKLIST_DIALOG_BIND(name, property) \
   object = gtk_builder_get_object (builder, (name)); \
-  panel_return_if_fail (G_IS_OBJECT (object)); \
-  exo_mutual_binding_new (G_OBJECT (plugin->tasklist), (name), \
+  bar_return_if_fail (G_IS_OBJECT (object)); \
+  blxo_mutual_binding_new (G_OBJECT (plugin->tasklist), (name), \
                           G_OBJECT (object), (property));
 
 #define TASKLIST_DIALOG_BIND_INV(name, property) \
   object = gtk_builder_get_object (builder, (name)); \
-  panel_return_if_fail (G_IS_OBJECT (object)); \
-  exo_mutual_binding_new_with_negation (G_OBJECT (plugin->tasklist), \
+  bar_return_if_fail (G_IS_OBJECT (object)); \
+  blxo_mutual_binding_new_with_negation (G_OBJECT (plugin->tasklist), \
                                         name,  G_OBJECT (object), \
                                         property);
 
@@ -280,14 +280,14 @@ tasklist_plugin_handle_expose_event (GtkWidget *widget,
 {
   GtkOrientation orientation;
 
-  panel_return_val_if_fail (XFCE_IS_TASKLIST_PLUGIN (plugin), FALSE);
-  panel_return_val_if_fail (plugin->handle == widget, FALSE);
+  bar_return_val_if_fail (XFCE_IS_TASKLIST_PLUGIN (plugin), FALSE);
+  bar_return_val_if_fail (plugin->handle == widget, FALSE);
 
   if (!GTK_WIDGET_DRAWABLE (widget))
     return FALSE;
 
   /* get the orientation */
-  if (xfce_panel_plugin_get_orientation (XFCE_PANEL_PLUGIN (plugin)) ==
+  if (blade_bar_plugin_get_orientation (BLADE_BAR_PLUGIN (plugin)) ==
       GTK_ORIENTATION_HORIZONTAL)
     orientation = GTK_ORIENTATION_VERTICAL;
   else

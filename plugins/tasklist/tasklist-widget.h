@@ -78,7 +78,7 @@ enum _XfceTasklistMClick
 GType xfce_tasklist_get_type                (void) G_GNUC_CONST;
 
 void  xfce_tasklist_set_mode                (XfceTasklist        *tasklist,
-                                             XfcePanelPluginMode  mode);
+                                             BladeBarPluginMode  mode);
 
 void  xfce_tasklist_set_size                (XfceTasklist   *tasklist,
                                              gint            size);

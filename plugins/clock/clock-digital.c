@@ -68,7 +68,7 @@ struct _XfceClockDigital
 
 
 
-XFCE_PANEL_DEFINE_TYPE (XfceClockDigital, xfce_clock_digital, GTK_TYPE_LABEL)
+BLADE_BAR_DEFINE_TYPE (XfceClockDigital, xfce_clock_digital, GTK_TYPE_LABEL)
 
 
 
@@ -198,8 +198,8 @@ xfce_clock_digital_update (XfceClockDigital *digital,
 {
   gchar            *string;
 
-  panel_return_val_if_fail (XFCE_CLOCK_IS_DIGITAL (digital), FALSE);
-  panel_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), FALSE);
+  bar_return_val_if_fail (XFCE_CLOCK_IS_DIGITAL (digital), FALSE);
+  bar_return_val_if_fail (XFCE_IS_CLOCK_TIME (clock_time), FALSE);
 
   /* set time string */
   string = clock_time_strdup_strftime (digital->time, digital->format);

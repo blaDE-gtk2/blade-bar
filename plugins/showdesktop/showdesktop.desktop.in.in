@@ -1,8 +1,8 @@
-[Xfce Panel]
-Type=X-XFCE-PanelPlugin
+[Blade Bar]
+Type=X-XFCE-BarPlugin
 _Name=Show Desktop
 _Comment=Hide all windows and show the desktop
 Icon=user-desktop
 X-XFCE-Module=showdesktop
 X-XFCE-Internal=TRUE
-X-XFCE-API=@LIBXFCE4PANEL_VERSION_API@
+X-XFCE-API=@LIBBLADEBAR_VERSION_API@

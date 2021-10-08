@@ -28,10 +28,10 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
-#include <libxfce4util/libxfce4util.h>
+#include <blconf/blconf.h>
+#include <libbladeutil/libbladeutil.h>
 #include <migrate/migrate-46.h>
-#include <libxfce4panel/xfce-panel-macros.h>
+#include <libbladebar/blade-bar-macros.h>
 
 
 
@@ -42,8 +42,8 @@
 typedef enum
 {
   START,
-  PANELS,
-  PANEL,
+  BARS,
+  BAR,
   PROPERTIES,
   ITEMS,
   UNKNOWN
@@ -79,22 +79,22 @@ typedef struct
 {
   ParserState         state;
   guint               plugin_id_counter;
-  guint               panel_id_counter;
-  XfconfChannel      *channel;
+  guint               bar_id_counter;
+  BlconfChannel      *channel;
 
-  GPtrArray          *panel_plugin_ids;
-  gint                panel_yoffset;
-  gint                panel_xoffset;
-  XfceScreenPosition  panel_screen_position;
-  guint               panel_transparency;
-  gboolean            panel_activetrans;
+  GPtrArray          *bar_plugin_ids;
+  gint                bar_yoffset;
+  gint                bar_xoffset;
+  XfceScreenPosition  bar_screen_position;
+  guint               bar_transparency;
+  gboolean            bar_activetrans;
 }
 ConfigParser;
 
 
 
 static void
-migrate_46_panel_screen_position (XfceScreenPosition  screen_position,
+migrate_46_bar_screen_position (XfceScreenPosition  screen_position,
                                   SnapPosition       *snap_position,
                                   gboolean           *horizontal)
 {
@@ -175,7 +175,7 @@ migrate_46_panel_screen_position (XfceScreenPosition  screen_position,
 
 
 static void
-migrate_46_panel_set_property (ConfigParser  *parser,
+migrate_46_bar_set_property (ConfigParser  *parser,
                                const gchar   *property_name,
                                const gchar   *value,
                                GError       **error)
@@ -187,27 +187,27 @@ migrate_46_panel_set_property (ConfigParser  *parser,
 
   if (strcmp (property_name, "size") == 0)
     {
-      g_snprintf (prop, sizeof (prop), "/panels/panel-%u/size", parser->panel_id_counter);
-      xfconf_channel_set_uint (parser->channel, prop, CLAMP (atoi (value), 16, 128));
+      g_snprintf (prop, sizeof (prop), "/bars/bar-%u/size", parser->bar_id_counter);
+      blconf_channel_set_uint (parser->channel, prop, CLAMP (atoi (value), 16, 128));
     }
   else if (strcmp (property_name, "fullwidth") == 0)
     {
-      g_snprintf (prop, sizeof (prop), "/panels/panel-%u/length", parser->panel_id_counter);
-      xfconf_channel_set_uint (parser->channel, prop, (atoi (value) != 0) ? 100 : 0);
+      g_snprintf (prop, sizeof (prop), "/bars/bar-%u/length", parser->bar_id_counter);
+      blconf_channel_set_uint (parser->channel, prop, (atoi (value) != 0) ? 100 : 0);
     }
   else if (strcmp (property_name, "screen-position") == 0)
     {
-      parser->panel_screen_position = CLAMP (atoi (value),
+      parser->bar_screen_position = CLAMP (atoi (value),
                                              XFCE_SCREEN_POSITION_NONE,
                                              XFCE_SCREEN_POSITION_FLOATING_V);
     }
   else if (strcmp (property_name, "xoffset") == 0)
     {
-      parser->panel_xoffset = MAX (0, atoi (value));
+      parser->bar_xoffset = MAX (0, atoi (value));
     }
   else if (strcmp (property_name, "yoffset") == 0)
     {
-      parser->panel_yoffset = MAX (0, atoi (value));
+      parser->bar_yoffset = MAX (0, atoi (value));
     }
   else if (strcmp (property_name, "monitor") == 0)
     {
@@ -222,34 +222,34 @@ migrate_46_panel_set_property (ConfigParser  *parser,
           else
             name = g_strdup_printf ("monitor-%d", num);
 
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/output", parser->panel_id_counter);
-          xfconf_channel_set_string (parser->channel, prop, name);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/output", parser->bar_id_counter);
+          blconf_channel_set_string (parser->channel, prop, name);
           g_free (name);
         }
     }
   else if (strcmp (property_name, "handlestyle") == 0)
     {
-      g_snprintf (prop, sizeof (prop), "/panels/panel-%u/locked", parser->panel_id_counter);
-      xfconf_channel_set_bool (parser->channel, prop, atoi (value) == 0);
+      g_snprintf (prop, sizeof (prop), "/bars/bar-%u/locked", parser->bar_id_counter);
+      blconf_channel_set_bool (parser->channel, prop, atoi (value) == 0);
     }
   else if (strcmp (property_name, "autohide") == 0)
     {
-      g_snprintf (prop, sizeof (prop), "/panels/panel-%u/autohide", parser->panel_id_counter);
-      xfconf_channel_set_bool (parser->channel, prop, (atoi (value) == 1));
+      g_snprintf (prop, sizeof (prop), "/bars/bar-%u/autohide", parser->bar_id_counter);
+      blconf_channel_set_bool (parser->channel, prop, (atoi (value) == 1));
     }
   else if (strcmp (property_name, "transparency") == 0)
     {
-      parser->panel_transparency = CLAMP (atoi (value), 0, 100);
+      parser->bar_transparency = CLAMP (atoi (value), 0, 100);
     }
   else if (strcmp (property_name, "activetrans") == 0)
     {
-      parser->panel_activetrans = (atoi (value) == 1);
+      parser->bar_activetrans = (atoi (value) == 1);
     }
   else
     {
       g_set_error (error, G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE, G_MARKUP_ERROR,
-                   "Unknown property \"%s\" in #%d \"panel\" element",
-                   property_name, parser->panel_id_counter);
+                   "Unknown property \"%s\" in #%d \"bar\" element",
+                   property_name, parser->bar_id_counter);
     }
 }
 
@@ -257,23 +257,23 @@ migrate_46_panel_set_property (ConfigParser  *parser,
 
 #define migrate_46_plugin_string(old_name, new_name, fallback) \
   if (xfce_rc_has_entry (rc, old_name)) \
-    xfconf_channel_set_string (channel, "/" new_name, \
+    blconf_channel_set_string (channel, "/" new_name, \
         xfce_rc_read_entry (rc, old_name, fallback))
 
 #define migrate_46_plugin_bool(old_name, new_name, fallback) \
   if (xfce_rc_has_entry (rc, old_name)) \
-    xfconf_channel_set_bool (channel, "/" new_name, \
+    blconf_channel_set_bool (channel, "/" new_name, \
         xfce_rc_read_bool_entry (rc, old_name, fallback))
 
 #define migrate_46_plugin_uint(old_name, new_name, fallback) \
   if (xfce_rc_has_entry (rc, old_name)) \
-    xfconf_channel_set_uint (channel, "/" new_name, \
+    blconf_channel_set_uint (channel, "/" new_name, \
         xfce_rc_read_int_entry (rc, old_name, fallback))
 
 
 
 static void
-migrate_46_plugin_actions (XfconfChannel *channel,
+migrate_46_plugin_actions (BlconfChannel *channel,
                            XfceRc        *rc)
 {
   gint  type;
@@ -300,14 +300,14 @@ migrate_46_plugin_actions (XfconfChannel *channel,
       break;
     }
 
-    xfconf_channel_set_uint (channel, "/first-action", first_action);
-    xfconf_channel_set_uint (channel, "/second-action", second_action);
+    blconf_channel_set_uint (channel, "/first-action", first_action);
+    blconf_channel_set_uint (channel, "/second-action", second_action);
 }
 
 
 
 static void
-migrate_46_plugin_clock (XfconfChannel *channel,
+migrate_46_plugin_clock (BlconfChannel *channel,
                          XfceRc        *rc)
 {
   gint type;
@@ -317,7 +317,7 @@ migrate_46_plugin_clock (XfconfChannel *channel,
       type = xfce_rc_read_int_entry (rc, "ClockType", 0);
       if (type == 4) /* XFCE_CLOCK_LCD */
         type++; /* Skip CLOCK_PLUGIN_MODE_FUZZY */
-      xfconf_channel_set_uint (channel, "/mode", type);
+      blconf_channel_set_uint (channel, "/mode", type);
     }
 
   migrate_46_plugin_string ("DigitalFormat", "digital-format", "%R");
@@ -334,11 +334,11 @@ migrate_46_plugin_clock (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_iconbox (XfconfChannel *channel,
+migrate_46_plugin_iconbox (BlconfChannel *channel,
                            XfceRc        *rc)
 {
   /* tasklist in iconbox mode */
-  xfconf_channel_set_uint (channel, "/show-labels", FALSE);
+  blconf_channel_set_uint (channel, "/show-labels", FALSE);
 
   migrate_46_plugin_bool ("only_hidden", "show-only-minimized", FALSE);
   migrate_46_plugin_bool ("all_workspaces", "include-all-workspaces", TRUE);
@@ -350,7 +350,7 @@ migrate_46_plugin_iconbox (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_launcher (XfconfChannel  *channel,
+migrate_46_plugin_launcher (BlconfChannel  *channel,
                             XfceRc         *rc,
                             guint           plugin_id,
                             GError        **error)
@@ -383,7 +383,7 @@ migrate_46_plugin_launcher (XfconfChannel  *channel,
 
       xfce_rc_set_group (rc, buf);
 
-      g_snprintf (buf, sizeof (buf), "xfce4" G_DIR_SEPARATOR_S "panel"
+      g_snprintf (buf, sizeof (buf), "xfce4" G_DIR_SEPARATOR_S "bar"
                   G_DIR_SEPARATOR_S LAUNCHER_FOLDER "-%d" G_DIR_SEPARATOR_S "%ld%d.desktop",
                   plugin_id, timeval.tv_sec, i);
       path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, buf, TRUE);
@@ -450,14 +450,14 @@ migrate_46_plugin_launcher (XfconfChannel  *channel,
       g_ptr_array_add (array, value);
     }
 
-  xfconf_channel_set_arrayv (channel, "/items", array);
-  xfconf_array_free (array);
+  blconf_channel_set_arrayv (channel, "/items", array);
+  blconf_array_free (array);
 }
 
 
 
 static void
-migrate_46_plugin_pager (XfconfChannel *channel,
+migrate_46_plugin_pager (BlconfChannel *channel,
                          XfceRc        *rc)
 {
   migrate_46_plugin_uint ("rows", "rows", 1);
@@ -468,7 +468,7 @@ migrate_46_plugin_pager (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_separator (XfconfChannel *channel,
+migrate_46_plugin_separator (BlconfChannel *channel,
                              XfceRc        *rc)
 {
   gint  type;
@@ -486,7 +486,7 @@ migrate_46_plugin_separator (XfconfChannel *channel,
 
     case 1: /* SEP_EXPAND */
       style = 0; /* SEPARATOR_PLUGIN_STYLE_TRANSPARENT */
-      xfconf_channel_set_bool (channel, "/expand", TRUE);
+      blconf_channel_set_bool (channel, "/expand", TRUE);
       break;
 
     case 2: /* SEP_LINE */
@@ -502,13 +502,13 @@ migrate_46_plugin_separator (XfconfChannel *channel,
       break;
     }
 
-  xfconf_channel_set_uint (channel, "/style", style);
+  blconf_channel_set_uint (channel, "/style", style);
 }
 
 
 
 static void
-migrate_46_plugin_showdesktop (XfconfChannel *channel,
+migrate_46_plugin_showdesktop (BlconfChannel *channel,
                                XfceRc        *rc)
 {
   /* no settings */
@@ -517,7 +517,7 @@ migrate_46_plugin_showdesktop (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_systray (XfconfChannel *channel,
+migrate_46_plugin_systray (BlconfChannel *channel,
                            XfceRc        *rc)
 {
   if (xfce_rc_has_group (rc, "Global"))
@@ -540,7 +540,7 @@ migrate_46_plugin_systray (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_tasklist (XfconfChannel *channel,
+migrate_46_plugin_tasklist (BlconfChannel *channel,
                             XfceRc        *rc)
 {
   migrate_46_plugin_uint ("grouping", "grouping", 0);
@@ -557,11 +557,11 @@ migrate_46_plugin_tasklist (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_windowlist (XfconfChannel *channel,
+migrate_46_plugin_windowlist (BlconfChannel *channel,
                               XfceRc        *rc)
 {
   if (xfce_rc_has_entry (rc, "urgency_notify"))
-    xfconf_channel_set_bool (channel, "/urgentcy-notification",
+    blconf_channel_set_bool (channel, "/urgentcy-notification",
       xfce_rc_read_int_entry (rc, "button_layout", 0) > 0);
 
   migrate_46_plugin_uint ("button_layout", "style", 0);
@@ -575,43 +575,43 @@ migrate_46_plugin_windowlist (XfconfChannel *channel,
 
 
 static void
-migrate_46_plugin_xfce4_menu (XfconfChannel *channel,
+migrate_46_plugin_xfce4_menu (BlconfChannel *channel,
                               XfceRc        *rc)
 {
   migrate_46_plugin_bool ("show_menu_icons", "show-menu-icons", TRUE);
   migrate_46_plugin_bool ("show_button_title", "show-button-title", TRUE);
   migrate_46_plugin_string ("menu_file", "custom-menu-file", "");
-  migrate_46_plugin_string ("icon_file", "button-icon", "xfce4-panel-menu");
+  migrate_46_plugin_string ("icon_file", "button-icon", "blade-bar-menu");
   migrate_46_plugin_string ("button_title", "button-title", "");
 
   if (xfce_rc_has_entry (rc, "use_default_menu"))
-    xfconf_channel_set_bool (channel, "/custom-menu",
+    blconf_channel_set_bool (channel, "/custom-menu",
        !xfce_rc_read_bool_entry (rc, "use_default_menu", TRUE));
 }
 
 
 
 static void
-migrate_46_panel_add_plugin (ConfigParser  *parser,
+migrate_46_bar_add_plugin (ConfigParser  *parser,
                              const gchar   *name,
                              const gchar   *id,
                              GError       **error)
 {
-  XfconfChannel *channel;
+  BlconfChannel *channel;
   gchar          base[256];
   XfceRc        *rc;
   const gchar   *plugin_name = name;
 
-  g_return_if_fail (XFCONF_IS_CHANNEL (parser->channel));
+  g_return_if_fail (BLCONF_IS_CHANNEL (parser->channel));
 
   /* open the old rc file of the plugin */
   g_snprintf (base, sizeof (base), "xfce4" G_DIR_SEPARATOR_S
-             "panel" G_DIR_SEPARATOR_S "%s-%s.rc", name, id);
+             "bar" G_DIR_SEPARATOR_S "%s-%s.rc", name, id);
   rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, base, TRUE);
 
-  /* open a panel with the propert base for the plugin */
+  /* open a bar with the propert base for the plugin */
   g_snprintf (base, sizeof (base), "/plugins/plugin-%d", parser->plugin_id_counter);
-  channel = xfconf_channel_new_with_property_base (XFCE_PANEL_CHANNEL_NAME, base);
+  channel = blconf_channel_new_with_property_base (BLADE_BAR_CHANNEL_NAME, base);
 
   if (strcmp (name, "actions") == 0)
     {
@@ -682,7 +682,7 @@ migrate_46_panel_add_plugin (ConfigParser  *parser,
     xfce_rc_close (rc);
 
   /* store the (new) plugin name */
-  xfconf_channel_set_string (parser->channel, base, plugin_name);
+  blconf_channel_set_string (parser->channel, base, plugin_name);
 }
 
 
@@ -700,33 +700,33 @@ migrate_46_start_element_handler (GMarkupParseContext  *context,
   const gchar  *name, *id, *value;
   GValue       *id_value;
 
-  g_return_if_fail (XFCONF_IS_CHANNEL (parser->channel));
+  g_return_if_fail (BLCONF_IS_CHANNEL (parser->channel));
 
   switch (parser->state)
     {
     case START:
-      if (strcmp (element_name, "panels") == 0)
-        parser->state = PANELS;
+      if (strcmp (element_name, "bars") == 0)
+        parser->state = BARS;
       break;
 
-    case PANELS:
-      if (strcmp (element_name, "panel") == 0)
+    case BARS:
+      if (strcmp (element_name, "bar") == 0)
         {
-          parser->state = PANEL;
+          parser->state = BAR;
 
           /* intialize new ids array */
-          parser->panel_plugin_ids = g_ptr_array_new ();
+          parser->bar_plugin_ids = g_ptr_array_new ();
 
           /* set defaults */
-          parser->panel_screen_position = XFCE_SCREEN_POSITION_NONE;
-          parser->panel_xoffset = 100;
-          parser->panel_yoffset = 100;
-          parser->panel_transparency = 100;
-          parser->panel_activetrans = FALSE;
+          parser->bar_screen_position = XFCE_SCREEN_POSITION_NONE;
+          parser->bar_xoffset = 100;
+          parser->bar_yoffset = 100;
+          parser->bar_transparency = 100;
+          parser->bar_activetrans = FALSE;
         }
       break;
 
-    case PANEL:
+    case BAR:
       if (strcmp (element_name, "properties") == 0)
         parser->state = PROPERTIES;
       else if (strcmp (element_name, "items") == 0)
@@ -749,7 +749,7 @@ migrate_46_start_element_handler (GMarkupParseContext  *context,
 
           if (G_LIKELY (name != NULL && value != NULL))
             {
-              migrate_46_panel_set_property (parser, name, value, error);
+              migrate_46_bar_set_property (parser, name, value, error);
             }
           else
             {
@@ -776,12 +776,12 @@ migrate_46_start_element_handler (GMarkupParseContext  *context,
           if (G_LIKELY (name != NULL && id != NULL))
             {
               parser->plugin_id_counter++;
-              migrate_46_panel_add_plugin (parser, name, id, error);
+              migrate_46_bar_add_plugin (parser, name, id, error);
 
               id_value = g_new0 (GValue, 1);
               g_value_init (id_value, G_TYPE_INT);
               g_value_set_int (id_value, parser->plugin_id_counter);
-              g_ptr_array_add (parser->panel_plugin_ids, id_value);
+              g_ptr_array_add (parser->bar_plugin_ids, id_value);
             }
           else
             {
@@ -813,7 +813,7 @@ migrate_46_end_element_handler (GMarkupParseContext  *context,
   gchar         prop[128];
   gchar        *position;
 
-  g_return_if_fail (XFCONF_IS_CHANNEL (parser->channel));
+  g_return_if_fail (BLCONF_IS_CHANNEL (parser->channel));
 
   switch (parser->state)
     {
@@ -822,60 +822,60 @@ migrate_46_end_element_handler (GMarkupParseContext  *context,
                    "Unexpected end element \"%s\"", element_name);
       break;
 
-    case PANEL:
-      if (strcmp ("panel", element_name) == 0)
+    case BAR:
+      if (strcmp ("bar", element_name) == 0)
         {
-          parser->state = PANELS;
+          parser->state = BARS;
 
           /* store ids array */
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/plugin-ids", parser->panel_id_counter);
-          xfconf_channel_set_arrayv (parser->channel, prop, parser->panel_plugin_ids);
-          xfconf_array_free (parser->panel_plugin_ids);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/plugin-ids", parser->bar_id_counter);
+          blconf_channel_set_arrayv (parser->channel, prop, parser->bar_plugin_ids);
+          blconf_array_free (parser->bar_plugin_ids);
 
           /* translate the old screen position to a snap position and orientation */
-          migrate_46_panel_screen_position (parser->panel_screen_position,
+          migrate_46_bar_screen_position (parser->bar_screen_position,
                                             &snap_position, &horizontal);
 
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/horizontal", parser->panel_id_counter);
-          xfconf_channel_set_bool (parser->channel, prop, horizontal);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/horizontal", parser->bar_id_counter);
+          blconf_channel_set_bool (parser->channel, prop, horizontal);
 
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/position", parser->panel_id_counter);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/position", parser->bar_id_counter);
           position = g_strdup_printf ("p=%d;x=%d;y=%d",
                                       snap_position,
-                                      parser->panel_xoffset,
-                                      parser->panel_yoffset);
-          xfconf_channel_set_string (parser->channel, prop, position);
+                                      parser->bar_xoffset,
+                                      parser->bar_yoffset);
+          blconf_channel_set_string (parser->channel, prop, position);
           g_free (position);
 
           /* set transparency */
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/leave-opacity", parser->panel_id_counter);
-          xfconf_channel_set_uint (parser->channel, prop, 100 - parser->panel_transparency);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/leave-opacity", parser->bar_id_counter);
+          blconf_channel_set_uint (parser->channel, prop, 100 - parser->bar_transparency);
 
-          g_snprintf (prop, sizeof (prop), "/panels/panel-%u/enter-opacity", parser->panel_id_counter);
-          xfconf_channel_set_uint (parser->channel, prop,  parser->panel_activetrans ?
-                                   100 - parser->panel_transparency : 100);
+          g_snprintf (prop, sizeof (prop), "/bars/bar-%u/enter-opacity", parser->bar_id_counter);
+          blconf_channel_set_uint (parser->channel, prop,  parser->bar_activetrans ?
+                                   100 - parser->bar_transparency : 100);
 
-          /* prepare for the next panel */
-          parser->panel_id_counter++;
+          /* prepare for the next bar */
+          parser->bar_id_counter++;
         }
       break;
 
-    case PANELS:
-      if (strcmp ("panels", element_name) == 0)
+    case BARS:
+      if (strcmp ("bars", element_name) == 0)
         {
           parser->state = START;
-          xfconf_channel_set_uint (parser->channel, "/panels", parser->panel_id_counter);
+          blconf_channel_set_uint (parser->channel, "/bars", parser->bar_id_counter);
         }
       break;
 
     case PROPERTIES:
       if (strcmp ("properties", element_name) == 0)
-        parser->state = PANEL;
+        parser->state = BAR;
       break;
 
     case ITEMS:
       if (strcmp ("items", element_name) == 0)
-        parser->state = PANEL;
+        parser->state = BAR;
       break;
 
     default:
@@ -900,7 +900,7 @@ static GMarkupParser markup_parser =
 
 gboolean
 migrate_46 (const gchar    *filename,
-            XfconfChannel  *channel,
+            BlconfChannel  *channel,
             GError        **error)
 {
   gsize                length;
@@ -911,7 +911,7 @@ migrate_46 (const gchar    *filename,
 
   g_return_val_if_fail (filename != NULL, FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  g_return_val_if_fail (XFCONF_IS_CHANNEL (channel), FALSE);
+  g_return_val_if_fail (BLCONF_IS_CHANNEL (channel), FALSE);
 
   if (!g_file_get_contents (filename, &contents, &length, error))
     return FALSE;
@@ -919,7 +919,7 @@ migrate_46 (const gchar    *filename,
   parser = g_slice_new0 (ConfigParser);
   parser->state = START;
   parser->plugin_id_counter = 0;
-  parser->panel_id_counter = 0;
+  parser->bar_id_counter = 0;
   parser->channel = channel;
 
   context = g_markup_parse_context_new (&markup_parser, 0, parser, NULL);
@@ -933,7 +933,7 @@ migrate_46 (const gchar    *filename,
 
   /* if parsing failed somehow, empty the channel so no broken config is left */
   if (!succeed)
-    xfconf_channel_reset_property (parser->channel, "/", TRUE);
+    blconf_channel_reset_property (parser->channel, "/", TRUE);
 
   g_free (contents);
   g_markup_parse_context_free (context);

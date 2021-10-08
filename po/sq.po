@@ -1,10 +1,10 @@
-# Albanian translation of the xfce4-panel package.
+# Albanian translation of the blade-bar package.
 # Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfce4-panel package.
+# This file is distributed under the same license as the blade-bar package.
 # Besnik Bleta <besnik@programeshqip.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-panel 4.7.0\n"
+"Project-Id-Version: blade-bar 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-05-16 21:39+0100\n"
 "PO-Revision-Date: 2009-09-26 01:32+0200\n"
@@ -15,108 +15,108 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../panel-desktop-handler.desktop.in.h:1
+#: ../bar-desktop-handler.desktop.in.h:1
 #, fuzzy
-msgid "Create Launcher on the panel"
-msgstr "Rreth Panelit Xfce"
+msgid "Create Launcher on the bar"
+msgstr "Rreth Barit Xfce"
 
-#: ../panel-desktop-handler.desktop.in.h:2
+#: ../bar-desktop-handler.desktop.in.h:2
 msgid ""
-"Add a new launcher to the panel based on the information of this desktop file"
+"Add a new launcher to the bar based on the information of this desktop file"
 msgstr ""
 
-#: ../panel-preferences.desktop.in.h:1
-#: ../panel/panel-preferences-dialog.glade.h:7 ../panel/panel-window.c:2353
+#: ../bar-preferences.desktop.in.h:1
+#: ../bar/bar-preferences-dialog.glade.h:7 ../bar/bar-window.c:2353
 #: ../migrate/main.c:117
 #, fuzzy
-msgid "Panel"
-msgstr "Panel %d"
+msgid "Bar"
+msgstr "Bar %d"
 
-#: ../panel-preferences.desktop.in.h:2
+#: ../bar-preferences.desktop.in.h:2
 #, fuzzy
-msgid "Customize the panel"
-msgstr "Rreth Panelit Xfce"
+msgid "Customize the bar"
+msgstr "Rreth Barit Xfce"
 
 #. I18N: %s is the name of the plugin
-#: ../libxfce4panel/xfce-panel-plugin.c:1032
-#: ../panel/panel-preferences-dialog.c:1123
+#: ../libbladebar/blade-bar-plugin.c:1032
+#: ../bar/bar-preferences-dialog.c:1123
 #, fuzzy, c-format
 msgid "Are you sure that you want to remove \"%s\"?"
 msgstr "Jeni i sigurt se doni të hiqet hapësira e punës '%s'?"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1037
-#: ../panel/panel-preferences-dialog.c:1126
-msgid "If you remove the item from the panel, it is permanently lost."
+#: ../libbladebar/blade-bar-plugin.c:1037
+#: ../bar/bar-preferences-dialog.c:1126
+msgid "If you remove the item from the bar, it is permanently lost."
 msgstr ""
 
 #. move item
-#: ../libxfce4panel/xfce-panel-plugin.c:1197
+#: ../libbladebar/blade-bar-plugin.c:1197
 #, fuzzy
 msgid "_Move"
 msgstr "Lëviz"
 
-#: ../libxfce4panel/xfce-panel-plugin.c:1231
+#: ../libbladebar/blade-bar-plugin.c:1231
 #, fuzzy
 msgid "Pane_l"
-msgstr "Panel %d"
+msgstr "Bar %d"
 
 #. add new items
-#: ../libxfce4panel/xfce-panel-plugin.c:1239 ../panel/panel-window.c:2365
+#: ../libbladebar/blade-bar-plugin.c:1239 ../bar/bar-window.c:2365
 #, fuzzy
 msgid "Add _New Items..."
 msgstr "Shto Elemente të Rinj..."
 
-#. customize panel
-#: ../libxfce4panel/xfce-panel-plugin.c:1250 ../panel/panel-window.c:2376
-msgid "Panel Pr_eferences..."
+#. customize bar
+#: ../libbladebar/blade-bar-plugin.c:1250 ../bar/bar-window.c:2376
+msgid "Bar Pr_eferences..."
 msgstr ""
 
 #. logout item
-#: ../libxfce4panel/xfce-panel-plugin.c:1267 ../panel/panel-window.c:2404
+#: ../libbladebar/blade-bar-plugin.c:1267 ../bar/bar-window.c:2404
 msgid "Log _Out"
 msgstr ""
 
-#: ../panel/main.c:80
+#: ../bar/main.c:80
 #, fuzzy
-msgid "Show the 'Panel Preferences' dialog"
-msgstr "Shfaq dialogun 'Përshtasni Panel'"
+msgid "Show the 'Bar Preferences' dialog"
+msgstr "Shfaq dialogun 'Përshtasni Bar'"
 
-#: ../panel/main.c:80 ../panel/main.c:81
-msgid "PANEL-NUMBER"
+#: ../bar/main.c:80 ../bar/main.c:81
+msgid "BAR-NUMBER"
 msgstr ""
 
-#: ../panel/main.c:81
+#: ../bar/main.c:81
 #, fuzzy
 msgid "Show the 'Add New Items' dialog"
 msgstr "Shfaq dialogun 'Shto Elementë të Rinj'"
 
-#: ../panel/main.c:82
-msgid "Save the panel configuration"
-msgstr "Ruaje formësimin e panelit"
+#: ../bar/main.c:82
+msgid "Save the bar configuration"
+msgstr "Ruaje formësimin e barit"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 #, fuzzy
-msgid "Add a new plugin to the panel"
-msgstr "Shtoni panel të ri"
+msgid "Add a new plugin to the bar"
+msgstr "Shtoni bar të ri"
 
-#: ../panel/main.c:83
+#: ../bar/main.c:83
 msgid "PLUGIN-NAME"
 msgstr ""
 
-#: ../panel/main.c:84
+#: ../bar/main.c:84
 #, fuzzy
-msgid "Restart the running panel instance"
-msgstr "Rinise instancën xhiruese të xfce4-panel-it"
+msgid "Restart the running bar instance"
+msgstr "Rinise instancën xhiruese të blade-bar-it"
 
-#: ../panel/main.c:85
-msgid "Quit the running panel instance"
+#: ../bar/main.c:85
+msgid "Quit the running bar instance"
 msgstr ""
 
-#: ../panel/main.c:86
+#: ../bar/main.c:86
 msgid "Do not wait for a window manager on startup"
 msgstr ""
 
-#: ../panel/main.c:87
+#: ../bar/main.c:87
 #: ../plugins/applicationsmenu/xfce4-popup-applicationsmenu.sh:33
 #: ../plugins/directorymenu/xfce4-popup-directorymenu.sh:33
 #: ../plugins/windowmenu/xfce4-popup-windowmenu.sh:33
@@ -124,241 +124,241 @@ msgid "Print version information and exit"
 msgstr "Shtyp të dhëna versioni dhe dil"
 
 #. parse context options
-#: ../panel/main.c:236
+#: ../bar/main.c:236
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../panel/main.c:243
+#: ../bar/main.c:243
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
 
-#: ../panel/main.c:262
+#: ../bar/main.c:262
 msgid "The Xfce development team. All rights reserved."
 msgstr "Ekipi zhvillues i Xfce-sët. Tërë të drejtat të rezervuara."
 
-#: ../panel/main.c:263
+#: ../bar/main.c:263
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ju lutem njoftoni të meta te <%s>."
 
-#: ../panel/main.c:321
+#: ../bar/main.c:321
 #, fuzzy
 msgid "There is already a running instance"
 msgstr "Ka tashmë një zonë njoftimesh që xhiron në këtë ekran"
 
 #. spawn ourselfs again
-#: ../panel/main.c:366
+#: ../bar/main.c:366
 #, fuzzy
 msgid "Restarting..."
 msgstr "Rinis"
 
-#: ../panel/main.c:381
+#: ../bar/main.c:381
 #, fuzzy
 msgid "Failed to show the preferences dialog"
 msgstr "Dështoi hapja e ekranit"
 
-#: ../panel/main.c:383
+#: ../bar/main.c:383
 #, fuzzy
 msgid "Failed to show the add new items dialog"
 msgstr "Shfaq dialogun 'Shto Elementë të Rinj'"
 
-#: ../panel/main.c:385
+#: ../bar/main.c:385
 #, fuzzy
-msgid "Failed to save the panel configuration"
-msgstr "Ruaje formësimin e panelit"
+msgid "Failed to save the bar configuration"
+msgstr "Ruaje formësimin e barit"
 
-#: ../panel/main.c:387
-msgid "Failed to add a plugin to the panel"
+#: ../bar/main.c:387
+msgid "Failed to add a plugin to the bar"
 msgstr ""
 
-#: ../panel/main.c:389
+#: ../bar/main.c:389
 #, fuzzy
-msgid "Failed to restart the panel"
-msgstr "Shto elemente te Paneli"
+msgid "Failed to restart the bar"
+msgstr "Shto elemente te Bari"
 
-#: ../panel/main.c:391
+#: ../bar/main.c:391
 #, fuzzy
-msgid "Failed to quit the panel"
-msgstr "Dështoi nisja e 'xfce4-panel -c'"
+msgid "Failed to quit the bar"
+msgstr "Dështoi nisja e 'blade-bar -c'"
 
-#: ../panel/main.c:393
+#: ../bar/main.c:393
 #, fuzzy
 msgid "Failed to send D-Bus message"
 msgstr "Dështoi hapja e ekranit"
 
-#: ../panel/main.c:404
+#: ../bar/main.c:404
 msgid ""
-"Do you want to start the panel? If you do, make sure you save the session on "
-"logout, so the panel is automatically started the next time you login."
+"Do you want to start the bar? If you do, make sure you save the session on "
+"logout, so the bar is automatically started the next time you login."
 msgstr ""
 
-#: ../panel/main.c:407 ../panel/main.c:421
+#: ../bar/main.c:407 ../bar/main.c:421
 #, c-format
 msgid "No running instance of %s was found"
 msgstr ""
 
-#: ../panel/panel-application.c:216
+#: ../bar/bar-application.c:216
 msgid "Failed to launch the migration application"
 msgstr ""
 
-#: ../panel/panel-application.c:982
+#: ../bar/bar-application.c:982
 #, fuzzy
 msgid "Create _Launcher"
-msgstr "Rreth Panelit Xfce"
+msgstr "Rreth Barit Xfce"
 
-#: ../panel/panel-application.c:983
+#: ../bar/bar-application.c:983
 msgid ""
-"This will create a new launcher plugin on the panel and inserts the dropped "
+"This will create a new launcher plugin on the bar and inserts the dropped "
 "files as menu items."
 msgstr ""
 
-#: ../panel/panel-application.c:985
+#: ../bar/bar-application.c:985
 #, c-format
 msgid "Create new launcher from %d desktop file"
 msgid_plural "Create new launcher from %d desktop files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../panel/panel-application.c:1725
+#: ../bar/bar-application.c:1725
 msgid ""
 "You have started X without session manager. Clicking Quit will close the X "
 "server."
 msgstr ""
 
-#: ../panel/panel-application.c:1726
+#: ../bar/bar-application.c:1726
 #, fuzzy
-msgid "Are you sure you want to quit the panel?"
+msgid "Are you sure you want to quit the bar?"
 msgstr "Jeni i sigurt se doni të hiqet hapësira e punës %d?"
 
-#: ../panel/panel-application.c:1734
+#: ../bar/bar-application.c:1734
 #, fuzzy, c-format
 msgid "Failed to execute command \"%s\""
 msgstr "Dështoi nisja e \"%s\""
 
-#: ../panel/panel-dbus-client.c:211
+#: ../bar/bar-dbus-client.c:211
 msgid ""
 "Invalid plugin event syntax specified. Use PLUGIN-NAME:NAME[:TYPE:VALUE]."
 msgstr ""
 
-#: ../panel/panel-dbus-client.c:244
+#: ../bar/bar-dbus-client.c:244
 #, c-format
 msgid ""
 "Invalid hint type \"%s\". Valid types are bool, double, int, string and uint."
 msgstr ""
 
-#: ../panel/panel-dialogs.c:65
+#: ../bar/bar-dialogs.c:65
 msgid "Maintainers"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:68
+#: ../bar/bar-dialogs.c:68
 msgid "Deskbar Mode"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:71
+#: ../bar/bar-dialogs.c:71
 msgid "Inactive Maintainers"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:82
-msgid "The panel of the Xfce Desktop Environment"
+#: ../bar/bar-dialogs.c:82
+msgid "The bar of the Xfce Desktop Environment"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:87
+#: ../bar/bar-dialogs.c:87
 msgid "translator-credits"
 msgstr ""
 
 #. setup the dialog
-#: ../panel/panel-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
+#: ../bar/bar-dialogs.c:158 ../plugins/launcher/launcher-dialog.glade.h:27
 #, fuzzy
 msgid "Add New Item"
 msgstr "Shto Elemente të Rinj"
 
-#: ../panel/panel-dialogs.c:172
-msgid "Please choose a panel for the new plugin:"
+#: ../bar/bar-dialogs.c:172
+msgid "Please choose a bar for the new plugin:"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:192 ../panel/panel-preferences-dialog.c:806
+#: ../bar/bar-dialogs.c:192 ../bar/bar-preferences-dialog.c:806
 #, c-format
-msgid "Panel %d"
-msgstr "Panel %d"
+msgid "Bar %d"
+msgstr "Bar %d"
 
-#: ../panel/panel-dialogs.c:232
+#: ../bar/bar-dialogs.c:232
 msgid ""
-"Because the panel is running in kiosk mode, you are not allowed to make "
-"changes to the panel configuration as a regular user"
+"Because the bar is running in kiosk mode, you are not allowed to make "
+"changes to the bar configuration as a regular user"
 msgstr ""
 
-#: ../panel/panel-dialogs.c:234
-msgid "Modifying the panel is not allowed"
+#: ../bar/bar-dialogs.c:234
+msgid "Modifying the bar is not allowed"
 msgstr ""
 
-#: ../panel/panel-item-dialog.c:190
+#: ../bar/bar-item-dialog.c:190
 msgid "Add New Items"
 msgstr "Shto Elemente të Rinj"
 
-#: ../panel/panel-item-dialog.c:192
+#: ../bar/bar-item-dialog.c:192
 #, fuzzy
-msgid "Add new plugins to the panel"
-msgstr "Shto elemente te Paneli"
+msgid "Add new plugins to the bar"
+msgstr "Shto elemente te Bari"
 
-#: ../panel/panel-item-dialog.c:216
+#: ../bar/bar-item-dialog.c:216
 #: ../plugins/launcher/launcher-dialog.glade.h:28
 msgid "_Search:"
 msgstr "_Kërko:"
 
-#: ../panel/panel-item-dialog.c:224
+#: ../bar/bar-item-dialog.c:224
 msgid "Enter search phrase here"
 msgstr ""
 
-#: ../panel/panel-plugin-external.c:429
+#: ../bar/bar-plugin-external.c:429
 #, c-format
-msgid "Plugin \"%s\" unexpectedly left the panel, do you want to restart it?"
+msgid "Plugin \"%s\" unexpectedly left the bar, do you want to restart it?"
 msgstr ""
 
-#: ../panel/panel-plugin-external.c:431
+#: ../bar/bar-plugin-external.c:431
 #, c-format
 msgid ""
 "The plugin restarted more than once in the last %d seconds. If you press "
-"Execute the panel will try to restart the plugin otherwise it will be "
-"permanently removed from the panel."
+"Execute the bar will try to restart the plugin otherwise it will be "
+"permanently removed from the bar."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.c:472
+#: ../bar/bar-preferences-dialog.c:472
 msgid "Automatic"
 msgstr "Automatike"
 
 #. I18N: screen name in the output selector
-#: ../panel/panel-preferences-dialog.c:491
+#: ../bar/bar-preferences-dialog.c:491
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
 #. I18N: monitor name in the output selector
-#: ../panel/panel-preferences-dialog.c:517
+#: ../bar/bar-preferences-dialog.c:517
 #, fuzzy, c-format
 msgid "Monitor %d"
 msgstr "Ndaji Monitorët"
 
-#: ../panel/panel-preferences-dialog.c:872
+#: ../bar/bar-preferences-dialog.c:872
 #, fuzzy
-msgid "The panel and plugin configurations will be permanently removed"
-msgstr "Paneli i përzgjedhur dhe tërë elementet e tij do të hiqen."
+msgid "The bar and plugin configurations will be permanently removed"
+msgstr "Bari i përzgjedhur dhe tërë elementet e tij do të hiqen."
 
-#: ../panel/panel-preferences-dialog.c:873
+#: ../bar/bar-preferences-dialog.c:873
 #, fuzzy, c-format
-msgid "Are you sure you want to remove panel %d?"
+msgid "Are you sure you want to remove bar %d?"
 msgstr "Jeni i sigurt se doni të hiqet hapësira e punës %d?"
 
 #. I18N: append (external) in the preferences dialog if the plugin
 #. * runs external
-#: ../panel/panel-preferences-dialog.c:965
+#: ../bar/bar-preferences-dialog.c:965
 #, c-format
 msgid "%s <span color=\"grey\" size=\"small\">(external)</span>"
 msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for external plugins
-#: ../panel/panel-preferences-dialog.c:970
+#: ../bar/bar-preferences-dialog.c:970
 #, c-format
 msgid ""
 "Internal name: %s-%d\n"
@@ -367,280 +367,280 @@ msgstr ""
 
 #. I18N: tooltip in preferences dialog when hovering an item in the list
 #. * for internal plugins
-#: ../panel/panel-preferences-dialog.c:982
+#: ../bar/bar-preferences-dialog.c:982
 #, c-format
 msgid "Internal name: %s-%d"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:1
+#: ../bar/bar-preferences-dialog.glade.h:1
 msgid "Horizontal"
 msgstr "Horizontalisht"
 
-#: ../panel/panel-preferences-dialog.glade.h:2
+#: ../bar/bar-preferences-dialog.glade.h:2
 msgid "Vertical"
 msgstr "Vertikalisht"
 
-#: ../panel/panel-preferences-dialog.glade.h:3
+#: ../bar/bar-preferences-dialog.glade.h:3
 msgid "Deskbar"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:4
+#: ../bar/bar-preferences-dialog.glade.h:4
 msgid "None (use system style)"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:5
+#: ../bar/bar-preferences-dialog.glade.h:5
 msgid "Solid color"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:6
+#: ../bar/bar-preferences-dialog.glade.h:6
 msgid "Background image"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:8
+#: ../bar/bar-preferences-dialog.glade.h:8
 #, fuzzy
-msgid "Add a new panel"
+msgid "Add a new bar"
 msgstr "Shtoni objekte të reja"
 
-#: ../panel/panel-preferences-dialog.glade.h:9
+#: ../bar/bar-preferences-dialog.glade.h:9
 #, fuzzy
-msgid "Remove the currently selected panel"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgid "Remove the currently selected bar"
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:10
+#: ../bar/bar-preferences-dialog.glade.h:10
 msgid "M_ode:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:11
+#: ../bar/bar-preferences-dialog.glade.h:11
 msgid "O_utput:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:12
+#: ../bar/bar-preferences-dialog.glade.h:12
 #, fuzzy
 msgid "Span mo_nitors"
 msgstr "Ndaji Monitorët"
 
-#: ../panel/panel-preferences-dialog.glade.h:13
-msgid "Select this option to extend the panel over multiple monitors."
+#: ../bar/bar-preferences-dialog.glade.h:13
+msgid "Select this option to extend the bar over multiple monitors."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:14
-msgid "_Lock panel"
+#: ../bar/bar-preferences-dialog.glade.h:14
+msgid "_Lock bar"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:15
+#: ../bar/bar-preferences-dialog.glade.h:15
 msgid ""
-"Select this option to hide the handles of the panel and lock its position."
+"Select this option to hide the handles of the bar and lock its position."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:16
-msgid "Automatically show and _hide the panel"
+#: ../bar/bar-preferences-dialog.glade.h:16
+msgid "Automatically show and _hide the bar"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:17
+#: ../bar/bar-preferences-dialog.glade.h:17
 msgid ""
-"Select this option to hide the panel when the pointer is not above it. This "
-"only works when the panel is attached to a screen edge."
+"Select this option to hide the bar when the pointer is not above it. This "
+"only works when the bar is attached to a screen edge."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:18
+#: ../bar/bar-preferences-dialog.glade.h:18
 msgid "Don't _reserve space on borders"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:19
+#: ../bar/bar-preferences-dialog.glade.h:19
 msgid ""
 "Select this option if you want maximized windows to cover the area behind "
-"the panel. This only works when the panel is attached to a screen edge."
+"the bar. This only works when the bar is attached to a screen edge."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:20
+#: ../bar/bar-preferences-dialog.glade.h:20
 #: ../plugins/actions/actions-dialog.glade.h:6
 #: ../plugins/launcher/launcher-dialog.glade.h:19
 msgid "General"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:21
+#: ../bar/bar-preferences-dialog.glade.h:21
 #, fuzzy
 msgid "Row _Size (pixels):"
 msgstr "_Madhësi (piksela):"
 
-#: ../panel/panel-preferences-dialog.glade.h:23
+#: ../bar/bar-preferences-dialog.glade.h:23
 #, no-c-format
 msgid "L_ength (%):"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:24
+#: ../bar/bar-preferences-dialog.glade.h:24
 #, fuzzy
 msgid "Num_ber of rows:"
 msgstr "_Numri i rreshtave:"
 
-#: ../panel/panel-preferences-dialog.glade.h:25
+#: ../bar/bar-preferences-dialog.glade.h:25
 msgid "A_utomatically increase the length"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:26
+#: ../bar/bar-preferences-dialog.glade.h:26
 msgid ""
-"Select this option to automatically increase the length of the panel if the "
+"Select this option to automatically increase the length of the bar if the "
 "plugins request more space."
 msgstr ""
 
-#. I18N: name of the section (frame) in the panel preferences where the user can define the length and size of the panel
-#: ../panel/panel-preferences-dialog.glade.h:28
+#. I18N: name of the section (frame) in the bar preferences where the user can define the length and size of the bar
+#: ../bar/bar-preferences-dialog.glade.h:28
 msgid "Measurements"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:29
+#: ../bar/bar-preferences-dialog.glade.h:29
 msgid "D_isplay"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:30
+#: ../bar/bar-preferences-dialog.glade.h:30
 #: ../plugins/separator/separator-dialog.glade.h:2
 msgid "_Style:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:31
+#: ../bar/bar-preferences-dialog.glade.h:31
 msgid "_Alpha:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:32
+#: ../bar/bar-preferences-dialog.glade.h:32
 msgid ""
-"Alpha value of the panel background, with 0 being fully transparent and 100 "
+"Alpha value of the bar background, with 0 being fully transparent and 100 "
 "fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:33
+#: ../bar/bar-preferences-dialog.glade.h:33
 msgid "C_olor:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:34
-msgid "Pick a Panel Color"
+#: ../bar/bar-preferences-dialog.glade.h:34
+msgid "Pick a Bar Color"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:35
+#: ../bar/bar-preferences-dialog.glade.h:35
 msgid "_File:"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:36
+#: ../bar/bar-preferences-dialog.glade.h:36
 #, fuzzy
 msgid "Select A Background Image"
 msgstr "Përzgjidhni një Ikonë për \"%s\""
 
-#: ../panel/panel-preferences-dialog.glade.h:37
+#: ../bar/bar-preferences-dialog.glade.h:37
 msgid "Background"
 msgstr ""
 
 #. I18N: label for the enter transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:39
+#: ../bar/bar-preferences-dialog.glade.h:39
 msgid "_Enter:"
 msgstr ""
 
 #. I18N: label for the leave transparency slider
-#: ../panel/panel-preferences-dialog.glade.h:41
+#: ../bar/bar-preferences-dialog.glade.h:41
 #, fuzzy
 msgid "_Leave:"
 msgstr "_Emër:"
 
-#: ../panel/panel-preferences-dialog.glade.h:42
+#: ../bar/bar-preferences-dialog.glade.h:42
 msgid ""
-"Transparency when the pointer is hovering over the panel, with 0 being fully "
+"Transparency when the pointer is hovering over the bar, with 0 being fully "
 "transparent and 100 fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:43
+#: ../bar/bar-preferences-dialog.glade.h:43
 msgid ""
-"Transparency when the pointer is not hovering over the panel, with 0 being "
+"Transparency when the pointer is not hovering over the bar, with 0 being "
 "fully transparent and 100 fully opaque."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:44
+#: ../bar/bar-preferences-dialog.glade.h:44
 msgid "Opacity"
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:45
+#: ../bar/bar-preferences-dialog.glade.h:45
 msgid ""
-"Enable compositing in the window manager for opacity settings in the panel."
+"Enable compositing in the window manager for opacity settings in the bar."
 msgstr ""
 
-#: ../panel/panel-preferences-dialog.glade.h:46
+#: ../bar/bar-preferences-dialog.glade.h:46
 #, fuzzy
 msgid "Appeara_nce"
 msgstr "Dukje"
 
-#: ../panel/panel-preferences-dialog.glade.h:47
+#: ../bar/bar-preferences-dialog.glade.h:47
 #: ../plugins/launcher/launcher-dialog.glade.h:13
 #, fuzzy
 msgid "Move currently selected item up by one row"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:48
+#: ../bar/bar-preferences-dialog.glade.h:48
 #: ../plugins/launcher/launcher-dialog.glade.h:14
 #, fuzzy
 msgid "Move currently selected item down by one row"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:49
+#: ../bar/bar-preferences-dialog.glade.h:49
 #, fuzzy
-msgid "Add new item to this panel"
-msgstr "Shto elemente te Paneli"
+msgid "Add new item to this bar"
+msgstr "Shto elemente te Bari"
 
-#: ../panel/panel-preferences-dialog.glade.h:50
+#: ../bar/bar-preferences-dialog.glade.h:50
 #, fuzzy
 msgid "Remove currently selected item"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:51
+#: ../bar/bar-preferences-dialog.glade.h:51
 #: ../plugins/launcher/launcher-dialog.glade.h:18
 #, fuzzy
 msgid "Edit the currently selected item"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:52
+#: ../bar/bar-preferences-dialog.glade.h:52
 #, fuzzy
 msgid "Show about information of the currently selected item"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
-#: ../panel/panel-preferences-dialog.glade.h:53
+#: ../bar/bar-preferences-dialog.glade.h:53
 #, fuzzy
 msgid "Ite_ms"
 msgstr "Shto elemente"
 
-#: ../panel/panel-tic-tac-toe.c:123
+#: ../bar/bar-tic-tac-toe.c:123
 msgid "_New Game"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:134
+#: ../bar/bar-tic-tac-toe.c:134
 #, fuzzy
 msgid "_Level:"
 msgstr "_Emër:"
 
-#: ../panel/panel-tic-tac-toe.c:140
+#: ../bar/bar-tic-tac-toe.c:140
 msgid "Novice"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:141
+#: ../bar/bar-tic-tac-toe.c:141
 msgid "Intermediate"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:142
+#: ../bar/bar-tic-tac-toe.c:142
 msgid "Experienced"
 msgstr ""
 
-#: ../panel/panel-tic-tac-toe.c:143
+#: ../bar/bar-tic-tac-toe.c:143
 msgid "Expert"
 msgstr ""
 
-#: ../panel/panel-window.c:2390
+#: ../bar/bar-window.c:2390
 #, fuzzy
-msgid "_Lock Panel"
-msgstr "Panel Xfce"
+msgid "_Lock Bar"
+msgstr "Bar Xfce"
 
 #: ../migrate/main.c:116
 #, fuzzy
-msgid "Welcome to the first start of the panel"
-msgstr "Shto elemente te Paneli"
+msgid "Welcome to the first start of the bar"
+msgstr "Shto elemente te Bari"
 
 #: ../migrate/main.c:125
 msgid ""
-"Because the panel moved to a new system for storing the settings, it has to "
+"Because the bar moved to a new system for storing the settings, it has to "
 "load a fresh initial configuration."
 msgstr ""
 
@@ -654,8 +654,8 @@ msgstr ""
 
 #: ../migrate/main.c:130
 #, fuzzy
-msgid "Migrate the old 4.6 configuration to Xfconf"
-msgstr "Ruaje formësimin e panelit"
+msgid "Migrate the old 4.6 configuration to Blconf"
+msgstr "Ruaje formësimin e barit"
 
 #: ../migrate/main.c:141
 msgid "Use default config"
@@ -664,37 +664,37 @@ msgstr ""
 #: ../migrate/main.c:142
 #, fuzzy
 msgid "Load the default configuration"
-msgstr "Ruaje formësimin e panelit"
+msgstr "Ruaje formësimin e barit"
 
 #: ../migrate/main.c:148
-msgid "One empty panel"
+msgid "One empty bar"
 msgstr ""
 
 #: ../migrate/main.c:149
-msgid "Start with one empty panel"
+msgid "Start with one empty bar"
 msgstr ""
 
 #: ../migrate/main.c:160
 #, fuzzy
-msgid "Failed to migrate the old panel configuration"
-msgstr "Ruaje formësimin e panelit"
+msgid "Failed to migrate the old bar configuration"
+msgstr "Ruaje formësimin e barit"
 
 #: ../migrate/main.c:172
 #, fuzzy
 msgid "Failed to load the default configuration"
-msgstr "Ruaje formësimin e panelit"
+msgstr "Ruaje formësimin e barit"
 
 #: ../migrate/main.c:185
-msgid "Panel config needs migration..."
+msgid "Bar config needs migration..."
 msgstr ""
 
 #: ../migrate/main.c:189
 #, fuzzy
 msgid "Failed to migrate the existing configuration"
-msgstr "Ruaje formësimin e panelit"
+msgstr "Ruaje formësimin e barit"
 
 #: ../migrate/main.c:195
-msgid "Panel configuration has been updated."
+msgid "Bar configuration has been updated."
 msgstr ""
 
 #: ../plugins/actions/actions-dialog.glade.h:1
@@ -733,7 +733,7 @@ msgstr "Butona Veprimesh"
 #: ../plugins/actions/actions-dialog.glade.h:9
 #, fuzzy
 msgid "_Actions"
-msgstr "Veprime Paneli"
+msgstr "Veprime Bari"
 
 #: ../plugins/actions/actions-dialog.glade.h:10
 #, fuzzy
@@ -890,7 +890,7 @@ msgstr "Zbatime të Fshehur"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:3
 msgid ""
 "Select this option to show the generic application name in the menu, for "
-"example \"File Manager\" instead of \"Thunar\""
+"example \"File Manager\" instead of \"Fmb\""
 msgstr ""
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:4
@@ -905,7 +905,7 @@ msgstr "Buton _shigjetë"
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:6
 #, fuzzy
 msgid "Button _title:"
-msgstr "Veprime Paneli"
+msgstr "Veprime Bari"
 
 #: ../plugins/applicationsmenu/applicationsmenu-dialog.glade.h:7
 #: ../plugins/directorymenu/directorymenu-dialog.glade.h:4
@@ -1056,7 +1056,7 @@ msgstr "Format Ndihmëzash"
 #: ../plugins/clock/clock-dialog.glade.h:9
 #, no-c-format
 msgid ""
-"The format describes the date and time parts to insert into the panel. For "
+"The format describes the date and time parts to insert into the bar. For "
 "example, %Y will be substituted with the year, %m with the month and %d with "
 "the day. Similarly, <b></b> tags will make the text bold. See the \"Help\" "
 "page for additional information."
@@ -1514,7 +1514,7 @@ msgstr "Zbatime të Fshehur"
 #: ../plugins/launcher/launcher-dialog.glade.h:11
 #, fuzzy
 msgid "New _Link"
-msgstr "Panel i Ri"
+msgstr "Bar i Ri"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:12
 #: ../plugins/launcher/launcher.desktop.in.in.h:1
@@ -1533,7 +1533,7 @@ msgstr "Shtoni objekte të reja"
 #: ../plugins/launcher/launcher-dialog.glade.h:17
 #, fuzzy
 msgid "Delete the currently selected item"
-msgstr "Hiq panelin e përzgjedhur tani "
+msgstr "Hiq barin e përzgjedhur tani "
 
 #: ../plugins/launcher/launcher-dialog.glade.h:20
 msgid "Disable t_ooltips"
@@ -1541,7 +1541,7 @@ msgstr ""
 
 #: ../plugins/launcher/launcher-dialog.glade.h:21
 msgid ""
-"Select this option to disable the tooltips when moving over the panel button "
+"Select this option to disable the tooltips when moving over the bar button "
 "or menu items."
 msgstr ""
 
@@ -1551,11 +1551,11 @@ msgid "Show _label instead of icon"
 msgstr "Shfaq ikona _zbatimesh"
 
 #: ../plugins/launcher/launcher-dialog.glade.h:23
-msgid "Show last _used item in panel"
+msgid "Show last _used item in bar"
 msgstr ""
 
 #: ../plugins/launcher/launcher-dialog.glade.h:24
-msgid "Select this option to move the clicked menu item to the panel."
+msgid "Select this option to move the clicked menu item to the bar."
 msgstr ""
 
 #: ../plugins/launcher/launcher-dialog.glade.h:25
@@ -1639,8 +1639,8 @@ msgstr "_Pika"
 
 #: ../plugins/separator/separator.desktop.in.in.h:2
 #, fuzzy
-msgid "Adds a separator or space between panel items"
-msgstr "Shto hapësirë ose vijë midis elementësh paneli"
+msgid "Adds a separator or space between bar items"
+msgstr "Shto hapësirë ose vijë midis elementësh bari"
 
 #: ../plugins/showdesktop/showdesktop.c:210
 #, fuzzy
@@ -1943,7 +1943,7 @@ msgstr "Hidhu nga njëra dritare e hapur në tjetrën duke përdorur një menu"
 
 #, fuzzy
 #~ msgid "Xfce Menu"
-#~ msgstr "Panel Xfce"
+#~ msgstr "Bar Xfce"
 
 #, fuzzy
 #~ msgid "Failed to open manual"

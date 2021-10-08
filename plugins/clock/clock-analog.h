@@ -33,7 +33,7 @@ typedef struct _XfceClockAnalog      XfceClockAnalog;
 
 GType      xfce_clock_analog_get_type      (void) G_GNUC_CONST;
 
-void       xfce_clock_analog_register_type (XfcePanelTypeModule *type_module);
+void       xfce_clock_analog_register_type (BladeBarTypeModule *type_module);
 
 GtkWidget *xfce_clock_analog_new           (ClockTime           *time) G_GNUC_MALLOC;
 

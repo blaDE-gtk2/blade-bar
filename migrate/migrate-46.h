@@ -23,10 +23,10 @@
 
 G_BEGIN_DECLS
 
-#define XFCE_46_CONFIG  "xfce4" G_DIR_SEPARATOR_S "panel" G_DIR_SEPARATOR_S "panels.xml"
+#define XFCE_46_CONFIG  "xfce4" G_DIR_SEPARATOR_S "bar" G_DIR_SEPARATOR_S "bars.xml"
 
 gboolean migrate_46 (const gchar    *filename,
-                     XfconfChannel  *channel,
+                     BlconfChannel  *channel,
                      GError        **error);
 
 G_END_DECLS
